@@ -68,13 +68,18 @@
    [:.ui.large.header {:color dark-grey}]
    [:.ui.orange.label {:background-color coral}]
    [:.ui.label {:color white
-                :background-color coral}]
+                :background-color coral}
+    [:a {:opacity "1"
+         :text-decoration "none"}]]
+   [:a.post-title {:text-decoration "none"}]
    [:.right {:float "right"}]
    [:.site-title [:a {:color white
                       :font-size (px 20)
                       :font-weight "bold"
                       :text-decoration "none"}]]
    [:i.large.icon {:font-size (em 1.3)}]
+   [:div.disqus-comments {:padding-top (px 10)}
+    [:a {:font-size (px 14)}]]
    [:.ui.segment.code {:background-color solarized-light-background
                        :overflow "auto"}
     [:code {:font-family (str "Menlo, Monaco, 'DejaVu Sans Mono', Consolas, "

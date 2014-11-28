@@ -1,9 +1,6 @@
 ;; ## A static site generated with Stasis
 (ns marcandregoyette.core
-  (:require [marcandregoyette.custom-styles :refer [load-custom-styles]]
-            [marcandregoyette.feed :refer [feed]]
-            [marcandregoyette.pages :refer [add-page-layout]]
-            [marcandregoyette.posts :refer [build-posts]]
+  (:require [marcandregoyette.pages :refer [load-pages]]
             [me.raynes.fs :as fs]
             [ring.middleware.content-type :refer [wrap-content-type]]
             [ring.middleware.file-info :refer [wrap-file-info]]
@@ -18,15 +15,6 @@
 (def public-dir "public")
 (def all-public-dir [fonts-dir images-dir scripts-dir styles-dir])
 (def export-dir "dist")
-
-(defn- build-pages [posts]
-  (s/merge-page-sources
-   {:css (load-custom-styles)
-    :posts (add-page-layout posts)
-    :other {"/atom.xml" (feed posts)}}))
-
-(defn- load-pages []
-  (build-pages (build-posts "resources/posts" #"\.md$")))
 
 (def app (-> (s/serve-pages (load-pages))
              (wrap-resource "public")

@@ -34,9 +34,7 @@
 
 (def menu-items
   [{:name "Programming" :link "/categories/programming"}
-   {:name "Programmation" :link "/categories/programming"}
-   {:name "Science-fiction/fantasy" :link "/categories/sff"}
-   {:name "Tags" :link "/tags"}
+   {:name "Programmation" :link "/categories/programmation"}
    {:name "About" :link "/about"}
    {:name "À propos" :link "/apropos"}
    {:icon [:i.rss.large.icon {:data-content "Atom feed"}] :link "/atom.xml"}
@@ -72,9 +70,33 @@
   [:div.ui.page.stackable.grid
    [:div.one.wide.column]
    [:div.fourteen.wide.column
-    [:div#posts-container.ui.segment]
+    [:div#posts-container]
     (footer)]
    [:div.one.wide.column]])
+
+(def google-analytics-code
+  "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-46742437-1', 'auto');
+    ga('send', 'pageview');")
+
+(def disqus-code
+  "var disqus_shortname = 'marcandregoyette';
+  (function() {
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0]
+  || document.getElementsByTagName('body')[0]).appendChild(dsq);})();
+  (function () {
+  var s = document.createElement('script'); s.async = true;
+  s.type = 'text/javascript';
+  s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('HEAD')[0]
+  || document.getElementsByTagName('BODY')[0]).appendChild(s);}());")
 
 (defn get-page-layout []
   (html5 head
@@ -82,4 +104,9 @@
           (menu)
           [:div.ui.hidden.divider]
           (post-grid)
-          (javascript-tag "$('.large.icon').popup();")]))
+          [:div.additional-scripts]
+          (javascript-tag "$('.large.icon').popup();")
+          (javascript-tag google-analytics-code)
+          (javascript-tag disqus-code)
+          [:div.disqus-config]]))
+

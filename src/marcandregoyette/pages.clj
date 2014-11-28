@@ -1,60 +1,64 @@
 (ns marcandregoyette.pages
-  (:require [marcandregoyette.page-layout :refer [get-page-layout]]
-            [marcandregoyette.post-layout :refer [get-post-layout]]
-            [clj-time.core :as t]
-            [clj-time.format :as tf]
-            [net.cgrand.enlive-html :as en :refer [defsnippet deftemplate]]))
+  (:require [clojure.string :as str]
+            [marcandregoyette.custom-styles :refer [load-custom-styles]]
+            [marcandregoyette.feed :refer [feed]]
+            [marcandregoyette.posts :refer [build-posts]]
+            [marcandregoyette.templates :refer [add-page-layout
+                                                add-page-layout-many-posts]]
+            [marcandregoyette.urls :refer [build-category-url build-tag-url]]
+            [stasis.core :as s]))
 
-(defn- get-page-layout-stream []
-  (java.io.StringReader. (get-page-layout)))
+(defn- filter-posts [posts predicate]
+  (select-keys posts (for [[url post] posts
+                           :when (predicate post)]
+                       url)))
 
-(defn- get-post-layout-stream[]
-  (java.io.StringReader. (get-post-layout)))
+(defn- has-category [category post]
+  (= category (-> post :metadata :category)))
 
-(def iso-8601-date-formatter (tf/formatters :date-time-no-ms))
+(defn- has-tag [tag post]
+  (some #(= tag %) (-> post :metadata :tags)))
 
-(def en-date-formatter
-  (tf/with-locale (tf/formatter "dd MMMM YYYY") java.util.Locale/CANADA))
+(defn- get-normal-posts [posts]
+  (filter-posts posts #(not (has-category "" %))))
 
-(def fr-date-formatter
-  (tf/with-locale (tf/formatter "dd MMMM YYYY") java.util.Locale/CANADA_FRENCH))
+(defn- build-index-page [posts]
+  (-> posts
+      get-normal-posts
+      add-page-layout-many-posts))
 
-(defn- format-date
-  [date lang]
-  (->> date
-       (tf/parse iso-8601-date-formatter)
-       (tf/unparse (if (= lang "fr") fr-date-formatter en-date-formatter))))
+(defn- get-categories [posts]
+  (remove #(= % "") (distinct (for [[url post] posts]
+                                (-> post :metadata :category)))))
 
-(defn- post-date-label [metadata]
-  (en/html-content (format-date (:date metadata) (:lang metadata))))
+(defn- get-posts-for-category [posts category]
+  (add-page-layout-many-posts (filter-posts posts (partial has-category category))))
 
-(defn- category-label [metadata]
-  (let [category (:category metadata)
-        category-url (str "/categories/" category)]
-    (en/content (en/html [:a {:href category-url} category]))))
+(defn- get-categories-pages [posts]
+  (let [categories (get-categories posts)]
+    (zipmap (doall (map build-category-url categories))
+            (map (partial get-posts-for-category posts) categories))))
 
-(defsnippet single-post (get-post-layout-stream) [en/root] [metadata content]
-  [:div#post-date] (post-date-label metadata)
-  [:div#category] (category-label metadata)
-  [:div.post-content] (en/html-content content))
+(defn- get-tags [posts]
+  (distinct (flatten (for [[url post] posts]
+                       (-> post :metadata :tags)))))
 
-(defn- tag-labels [metadata]
-  (en/content (en/html (for [tag (:tags metadata)]
-                         (let [tag-url (str "/tags/" tag)]
-                           [:div.ui.label [:a.label {:href tag-url} tag]])))))
+(defn- get-posts-for-tag [posts tag]
+  (add-page-layout-many-posts (filter-posts posts (partial has-tag tag))))
 
-(deftemplate page-layout (get-page-layout-stream) [metadata posts-content]
-  [:html] (en/set-attr :lang (:lang metadata))
-  [:title] (en/html-content (str (:title metadata)
-                                 " - Marc-Andr\u00E9 Goyette"))
-  [:div#posts-container] (en/append posts-content)
-  [:div#tags] (tag-labels metadata))
+(defn- get-tags-pages [posts]
+  (let [tags (get-tags posts)]
+    (zipmap (doall (map build-tag-url tags))
+            (map (partial get-posts-for-tag posts) tags))))
 
-(defn- apply-page-layout [post]
-  (let [{:keys [metadata content]} post]
-    (apply str (page-layout metadata
-                            (single-post metadata content)))))
+(defn- build-pages [posts]
+  (s/merge-page-sources
+   {:css (load-custom-styles)
+    :posts (add-page-layout posts)
+    :index {"/index.html" (build-index-page posts)}
+    :categories (get-categories-pages posts)
+    :tags (get-tags-pages posts)
+    :other {"/atom.xml" (-> posts get-normal-posts feed)}}))
 
-(defn add-page-layout [posts]
-  (zipmap (keys posts)
-          (map apply-page-layout (vals posts))))
+(defn load-pages []
+  (build-pages (build-posts "resources/posts" #"\.md$")))

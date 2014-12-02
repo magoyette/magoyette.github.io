@@ -1,9 +1,8 @@
 (defproject marcandregoyette "0.1.0-SNAPSHOT"
-  :description "Personal website of Marc-Andr\u00E9 Goyette."
+  :description "Personal website of Marc-Andr\u00E9 Goyette (http://marcandregoyette.com)."
   :url "http://www.marcandregoyette.com"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :source-paths ["src"]
   :dependencies [[org.clojure/clojure "1.7.0-alpha4"]
                  [org.clojure/data.xml "0.0.8"]
                  [clj-time "0.8.0"]
@@ -23,4 +22,4 @@
   :profiles {:dev
              {:dependencies [[midje "1.6.3"]]
               :plugins [[lein-marginalia "0.8.0"]
-                        [lein-ring "0.8.12"]]}})
+                        [lein-ring "0.8.13"]]}})

@@ -1,7 +1,7 @@
 (ns marcandregoyette.pages
   (:require [clojure.string :as str]
             [marcandregoyette.custom-styles :refer [load-custom-styles]]
-            [marcandregoyette.feed :refer [feed]]
+            [marcandregoyette.feed :refer [generate-feed]]
             [marcandregoyette.posts :refer [build-posts]]
             [marcandregoyette.templates :refer [add-page-layout
                                                 add-page-layout-many-posts]]
@@ -58,7 +58,7 @@
     :index {"/index.html" (build-index-page posts)}
     :categories (get-categories-pages posts)
     :tags (get-tags-pages posts)
-    :other {"/atom.xml" (-> posts get-normal-posts feed)}}))
+    :other {"/atom.xml" (-> posts get-normal-posts generate-feed)}}))
 
 (defn load-pages []
   (build-pages (build-posts "resources/posts" #"\.md$")))

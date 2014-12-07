@@ -3,17 +3,10 @@
             [hiccup.page :refer [html5 include-css include-js]]))
 
 (def css-files
-  ["button" "grid" "header" "icon" "label" "list" "menu" 
-   "monokai" "popup" "segment" "solarized-light" "custom-styles"])
+  ["semantic.min" "solarized-light" "custom-styles"])
 
 (defn- css-paths []
   (map #(str "/styles/" % ".css") css-files))
-
-(def js-files
-  ["jquery" "popup" "main"])
-
-(defn- js-paths []
-  (map #(str "/scripts/" % ".js") js-files))
 
 (defn- include-meta []
   (seq [[:meta {:charset "utf-8"}]
@@ -29,7 +22,6 @@
    [:title]
    (include-meta)
    (apply include-css (css-paths))
-   (apply include-js (js-paths))
    (include-css "http://fonts.googleapis.com/css?family=Lato")])
 
 (def menu-items
@@ -37,15 +29,19 @@
    {:name "Programmation" :link "/categories/programmation"}
    {:name "About" :link "/about"}
    {:name "À propos" :link "/apropos"}
-   {:icon [:i.rss.large.icon {:data-content "Atom feed"}] :link "/atom.xml"}
-   {:icon [:i.linkedin.large.icon {:data-content "LinkedIn"}]
-    :link "http://www.linkedin.com/in/marcandregoyette"}
-   {:icon [:i.github.large.icon {:data-content "GitHub"}]
-    :link "https://github.com/magoyette"}])
+   {:icon [:i.rss.large.icon]
+    :link "/atom.xml"
+    :title "Subscribe to the feed of this blog"}
+   {:icon [:i.linkedin.large.icon]
+    :link "http://www.linkedin.com/in/marcandregoyette"
+    :title "LinkedIn"}
+   {:icon [:i.github.alternate.large.icon]
+    :link "https://github.com/magoyette"
+    :title "GitHub"}])
 
 (defn- build-menu-item [active-item current-item]
   [(if (= active-item current-item) :a.active.item :a.item)
-   {:href (:link current-item)}
+   {:href (:link current-item) :title (:title current-item)}
    (if (contains? current-item :name)
      (:name current-item)
      (:icon current-item))])
@@ -76,10 +72,10 @@
 
 (def google-analytics-code
   "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-46742437-1', 'auto');
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-46742437-1', 'auto');
     ga('send', 'pageview');")
 
 (def disqus-code
@@ -105,7 +101,6 @@
           [:div.ui.hidden.divider]
           (post-grid)
           [:div.additional-scripts]
-          (javascript-tag "$('.large.icon').popup();")
           (javascript-tag google-analytics-code)
           (javascript-tag disqus-code)
           [:div.disqus-config]]))

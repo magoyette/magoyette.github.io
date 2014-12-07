@@ -36,7 +36,6 @@
   [:.ui.menu
    [:.header.item {:background-color blue
                    :color white}]
-   [:i.icon {:opacity "0.9"}]
    [".item > .custom-blue.label" {:background-color coral}]])
 
 (def post-content
@@ -68,7 +67,8 @@
    [:.ui.large.header {:color dark-grey}]
    [:.ui.orange.label {:background-color coral}]
    [:.ui.label {:color white
-                :background-color coral}
+                :background-color coral
+                :font-weight "normal"}
     [:a {:opacity "1"
          :text-decoration "none"}]]
    [:a.post-title {:text-decoration "none"}]
@@ -77,7 +77,6 @@
                       :font-size (px 20)
                       :font-weight "bold"
                       :text-decoration "none"}]]
-   [:i.large.icon {:font-size (em 1.3)}]
    [:div.disqus-comments {:padding-top (px 10)}
     [:a {:font-size (px 14)}]]
    [:.ui.segment.code {:background-color solarized-light-background

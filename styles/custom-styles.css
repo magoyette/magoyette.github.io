@@ -1,0 +1,143 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  line-height: 1.5;
+  font-size: 18px;
+  font-family: Lato, sans-serif;
+  background-color: #E8E8E8;
+}
+
+@media only screen and (max-width: 991px) {
+
+  .ui.page.grid {
+    padding: 0% 0%;
+  }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+  .ui.page.grid {
+    padding: 0% 0%;
+  }
+
+}
+
+@media only screen and (min-width: 1250px) {
+
+  .ui.page.grid {
+    padding: 0% 7.5%;
+  }
+
+}
+
+@media only screen and (min-width: 1500px) {
+
+  .ui.page.grid {
+    padding: 0% 10%;
+  }
+
+}
+
+@media only screen and (min-width: 1750px) {
+
+  .ui.page.grid {
+    padding: 0% 20%;
+  }
+
+}
+
+@media only screen and (min-width: 2000px) {
+
+  .ui.page.grid {
+    padding: 0% 22.5%;
+  }
+
+}
+
+.ui.inverted.menu {
+  background-color: #008EAC;
+}
+
+.ui.menu .header.item {
+  color: #FFFFFF;
+  background-color: #008EAC;
+}
+
+.ui.menu .item > .custom-blue.label {
+  background-color: #FF7F50;
+}
+
+.post-content {
+  padding-bottom: 2.5%;
+  padding-left: 5%;
+  padding-top: 2.5%;
+  padding-right: 5%;
+}
+
+.post-content p {
+  font-size: 14px;
+  font-family: Verdana;
+}
+
+.footer {
+  max-width: 900px;
+  font-size: 12px;
+  font-family: Verdana;
+}
+
+#posts-container {
+  max-width: 900px;
+}
+
+.ui.large.header {
+  color: #2E2E2E;
+}
+
+.ui.orange.label {
+  background-color: #FF7F50;
+}
+
+.ui.label {
+  font-weight: normal;
+  background-color: #FF7F50;
+  color: #FFFFFF;
+}
+
+.ui.label a {
+  text-decoration: none;
+  opacity: 1;
+}
+
+a.post-title {
+  text-decoration: none;
+}
+
+.right {
+  float: right;
+}
+
+.site-title a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+div.disqus-comments {
+  padding-top: 10px;
+}
+
+div.disqus-comments a {
+  font-size: 14px;
+}
+
+.ui.segment.code {
+  overflow: auto;
+  background-color: #eee8d5;
+}
+
+.ui.segment.code code {
+  font-size: 13px;
+  font-family: Menlo, Monaco, 'DejaVu Sans Mono', Consolas, 'Courier New', monospace;
+}

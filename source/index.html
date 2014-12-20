@@ -2874,13 +2874,12 @@ net.brehaut.ClojureTools = (function (SH) {
             [ring.middleware.file-info :refer [wrap-file-info]]
             [ring.middleware.resource :refer [wrap-resource]]
             [stasis.core :as s]))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(def fonts-dir &quot;fonts&quot;)
-(def images-dir &quot;images&quot;)
-(def scripts-dir &quot;scripts&quot;)
+</td><td class="codes"><pre class="brush: clojure">(def images-dir &quot;images&quot;)
 (def styles-dir &quot;styles&quot;)
 (def resources-dir &quot;resources&quot;)
+(def themes-dir &quot;themes&quot;)
 (def public-dir &quot;public&quot;)
-(def all-public-dir [fonts-dir images-dir scripts-dir styles-dir])
+(def all-public-dir [images-dir styles-dir themes-dir])
 (def export-dir &quot;dist&quot;)</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def app (-&gt; (s/serve-pages (load-pages))
              (wrap-resource &quot;public&quot;)

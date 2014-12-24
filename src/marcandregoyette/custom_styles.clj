@@ -49,6 +49,7 @@
 (def footer
   [:.footer {:font-family "Verdana"
              :font-size (px 12)
+             :padding-top (em 1)
              :max-width content-max-width}])
 
 (def css-lines

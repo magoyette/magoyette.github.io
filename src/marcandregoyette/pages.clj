@@ -51,14 +51,13 @@
     (zipmap (doall (map build-tag-url tags))
             (map (partial get-posts-for-tag posts) tags))))
 
-(defn- build-pages [posts]
-  (s/merge-page-sources
-   {:css (load-custom-styles)
-    :posts (add-page-layout posts)
-    :index {"/index.html" (build-index-page posts)}
-    :categories (get-categories-pages posts)
-    :tags (get-tags-pages posts)
-    :other {"/atom.xml" (-> posts get-normal-posts generate-feed)}}))
-
 (defn load-pages []
-  (build-pages (build-posts "resources/posts" #"\.md$")))
+  (let [posts (build-posts "/posts" "resources/posts" #"\.md$")]
+    (s/merge-page-sources
+     {:css (load-custom-styles)
+      :pages (add-page-layout (build-posts ""  "resources/pages" #"\.md$"))
+      :posts (add-page-layout posts)
+      :index {"/index.html" (build-index-page posts)}
+      :categories (get-categories-pages posts)
+      :tags (get-tags-pages posts)
+      :other {"/atom.xml" (-> posts get-normal-posts generate-feed)}})))

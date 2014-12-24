@@ -1,4 +1,8 @@
 ;; ## A static site generated with Stasis
+;;
+;; This is the annotated source code of marcandregoyette.com.
+;;
+;; The GitHub repository is https://github.com/magoyette/marcandregoyette.com.
 (ns marcandregoyette.core
   (:require [marcandregoyette.pages :refer [load-pages]]
             [me.raynes.fs :as fs]
@@ -7,13 +11,12 @@
             [ring.middleware.resource :refer [wrap-resource]]
             [stasis.core :as s]))
 
-(def fonts-dir "fonts")
 (def images-dir "images")
-(def scripts-dir "scripts")
 (def styles-dir "styles")
 (def resources-dir "resources")
+(def themes-dir "themes")
 (def public-dir "public")
-(def all-public-dir [fonts-dir images-dir scripts-dir styles-dir])
+(def all-public-dir [images-dir styles-dir themes-dir])
 (def export-dir "dist")
 
 (def app (-> (s/serve-pages (load-pages))

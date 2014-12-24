@@ -37,10 +37,11 @@
   {:metadata (extract-metadata post)
    :content (transform-content post)})
 
-(defn- transform-path [path file-extension-regex]
-  (clojure.string/replace path file-extension-regex "/"))
+(defn- transform-path [export-path path file-extension-regex]
+  (str export-path (clojure.string/replace path file-extension-regex "/")))
 
-(defn build-posts [directory file-extension-regex]
+(defn build-posts [export-path directory file-extension-regex]
   (let [posts (s/slurp-directory directory file-extension-regex)]
-    (zipmap (map #(transform-path % file-extension-regex) (keys posts))
+    (zipmap (map #(transform-path export-path % file-extension-regex)
+                 (keys posts))
             (map build-post-map (vals posts)))))

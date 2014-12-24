@@ -27,6 +27,7 @@
 (def menu-items
   [{:name "Programming" :link "/categories/programming"}
    {:name "Programmation" :link "/categories/programmation"}
+   {:name "Source code" :link "/source"}
    {:name "About" :link "/about"}
    {:name "À propos" :link "/apropos"}
    {:icon [:i.rss.large.icon]
@@ -55,12 +56,13 @@
     (map (partial build-menu-item (first menu-items)) menu-items)]])
 
 (defn- footer []
-  [:div.footer.ui.segment.secondary
-   [:div "Copyright \u00A9 Marc-Andr\u00E9 Goyette"
-    [:div.right
-     "Built with Clojure, Stasis and Semantic UI ("
-     [:a {:href "/source"} "Source"]
-     ")"]]])
+  [:div.footer
+   [:div.ui.segment.secondary
+    [:div "Copyright \u00A9 Marc-Andr\u00E9 Goyette"
+     [:div.right
+      "Built with Clojure, Stasis and Semantic UI ("
+      [:a {:href "/source"} "Source code"]
+      ")"]]]])
 
 (defn- post-grid []
   [:div.ui.page.stackable.grid

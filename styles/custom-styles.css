@@ -82,6 +82,7 @@ body {
 
 .footer {
   max-width: 900px;
+  padding-top: 1em;
   font-size: 12px;
   font-family: Verdana;
 }

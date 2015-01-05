@@ -1,8 +1,6 @@
 ;; ## Code highlight
 ;;
 ;; Syntaxic highlight of code blocks.
-;;
-;; The code of this namespace was adapted from http://cjohansen.no/building-static-sites-in-clojure-with-stasis.
 (ns marcandregoyette.highlight
   (:require [clygments.core :refer [highlight]]
             [net.cgrand.enlive-html :as en]))

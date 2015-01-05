@@ -31,7 +31,7 @@
    {:name "About" :link "/about"}
    {:name "À propos" :link "/apropos"}
    {:icon [:i.rss.large.icon]
-    :link "/atom.xml"
+    :link "http://feeds.feedburner.com/marcandregoyette"
     :title "Subscribe to the feed of this blog"}
    {:icon [:i.linkedin.large.icon]
     :link "http://www.linkedin.com/in/marcandregoyette"

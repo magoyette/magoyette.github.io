@@ -6,8 +6,6 @@
  :tags ["Java" "Guava"]}
 ---
 
-## Iterables.concat
-
 Un exemple de post. Essai de coloration syntaxique avec Java.
 
 ```java

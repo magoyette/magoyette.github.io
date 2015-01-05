@@ -17,29 +17,32 @@
 (defn- parse-markdown [content]
   (ceg/to-html content pegdown-options))
 
-(defn- transform-headers [page]
-  (en/sniptest page [:h2] (en/add-class "ui" "large" "header")))
-
 (defn- extract-metadata [post]
   (edn/read-string (->> post
                         (re-seq #"(?is)^---(.*?)---")
                         first
                         second)))
 
-(defn- transform-content [content]
-  (-> content
+(defn insert-post-title [post-content post-title]
+  (str (apply str (en/emit* (en/html [:h2.ui.large.header post-title])))
+       post-content))
+
+(defn- transform-content [post-title post-content]
+  (-> post-content
       remove-meta
       parse-markdown
-      transform-headers
+      (insert-post-title post-title)
       highlight-code-blocks))
 
 (defn build-post-map [post]
-  {:metadata (extract-metadata post)
-   :content (transform-content post)})
+  (let [metadata (extract-metadata post)]
+    {:metadata metadata
+     :content (transform-content (:title metadata) post)}))
 
 (defn- transform-path [export-path path file-extension-regex]
   (str export-path (clojure.string/replace path file-extension-regex "/")))
 
+;; Need to add boolean for feed, could replace with configuration map
 (defn build-posts [export-path directory file-extension-regex]
   (let [posts (s/slurp-directory directory file-extension-regex)]
     (zipmap (map #(transform-path export-path % file-extension-regex)

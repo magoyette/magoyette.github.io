@@ -6,8 +6,6 @@
  :tags ["Java" "Guava" "Clojure"]}
 ---
 
-## Iterables.concat
-
 Example of a post. Try Java syntax highlight.
 
 ```java

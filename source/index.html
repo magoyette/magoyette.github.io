@@ -2866,11 +2866,19 @@ net.brehaut.ClojureTools = (function (SH) {
   };
 })(SyntaxHighlighter);
 </script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="http://www.marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.1.0-SNAPSHOT</h2><br /><p>Personal website of Marc-André Goyette (http://marcandregoyette.com).</p>
-</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.7.0-alpha4</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.8.0</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.5</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.2.5</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/cegdown</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.3.2</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.2.2</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.urls">marcandregoyette.urls</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
+</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.7.0-alpha4</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.9.0</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.5</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.2.5</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/cegdown</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.3.2</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.2.2</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.urls">marcandregoyette.urls</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
 
-<p>This is the annotated source code of marcandregoyette.com.</p>
+<p>This is the annotated source code of <a href="http:www.marcandregoyette.com">marcandregoyette.com</a>.</p>
 
-<p>The GitHub repository is https://github.com/magoyette/marcandregoyette.com.</p>
+<p>The full source code, including project.clj and the tests is available at
+the <a href="https://github.com/magoyette/marcandregoyette.com">GitHub repository</a>.</p>
+
+<p>This website is written in Clojure and generated with the help of
+<a href="https://github.com/magnars/stasis">Stasis</a>.</p>
+
+<p>Some parts of the code are forked from the excellent article
+<a href="http://cjohansen.no/building-static-sites-in-clojure-with-stasis">"Building Static Sites in Clojure with Stasis"</a> and the source of
+<a href="https://github.com/magnars/what-the-emacsd">whattheemacsd.com</a>.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.core
   (:require [marcandregoyette.pages :refer [load-pages]]
             [me.raynes.fs :as fs]
@@ -2985,42 +2993,50 @@ net.brehaut.ClojureTools = (function (SH) {
 
 <p>The dates are already stored in the ISO 8601 format in the post metadata,
 so no conversions are needed.</p>
-
-<p>The code of this namespace was adapted from https://github.com/magnars/what-the-emacsd.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.feed
   (:require [clojure.data.xml :as xml]
-            [clojure.string :as str]))</pre></td></tr><tr><td class="docs"><p>Builds the XML of an Atom feed entry for a post.</p>
-</td><td class="codes"><pre class="brush: clojure">(defn- generate-feed-item
+            [clojure.string :as str]
+            [net.cgrand.enlive-html :as en]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- generate-feed-entry-id [metadata]
+  (str &quot;urn:marcandregoyette-com:feed:post:&quot;
+       (-&gt; (:title metadata)
+           (str/replace &quot; &quot; &quot;-&quot;)
+           (str/lower-case))
+       &quot;-&quot;
+       (:lang metadata)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- remove-post-title [post]
+  (en/sniptest post [:h2] nil))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- generate-feed-entry-content [content]
+  (remove-post-title content))</pre></td></tr><tr><td class="docs"><p>Builds the XML of an Atom feed entry for a post.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- generate-feed-entry
   [urlAndPost]
-  (let [metadata (:metadata (val urlAndPost))]
+  (let [content (:content (val urlAndPost))
+        metadata (:metadata (val urlAndPost))]
     [:entry
      [:title (:title metadata)]
      [:updated (:date metadata)]
      [:author [:name &quot;Marc-Andr\u00E9 Goyette&quot;]]
      [:link {:href (str &quot;http://www.marcandregoyette.com&quot; (key urlAndPost))}]
-     [:id (str &quot;urn:marcandregoyette-com:feed:post:&quot;
-               (-&gt; (:title metadata)
-                   (str/replace &quot; &quot; &quot;-&quot;)
-                   (str/lower-case)))]
-     [:content {:type &quot;html&quot;} (:content (val urlAndPost))]]))</pre></td></tr><tr><td class="docs"><p>Builds the XML of an Atom feed that includes all the provided posts.</p>
+     [:id (generate-feed-entry-id metadata)]
+     [:content {:type &quot;html&quot;} (generate-feed-entry-content content)]]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- find-most-recent-date [postsByUrl]
+  (-&gt; postsByUrl
+      first
+      val
+      :metadata
+      :date))</pre></td></tr><tr><td class="docs"><p>Builds the XML of an Atom feed that includes all the provided posts.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn generate-feed
   [postsByUrl]
   (xml/emit-str
    (xml/sexp-as-element
     [:feed {:xmlns &quot;http://www.w3.org/2005/Atom&quot;}
      [:id &quot;urn:marcandregoyette-com:feed&quot;]
-     [:updated (-&gt; postsByUrl
-                   first
-                   val
-                   :metadata
-                   :date)]
+     [:updated (find-most-recent-date postsByUrl)]
      [:title {:type &quot;text&quot;} &quot;Marc-Andr\u00E9 Goyette&quot;]
      [:link {:rel &quot;self&quot; :href &quot;http://www.marcandregoyette.com/atom.xml&quot;}]
-     (map generate-feed-item postsByUrl)])))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.highlight" name="marcandregoyette.highlight"><h1 class="project-name">marcandregoyette.highlight</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>Code highlight</h2>
+     (map generate-feed-entry postsByUrl)])))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.highlight" name="marcandregoyette.highlight"><h1 class="project-name">marcandregoyette.highlight</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>Code highlight</h2>
 
 <p>Syntaxic highlight of code blocks.</p>
-
-<p>The code of this namespace was adapted from http://cjohansen.no/building-static-sites-in-clojure-with-stasis.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.highlight
   (:require [clygments.core :refer [highlight]]
             [net.cgrand.enlive-html :as en]))</pre></td></tr><tr><td class="docs"><p>Extract the highlighted code from the HTML generated by Clygments.</p>
@@ -3080,7 +3096,7 @@ so no conversions are needed.</p>
    {:name &quot;About&quot; :link &quot;/about&quot;}
    {:name &quot;À propos&quot; :link &quot;/apropos&quot;}
    {:icon [:i.rss.large.icon]
-    :link &quot;/atom.xml&quot;
+    :link &quot;http://feeds.feedburner.com/marcandregoyette&quot;
     :title &quot;Subscribe to the feed of this blog&quot;}
    {:icon [:i.linkedin.large.icon]
     :link &quot;http://www.linkedin.com/in/marcandregoyette&quot;
@@ -3223,24 +3239,26 @@ so no conversions are needed.</p>
    :strikethrough]) ; ~~text~~</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- parse-markdown [content]
   (ceg/to-html content pegdown-options))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defn- transform-headers [page]
-  (en/sniptest page [:h2] (en/add-class &quot;ui&quot; &quot;large&quot; &quot;header&quot;)))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- extract-metadata [post]
   (edn/read-string (-&gt;&gt; post
                         (re-seq #&quot;(?is)^---(.*?)---&quot;)
                         first
                         second)))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defn- transform-content [content]
-  (-&gt; content
+</td><td class="codes"><pre class="brush: clojure">(defn insert-post-title [post-content post-title]
+  (str (apply str (en/emit* (en/html [:h2.ui.large.header post-title])))
+       post-content))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- transform-content [post-title post-content]
+  (-&gt; post-content
       remove-meta
       parse-markdown
-      transform-headers
+      (insert-post-title post-title)
       highlight-code-blocks))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn build-post-map [post]
-  {:metadata (extract-metadata post)
-   :content (transform-content post)})</pre></td></tr><tr><td class="docs">
+  (let [metadata (extract-metadata post)]
+    {:metadata metadata
+     :content (transform-content (:title metadata) post)}))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- transform-path [export-path path file-extension-regex]
-  (str export-path (clojure.string/replace path file-extension-regex &quot;/&quot;)))</pre></td></tr><tr><td class="docs">
+  (str export-path (clojure.string/replace path file-extension-regex &quot;/&quot;)))</pre></td></tr><tr><td class="docs"><p>Need to add boolean for feed, could replace with configuration map</p>
 </td><td class="codes"><pre class="brush: clojure">(defn build-posts [export-path directory file-extension-regex]
   (let [posts (s/slurp-directory directory file-extension-regex)]
     (zipmap (map #(transform-path export-path % file-extension-regex)

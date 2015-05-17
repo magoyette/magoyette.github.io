@@ -1,6 +1,7 @@
 (ns marcandregoyette.page-layout
   (:require [hiccup.element :refer [javascript-tag]]
-            [hiccup.page :refer [html5 include-css include-js]]))
+            [hiccup.page :refer [html5 include-css include-js]]
+            [marcandregoyette.urls :as urls]))
 
 (def css-files
   ["semantic.min" "solarized-light" "custom-styles"])
@@ -24,12 +25,15 @@
    (apply include-css (css-paths))
    (include-css "http://fonts.googleapis.com/css?family=Lato")])
 
-(def menu-items
-  [{:name "Programming" :link "/categories/programming"}
-   {:name "Programmation" :link "/categories/programmation"}
-   {:name "Source code" :link "/source"}
-   {:name "About" :link "/about"}
-   {:name "À propos" :link "/apropos"}
+(def menu-items-without-categories
+  [{:name "Source code"
+    :link "/source"}
+   {:name "About"
+    :link "/about"
+    :id (urls/build-category-id "About")}
+   {:name "À propos"
+    :link "/apropos"
+    :id (urls/build-category-id "A propos")}
    {:icon [:i.rss.large.icon]
     :link "http://feeds.feedburner.com/marcandregoyette"
     :title "Subscribe to the feed of this blog"}
@@ -40,12 +44,23 @@
     :link "https://github.com/magoyette"
     :title "GitHub"}])
 
-(defn- build-menu-item [active-item current-item]
-  [(if (= active-item current-item) :a.active.item :a.item)
-   {:href (:link current-item) :title (:title current-item)}
-   (if (contains? current-item :name)
-     (:name current-item)
-     (:icon current-item))])
+(defn- category-menu-item
+  [category]
+  {:name category
+   :link (urls/build-category-url category)
+   :id (urls/build-category-id category)})
+
+(defn- build-menu-item [item]
+  [:a.item
+   {:href (:link item) :title (:title item) :id (:id item)}
+   (if (contains? item :name)
+     (:name item)
+     (:icon item))])
+
+(defn- menu-items []
+  (concat
+   (map category-menu-item urls/categories)
+   menu-items-without-categories))
 
 (defn- menu []
   [:nav.ui.inverted.menu.navbar.page.grid
@@ -53,7 +68,7 @@
     [:div.item
      [:div.site-title
       [:a {:href "/"} "Marc-Andr\u00E9 Goyette"]]]
-    (map (partial build-menu-item (first menu-items)) menu-items)]])
+    (map build-menu-item (menu-items))]])
 
 (defn- footer []
   [:div.footer

@@ -1,7 +1,7 @@
 (ns marcandregoyette.templates
   (:require [marcandregoyette.page-layout :refer [get-page-layout]]
             [marcandregoyette.post-layout :refer [get-post-layout]]
-            [marcandregoyette.urls :refer [build-category-url build-tag-url]]
+            [marcandregoyette.urls :as urls]
             [clj-time.core :as t]
             [clj-time.format :as tf]
             [clojure.string :as str]
@@ -34,13 +34,13 @@
 
 (defn- category-label [metadata]
   (let [category (:category metadata)]
-    (if (str/blank? category)
+    (if (not (some #{category} urls/categories))
       (en/substitute (en/html [:div]))
-      (en/content (en/html [:a {:href (build-category-url  category)} category])))))
+      (en/content (en/html [:a {:href (urls/build-category-url category)} category])))))
 
 (defn- tag-labels [metadata]
   (en/content (en/html (for [tag (:tags metadata)]
-                         (let [tag-url (build-tag-url tag)]
+                         (let [tag-url (urls/build-tag-url tag)]
                            [:div.ui.label [:a.label {:href tag-url} tag]])))))
 
 (defn- comments-link [url single-post]
@@ -59,24 +59,41 @@
 (defn disqus-config [lang]
   (format "var disqus_config = function() {this.language = \"%s\"}" lang))
 
+(defn- category-selector [category]
+  (keyword (str "a#" (urls/build-category-id category))))
+
 (deftemplate page-layout (get-page-layout-stream) [metadata posts-content]
   [:html] (en/set-attr :lang (:lang metadata))
   [:title] (en/html-content (str (:title metadata)
                                  " - Marc-Andr\u00E9 Goyette"))
+  [(category-selector (:category metadata))] (en/add-class "active")
   [:div#posts-container] (en/append posts-content)
   [:div.disqus-config] (en/substitute (en/html [:script {:type "text/javascript"} (disqus-config (:lang metadata))])))
 
 (defn- build-post-for-index-page [post-by-url]
-  (let [url (key  post-by-url)
-        metadata (:metadata  (val post-by-url))
+  (let [url (key post-by-url)
+        metadata (:metadata (val post-by-url))
         content (:content (val post-by-url))]
     (single-post url false metadata content)))
 
 (defn- append-posts-to-index-page [posts-by-url]
   (en/append (map build-post-for-index-page posts-by-url)))
 
+(defn- get-category [post-by-url]
+  (-> post-by-url
+      (val)
+      :metadata
+      :category))
+
+(defn- find-category [posts-by-url]
+  (let [categories (map get-category posts-by-url)]
+    (if (= (count categories) 1)
+      (first categories)
+      urls/default-category)))
+
 (deftemplate index-page-layout (get-page-layout-stream) [posts-by-url]
   [:html] (en/set-attr :lang "en")
+  [(category-selector (find-category posts-by-url))] (en/add-class "active")
   [:title] (en/html-content "Marc-Andr\u00E9 Goyette")
   [:div#posts-container] (append-posts-to-index-page posts-by-url))
 

@@ -2,7 +2,7 @@
 {:title "À propos"
  :date ""
  :lang "fr"
- :category ""
+ :category "A propos"
  :tags []}
 ---
 

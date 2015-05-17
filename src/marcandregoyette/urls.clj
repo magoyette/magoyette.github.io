@@ -4,14 +4,24 @@
 (ns marcandregoyette.urls
   (:require [clojure.string :as str]))
 
+(def categories ["Programming" "Programmation"])
+
+(def default-category "Programming")
+
+(defn- build-metadata-attribute-id
+  "Build an HTML element id to identify the attribute of the metadata of a post."
+  [metadata-attribute]
+  (str/lower-case (str/replace metadata-attribute #"\s" "_")))
+
 (defn- build-metadata-attribute-url
-  "Builds the url for an attribute of the metadata of a post."
+  "Build the url for an attribute of the metadata of a post."
   [url-path metadata-attribute]
-  (str "/"
-       url-path
-       "/"
-       (str/lower-case (str/replace metadata-attribute #"\s" "_"))
-       "/"))
+  (str "/" url-path "/" (build-metadata-attribute-id metadata-attribute) "/"))
+
+(defn build-category-id
+  "Build an HTML element id to identify a category."
+  [category]
+  (str "category-" (build-metadata-attribute-id category)))
 
 (defn build-category-url
   "Build the url for a category."

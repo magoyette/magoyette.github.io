@@ -2866,7 +2866,7 @@ net.brehaut.ClojureTools = (function (SH) {
   };
 })(SyntaxHighlighter);
 </script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="http://www.marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.1.0-SNAPSHOT</h2><br /><p>Personal website of Marc-André Goyette (http://marcandregoyette.com).</p>
-</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.7.0-alpha4</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.9.0</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.5</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.2.5</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/cegdown</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.3.2</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.2.2</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.urls">marcandregoyette.urls</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
+</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.6.0</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.9.0</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.5</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.2.5</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/cegdown</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.3.2</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.2.2</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.urls">marcandregoyette.urls</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
 
 <p>This is the annotated source code of <a href="http://www.marcandregoyette.com">marcandregoyette.com</a>.</p>
 
@@ -3070,7 +3070,8 @@ so no conversions are needed.</p>
                [:pre] (en/wrap :div {:class &quot;ui segment code&quot;})))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.page-layout" name="marcandregoyette.page-layout"><h1 class="project-name">marcandregoyette.page-layout</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.page-layout
   (:require [hiccup.element :refer [javascript-tag]]
-            [hiccup.page :refer [html5 include-css include-js]]))</pre></td></tr><tr><td class="docs">
+            [hiccup.page :refer [html5 include-css include-js]]
+            [marcandregoyette.urls :as urls]))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def css-files
   [&quot;semantic.min&quot; &quot;solarized-light&quot; &quot;custom-styles&quot;])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- css-paths []
@@ -3089,12 +3090,15 @@ so no conversions are needed.</p>
    (include-meta)
    (apply include-css (css-paths))
    (include-css &quot;http://fonts.googleapis.com/css?family=Lato&quot;)])</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(def menu-items
-  [{:name &quot;Programming&quot; :link &quot;/categories/programming&quot;}
-   {:name &quot;Programmation&quot; :link &quot;/categories/programmation&quot;}
-   {:name &quot;Source code&quot; :link &quot;/source&quot;}
-   {:name &quot;About&quot; :link &quot;/about&quot;}
-   {:name &quot;À propos&quot; :link &quot;/apropos&quot;}
+</td><td class="codes"><pre class="brush: clojure">(def menu-items-without-categories
+  [{:name &quot;Source code&quot;
+    :link &quot;/source&quot;}
+   {:name &quot;About&quot;
+    :link &quot;/about&quot;
+    :id (urls/build-category-id &quot;About&quot;)}
+   {:name &quot;À propos&quot;
+    :link &quot;/apropos&quot;
+    :id (urls/build-category-id &quot;A propos&quot;)}
    {:icon [:i.rss.large.icon]
     :link &quot;http://feeds.feedburner.com/marcandregoyette&quot;
     :title &quot;Subscribe to the feed of this blog&quot;}
@@ -3104,19 +3108,28 @@ so no conversions are needed.</p>
    {:icon [:i.github.alternate.large.icon]
     :link &quot;https://github.com/magoyette&quot;
     :title &quot;GitHub&quot;}])</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defn- build-menu-item [active-item current-item]
-  [(if (= active-item current-item) :a.active.item :a.item)
-   {:href (:link current-item) :title (:title current-item)}
-   (if (contains? current-item :name)
-     (:name current-item)
-     (:icon current-item))])</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- category-menu-item
+  [category]
+  {:name category
+   :link (urls/build-category-url category)
+   :id (urls/build-category-id category)})</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- build-menu-item [item]
+  [:a.item
+   {:href (:link item) :title (:title item) :id (:id item)}
+   (if (contains? item :name)
+     (:name item)
+     (:icon item))])</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- menu-items []
+  (concat
+   (map category-menu-item urls/categories)
+   menu-items-without-categories))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- menu []
   [:nav.ui.inverted.menu.navbar.page.grid
    [:div.page-container
     [:div.item
      [:div.site-title
       [:a {:href &quot;/&quot;} &quot;Marc-Andr\u00E9 Goyette&quot;]]]
-    (map (partial build-menu-item (first menu-items)) menu-items)]])</pre></td></tr><tr><td class="docs">
+    (map build-menu-item (menu-items))]])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- footer []
   [:div.footer
    [:div.ui.segment.secondary
@@ -3267,7 +3280,7 @@ so no conversions are needed.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.templates
   (:require [marcandregoyette.page-layout :refer [get-page-layout]]
             [marcandregoyette.post-layout :refer [get-post-layout]]
-            [marcandregoyette.urls :refer [build-category-url build-tag-url]]
+            [marcandregoyette.urls :as urls]
             [clj-time.core :as t]
             [clj-time.format :as tf]
             [clojure.string :as str]
@@ -3292,12 +3305,12 @@ so no conversions are needed.</p>
     (en/html-content (format-date (:date metadata) (:lang metadata)))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- category-label [metadata]
   (let [category (:category metadata)]
-    (if (str/blank? category)
+    (if (not (some #{category} urls/categories))
       (en/substitute (en/html [:div]))
-      (en/content (en/html [:a {:href (build-category-url  category)} category])))))</pre></td></tr><tr><td class="docs">
+      (en/content (en/html [:a {:href (urls/build-category-url category)} category])))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- tag-labels [metadata]
   (en/content (en/html (for [tag (:tags metadata)]
-                         (let [tag-url (build-tag-url tag)]
+                         (let [tag-url (urls/build-tag-url tag)]
                            [:div.ui.label [:a.label {:href tag-url} tag]])))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- comments-link [url single-post]
   (en/content (en/html (if single-post
@@ -3312,21 +3325,35 @@ so no conversions are needed.</p>
   [:h2.header] (en/wrap :a {:class &quot;post-title&quot; :href url}))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn disqus-config [lang]
   (format &quot;var disqus_config = function() {this.language = \&quot;%s\&quot;}&quot; lang))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- category-selector [category]
+  (keyword (str &quot;a#&quot; (urls/build-category-id category))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(deftemplate page-layout (get-page-layout-stream) [metadata posts-content]
   [:html] (en/set-attr :lang (:lang metadata))
   [:title] (en/html-content (str (:title metadata)
                                  &quot; - Marc-Andr\u00E9 Goyette&quot;))
+  [(category-selector (:category metadata))] (en/add-class &quot;active&quot;)
   [:div#posts-container] (en/append posts-content)
   [:div.disqus-config] (en/substitute (en/html [:script {:type &quot;text/javascript&quot;} (disqus-config (:lang metadata))])))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- build-post-for-index-page [post-by-url]
-  (let [url (key  post-by-url)
-        metadata (:metadata  (val post-by-url))
+  (let [url (key post-by-url)
+        metadata (:metadata (val post-by-url))
         content (:content (val post-by-url))]
     (single-post url false metadata content)))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- append-posts-to-index-page [posts-by-url]
   (en/append (map build-post-for-index-page posts-by-url)))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- get-category [post-by-url]
+  (-&gt; post-by-url
+      (val)
+      :metadata
+      :category))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn- find-category [posts-by-url]
+  (let [categories (map get-category posts-by-url)]
+    (if (= (count categories) 1)
+      (first categories)
+      urls/default-category)))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(deftemplate index-page-layout (get-page-layout-stream) [posts-by-url]
   [:html] (en/set-attr :lang &quot;en&quot;)
+  [(category-selector (find-category posts-by-url))] (en/add-class &quot;active&quot;)
   [:title] (en/html-content &quot;Marc-Andr\u00E9 Goyette&quot;)
   [:div#posts-container] (append-posts-to-index-page posts-by-url))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- apply-page-layout [post-by-url]
@@ -3341,14 +3368,18 @@ so no conversions are needed.</p>
 
 <p>A few functions that are used to build urls.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.urls
-  (:require [clojure.string :as str]))</pre></td></tr><tr><td class="docs"><p>Builds the url for an attribute of the metadata of a post.</p>
+  (:require [clojure.string :as str]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def categories [&quot;Programming&quot; &quot;Programmation&quot;])</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def default-category &quot;Programming&quot;)</pre></td></tr><tr><td class="docs"><p>Build an HTML element id to identify the attribute of the metadata of a post.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- build-metadata-attribute-id
+  [metadata-attribute]
+  (str/lower-case (str/replace metadata-attribute #&quot;\s&quot; &quot;_&quot;)))</pre></td></tr><tr><td class="docs"><p>Build the url for an attribute of the metadata of a post.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn- build-metadata-attribute-url
   [url-path metadata-attribute]
-  (str &quot;/&quot;
-       url-path
-       &quot;/&quot;
-       (str/lower-case (str/replace metadata-attribute #&quot;\s&quot; &quot;_&quot;))
-       &quot;/&quot;))</pre></td></tr><tr><td class="docs"><p>Build the url for a category.</p>
+  (str &quot;/&quot; url-path &quot;/&quot; (build-metadata-attribute-id metadata-attribute) &quot;/&quot;))</pre></td></tr><tr><td class="docs"><p>Build an HTML element id to identify a category.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn build-category-id
+  [category]
+  (str &quot;category-&quot; (build-metadata-attribute-id category)))</pre></td></tr><tr><td class="docs"><p>Build the url for a category.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn build-category-url
   [category]
   (build-metadata-attribute-url &quot;categories&quot; category))</pre></td></tr><tr><td class="docs"><p>Build the url for a tag.</p>

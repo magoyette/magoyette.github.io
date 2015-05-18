@@ -2,7 +2,7 @@
 ;;
 ;; A few functions that are used to build urls.
 (ns marcandregoyette.urls
-  (:require [clojure.string :as str]))
+  (:require [clojure.string :as string]))
 
 (def categories ["Programming" "Programmation"])
 
@@ -11,7 +11,7 @@
 (defn- build-metadata-attribute-id
   "Build an HTML element id to identify the attribute of the metadata of a post."
   [metadata-attribute]
-  (str/lower-case (str/replace metadata-attribute #"\s" "_")))
+  (string/lower-case (string/replace metadata-attribute #"\s" "_")))
 
 (defn- build-metadata-attribute-url
   "Build the url for an attribute of the metadata of a post."

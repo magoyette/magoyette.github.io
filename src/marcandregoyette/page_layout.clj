@@ -1,6 +1,6 @@
 (ns marcandregoyette.page-layout
-  (:require [hiccup.element :refer [javascript-tag]]
-            [hiccup.page :refer [html5 include-css include-js]]
+  (:require [hiccup.element :as hiccup-element]
+            [hiccup.page :as hiccup-page]
             [marcandregoyette.urls :as urls]))
 
 (def css-files
@@ -22,8 +22,8 @@
   [:head
    [:title]
    (include-meta)
-   (apply include-css (css-paths))
-   (include-css "http://fonts.googleapis.com/css?family=Lato")])
+   (apply hiccup-page/include-css (css-paths))
+   (hiccup-page/include-css "http://fonts.googleapis.com/css?family=Lato")])
 
 (def menu-items-without-categories
   [{:name "Source code"
@@ -112,13 +112,13 @@
   || document.getElementsByTagName('BODY')[0]).appendChild(s);}());")
 
 (defn get-page-layout []
-  (html5 head
-         [:body
-          (menu)
-          [:div.ui.hidden.divider]
-          (post-grid)
-          [:div.additional-scripts]
-          (javascript-tag google-analytics-code)
-          (javascript-tag disqus-code)
-          [:div.disqus-config]]))
+  (hiccup-page/html5 head
+                     [:body
+                      (menu)
+                      [:div.ui.hidden.divider]
+                      (post-grid)
+                      [:div.additional-scripts]
+                      (hiccup-element/javascript-tag google-analytics-code)
+                      (hiccup-element/javascript-tag disqus-code)
+                      [:div.disqus-config]]))
 

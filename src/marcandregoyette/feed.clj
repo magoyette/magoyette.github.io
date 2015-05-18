@@ -6,19 +6,19 @@
 ;; so no conversions are needed.
 (ns marcandregoyette.feed
   (:require [clojure.data.xml :as xml]
-            [clojure.string :as str]
-            [net.cgrand.enlive-html :as en]))
+            [clojure.string :as string]
+            [net.cgrand.enlive-html :as enlive]))
 
 (defn- generate-feed-entry-id [metadata]
   (str "urn:marcandregoyette-com:feed:post:"
        (-> (:title metadata)
-           (str/replace " " "-")
-           (str/lower-case))
+           (string/replace " " "-")
+           (string/lower-case))
        "-"
        (:lang metadata)))
 
 (defn- remove-post-title [post]
-  (en/sniptest post [:h2] nil))
+  (enlive/sniptest post [:h2] nil))
 
 (defn- generate-feed-entry-content [content]
   (remove-post-title content))

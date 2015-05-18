@@ -2,10 +2,10 @@
 ;;
 ;; Custom styles defined with Garden.
 (ns marcandregoyette.custom-styles
-  (:require [clojure.string :as str]
-            [garden.core :refer [css]]
-            [garden.stylesheet :refer [at-media]]
-            [garden.units :refer [px em]]))
+  (:require [clojure.string :as string]
+            [garden.core :as css]
+            [garden.stylesheet :as css-stylesheet]
+            [garden.units :as css-units]))
 
 (def coral "#FF7F50")
 (def blue "#008EAC")
@@ -15,19 +15,19 @@
 (def dark-grey "#2E2E2E")
 (def solarized-light-background "#eee8d5")
 (def solarized-dark-background "#073642")
-(def content-max-width (px 900))
+(def content-max-width (css-units/px 900))
 
 (def body
   [:body {:background-color grey
           :font-family ["Lato" "sans-serif"]
-          :font-size (px 18)
+          :font-size (css-units/px 18)
           :line-height 1.5
-          :margin (px 0)
-          :padding (px 0)}])
+          :margin (css-units/px 0)
+          :padding (css-units/px 0)}])
 
 (defn- grid-at-media [width-type min-width horizontal-padding]
-  [(at-media {:screen :only width-type (px min-width)}
-             [:.ui.page.grid {:padding (str "0% " horizontal-padding "%")}])])
+  [(css-stylesheet/at-media {:screen :only width-type (css-units/px min-width)}
+                            [:.ui.page.grid {:padding (str "0% " horizontal-padding "%")}])])
 
 (def inverted-menu
   [:.ui.inverted.menu {:background-color blue}])
@@ -44,12 +44,12 @@
                    :padding-right "5%"
                    :padding-top "2.5%"}
    [:p {:font-family "Verdana"
-        :font-size (px 14)}]])
+        :font-size (css-units/px 14)}]])
 
 (def footer
   [:.footer {:font-family "Verdana"
-             :font-size (px 12)
-             :padding-top (em 1)
+             :font-size (css-units/px 12)
+             :padding-top (css-units/em 1)
              :max-width content-max-width}])
 
 (def css-lines
@@ -75,19 +75,19 @@
    [:a.post-title {:text-decoration "none"}]
    [:.right {:float "right"}]
    [:.site-title [:a {:color white
-                      :font-size (px 20)
+                      :font-size (css-units/px 20)
                       :font-weight "bold"
                       :text-decoration "none"}]]
-   [:div.disqus-comments {:padding-top (px 10)}
-    [:a {:font-size (px 14)}]]
+   [:div.disqus-comments {:padding-top (css-units/px 10)}
+    [:a {:font-size (css-units/px 14)}]]
    [:.ui.segment.code {:background-color solarized-light-background
                        :overflow "auto"}
     [:code {:font-family (str "Menlo, Monaco, 'DejaVu Sans Mono', Consolas, "
                               "'Courier New', monospace")
-            :font-size (px 13)}]]])
+            :font-size (css-units/px 13)}]]])
 
 (defn load-custom-styles
   "Load a map with css paths as keys and css styles as values."
   []
   {"/styles/custom-styles.css"
-   (str/join "\n\n" (map css css-lines))})
+   (string/join "\n\n" (map css/css css-lines))})

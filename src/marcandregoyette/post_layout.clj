@@ -1,10 +1,10 @@
 (ns marcandregoyette.post-layout
-  (:require [hiccup.core :refer [html]]))
+  (:require [hiccup.core :as hiccup]))
 
 (defn get-post-layout []
-  (html (seq [[:div.ui.segment
-               [:div#category.ui.ribbon.label]
-               [:div#post-date.ui.top.right.attached.label]
-               [:div.post-content]
-               [:div#tags]
-               [:div.disqus-comments]]])))
+  (hiccup/html (seq [[:div.ui.segment
+                      [:div#category.ui.ribbon.label]
+                      [:div#post-date.ui.top.right.attached.label]
+                      [:div.post-content]
+                      [:div#tags]
+                      [:div.disqus-comments]]])))

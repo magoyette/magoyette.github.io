@@ -1,6 +1,6 @@
 (ns marcandregoyette.urls_test
-  (:use midje.sweet)
-  (:require [marcandregoyette.urls :refer :all]))
+  (:require [marcandregoyette.urls :refer :all]
+            [midje.sweet :refer :all]))
 
 (fact "build-category-url generates a valid category url"
       (build-category-url "Programming") => "/categories/programming/")

@@ -1,7 +1,7 @@
 ---
 {:title "About"
  :date ""
- :lang "fr"
+ :lang "en"
  :category "About"
  :tags []}
 ---

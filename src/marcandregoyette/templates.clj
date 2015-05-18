@@ -91,8 +91,20 @@
       (first categories)
       urls/default-category)))
 
+(defn- get-language [post-by-url]
+  (-> post-by-url
+      (val)
+      :metadata
+      :lang))
+
+(defn- find-language [posts-by-url]
+  (let [languages (map get-language posts-by-url)]
+    (if (= (count languages) 1)
+      (first languages)
+      "en")))
+
 (deftemplate index-page-layout (get-page-layout-stream) [posts-by-url]
-  [:html] (en/set-attr :lang "en")
+  [:html] (en/set-attr :lang (find-language posts-by-url))
   [(category-selector (find-category posts-by-url))] (en/add-class "active")
   [:title] (en/html-content "Marc-Andr\u00E9 Goyette")
   [:div#posts-container] (append-posts-to-index-page posts-by-url))

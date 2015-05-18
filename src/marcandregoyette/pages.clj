@@ -18,13 +18,8 @@
 (defn- has-tag [tag post]
   (some #(= tag %) (-> post :metadata :tags)))
 
-(defn- get-normal-posts [posts]
-  (filter-posts posts #(not (has-category "" %))))
-
 (defn- build-index-page [posts]
-  (-> posts
-      get-normal-posts
-      templates/add-page-layout-many-posts))
+  (templates/add-page-layout-many-posts posts))
 
 (defn- get-categories [posts]
   (remove #(= % "") (distinct (for [[url post] posts]
@@ -59,4 +54,4 @@
       :index {"/index.html" (build-index-page posts)}
       :categories (get-categories-pages posts)
       :tags (get-tags-pages posts)
-      :other {"/atom.xml" (-> posts get-normal-posts feed/generate-feed)}})))
+      :other {"/atom.xml" (feed/generate-feed posts)}})))

@@ -26,8 +26,7 @@
     "segment",
     "grid",
     "menu",
-    "container",
-    "divider"
+    "container"
   ],
   "version": "2.1.3"
 }

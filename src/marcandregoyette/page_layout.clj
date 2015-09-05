@@ -29,36 +29,40 @@
     "https://fonts.googleapis.com/css?family=Open+Sans")])
 
 (def menu-items-without-categories
-  [{:name "Source code"
-    :link "/source"}
-   {:name "About"
+  [{:type :icon-link
+    :icon [:i.help.large.icon]
     :link "/about"
+    :title "About / À propos"
     :id (urls/build-category-id "About")}
-   {:name "À propos"
-    :link "/apropos"
-    :id (urls/build-category-id "A propos")}
-   {:icon [:i.rss.large.icon]
+   {:type :icon-link
+    :icon [:i.rss.large.icon]
     :link "http://feeds.feedburner.com/marcandregoyette"
     :title "Subscribe to the feed of this blog"}
-   {:icon [:i.linkedin.large.icon]
+   {:type :icon-link
+    :icon [:i.code.large.icon]
+    :link "/source"
+    :title "Source code"}
+   {:type :icon-link
+    :icon [:i.linkedin.large.icon]
     :link "http://www.linkedin.com/in/marcandregoyette"
     :title "LinkedIn"}
-   {:icon [:i.github.alternate.large.icon]
+   {:type :icon-link
+    :icon [:i.github.alternate.large.icon]
     :link "https://github.com/magoyette"
     :title "GitHub"}])
 
 (defn- category-menu-item
   [category]
-  {:name category
+  {:type :text-link
+   :name category
    :link (urls/build-category-url category)
    :id (urls/build-category-id category)})
 
 (defn- build-menu-item [item]
-  [:a.item
-   {:href (:link item) :title (:title item) :id (:id item)}
-   (if (contains? item :name)
-     (:name item)
-     (:icon item))])
+  (let [href {:href (:link item) :title (:title item) :id (:id item)}]
+    (case (:type item)
+      :text-link [:a.item href (:name item)]
+      :icon-link [:a.icon.item href (:icon item)])))
 
 (defn- menu-items []
   (concat
@@ -66,8 +70,8 @@
    menu-items-without-categories))
 
 (defn- menu []
-  [:div.ui.fixed.inverted.menu.stackable.borderless
-   [:div.ui.container
+  [:div.ui.inverted.stackable.borderless.menu
+   [:div.ui.text.container
     [:div.item
      [:div.site-title
       [:a {:href "/"} "Marc-Andr\u00E9 Goyette"]]]
@@ -76,7 +80,7 @@
 (defn- footer []
   [:div.footer
    [:div.ui.segment.secondary
-    [:div "Copyright \u00A9 Marc-Andr\u00E9 Goyette"
+    [:div "Copyright \u00A9 " [:a {:href "/about"} "Marc-Andr\u00E9 Goyette"]
      [:div.right
       "Built with Clojure, Stasis and Semantic UI ("
       [:a {:href "/source"} "Source code"]
@@ -116,7 +120,6 @@
   (hiccup-page/html5 head
                      [:body
                       (menu)
-                      ;;[:div.ui.hidden.divider]
                       (post-grid)
                       [:div.additional-scripts]
                       (hiccup-element/javascript-tag google-analytics-code)

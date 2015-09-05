@@ -30,7 +30,15 @@
   [:.ui.menu
    [:.header.item {:background-color blue
                    :color white}]
-   [".item > .custom-blue.label" {:background-color coral}]])
+   [".item > .custom-blue.label" {:background-color coral}]
+   [:.item {:padding-left (css-units/em 0.8)
+            :padding-right (css-units/em 0.8)}]
+   [:.item.icon {:padding-left (css-units/em 0.6)
+                 :padding-right (css-units/em 0.6)}]])
+
+(def vertical-menu
+  [:.ui.stackable.menu
+   [".icon.item > .icon" {:margin (css-units/px 0)}]])
 
 (def post-content
   [:.post-content {:padding-bottom "2.5%"
@@ -73,13 +81,14 @@
   [body
    inverted-menu
    menu
+   vertical-menu
    post-content
    footer
    label
    site-title
    code
    comments
-   [:.main.container {:margin-top (css-units/em 4)}]
+   [:.main.container {:margin-top (css-units/em 2)}]
    [:.ui.large.header {:color dark-grey}]
    [:.ui.orange.label {:background-color coral}]
    [:a.post-title {:text-decoration "none"}]

@@ -1,58 +1,9 @@
 body {
-  padding: 0px;
-  margin: 0px;
-  line-height: 1.5;
-  font-size: 18px;
-  font-family: Lato, sans-serif;
   background-color: #E8E8E8;
-}
-
-@media only screen and (max-width: 991px) {
-
-  .ui.page.grid {
-    padding: 0% 0%;
-  }
-
-}
-
-@media only screen and (min-width: 992px) {
-
-  .ui.page.grid {
-    padding: 0% 0%;
-  }
-
-}
-
-@media only screen and (min-width: 1250px) {
-
-  .ui.page.grid {
-    padding: 0% 7.5%;
-  }
-
-}
-
-@media only screen and (min-width: 1500px) {
-
-  .ui.page.grid {
-    padding: 0% 10%;
-  }
-
-}
-
-@media only screen and (min-width: 1750px) {
-
-  .ui.page.grid {
-    padding: 0% 20%;
-  }
-
-}
-
-@media only screen and (min-width: 2000px) {
-
-  .ui.page.grid {
-    padding: 0% 22.5%;
-  }
-
+  font-family: Lato, sans-serif;
+  font-size: 1em;
+  margin: 0px;
+  padding: 0px;
 }
 
 .ui.inverted.menu {
@@ -60,8 +11,8 @@ body {
 }
 
 .ui.menu .header.item {
-  color: #FFFFFF;
   background-color: #008EAC;
+  color: #FFFFFF;
 }
 
 .ui.menu .item > .custom-blue.label {
@@ -71,24 +22,59 @@ body {
 .post-content {
   padding-bottom: 2.5%;
   padding-left: 5%;
-  padding-top: 2.5%;
   padding-right: 5%;
+  padding-top: 2.5%;
 }
 
 .post-content p {
-  font-size: 14px;
-  font-family: Verdana;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8em;
 }
 
 .footer {
-  max-width: 900px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.7em;
   padding-top: 1em;
-  font-size: 12px;
-  font-family: Verdana;
 }
 
-#posts-container {
-  max-width: 900px;
+.ui.label {
+  color: #FFFFFF;
+  background-color: #FF7F50;
+  font-weight: normal;
+}
+
+.ui.label a {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.site-title a {
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.ui.segment.code {
+  background-color: #eee8d5;
+  overflow: auto;
+}
+
+.ui.segment.code code {
+  font-family: Menlo, Monaco, 'DejaVu Sans Mono', Consolas, 'Courier New', monospace;
+  font-size: 13px;
+}
+
+div.disqus-comments {
+  padding-top: 10px;
+}
+
+div.disqus-comments a {
+  font-size: 0.7em;
+}
+
+.main.container {
+  margin-top: 4em;
 }
 
 .ui.large.header {
@@ -99,46 +85,10 @@ body {
   background-color: #FF7F50;
 }
 
-.ui.label {
-  font-weight: normal;
-  background-color: #FF7F50;
-  color: #FFFFFF;
-}
-
-.ui.label a {
-  text-decoration: none;
-  opacity: 1;
-}
-
 a.post-title {
   text-decoration: none;
 }
 
 .right {
   float: right;
-}
-
-.site-title a {
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 20px;
-  color: #FFFFFF;
-}
-
-div.disqus-comments {
-  padding-top: 10px;
-}
-
-div.disqus-comments a {
-  font-size: 14px;
-}
-
-.ui.segment.code {
-  overflow: auto;
-  background-color: #eee8d5;
-}
-
-.ui.segment.code code {
-  font-size: 13px;
-  font-family: Menlo, Monaco, 'DejaVu Sans Mono', Consolas, 'Courier New', monospace;
 }

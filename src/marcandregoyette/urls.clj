@@ -5,11 +5,14 @@
   (:require [clojure.string :as string]))
 
 (def categories ["Programming" "Programmation"])
+(def categories-by-lang {:en ["Programming"]
+                         :fr ["Programmation"]})
 
 (def default-category "Programming")
 
 (defn- build-metadata-attribute-id
-  "Build an HTML element id to identify the attribute of the metadata of a post."
+  "Build an HTML element id to identify the attribute of the metadata of a
+  post."
   [metadata-attribute]
   (string/lower-case (string/replace metadata-attribute #"\s" "_")))
 

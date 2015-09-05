@@ -18,16 +18,19 @@
 (def iso-8601-date-formatter (time-format/formatters :date-time-no-ms))
 
 (def en-date-formatter
-  (time-format/with-locale (time-format/formatter "dd MMMM YYYY") Locale/CANADA))
+  (time-format/with-locale
+    (time-format/formatter "dd MMMM YYYY") Locale/CANADA))
 
 (def fr-date-formatter
-  (time-format/with-locale (time-format/formatter "dd MMMM YYYY") Locale/CANADA_FRENCH))
+  (time-format/with-locale
+    (time-format/formatter "dd MMMM YYYY") Locale/CANADA_FRENCH))
 
 (defn- format-date
   [date lang]
   (->> date
        (time-format/parse iso-8601-date-formatter)
-       (time-format/unparse (if (= lang "fr") fr-date-formatter en-date-formatter))))
+       (time-format/unparse
+        (if (= lang "fr") fr-date-formatter en-date-formatter))))
 
 (defn- post-date-label [metadata]
   (if (string/blank? (:date metadata))
@@ -38,19 +41,24 @@
   (let [category (:category metadata)]
     (if (not (some #{category} urls/categories))
       (enlive/substitute (enlive/html [:div]))
-      (enlive/content (enlive/html [:a {:href (urls/build-category-url category)} category])))))
+      (enlive/content
+       (enlive/html
+        [:a {:href (urls/build-category-url category)} category])))))
 
 (defn- tag-labels [metadata]
-  (enlive/content (enlive/html (for [tag (:tags metadata)]
-                                 (let [tag-url (urls/build-tag-url tag)]
-                                   [:div.ui.label [:a.label {:href tag-url} tag]])))))
+  (enlive/content
+   (enlive/html
+    (for [tag (:tags metadata)]
+      (let [tag-url (urls/build-tag-url tag)]
+        [:div.ui.label [:a.label {:href tag-url} tag]])))))
 
 (defn- comments-link [url single-post]
   (enlive/content (enlive/html (if single-post
                                  [:div#disqus_thread]
                                  [:a {:href (str url "#disqus_thread")} ""]))))
 
-(enlive/defsnippet single-post (get-post-layout-stream) [enlive/root] [url single-post metadata content]
+(enlive/defsnippet single-post
+  (get-post-layout-stream) [enlive/root] [url single-post metadata content]
   [:div#post-date] (post-date-label metadata)
   [:div#category] (category-label metadata)
   [:div.post-content] (enlive/html-content content)
@@ -64,13 +72,19 @@
 (defn- category-selector [category]
   (keyword (str "a#" (urls/build-category-id category))))
 
-(enlive/deftemplate page-layout (get-page-layout-stream) [metadata posts-content]
+(defn- substitute-with-disqus-config [metadata]
+  (enlive/substitute
+   (enlive/html
+    [:script {:type "text/javascript"} (disqus-config (:lang metadata))])))
+
+(enlive/deftemplate page-layout
+  (get-page-layout-stream) [metadata posts-content]
   [:html] (enlive/set-attr :lang (:lang metadata))
   [:title] (enlive/html-content (str (:title metadata)
                                      " - Marc-Andr\u00E9 Goyette"))
   [(category-selector (:category metadata))] (enlive/add-class "active")
   [:div#posts-container] (enlive/append posts-content)
-  [:div.disqus-config] (enlive/substitute (enlive/html [:script {:type "text/javascript"} (disqus-config (:lang metadata))])))
+  [:div.disqus-config] (substitute-with-disqus-config metadata))
 
 (defn- build-post-for-index-page [post-by-url]
   (let [url (key post-by-url)
@@ -113,8 +127,9 @@
 
 (defn- apply-page-layout [post-by-url]
   (let [{:keys [metadata content]} (val post-by-url)]
-    (apply str (page-layout metadata
-                            (single-post (key post-by-url) true metadata content)))))
+    (apply str (page-layout
+                metadata
+                (single-post (key post-by-url) true metadata content)))))
 
 (defn add-page-layout [posts]
   (zipmap (keys posts)

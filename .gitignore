@@ -8,4 +8,8 @@ pom.xml.asc
 *.class
 /.lein-*
 /.nrepl-port
-semantic.css
+node_modules
+.directory
+/semantic/tasks
+/semantic/dist
+/semantic/gulpfile.js

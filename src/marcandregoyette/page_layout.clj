@@ -23,7 +23,10 @@
    [:title]
    (include-meta)
    (apply hiccup-page/include-css (css-paths))
-   (hiccup-page/include-css "http://fonts.googleapis.com/css?family=Lato")])
+   (hiccup-page/include-css
+    "http://fonts.googleapis.com/css?family=Lato")
+   (hiccup-page/include-css
+    "https://fonts.googleapis.com/css?family=Open+Sans")])
 
 (def menu-items-without-categories
   [{:name "Source code"
@@ -63,8 +66,8 @@
    menu-items-without-categories))
 
 (defn- menu []
-  [:nav.ui.inverted.menu.navbar.page.grid
-   [:div.page-container
+  [:div.ui.fixed.inverted.menu.stackable.borderless
+   [:div.ui.container
     [:div.item
      [:div.site-title
       [:a {:href "/"} "Marc-Andr\u00E9 Goyette"]]]
@@ -80,17 +83,15 @@
       ")"]]]])
 
 (defn- post-grid []
-  [:div.ui.page.stackable.grid
-   [:div.one.wide.column]
-   [:div.fourteen.wide.column
-    [:div#posts-container]
-    (footer)]
-   [:div.one.wide.column]])
+  [:div.ui.main.text.container
+   [:div#posts-container]
+   [:div (footer)]])
 
 (def google-analytics-code
   "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  m=s.getElementsByTagName(o)[0];
+  a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-46742437-1', 'auto');
     ga('send', 'pageview');")
@@ -115,10 +116,9 @@
   (hiccup-page/html5 head
                      [:body
                       (menu)
-                      [:div.ui.hidden.divider]
+                      ;;[:div.ui.hidden.divider]
                       (post-grid)
                       [:div.additional-scripts]
                       (hiccup-element/javascript-tag google-analytics-code)
                       (hiccup-element/javascript-tag disqus-code)
                       [:div.disqus-config]]))
-

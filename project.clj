@@ -3,16 +3,18 @@
   :url "http://www.marcandregoyette.com"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.7.0-beta3"]
+  :dependencies [[org.clojure/clojure "1.8.0-alpha4"]
                  [org.clojure/data.xml "0.0.8"]
-                 [clj-time "0.9.0"]
+                 [org.clojure/tools.namespace "0.2.11"]
+                 [clj-time "0.11.0"]
                  [clygments "0.1.1"]
-                 [enlive "1.1.5"]
-                 [garden "1.2.5"]
+                 [enlive "1.1.6"]
+                 [garden "1.3.0-SNAPSHOT" :exclusions [org.clojure/tools.nrepl]]
                  [hiccup "1.0.5"]
                  [me.raynes/cegdown "0.1.1"]
                  [me.raynes/fs "1.4.6"]
-                 [ring "1.3.2"]
+                 [optimus "0.18.3"]
+                 [ring "1.4.0"]
                  [stasis "2.2.2"]]
   :ring {:handler marcandregoyette.core/app}
   :aliases {"export"
@@ -20,7 +22,7 @@
              ["run" "-m" "marcandregoyette.core/export"]
              ["marg" "-d" "dist/source" "-f" "index.html"]]}
   :profiles {:dev
-             {:dependencies [[midje "1.6.3"]]
-              :plugins [[lein-marginalia "0.8.0"]
+             {:dependencies [[midje "1.7.0"]]
+              :plugins [[michaelblume/lein-marginalia "0.9.0"]
                         [lein-midje "3.1.3"]
-                        [lein-ring "0.8.13"]]}})
+                        [lein-ring "0.8.13" :exclusions [org.clojure/clojure]]]}})

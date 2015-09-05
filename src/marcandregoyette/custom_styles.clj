@@ -15,19 +15,13 @@
 (def dark-grey "#2E2E2E")
 (def solarized-light-background "#eee8d5")
 (def solarized-dark-background "#073642")
-(def content-max-width (css-units/px 900))
 
 (def body
   [:body {:background-color grey
           :font-family ["Lato" "sans-serif"]
-          :font-size (css-units/px 18)
-          :line-height 1.5
+          :font-size (css-units/em 1)
           :margin (css-units/px 0)
           :padding (css-units/px 0)}])
-
-(defn- grid-at-media [width-type min-width horizontal-padding]
-  [(css-stylesheet/at-media {:screen :only width-type (css-units/px min-width)}
-                            [:.ui.page.grid {:padding (str "0% " horizontal-padding "%")}])])
 
 (def inverted-menu
   [:.ui.inverted.menu {:background-color blue}])
@@ -43,48 +37,53 @@
                    :padding-left "5%"
                    :padding-right "5%"
                    :padding-top "2.5%"}
-   [:p {:font-family "Verdana"
-        :font-size (css-units/px 14)}]])
+   [:p {:font-family "'Open Sans', sans-serif"
+        :font-size (css-units/em 0.8)}]])
 
 (def footer
-  [:.footer {:font-family "Verdana"
-             :font-size (css-units/px 12)
-             :padding-top (css-units/em 1)
-             :max-width content-max-width}])
+  [:.footer {:font-family "'Open Sans', sans-serif"
+             :font-size (css-units/em 0.7)
+             :padding-top (css-units/em 1)}])
+
+(def site-title
+  [:.site-title [:a {:color white
+                     :font-size (css-units/px 20)
+                     :font-weight "bold"
+                     :text-decoration "none"}]])
+
+(def code
+  [:.ui.segment.code {:background-color solarized-light-background
+                      :overflow "auto"}
+   [:code {:font-family (str "Menlo, Monaco, 'DejaVu Sans Mono', Consolas, "
+                             "'Courier New', monospace")
+           :font-size (css-units/px 13)}]])
+
+(def label
+  [:.ui.label {:color white
+               :background-color coral
+               :font-weight "normal"}
+   [:a {:opacity "1"
+        :text-decoration "none"}]])
+
+(def comments
+  [:div.disqus-comments {:padding-top (css-units/px 10)}
+   [:a {:font-size (css-units/em 0.7)}]])
 
 (def css-lines
   [body
-   (grid-at-media :max-width 991 0)
-   (grid-at-media :min-width 992 0)
-   (grid-at-media :min-width 1250 7.5)
-   (grid-at-media :min-width 1500 10)
-   (grid-at-media :min-width 1750 20)
-   (grid-at-media :min-width 2000 22.5)
    inverted-menu
    menu
    post-content
    footer
-   [:#posts-container {:max-width content-max-width}]
+   label
+   site-title
+   code
+   comments
+   [:.main.container {:margin-top (css-units/em 4)}]
    [:.ui.large.header {:color dark-grey}]
    [:.ui.orange.label {:background-color coral}]
-   [:.ui.label {:color white
-                :background-color coral
-                :font-weight "normal"}
-    [:a {:opacity "1"
-         :text-decoration "none"}]]
    [:a.post-title {:text-decoration "none"}]
-   [:.right {:float "right"}]
-   [:.site-title [:a {:color white
-                      :font-size (css-units/px 20)
-                      :font-weight "bold"
-                      :text-decoration "none"}]]
-   [:div.disqus-comments {:padding-top (css-units/px 10)}
-    [:a {:font-size (css-units/px 14)}]]
-   [:.ui.segment.code {:background-color solarized-light-background
-                       :overflow "auto"}
-    [:code {:font-family (str "Menlo, Monaco, 'DejaVu Sans Mono', Consolas, "
-                              "'Courier New', monospace")
-            :font-size (css-units/px 13)}]]])
+   [:.right {:float "right"}]])
 
 (defn load-custom-styles
   "Load a map with css paths as keys and css styles as values."

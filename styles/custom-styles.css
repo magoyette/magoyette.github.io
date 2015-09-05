@@ -19,6 +19,20 @@ body {
   background-color: #FF7F50;
 }
 
+.ui.menu .item {
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+}
+
+.ui.menu .item.icon {
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+}
+
+.ui.stackable.menu .icon.item > .icon {
+  margin: 0px;
+}
+
 .post-content {
   padding-bottom: 2.5%;
   padding-left: 5%;
@@ -74,7 +88,7 @@ div.disqus-comments a {
 }
 
 .main.container {
-  margin-top: 4em;
+  margin-top: 2em;
 }
 
 .ui.large.header {

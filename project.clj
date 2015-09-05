@@ -1,4 +1,4 @@
-(defproject marcandregoyette "0.1.0-SNAPSHOT"
+(defproject marcandregoyette "0.2.0"
   :description "Personal website of Marc-Andr\u00E9 Goyette (http://marcandregoyette.com)."
   :url "http://www.marcandregoyette.com"
   :license {:name "Eclipse Public License"
@@ -20,7 +20,18 @@
   :aliases {"export"
             ["do"
              ["run" "-m" "marcandregoyette.core/export"]
-             ["marg" "-d" "dist/source" "-f" "index.html"]]}
+             ["marg"
+              "src/marcandregoyette/core.clj"
+              "src/marcandregoyette/pages.clj"
+              "src/marcandregoyette/posts.clj"
+              "src/marcandregoyette/highlight.clj"
+              "src/marcandregoyette/templates.clj"
+              "src/marcandregoyette/post_layout.clj"
+              "src/marcandregoyette/page_layout.clj"
+              "src/marcandregoyette/urls.clj"
+              "src/marcandregoyette/custom_styles.clj"
+              "src/marcandregoyette/feed.clj"
+              "-d" "dist/source" "-f" "index.html"]]}
   :profiles {:dev
              {:dependencies [[midje "1.7.0"]]
               :plugins [[michaelblume/lein-marginalia "0.9.0"]

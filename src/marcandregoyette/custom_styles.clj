@@ -92,7 +92,9 @@
    [:.ui.large.header {:color dark-grey}]
    [:.ui.orange.label {:background-color coral}]
    [:a.post-title {:text-decoration "none"}]
-   [:.right {:float "right"}]])
+   [:.right {:float "right"}]
+   [(css-stylesheet/at-media {:screen :only :max-width (css-units/px 768)}
+                             [:.right {:float "none"}])]])
 
 (defn load-custom-styles
   "Load a map with css paths as keys and css styles as values."

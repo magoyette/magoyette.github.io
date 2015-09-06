@@ -40,7 +40,6 @@
   (assets/load-assets "public"
                       [#"/styles/.*\.css"
                        #"/images/.*\.png"
-                       #"/images/.*\.svg"
                        #"/themes/*"]))
 
 (def app (-> (stasis/serve-pages (pages/load-pages))

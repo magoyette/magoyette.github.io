@@ -18,13 +18,10 @@
   "permission": false,
   "rtl": false,
   "components": [
-    "button",
     "header",
     "icon",
     "label",
-    "list",
     "segment",
-    "grid",
     "menu",
     "container"
   ],

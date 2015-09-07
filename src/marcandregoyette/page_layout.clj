@@ -1,13 +1,8 @@
 (ns marcandregoyette.page-layout
   (:require [hiccup.element :as hiccup-element]
             [hiccup.page :as hiccup-page]
+            [optimus.link :as link]
             [marcandregoyette.urls :as urls]))
-
-(def css-files
-  ["semantic.min" "solarized-light" "custom-styles"])
-
-(defn- css-paths []
-  (map #(str "/styles/" % ".css") css-files))
 
 (defn- include-meta []
   (seq [[:meta {:charset "utf-8"}]
@@ -22,11 +17,10 @@
   [:head
    [:title]
    (include-meta)
-   (apply hiccup-page/include-css (css-paths))
-   (hiccup-page/include-css
-    "http://fonts.googleapis.com/css?family=Lato")
-   (hiccup-page/include-css
-    "https://fonts.googleapis.com/css?family=Open+Sans")])
+   [:link {:type "text/css"
+           :rel "stylesheet"
+           :href "http://fonts.googleapis.com/css?family=Lato|Open+Sans"}]
+   (hiccup-page/include-css "/bundles/styles.css")])
 
 (def menu-items-without-categories
   [{:type :icon-link

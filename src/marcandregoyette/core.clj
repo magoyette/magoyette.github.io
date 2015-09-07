@@ -15,7 +15,8 @@
 ;; and the source of
 ;; [whattheemacsd.com](https://github.com/magnars/what-the-emacsd).
 (ns marcandregoyette.core
-  (:require [marcandregoyette.pages :as pages]
+  (:require [marcandregoyette.custom-styles :as custom-styles]
+            [marcandregoyette.pages :as pages]
             [me.raynes.fs :as fs]
             [optimus.prime :as optimus]
             [optimus.assets :as assets]
@@ -37,17 +38,31 @@
 (def export-dir "dist")
 
 (defn get-assets []
-  (assets/load-assets "public"
-                      [#"/styles/.*\.css"
-                       #"/images/.*\.png"
-                       #"/themes/*"]))
+  (concat
+   (assets/load-bundle "public"
+                       "styles.css"
+                       ["/styles/semantic.min.css"
+                        "/styles/solarized-light.css"])
+   (assets/load-assets "public"
+                       [#"/images/.*\.png"
+                        #"/themes/*"])
+   [{:path "/styles/custom-styles.css"
+     :contents (custom-styles/load-custom-styles)
+     :bundle "styles.css"}]))
+
+(defn optimizations [assets options]
+  (-> assets
+      (optimizations/minify-js-assets options)
+      (optimizations/minify-css-assets options)
+      (optimizations/inline-css-imports)
+      (optimizations/concatenate-bundles)))
 
 (def app (-> (stasis/serve-pages (pages/load-pages))
              (optimus/wrap get-assets
-                           optimizations/all
+                           optimizations
                            strategies/serve-live-assets)
-             (ring-content-type/wrap-content-type)
-             (ring-not-modified/wrap-not-modified)))
+             (ring-content-type/wrap-content-type)))
+             ;;(ring-not-modified/wrap-not-modified)))
 
 (defn- copy-public-dir [subfolder]
   (fs/copy-dir-into (fs/file "." resources-dir public-dir subfolder)
@@ -58,5 +73,5 @@
   Intended to be called by Leiningen."
   []
   (stasis/empty-directory! export-dir)
-  (export/save-assets (optimizations/all (get-assets) {}) export-dir)
+  (export/save-assets (optimizations (get-assets) {}) export-dir)
   (stasis/export-pages (pages/load-pages) export-dir))

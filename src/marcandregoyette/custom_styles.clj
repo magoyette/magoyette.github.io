@@ -97,7 +97,6 @@
                              [:.right {:float "none"}])]])
 
 (defn load-custom-styles
-  "Load a map with css paths as keys and css styles as values."
+  "Load the custom CSS of the site as a string."
   []
-  {"/styles/custom-styles.css"
-   (string/join "\n\n" (map css/css css-lines))})
+  (string/join "\n\n" (map css/css css-lines)))

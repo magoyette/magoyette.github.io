@@ -1,6 +1,5 @@
 (ns marcandregoyette.pages
   (:require [clojure.string :as str]
-            [marcandregoyette.custom-styles :as custom-styles]
             [marcandregoyette.feed :as feed]
             [marcandregoyette.posts :as posts]
             [marcandregoyette.templates :as templates]
@@ -50,8 +49,7 @@
 (defn load-pages []
   (let [posts (posts/build-posts "/posts" "resources/posts" #"\.md$")]
     (stasis/merge-page-sources
-     {:css (custom-styles/load-custom-styles)
-      :pages (templates/add-page-layout
+     {:pages (templates/add-page-layout
               (posts/build-posts ""  "resources/pages" #"\.md$"))
       :posts (templates/add-page-layout posts)
       :index {"/index.html" (build-index-page posts)}

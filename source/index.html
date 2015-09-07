@@ -2865,7 +2865,7 @@ net.brehaut.ClojureTools = (function (SH) {
     build_tree: build_tree
   };
 })(SyntaxHighlighter);
-</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="http://www.marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.3.0</h2><br /><p>Personal website of Marc-André Goyette (http://marcandregoyette.com).</p>
+</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="http://www.marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.4.0</h2><br /><p>Personal website of Marc-André Goyette (http://marcandregoyette.com).</p>
 </div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.8.0-alpha4</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">org.clojure/tools.namespace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.11</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.11.0</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.6</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.3.0-SNAPSHOT</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/cegdown</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">optimus</td><td class="dotted"><hr /></td><td class="dep-version">0.18.3</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.4.0</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.2.2</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.urls">marcandregoyette.urls</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
 
 <p>This is the annotated source code of
@@ -2883,7 +2883,8 @@ Stasis"</a>
 and the source of
 <a href="https://github.com/magnars/what-the-emacsd">whattheemacsd.com</a>.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.core
-  (:require [marcandregoyette.pages :as pages]
+  (:require [marcandregoyette.custom-styles :as custom-styles]
+            [marcandregoyette.pages :as pages]
             [me.raynes.fs :as fs]
             [optimus.prime :as optimus]
             [optimus.assets :as assets]
@@ -2903,16 +2904,29 @@ and the source of
 (def all-public-dir [images-dir styles-dir themes-dir])
 (def export-dir &quot;dist&quot;)</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn get-assets []
-  (assets/load-assets &quot;public&quot;
-                      [#&quot;/styles/.*\.css&quot;
-                       #&quot;/images/.*\.png&quot;
-                       #&quot;/themes/*&quot;]))</pre></td></tr><tr><td class="docs">
+  (concat
+   (assets/load-bundle &quot;public&quot;
+                       &quot;styles.css&quot;
+                       [&quot;/styles/semantic.min.css&quot;
+                        &quot;/styles/solarized-light.css&quot;])
+   (assets/load-assets &quot;public&quot;
+                       [#&quot;/images/.*\.png&quot;
+                        #&quot;/themes/*&quot;])
+   [{:path &quot;/styles/custom-styles.css&quot;
+     :contents (custom-styles/load-custom-styles)
+     :bundle &quot;styles.css&quot;}]))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn optimizations [assets options]
+  (-&gt; assets
+      (optimizations/minify-js-assets options)
+      (optimizations/minify-css-assets options)
+      (optimizations/inline-css-imports)
+      (optimizations/concatenate-bundles)))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def app (-&gt; (stasis/serve-pages (pages/load-pages))
              (optimus/wrap get-assets
-                           optimizations/all
+                           optimizations
                            strategies/serve-live-assets)
-             (ring-content-type/wrap-content-type)
-             (ring-not-modified/wrap-not-modified)))</pre></td></tr><tr><td class="docs">
+             (ring-content-type/wrap-content-type)))</pre></td></tr><tr><td class="docs"><p>(ring-not-modified/wrap-not-modified)))</p>
+</td><td class="codes"></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- copy-public-dir [subfolder]
   (fs/copy-dir-into (fs/file &quot;.&quot; resources-dir public-dir subfolder)
                     (fs/file &quot;.&quot; export-dir subfolder)))</pre></td></tr><tr><td class="docs"><p>Export the generated web site into an export directory.
@@ -2920,11 +2934,10 @@ and the source of
 </td><td class="codes"><pre class="brush: clojure">(defn export
   []
   (stasis/empty-directory! export-dir)
-  (export/save-assets (optimizations/all (get-assets) {}) export-dir)
+  (export/save-assets (optimizations (get-assets) {}) export-dir)
   (stasis/export-pages (pages/load-pages) export-dir))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.pages" name="marcandregoyette.pages"><h1 class="project-name">marcandregoyette.pages</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.pages
   (:require [clojure.string :as str]
-            [marcandregoyette.custom-styles :as custom-styles]
             [marcandregoyette.feed :as feed]
             [marcandregoyette.posts :as posts]
             [marcandregoyette.templates :as templates]
@@ -2963,8 +2976,7 @@ and the source of
 </td><td class="codes"><pre class="brush: clojure">(defn load-pages []
   (let [posts (posts/build-posts &quot;/posts&quot; &quot;resources/posts&quot; #&quot;\.md$&quot;)]
     (stasis/merge-page-sources
-     {:css (custom-styles/load-custom-styles)
-      :pages (templates/add-page-layout
+     {:pages (templates/add-page-layout
               (posts/build-posts   &quot;resources/pages&quot; #&quot;\.md$&quot;))
       :posts (templates/add-page-layout posts)
       :index {&quot;/index.html&quot; (build-index-page posts)}
@@ -3172,11 +3184,8 @@ and the source of
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.page-layout
   (:require [hiccup.element :as hiccup-element]
             [hiccup.page :as hiccup-page]
+            [optimus.link :as link]
             [marcandregoyette.urls :as urls]))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(def css-files
-  [&quot;semantic.min&quot; &quot;solarized-light&quot; &quot;custom-styles&quot;])</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defn- css-paths []
-  (map #(str &quot;/styles/&quot; % &quot;.css&quot;) css-files))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- include-meta []
   (seq [[:meta {:charset &quot;utf-8&quot;}]
         [:meta {:http-equiv &quot;X-UA-Compatible&quot;
@@ -3189,11 +3198,10 @@ and the source of
   [:head
    [:title]
    (include-meta)
-   (apply hiccup-page/include-css (css-paths))
-   (hiccup-page/include-css
-    &quot;http://fonts.googleapis.com/css?family=Lato&quot;)
-   (hiccup-page/include-css
-    &quot;https://fonts.googleapis.com/css?family=Open+Sans&quot;)])</pre></td></tr><tr><td class="docs">
+   [:link {:type &quot;text/css&quot;
+           :rel &quot;stylesheet&quot;
+           :href &quot;http://fonts.googleapis.com/css?family=Lato|Open+Sans&quot;}]
+   (hiccup-page/include-css &quot;/bundles/styles.css&quot;)])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def menu-items-without-categories
   [{:type :icon-link
     :icon [:i.help.large.icon]
@@ -3389,11 +3397,10 @@ and the source of
    [:a.post-title {:text-decoration &quot;none&quot;}]
    [:.right {:float &quot;right&quot;}]
    [(css-stylesheet/at-media {:screen :only :max-width (css-units/px 768)}
-                             [:.right {:float &quot;none&quot;}])]])</pre></td></tr><tr><td class="docs"><p>Load a map with css paths as keys and css styles as values.</p>
+                             [:.right {:float &quot;none&quot;}])]])</pre></td></tr><tr><td class="docs"><p>Load the custom CSS of the site as a string.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn load-custom-styles
   []
-  {&quot;/styles/custom-styles.css&quot;
-   (string/join &quot;\n\n&quot; (map css/css css-lines))})</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.feed" name="marcandregoyette.feed"><h1 class="project-name">marcandregoyette.feed</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>Generation of the Atom feed</h2>
+  (string/join &quot;\n\n&quot; (map css/css css-lines)))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.feed" name="marcandregoyette.feed"><h1 class="project-name">marcandregoyette.feed</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>Generation of the Atom feed</h2>
 
 <p>The Atom feed can be generated from any combination of posts.</p>
 

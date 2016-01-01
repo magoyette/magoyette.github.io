@@ -26,7 +26,6 @@ The Semantic-UI files required by marcandregoyette.com will be exported in /reso
 
 ## License
 
-Copyright © 2014 Marc-André Goyette
+Copyright © 2014-2016 Marc-André Goyette
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.

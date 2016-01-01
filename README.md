@@ -12,7 +12,7 @@ Currently, it requires to:
 ```sh
 $ npm install -g gulp
 ```
-- execute npm install semantic-ui --save in the root folder of this repository
+- install Semantic-UI in the root folder of this repository
 ```sh
 npm install semantic-ui --save
 ```

@@ -13,5 +13,8 @@ node_modules
 /semantic/tasks
 /semantic/dist
 /semantic/gulpfile.js
+/semantic/src/theme.less
+/semantic/src/definitions
+/semantic/src/themes
 /resources/public/styles
 /resources/public/themes

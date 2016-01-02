@@ -62,7 +62,6 @@
                            optimizations
                            strategies/serve-live-assets)
              (ring-content-type/wrap-content-type)))
-             ;;(ring-not-modified/wrap-not-modified)))
 
 (defn- copy-public-dir [subfolder]
   (fs/copy-dir-into (fs/file "." resources-dir public-dir subfolder)

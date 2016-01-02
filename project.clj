@@ -33,7 +33,9 @@
               "src/marcandregoyette/feed.clj"
               "-d" "dist/source" "-f" "index.html"]]}
   :profiles {:dev
-             {:dependencies [[midje "1.8.3"]]
+             {:dependencies [[midje "1.8.3"]
+                             [prone "0.8.3"]]
               :plugins [[michaelblume/lein-marginalia "0.9.0"]
                         [lein-midje "3.1.3"]
-                        [lein-ring "0.8.13" :exclusions [org.clojure/clojure]]]}})
+                        [lein-ring "0.9.7" :exclusions [org.clojure/clojure]]]
+              :ring {:stacktrace-middleware prone.middleware/wrap-exceptions}}})

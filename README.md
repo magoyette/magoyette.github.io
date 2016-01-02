@@ -2,6 +2,12 @@
 
 The source code of my personal web site. It's a static site written in the Clojure programming language and generated with the help of Stasis.
 
+## Compatibility
+
+marcandregoyette.com currently cannot be built on Windows and on some Linux distros (CentOS, RHEL), because the Optimus library depends on clj-v8. Optimus will probably switch to Nashorn, which will allow compatibility with Windows and all Linux distros.
+
+This site has never been built with Mac OS X, so compatibility is unknown.
+
 ## Building Semantic-UI
 
 [Semantic-UI](http://semantic-ui.com/) needs to be installed to build [marcandregoyette.com](http://marcandregoyette.com). This is necessary because the site uses a lightly customized version of the default theme of Semantic-UI. The [Getting Started](http://semantic-ui.com/introduction/getting-started.html) page explains how to install Semantic-UI.

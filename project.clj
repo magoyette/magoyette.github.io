@@ -1,9 +1,9 @@
-(defproject marcandregoyette "0.5.0"
+(defproject marcandregoyette "0.6.0"
   :description "Personal website of Marc-Andr\u00E9 Goyette (http://marcandregoyette.com)."
   :url "http://www.marcandregoyette.com"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.8.0-RC4"]
+  :dependencies [[org.clojure/clojure "1.8.0-RC5"]
                  [org.clojure/data.xml "0.0.8"]
                  [org.clojure/tools.namespace "0.2.11"]
                  [clj-time "0.11.0"]

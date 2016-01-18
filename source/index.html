@@ -2865,8 +2865,8 @@ net.brehaut.ClojureTools = (function (SH) {
     build_tree: build_tree
   };
 })(SyntaxHighlighter);
-</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="http://www.marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.4.0</h2><br /><p>Personal website of Marc-André Goyette (http://marcandregoyette.com).</p>
-</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.8.0-RC4</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">org.clojure/tools.namespace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.11</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.11.0</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.6</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.3.0</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/cegdown</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">optimus</td><td class="dotted"><hr /></td><td class="dep-version">0.18.3</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.4.0</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.urls">marcandregoyette.urls</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
+</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="http://www.marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.6.0</h2><br /><p>Personal website of Marc-André Goyette (http://marcandregoyette.com).</p>
+</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.8.0-RC5</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">org.clojure/tools.namespace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.11</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.11.0</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.6</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.3.0</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/cegdown</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">optimus</td><td class="dotted"><hr /></td><td class="dep-version">0.18.3</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.4.0</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.urls">marcandregoyette.urls</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
 
 <p>This is the annotated source code of
 <a href="http://www.marcandregoyette.com">marcandregoyette.com</a>.</p>
@@ -3101,17 +3101,21 @@ and the source of
     (for [tag (:tags metadata)]
       (let [tag-url (urls/build-tag-url tag)]
         [:div.ui.label [:a.label {:href tag-url} tag]])))))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(defn- comments-link [url single-post]
+</td><td class="codes"><pre class="brush: clojure">(defn- comments-link [url single-post lang]
   (enlive/content (enlive/html (if single-post
                                  [:div#disqus_thread]
-                                 [:a {:href (str url &quot;#disqus_thread&quot;)} ]))))</pre></td></tr><tr><td class="docs">
+                                 [:div.ui.bottom.right.attached.label
+                                  [:a {:href url}
+                                   [:i.comments.icon]
+                                   [:a {:href (str url &quot;#disqus_thread&quot;)} ]
+                                   [:a {:href url} (if (= lang &quot;en&quot;) &quot; comments&quot; &quot; commentaires&quot;)]]]))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(enlive/defsnippet single-post
   (get-post-layout-stream) [enlive/root] [url single-post metadata content]
   [:div#post-date] (post-date-label metadata)
   [:div#category] (category-label metadata)
   [:div.post-content] (enlive/html-content content)
   [:div#tags] (tag-labels metadata)
-  [:div.disqus-comments] (comments-link url single-post)
+  [:div.disqus-comments] (comments-link url single-post (:lang metadata))
   [:h2.header] (enlive/wrap :a {:class &quot;post-title&quot; :href url}))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn disqus-config [lang]
   (format &quot;var disqus_config = function() {this.language = \&quot;%s\&quot;}&quot; lang))</pre></td></tr><tr><td class="docs">
@@ -3257,14 +3261,6 @@ and the source of
   [:div.ui.main.text.container
    [:div#posts-container]
    [:div (footer)]])</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(def google-analytics-code
-  &quot;(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];
-  a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-46742437-1', 'auto');
-    ga('send', 'pageview');&quot;)</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def disqus-code
   &quot;var disqus_shortname = 'marcandregoyette';
   (function() {
@@ -3286,7 +3282,6 @@ and the source of
                       (menu)
                       (post-grid)
                       [:div.additional-scripts]
-                      (hiccup-element/javascript-tag google-analytics-code)
                       (hiccup-element/javascript-tag disqus-code)
                       [:div.disqus-config]]))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.urls" name="marcandregoyette.urls"><h1 class="project-name">marcandregoyette.urls</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>Functions to build urls</h2>
 
@@ -3377,8 +3372,7 @@ and the source of
    [:a {:opacity &quot;1&quot;
         :text-decoration &quot;none&quot;}]])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def comments
-  [:div.disqus-comments {:padding-top (css-units/px 10)}
-   [:a {:font-size (css-units/em 0.7)}]])</pre></td></tr><tr><td class="docs">
+  [:div.disqus-comments {:padding-top (css-units/px 10)}])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def css-lines
   [body
    inverted-menu

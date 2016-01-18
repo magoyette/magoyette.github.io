@@ -74,8 +74,7 @@
         :text-decoration "none"}]])
 
 (def comments
-  [:div.disqus-comments {:padding-top (css-units/px 10)}
-   [:a {:font-size (css-units/em 0.7)}]])
+  [:div.disqus-comments {:padding-top (css-units/px 10)}])
 
 (def css-lines
   [body

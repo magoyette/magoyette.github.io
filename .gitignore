@@ -10,11 +10,7 @@ pom.xml.asc
 /.nrepl-port
 node_modules
 .directory
-/semantic/tasks
-/semantic/dist
-/semantic/gulpfile.js
-/semantic/src/theme.less
-/semantic/src/definitions
-/semantic/src/themes
+semantic.json
+/semantic
 /resources/public/styles
 /resources/public/themes

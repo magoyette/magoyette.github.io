@@ -1,10 +1,13 @@
 (ns marcandregoyette.urls_test
   (:require [marcandregoyette.urls :refer :all]
-            [midje.sweet :refer :all]))
+            [clojure.test :refer :all]))
 
-(fact "build-category-url generates a valid category url"
-      (build-category-url "Programming") => "/categories/programming/")
+(deftest build-category-url-test
+  (is (= (build-category-url "Programming")
+         "/categories/programming/")))
 
-(fact "build-tag-url generates a valid tag url"
-      (build-tag-url "Java") => "/tags/java/"
-      (build-tag-url "Google Guava") => "/tags/google_guava/")
+(deftest build-tag-url-test
+  (is (= (build-tag-url "Java")
+         "/tags/java/"))
+  (is (= (build-tag-url "Google Guava")
+         "/tags/google_guava/")))

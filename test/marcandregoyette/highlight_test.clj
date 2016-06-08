@@ -1,7 +1,7 @@
 (ns marcandregoyette.highlight-test
   (:require [marcandregoyette.highlight :refer :all]
-            [hiccup.core :as hiccup]
-            [midje.sweet :refer :all]))
+            [clojure.test :refer :all]
+            [hiccup.core :as hiccup]))
 
 (def raw-clj-html
   (hiccup/html [:pre [:code.clj "(+ 2 3)"]]))
@@ -18,6 +18,6 @@
                   [:span.p ")"]
                   "\n"]]]))
 
-(fact "The html of the Clojure code should be highlighted
-       and wrapped in a Semantic UI segment that has the class code"
-      (highlight-code-blocks raw-clj-html) => highlighted-clj-html)
+(deftest test-highlight-code-blocks
+  (is (= (highlight-code-blocks raw-clj-html)
+         highlighted-clj-html)))

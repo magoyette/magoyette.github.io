@@ -10,7 +10,7 @@ pom.xml.asc
 /.nrepl-port
 node_modules
 .directory
-semantic.json
+/semantic.json
 /semantic
 /resources/public/styles
 /resources/public/themes

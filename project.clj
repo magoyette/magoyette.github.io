@@ -6,15 +6,15 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/data.xml "0.0.8"]
                  [org.clojure/tools.namespace "0.2.11"]
-                 [clj-time "0.11.0"]
+                 [clj-time "0.12.0"]
                  [clygments "0.1.1"]
                  [enlive "1.1.6"]
                  [garden "1.3.2"]
                  [hiccup "1.0.5"]
                  [me.raynes/cegdown "0.1.1"]
                  [me.raynes/fs "1.4.6"]
-                 [optimus "0.18.4"]
-                 [ring "1.4.0"]
+                 [optimus "0.18.5"]
+                 [ring "1.5.0"]
                  [stasis "2.3.0"]]
   :ring {:handler marcandregoyette.core/app}
   :aliases {"export"
@@ -33,7 +33,7 @@
               "src/marcandregoyette/feed.clj"
               "-d" "dist/source" "-f" "index.html"]]}
   :profiles {:dev
-             {:dependencies [[prone "1.0.2"]]
+             {:dependencies [[prone "1.1.1"]]
               :plugins [[michaelblume/lein-marginalia "0.9.0"]
                         [lein-ring "0.9.7" :exclusions [org.clojure/clojure]]]
               :ring {:stacktrace-middleware prone.middleware/wrap-exceptions}}})

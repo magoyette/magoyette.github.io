@@ -25,5 +25,6 @@
         "menu",
         "container"
     ],
-    "version": "2.1.7"
+    "autoInstall": true,
+    "version": "2.2.2"
 }

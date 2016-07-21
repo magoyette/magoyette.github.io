@@ -16,10 +16,12 @@
 (def solarized-light-background "#eee8d5")
 (def solarized-dark-background "#073642")
 
+(def html
+  [:html {:overflow-y "scroll"}])
+
 (def body
   [:body {:background-color grey
           :font-family ["Lato" "sans-serif"]
-          :font-size (css-units/em 1)
           :margin (css-units/px 0)
           :padding (css-units/px 0)}])
 
@@ -45,13 +47,13 @@
                    :padding-left "5%"
                    :padding-right "5%"
                    :padding-top "2.5%"}
-   [:p {:font-family "'Open Sans', sans-serif"
-        :font-size (css-units/em 0.8)}]])
+   [:p {:font-family "'Open Sans', sans-serif"}]])
 
 (def footer
   [:.footer {:font-family "'Open Sans', sans-serif"
              :font-size (css-units/em 0.7)
-             :padding-top (css-units/em 1)}])
+             :padding-top (css-units/em 1)
+             :padding-bottom (css-units/em 1)}])
 
 (def site-title
   [:.site-title [:a {:color white
@@ -63,8 +65,7 @@
   [:.ui.segment.code {:background-color solarized-light-background
                       :overflow "auto"}
    [:code {:font-family (str "Menlo, Monaco, 'DejaVu Sans Mono', Consolas, "
-                             "'Courier New', monospace")
-           :font-size (css-units/px 13)}]])
+                             "'Courier New', monospace")}]])
 
 (def label
   [:.ui.label {:color white
@@ -77,7 +78,8 @@
   [:div.disqus-comments {:padding-top (css-units/px 10)}])
 
 (def css-lines
-  [body
+  [html
+   body
    inverted-menu
    menu
    vertical-menu
@@ -92,8 +94,7 @@
    [:.ui.orange.label {:background-color coral}]
    [:a.post-title {:text-decoration "none"}]
    [:.right {:float "right"}]
-   [(css-stylesheet/at-media {:screen :only :max-width (css-units/px 768)}
-                             [:.right {:float "none"}])]])
+   [(css-stylesheet/at-media [:.right {:float "none"}])]])
 
 (defn load-custom-styles
   "Load the custom CSS of the site as a string."

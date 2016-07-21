@@ -50,16 +50,18 @@
    (enlive/html
     (for [tag (:tags metadata)]
       (let [tag-url (urls/build-tag-url tag)]
-        [:div.ui.label [:a.label {:href tag-url} tag]])))))
+        [:div.ui.large.label [:a.label {:href tag-url} tag]])))))
 
 (defn- comments-link [url single-post lang]
-  (enlive/content (enlive/html (if single-post
-                                 [:div#disqus_thread]
-                                 [:div.ui.bottom.right.attached.label
-                                  [:a {:href url}
-                                   [:i.comments.icon]
-                                   [:a {:href (str url "#disqus_thread")} ""]
-                                   [:a {:href url} (if (= lang "en") " comments" " commentaires")]]]))))
+  (enlive/content
+   (enlive/html
+    (if single-post
+      [:div#disqus_thread]
+      [:div.ui.bottom.right.attached.large.label
+       [:a {:href url}
+        [:i.comments.icon]
+        [:a {:href (str url "#disqus_thread")} ""]
+        [:a {:href url} (if (= lang "en") " comments" " commentaires")]]]))))
 
 (enlive/defsnippet single-post
   (get-post-layout-stream) [enlive/root] [url single-post metadata content]

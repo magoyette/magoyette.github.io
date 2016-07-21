@@ -76,8 +76,10 @@
    [:div.ui.segment.secondary
     [:div "Copyright \u00A9 " [:a {:href "/about"} "Marc-Andr\u00E9 Goyette"]
      [:div.right
-      "Built with Clojure, Stasis and Semantic UI ("
+      "Built with Clojure and Semantic UI ("
       [:a {:href "/source"} "Source code"]
+      " | "
+      [:a {:href "https://github.com/magoyette"} "GitHub"]
       ")"]]]])
 
 (defn- post-grid []

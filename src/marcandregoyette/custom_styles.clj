@@ -74,9 +74,6 @@
    [:a {:opacity "1"
         :text-decoration "none"}]])
 
-(def comments
-  [:div.disqus-comments {:padding-top (css-units/px 10)}])
-
 (def css-lines
   [html
    body
@@ -88,7 +85,6 @@
    label
    site-title
    code
-   comments
    [:.main.container {:margin-top (css-units/em 2)}]
    [:.ui.large.header {:color dark-grey}]
    [:.ui.orange.label {:background-color coral}]

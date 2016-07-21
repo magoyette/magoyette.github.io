@@ -52,36 +52,16 @@
       (let [tag-url (urls/build-tag-url tag)]
         [:div.ui.large.label [:a.label {:href tag-url} tag]])))))
 
-(defn- comments-link [url single-post lang]
-  (enlive/content
-   (enlive/html
-    (if single-post
-      [:div#disqus_thread]
-      [:div.ui.bottom.right.attached.large.label
-       [:a {:href url}
-        [:i.comments.icon]
-        [:a {:href (str url "#disqus_thread")} ""]
-        [:a {:href url} (if (= lang "en") " comments" " commentaires")]]]))))
-
 (enlive/defsnippet single-post
   (get-post-layout-stream) [enlive/root] [url single-post metadata content]
   [:div#post-date] (post-date-label metadata)
   [:div#category] (category-label metadata)
   [:div.post-content] (enlive/html-content content)
   [:div#tags] (tag-labels metadata)
-  [:div.disqus-comments] (comments-link url single-post (:lang metadata))
   [:h2.header] (enlive/wrap :a {:class "post-title" :href url}))
-
-(defn disqus-config [lang]
-  (format "var disqus_config = function() {this.language = \"%s\"}" lang))
 
 (defn- category-selector [category]
   (keyword (str "a#" (urls/build-category-id category))))
-
-(defn- substitute-with-disqus-config [metadata]
-  (enlive/substitute
-   (enlive/html
-    [:script {:type "text/javascript"} (disqus-config (:lang metadata))])))
 
 (enlive/deftemplate page-layout
   (get-page-layout-stream) [metadata posts-content]
@@ -89,8 +69,7 @@
   [:title] (enlive/html-content (str (:title metadata)
                                      " - Marc-Andr\u00E9 Goyette"))
   [(category-selector (:category metadata))] (enlive/add-class "active")
-  [:div#posts-container] (enlive/append posts-content)
-  [:div.disqus-config] (substitute-with-disqus-config metadata))
+  [:div#posts-container] (enlive/append posts-content))
 
 (defn- build-post-for-index-page [post-by-url]
   (let [url (key post-by-url)

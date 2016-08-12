@@ -30,7 +30,7 @@
     :id (urls/build-category-id "About")}
    {:type :icon-link
     :icon [:i.rss.large.icon]
-    :link "http://feeds.feedburner.com/marcandregoyette"
+    :link "/atom.xml"
     :title "Subscribe to the feed of this blog"}
    {:type :icon-link
     :icon [:i.code.large.icon]

@@ -1,6 +1,6 @@
 (ns marcandregoyette.page-layout
-  (:require [hiccup.element :as hiccup-element]
-            [hiccup.page :as hiccup-page]
+  (:require [hiccup.element :as element]
+            [hiccup.page :as page]
             [optimus.link :as link]
             [marcandregoyette.urls :as urls]))
 
@@ -20,7 +20,7 @@
    [:link {:type "text/css"
            :rel "stylesheet"
            :href "http://fonts.googleapis.com/css?family=Lato|Open+Sans"}]
-   (hiccup-page/include-css "/bundles/styles.css")])
+   (page/include-css "/bundles/styles.css")])
 
 (def menu-items-without-categories
   [{:type :icon-link
@@ -68,18 +68,20 @@
    [:div.ui.text.container
     [:div.item
      [:div.site-title
-      [:a {:href "/"} "Marc-Andr\u00E9 Goyette"]]]
+      (element/link-to "/" "Marc-Andr\u00E9 Goyette")]]
     (map build-menu-item (menu-items))]])
 
 (defn- footer []
   [:div.footer
    [:div.ui.segment.secondary
-    [:div "Copyright \u00A9 " [:a {:href "/about"} "Marc-Andr\u00E9 Goyette"]
+    [:div
+     "Copyright \u00A9 "
+     (element/link-to "/about" "Marc-Andr\u00E9 Goyette")
      [:div.right
       "Built with Clojure and Semantic UI ("
-      [:a {:href "/source"} "Source code"]
+      (element/link-to "/source" "Source code")
       " | "
-      [:a {:href "https://github.com/magoyette"} "GitHub"]
+      (element/link-to "https://github.com/magoyette" "GitHub")
       ")"]]]])
 
 (defn- post-grid []
@@ -88,8 +90,8 @@
    [:div (footer)]])
 
 (defn get-page-layout []
-  (hiccup-page/html5 head
-                     [:body
-                      (menu)
-                      (post-grid)
-                      [:div.additional-scripts]]))
+  (page/html5 head
+              [:body
+               (menu)
+               (post-grid)
+               [:div.additional-scripts]]))

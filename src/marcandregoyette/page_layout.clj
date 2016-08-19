@@ -19,7 +19,9 @@
    (include-meta)
    [:link {:type "text/css"
            :rel "stylesheet"
-           :href "http://fonts.googleapis.com/css?family=Lato|Open+Sans"}]
+           :href (str "http://fonts.googleapis.com/css?family=Lato"
+                      (java.net.URLEncoder/encode "|" "UTF-8")
+                      "Open+Sans")}]
    (page/include-css "/bundles/styles.css")])
 
 (def menu-items-without-categories

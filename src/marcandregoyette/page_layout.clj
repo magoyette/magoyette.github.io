@@ -73,18 +73,37 @@
       (element/link-to "/" "Marc-Andr\u00E9 Goyette")]]
     (map build-menu-item (menu-items))]])
 
+(defn get-license []
+  [:div.license-icon
+   [:a
+    {:rel "license"
+     :href "http://creativecommons.org/licenses/by-sa/4.0/"}
+    (element/image {:style "border-width:0"}
+                   "https://i.creativecommons.org/l/by-sa/4.0/88x31.png"
+                   "Creative Commons License")]
+   [:br]
+   "This work by "
+   [:a {(keyword "xmlns:cc") "http://creativecommons.org/ns#"
+        :href "http://www.marcandregoyette.com"
+        :property "cc:attributionName"
+        :rel "cc:attributionURL"}
+    "Marc-Andr\u00E9 Goyette"]
+   " is licensed under a "
+   [:a {:rel "license"
+        :href "http://creativecommons.org/licenses/by-sa/4.0/"}
+    "Creative Commons Attribution-ShareAlike 4.0 International License"]
+   "."])
+
 (defn- footer []
   [:div.footer
    [:div.ui.segment.secondary
-    [:div
-     "Copyright \u00A9 "
-     (element/link-to "/about" "Marc-Andr\u00E9 Goyette")
-     [:div.right
-      "Built with Clojure and Semantic UI ("
-      (element/link-to "/source" "Source code")
-      " | "
-      (element/link-to "https://github.com/magoyette" "GitHub")
-      ")"]]]])
+    [:div.footer-text
+     (get-license)
+     "Built with Clojure and Semantic UI ("
+     (element/link-to "/source" "Source code")
+     " | "
+     (element/link-to "https://github.com/magoyette" "GitHub")
+     ")"]]])
 
 (defn- post-grid []
   [:div.ui.main.text.container

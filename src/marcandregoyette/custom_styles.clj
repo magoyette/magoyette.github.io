@@ -50,10 +50,12 @@
    [:p {:font-family "'Open Sans', sans-serif"}]])
 
 (def footer
-  [:.footer {:font-family "'Open Sans', sans-serif"
-             :font-size (css-units/em 0.7)
-             :padding-top (css-units/em 1)
+  [:.footer {:padding-top (css-units/em 1)
              :padding-bottom (css-units/em 1)}])
+
+(def footer-text
+  [:.footer-text {:font-family "'Open Sans', sans-serif"
+                  :font-size (css-units/em 0.9)}])
 
 (def site-title
   [:.site-title [:a {:color white
@@ -82,6 +84,7 @@
    vertical-menu
    post-content
    footer
+   footer-text
    label
    site-title
    code
@@ -89,7 +92,6 @@
    [:.ui.large.header {:color dark-grey}]
    [:.ui.orange.label {:background-color coral}]
    [:a.post-title {:text-decoration "none"}]
-   [:.right {:float "right"}]
    [(css-stylesheet/at-media [:.right {:float "none"}])]])
 
 (defn load-custom-styles

@@ -53,7 +53,7 @@
         [:div.ui.large.label [:a.label {:href tag-url} tag]])))))
 
 (enlive/defsnippet single-post
-  (get-post-layout-stream) [enlive/root] [url single-post metadata content]
+  (get-post-layout-stream) [:div.ui.segment] [url metadata content]
   [:div#post-date] (post-date-label metadata)
   [:div#category] (category-label metadata)
   [:div.post-content] (enlive/html-content content)
@@ -75,7 +75,7 @@
   (let [url (key post-by-url)
         metadata (:metadata (val post-by-url))
         content (:content (val post-by-url))]
-    (single-post url false metadata content)))
+    (single-post url metadata content)))
 
 (defn- append-posts-to-index-page [posts-by-url]
   (enlive/append (map build-post-for-index-page posts-by-url)))
@@ -114,7 +114,7 @@
   (let [{:keys [metadata content]} (val post-by-url)]
     (apply str (page-layout
                 metadata
-                (single-post (key post-by-url) true metadata content)))))
+                (single-post (key post-by-url) metadata content)))))
 
 (defn add-page-layout [posts]
   (zipmap (keys posts)

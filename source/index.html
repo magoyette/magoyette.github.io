@@ -2865,8 +2865,8 @@ net.brehaut.ClojureTools = (function (SH) {
     build_tree: build_tree
   };
 })(SyntaxHighlighter);
-</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="http://www.marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.8.0</h2><br /><p>Personal website of Marc-André Goyette (http://marcandregoyette.com).</p>
-</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.8.0</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">org.clojure/tools.namespace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.11</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.12.0</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.6</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.3.2</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/cegdown</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">optimus</td><td class="dotted"><hr /></td><td class="dep-version">0.18.5</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.5.0</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.urls">marcandregoyette.urls</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
+</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="http://www.marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.9.0</h2><br /><p>Personal website of Marc-André Goyette (http://marcandregoyette.com).</p>
+</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.8.0</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">org.clojure/tools.namespace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.11</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.12.2</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.6</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.3.2</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/cegdown</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">optimus</td><td class="dotted"><hr /></td><td class="dep-version">0.19.0</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.5.0</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.urls">marcandregoyette.urls</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
 
 <p>This is the annotated source code of
 <a href="http://www.marcandregoyette.com">marcandregoyette.com</a>.</p>
@@ -3102,7 +3102,7 @@ and the source of
       (let [tag-url (urls/build-tag-url tag)]
         [:div.ui.large.label [:a.label {:href tag-url} tag]])))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(enlive/defsnippet single-post
-  (get-post-layout-stream) [enlive/root] [url single-post metadata content]
+  (get-post-layout-stream) [:div.ui.segment] [url metadata content]
   [:div#post-date] (post-date-label metadata)
   [:div#category] (category-label metadata)
   [:div.post-content] (enlive/html-content content)
@@ -3121,7 +3121,7 @@ and the source of
   (let [url (key post-by-url)
         metadata (:metadata (val post-by-url))
         content (:content (val post-by-url))]
-    (single-post url false metadata content)))</pre></td></tr><tr><td class="docs">
+    (single-post url metadata content)))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- append-posts-to-index-page [posts-by-url]
   (enlive/append (map build-post-for-index-page posts-by-url)))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- get-category [post-by-url]
@@ -3153,7 +3153,7 @@ and the source of
   (let [{:keys [metadata content]} (val post-by-url)]
     (apply str (page-layout
                 metadata
-                (single-post (key post-by-url) true metadata content)))))</pre></td></tr><tr><td class="docs">
+                (single-post (key post-by-url) metadata content)))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn add-page-layout [posts]
   (zipmap (keys posts)
           (map apply-page-layout posts)))</pre></td></tr><tr><td class="docs">
@@ -3168,8 +3168,8 @@ and the source of
                       [:div.post-content]
                       [:div#tags]]])))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.page-layout" name="marcandregoyette.page-layout"><h1 class="project-name">marcandregoyette.page-layout</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.page-layout
-  (:require [hiccup.element :as hiccup-element]
-            [hiccup.page :as hiccup-page]
+  (:require [hiccup.element :as element]
+            [hiccup.page :as page]
             [optimus.link :as link]
             [marcandregoyette.urls :as urls]))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- include-meta []
@@ -3186,8 +3186,10 @@ and the source of
    (include-meta)
    [:link {:type &quot;text/css&quot;
            :rel &quot;stylesheet&quot;
-           :href &quot;http://fonts.googleapis.com/css?family=Lato|Open+Sans&quot;}]
-   (hiccup-page/include-css &quot;/bundles/styles.css&quot;)])</pre></td></tr><tr><td class="docs">
+           :href (str &quot;http://fonts.googleapis.com/css?family=Lato&quot;
+                      (java.net.URLEncoder/encode &quot;|&quot; &quot;UTF-8&quot;)
+                      &quot;Open+Sans&quot;)}]
+   (page/include-css &quot;/bundles/styles.css&quot;)])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def menu-items-without-categories
   [{:type :icon-link
     :icon [:i.help.large.icon]
@@ -3196,7 +3198,7 @@ and the source of
     :id (urls/build-category-id &quot;About&quot;)}
    {:type :icon-link
     :icon [:i.rss.large.icon]
-    :link &quot;http://feeds.feedburner.com/marcandregoyette&quot;
+    :link &quot;/atom.xml&quot;
     :title &quot;Subscribe to the feed of this blog&quot;}
    {:type :icon-link
     :icon [:i.code.large.icon]
@@ -3230,28 +3232,48 @@ and the source of
    [:div.ui.text.container
     [:div.item
      [:div.site-title
-      [:a {:href &quot;/&quot;} &quot;Marc-Andr\u00E9 Goyette&quot;]]]
+      (element/link-to &quot;/&quot; &quot;Marc-Andr\u00E9 Goyette&quot;)]]
     (map build-menu-item (menu-items))]])</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn get-license []
+  [:div.license-icon
+   [:a
+    {:rel &quot;license&quot;
+     :href &quot;http://creativecommons.org/licenses/by-sa/4.0/&quot;}
+    (element/image {:style &quot;border-width:0&quot;}
+                   &quot;https://i.creativecommons.org/l/by-sa/4.0/88x31.png&quot;
+                   &quot;Creative Commons License&quot;)]
+   [:br]
+   &quot;This work by &quot;
+   [:a {(keyword &quot;xmlns:cc&quot;) &quot;http://creativecommons.org/ns#&quot;
+        :href &quot;http://www.marcandregoyette.com&quot;
+        :property &quot;cc:attributionName&quot;
+        :rel &quot;cc:attributionURL&quot;}
+    &quot;Marc-Andr\u00E9 Goyette&quot;]
+   &quot; is licensed under a &quot;
+   [:a {:rel &quot;license&quot;
+        :href &quot;http://creativecommons.org/licenses/by-sa/4.0/&quot;}
+    &quot;Creative Commons Attribution-ShareAlike 4.0 International License&quot;]
+   &quot;.&quot;])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- footer []
   [:div.footer
    [:div.ui.segment.secondary
-    [:div &quot;Copyright \u00A9 &quot; [:a {:href &quot;/about&quot;} &quot;Marc-Andr\u00E9 Goyette&quot;]
-     [:div.right
-      &quot;Built with Clojure and Semantic UI (&quot;
-      [:a {:href &quot;/source&quot;} &quot;Source code&quot;]
-      &quot; | &quot;
-      [:a {:href &quot;https://github.com/magoyette&quot;} &quot;GitHub&quot;]
-      &quot;)&quot;]]]])</pre></td></tr><tr><td class="docs">
+    [:div.footer-text
+     (get-license)
+     &quot;Built with Clojure and Semantic UI (&quot;
+     (element/link-to &quot;/source&quot; &quot;Source code&quot;)
+     &quot; | &quot;
+     (element/link-to &quot;https://github.com/magoyette&quot; &quot;GitHub&quot;)
+     &quot;)&quot;]]])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- post-grid []
   [:div.ui.main.text.container
    [:div#posts-container]
    [:div (footer)]])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn get-page-layout []
-  (hiccup-page/html5 head
-                     [:body
-                      (menu)
-                      (post-grid)
-                      [:div.additional-scripts]]))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.urls" name="marcandregoyette.urls"><h1 class="project-name">marcandregoyette.urls</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>Functions to build urls</h2>
+  (page/html5 head
+              [:body
+               (menu)
+               (post-grid)
+               [:div.additional-scripts]]))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.urls" name="marcandregoyette.urls"><h1 class="project-name">marcandregoyette.urls</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>Functions to build urls</h2>
 
 <p>A few functions that are used to build urls.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.urls
@@ -3319,10 +3341,11 @@ and the source of
                    :padding-top &quot;2.5%&quot;}
    [:p {:font-family &quot;'Open Sans', sans-serif&quot;}]])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def footer
-  [:.footer {:font-family &quot;'Open Sans', sans-serif&quot;
-             :font-size (css-units/em 0.7)
-             :padding-top (css-units/em 1)
+  [:.footer {:padding-top (css-units/em 1)
              :padding-bottom (css-units/em 1)}])</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(def footer-text
+  [:.footer-text {:font-family &quot;'Open Sans', sans-serif&quot;
+                  :font-size (css-units/em 0.9)}])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def site-title
   [:.site-title [:a {:color white
                      :font-size (css-units/px 20)
@@ -3347,6 +3370,7 @@ and the source of
    vertical-menu
    post-content
    footer
+   footer-text
    label
    site-title
    code
@@ -3354,7 +3378,6 @@ and the source of
    [:.ui.large.header {:color dark-grey}]
    [:.ui.orange.label {:background-color coral}]
    [:a.post-title {:text-decoration &quot;none&quot;}]
-   [:.right {:float &quot;right&quot;}]
    [(css-stylesheet/at-media [:.right {:float &quot;none&quot;}])]])</pre></td></tr><tr><td class="docs"><p>Load the custom CSS of the site as a string.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn load-custom-styles
   []

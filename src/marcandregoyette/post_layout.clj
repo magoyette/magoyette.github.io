@@ -3,7 +3,7 @@
 
 (defn get-post-layout []
   (hiccup/html (seq [[:div.ui.segment
-                      [:div#category.ui.ribbon.large.label]
-                      [:div#post-date.ui.top.right.attached.large.label]
+                      [:div.ui.ribbon.large.label.post-category]
+                      [:div.ui.top.right.attached.large.label.post-date]
                       [:div.post-content]
-                      [:div#tags]]])))
+                      [:div.post-tags]]])))

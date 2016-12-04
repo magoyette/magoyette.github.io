@@ -54,10 +54,10 @@
 
 (enlive/defsnippet single-post
   (get-post-layout-stream) [:div.ui.segment] [url metadata content]
-  [:div#post-date] (post-date-label metadata)
-  [:div#category] (category-label metadata)
+  [:div.post-date] (post-date-label metadata)
+  [:div.post-category] (category-label metadata)
   [:div.post-content] (enlive/html-content content)
-  [:div#tags] (tag-labels metadata)
+  [:div.post-tags] (tag-labels metadata)
   [:h2.header] (enlive/wrap :a {:class "post-title" :href url}))
 
 (defn- category-selector [category]

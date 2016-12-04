@@ -5,10 +5,10 @@
 (def post-layout-expected-html
   (str
    "<div class=\"ui segment\">"
-   "<div class=\"ui ribbon large label\" id=\"category\"></div>"
-   "<div class=\"ui top right attached large label\" id=\"post-date\"></div>"
+   "<div class=\"ui ribbon large label post-category\"></div>"
+   "<div class=\"ui top right attached large label post-date\"></div>"
    "<div class=\"post-content\"></div>"
-   "<div id=\"tags\"></div>"
+   "<div class=\"post-tags\"></div>"
    "</div>"))
 
 (deftest test-post-layout-html

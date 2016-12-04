@@ -2865,7 +2865,7 @@ net.brehaut.ClojureTools = (function (SH) {
     build_tree: build_tree
   };
 })(SyntaxHighlighter);
-</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="http://www.marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.9.0</h2><br /><p>Personal website of Marc-André Goyette (http://marcandregoyette.com).</p>
+</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="http://www.marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.9.1</h2><br /><p>Personal website of Marc-André Goyette (http://marcandregoyette.com).</p>
 </div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.8.0</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">org.clojure/tools.namespace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.11</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.12.2</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.6</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.3.2</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/cegdown</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">optimus</td><td class="dotted"><hr /></td><td class="dep-version">0.19.0</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.5.0</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.urls">marcandregoyette.urls</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
 
 <p>This is the annotated source code of
@@ -3103,10 +3103,10 @@ and the source of
         [:div.ui.large.label [:a.label {:href tag-url} tag]])))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(enlive/defsnippet single-post
   (get-post-layout-stream) [:div.ui.segment] [url metadata content]
-  [:div#post-date] (post-date-label metadata)
-  [:div#category] (category-label metadata)
+  [:div.post-date] (post-date-label metadata)
+  [:div.post-category] (category-label metadata)
   [:div.post-content] (enlive/html-content content)
-  [:div#tags] (tag-labels metadata)
+  [:div.post-tags] (tag-labels metadata)
   [:h2.header] (enlive/wrap :a {:class &quot;post-title&quot; :href url}))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- category-selector [category]
   (keyword (str &quot;a#&quot; (urls/build-category-id category))))</pre></td></tr><tr><td class="docs">
@@ -3163,10 +3163,10 @@ and the source of
   (:require [hiccup.core :as hiccup]))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn get-post-layout []
   (hiccup/html (seq [[:div.ui.segment
-                      [:div#category.ui.ribbon.large.label]
-                      [:div#post-date.ui.top.right.attached.large.label]
+                      [:div.ui.ribbon.large.label.post-category]
+                      [:div.ui.top.right.attached.large.label.post-date]
                       [:div.post-content]
-                      [:div#tags]]])))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.page-layout" name="marcandregoyette.page-layout"><h1 class="project-name">marcandregoyette.page-layout</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
+                      [:div.post-tags]]])))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.page-layout" name="marcandregoyette.page-layout"><h1 class="project-name">marcandregoyette.page-layout</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.page-layout
   (:require [hiccup.element :as element]
             [hiccup.page :as page]
@@ -3175,7 +3175,7 @@ and the source of
 </td><td class="codes"><pre class="brush: clojure">(defn- include-meta []
   (seq [[:meta {:charset &quot;utf-8&quot;}]
         [:meta {:http-equiv &quot;X-UA-Compatible&quot;
-                :content &quot;IE=edge,chrome=1&quot;}]
+                :content &quot;IE=edge&quot;}]
         [:meta {:name &quot;viewport&quot;
                 :content &quot;width=device-width, initial-scale=1.0&quot;}]
         [:meta {:name &quot;author&quot;

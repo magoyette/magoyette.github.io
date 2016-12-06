@@ -35,6 +35,7 @@
 (def themes-dir "themes")
 (def public-dir "public")
 (def all-public-dir [images-dir styles-dir themes-dir])
+(def cname-file "CNAME")
 (def export-dir "dist")
 
 (defn get-assets []
@@ -73,4 +74,5 @@
   []
   (stasis/empty-directory! export-dir)
   (export/save-assets (optimizations (get-assets) {}) export-dir)
-  (stasis/export-pages (pages/load-pages) export-dir))
+  (stasis/export-pages (pages/load-pages) export-dir)
+  (fs/copy (str resources-dir "/" cname-file) (str export-dir "/" cname-file)))

@@ -64,10 +64,6 @@
                            strategies/serve-live-assets)
              (ring-content-type/wrap-content-type)))
 
-(defn- copy-public-dir [subfolder]
-  (fs/copy-dir-into (fs/file "." resources-dir public-dir subfolder)
-                    (fs/file "." export-dir subfolder)))
-
 (defn export
   "Export the generated web site into an export directory.
   Intended to be called by Leiningen."

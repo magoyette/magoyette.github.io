@@ -12,21 +12,30 @@ Semantic-UI is likely to not work properly with a version of Node.js inferior to
 
 ## Building Semantic-UI
 
-[Semantic-UI](http://semantic-ui.com/) needs to be installed to build [marcandregoyette.com](http://marcandregoyette.com). This is necessary because the site uses a lightly customized version of the default theme of Semantic-UI. The [Getting Started](http://semantic-ui.com/introduction/getting-started.html) page explains how to install Semantic-UI.
+[Semantic-UI](http://semantic-ui.com/) needs to be installed to build [marcandregoyette.com](http://marcandregoyette.com). This is necessary because the site uses a lightly customized version of the default theme of Semantic-UI.
 
-Currently, it requires to:
-- install [Node](https://nodejs.org) and [npm](https://www.npmjs.com/)
-- install [Gulp](http://gulpjs.com/) globally
-```sh
+### Semantic-UI dependencies
+
+Install [Node](https://nodejs.org) and [npm](https://www.npmjs.com/).
+
+Install [Gulp](http://gulpjs.com/) globally.
+``` shell
 $ sudo npm install -g gulp
 ```
-- install Semantic-UI in the root folder of this repository
-```sh
-npm install semantic-ui --save
+
+### Install and build Semantic-UI
+
+Run the script install-semantic-ui.sh to install Semantic-UI with the settings from the /semantic-ui-site folder. /semantic-ui-folder is used to override some of the default settings of Semantic-UI without having to maintain a Semantic-UI theme or a site.
+
+``` shell
+chmod a+x ./install-semantic-ui.sh
+./install-semantic-ui.sh
 ```
+
+During the Semantic-UI installation, answer the following questions.
 ```
 Set-up Semantic UI:
-  Custom (Customize all src/dist values)
+  Automatic (Use defaults locations and all components)
 
 Is this your project folder?
   <path>/marcandregoyette.com
@@ -35,18 +44,20 @@ Is this your project folder?
 Where should we put Semantic UI inside your project?
   semantic/
 ```
-- run customize-semantic-ui.sh
-```sh
-chmod a+x ./customize-semantic-ui.sh
-./customize-semantic-ui.sh
-```
-- build Semantic-UI with Gulp
-```sh
-cd semantic/
-gulp build
-```
 
-The Semantic-UI files required by marcandregoyette.com will be exported in /resources/public/styles/ and /resources/public/themes/.
+The settings from /semantic-ui-site/semantic.json will be applied, even if the installation is done in Automatic mode.
+
+install-semantic-ui.sh will also do a build with Gulp, so there will be nothing left to do before deploying the web site.
+
+After the build, the Semantic-UI files required by marcandregoyette.com will be exported in /resources/public/styles/ and /resources/public/themes/.
+
+### Rebuilding Semantic-UI
+
+After a change to the files in /semantic-ui-site, Semantic-UI can be rebuilt with Gulp by running rebuild-semantic-ui.sh.
+``` shell
+chmod a+x ./rebuild-semantic-ui.sh
+./rebuild-semantic-ui.sh
+```
 
 ## Deploying the site locally
 

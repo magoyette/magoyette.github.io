@@ -25,7 +25,7 @@
                         second)))
 
 (defn insert-post-title [post-content post-title]
-  (str (apply str (enlive/emit* (enlive/html [:h2.ui.large.header post-title])))
+  (str (string/join (enlive/emit* (enlive/html [:h2.ui.large.header post-title])))
        post-content))
 
 (defn- transform-content [post-title post-content]

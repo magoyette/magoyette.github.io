@@ -2,6 +2,12 @@
   (:require [marcandregoyette.urls :refer :all]
             [clojure.test :refer :all]))
 
+(deftest build-category-id-test
+  (is (= (build-category-id "Programming")
+         "category-programming"))
+  (is (= (build-category-id "Object-Oriented Programming")
+         "category-object-oriented_programming")))
+
 (deftest build-category-url-test
   (is (= (build-category-url "Programming")
          "/categories/programming/")))

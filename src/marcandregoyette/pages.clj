@@ -4,7 +4,21 @@
             [marcandregoyette.posts :as posts]
             [marcandregoyette.templates :as templates]
             [marcandregoyette.urls :as urls]
+            [clj-time.core :as time]
+            [clj-time.format :as time-format]
             [stasis.core :as stasis]))
+
+(def iso-8601-date-formatter (time-format/formatters :date-time-no-ms))
+
+(defn- post-date [post]
+  (->> post
+       val
+       :metadata
+       :date
+       (time-format/parse iso-8601-date-formatter)))
+
+(defn- sort-posts [posts]
+  (reverse (sort-by post-date posts)))
 
 (defn- filter-posts [posts predicate]
   (select-keys posts (for [[url post] posts
@@ -18,7 +32,7 @@
   (some #(= tag %) (-> post :metadata :tags)))
 
 (defn- build-index-page [posts]
-  (templates/add-page-layout-many-posts posts))
+  (templates/add-page-layout-many-posts (sort-posts posts)))
 
 (defn- get-categories [posts]
   (remove #(= % "") (distinct (for [[url post] posts]
@@ -26,7 +40,7 @@
 
 (defn- get-posts-for-category [posts category]
   (templates/add-page-layout-many-posts
-   (filter-posts posts (partial has-category category))))
+   (sort-posts (filter-posts posts (partial has-category category)))))
 
 (defn- get-categories-pages [posts]
   (let [categories (get-categories posts)]
@@ -39,7 +53,7 @@
 
 (defn- get-posts-for-tag [posts tag]
   (templates/add-page-layout-many-posts
-   (filter-posts posts (partial has-tag tag))))
+   (sort-posts (filter-posts posts (partial has-tag tag)))))
 
 (defn- get-tags-pages [posts]
   (let [tags (get-tags posts)]

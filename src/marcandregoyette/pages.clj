@@ -61,13 +61,12 @@
             (map (partial get-posts-for-tag posts) tags))))
 
 (defn load-pages []
-  (let [posts (posts/build-posts "/posts" "resources/posts" #"\.md$")]
+  (let [posts (posts/build-posts "/posts" "resources/posts")]
     (stasis/merge-page-sources
      {:pages (templates/add-page-layout
-              (posts/build-posts ""  "resources/pages" #"\.md$"))
+              (posts/build-posts "" "resources/pages"))
       :posts (templates/add-page-layout posts)
       :index {"/index.html" (build-index-page posts)}
       :categories (get-categories-pages posts)
       :tags (get-tags-pages posts)
-      :other {"/atom.xml" (feed/generate-feed posts)}})))
       :other {"/atom.xml" (feed/generate-feed (sort-posts posts))}})))

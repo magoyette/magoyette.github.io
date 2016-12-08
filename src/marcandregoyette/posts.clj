@@ -12,6 +12,8 @@
 ;; Blog post.
 (defrecord Post [^PostMetadata metadata content])
 
+(def post-file-extension-regex #"\.md$")
+
 (def post-edn-header-regex #"(?is)^---(.*?)---")
 
 (defn- remove-post-metadata
@@ -64,12 +66,21 @@
      {:metadata (map->PostMetadata metadata)
       :content (generate-post-content-html (:title metadata) post)})))
 
-(defn- transform-path [export-path path file-extension-regex]
-  (str export-path (string/replace path file-extension-regex "/")))
+(defn- build-post-url-path
+  "Build the url path that is associated to a post."
+  [export-path path]
+  (str export-path (string/replace path post-file-extension-regex "/")))
 
-;; Need to add boolean for feed, could replace with configuration map
-(defn build-posts [export-path directory file-extension-regex]
-  (let [posts (stasis/slurp-directory directory file-extension-regex)]
-    (zipmap (map #(transform-path export-path % file-extension-regex)
-                 (keys posts))
+(defn- load-markdown-posts
+  "Load the markdown posts from the files in a directory."
+  [markdown-posts-directory]
+  (stasis/slurp-directory markdown-posts-directory post-file-extension-regex))
+
+(defn build-posts
+  "Loads all the posts in a directory, then build a map with the url path
+  of a post as a key, and the Post as a value. The url-path will be used
+  as an initial path to which the post path will be added."
+  [url-path markdown-posts-directory]
+  (let [posts (load-markdown-posts markdown-posts-directory)]
+    (zipmap (map #(build-post-url-path url-path %) (keys posts))
             (map make-post (vals posts)))))

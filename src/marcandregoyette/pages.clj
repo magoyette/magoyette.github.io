@@ -70,3 +70,4 @@
       :categories (get-categories-pages posts)
       :tags (get-tags-pages posts)
       :other {"/atom.xml" (feed/generate-feed posts)}})))
+      :other {"/atom.xml" (feed/generate-feed (sort-posts posts))}})))

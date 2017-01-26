@@ -7,15 +7,20 @@
 (ns marcandregoyette.feed
   (:require [clojure.data.xml :as xml]
             [clojure.string :as string]
+            [marcandregoyette.categories :as categories]
             [net.cgrand.enlive-html :as enlive]))
 
-(defn- generate-feed-entry-id [metadata]
+(defn- generate-feed-entry-id
+  "Generate a unique urn for the feed entry based on the title of the post and
+  the language of its category (to avoid name clashes when the same post is
+  translated)."
+  [metadata]
   (str "urn:marcandregoyette-com:feed:post:"
        (-> (:title metadata)
            (string/replace " " "-")
            (string/lower-case))
        "-"
-       (:lang metadata)))
+       (get-in metadata [:category :lang])))
 
 (defn- remove-post-title [post]
   (enlive/sniptest post [:h2] nil))

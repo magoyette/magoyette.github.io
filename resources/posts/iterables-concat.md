@@ -1,7 +1,6 @@
 ---
 {:title "Iterables.concat"
  :date "2014-10-12T16:00:00Z"
- :lang "en"
  :category "Programming"
  :tags ["Java" "Guava" "Clojure"]}
 ---

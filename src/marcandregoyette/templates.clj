@@ -36,7 +36,8 @@
 (defn- post-date-label [metadata]
   (if (string/blank? (:date metadata))
     (enlive/substitute (enlive/html [:div]))
-    (enlive/html-content (format-date (:date metadata) (:lang metadata)))))
+    (enlive/html-content
+     (format-date (:date metadata) (get-in metadata [:category :lang])))))
 
 (defn- category-label [metadata]
   (let [category (:category metadata)]
@@ -69,7 +70,7 @@
 
 (enlive/deftemplate page-layout
   (get-page-layout-stream) [metadata posts-content]
-  [:html] (enlive/set-attr :lang (:lang metadata))
+  [:html] (enlive/set-attr :lang (get-in metadata [:category :lang]))
   [:title] (enlive/html-content (str (:title metadata)
                                      " - Marc-Andr\u00E9 Goyette"))
   [(category-selector (:category metadata))] (enlive/add-class "active")
@@ -100,13 +101,14 @@
   (-> post-by-url
       (val)
       :metadata
+      :category
       :lang))
 
 (defn- find-language [posts-by-url]
   (let [languages (map get-language posts-by-url)]
     (if (= (count languages) 1)
       (first languages)
-      "en")))
+      (:lang (categories/get-default-category)))))
 
 (enlive/deftemplate index-page-layout (get-page-layout-stream) [posts-by-url]
   [:html] (enlive/set-attr :lang (find-language posts-by-url))

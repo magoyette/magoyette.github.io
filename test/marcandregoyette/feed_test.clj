@@ -1,5 +1,6 @@
 (ns marcandregoyette.feed-test
-  (:require [marcandregoyette.feed :refer :all]
+  (:require [marcandregoyette.categories :as categories]
+            [marcandregoyette.feed :refer :all]
             [clojure.test :refer :all]))
 
 ;; The h2 title will be removed by feed/remove-post-title
@@ -9,12 +10,18 @@
 (def post-title "Iterables.concat")
 (def post-date "2014-10-12T16:00:00Z")
 
+;; The same post in French and in English
 (def posts-by-url
   (seq
    {"/iterables.concat"
     {:metadata {:date post-date
                 :title post-title
-                :lang "en"}
+                :category (categories/->Category "A category" "en" false)}
+     :content post-content}
+    "/iterables.concat-fr"
+    {:metadata {:date post-date
+                :title post-title
+                :category (categories/->Category "Une catégorie" "fr" false)}
      :content post-content}}))
 
 (def expected-author
@@ -31,6 +38,14 @@
 
 (def expected-post-feed-entry-url
   "http://www.marcandregoyette.com/iterables.concat")
+
+(def expected-post-in-french-feed-entry-id
+  "urn:marcandregoyette-com:feed:post:iterables.concat-fr")
+
+;; The url for the post in french has the suffix -fr to avoid an url clash
+;; with the english post (that suffix comes from the markdown file)
+(def expected-post-in-french-feed-entry-url
+  "http://www.marcandregoyette.com/iterables.concat-fr")
 
 (def expected-post-entry-content
   (str
@@ -52,6 +67,16 @@
    "<author><name>" expected-author "</name></author>"
    "<link href=\"" expected-post-feed-entry-url "\"></link>"
    "<id>" expected-post-feed-entry-id "</id>"
+   "<content type=\"html\">"
+   expected-post-entry-content
+   "</content>"
+   "</entry>"
+   "<entry>"
+   "<title>" post-title "</title>"
+   "<updated>" post-date "</updated>"
+   "<author><name>" expected-author "</name></author>"
+   "<link href=\"" expected-post-in-french-feed-entry-url "\"></link>"
+   "<id>" expected-post-in-french-feed-entry-id "</id>"
    "<content type=\"html\">"
    expected-post-entry-content
    "</content>"

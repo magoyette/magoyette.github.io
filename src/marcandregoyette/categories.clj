@@ -7,10 +7,10 @@
 
 (defrecord Category [name lang hidden])
 
-(def categories [(->Category "Programming" :en false)
-                 (->Category "Programmation" :fr false)
-                 (->Category "About" :en true)
-                 (->Category "A propos" :fr true)])
+(def categories [(->Category "Programming" "en" false)
+                 (->Category "Programmation" "fr" false)
+                 (->Category "About" "en" true)
+                 (->Category "A propos" "fr" true)])
 
 (defn get-category-by-name
   "Find a category by its name."

@@ -8,7 +8,7 @@
             [stasis.core :as stasis]))
 
 ;; Metadata that describe the post.
-(defrecord PostMetadata [title date lang category tags])
+(defrecord PostMetadata [title date category tags])
 
 ;; Blog post.
 (defrecord Post [^PostMetadata metadata content])

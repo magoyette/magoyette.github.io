@@ -16,7 +16,7 @@
   ")
 
 (deftest read-post-metadata-test
-  (is (= {:category (->Category "Programming" :en false)
+  (is (= {:category (->Category "Programming" "en" false)
           :date "2014-10-12T16:00:00Z"
           :lang "en"
           :tags ["Java" "Guava" "Clojure"]

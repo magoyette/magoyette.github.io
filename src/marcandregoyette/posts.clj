@@ -1,6 +1,7 @@
 (ns marcandregoyette.posts
   (:require [clojure.string :as string]
             [clojure.tools.reader.edn :as edn]
+            [marcandregoyette.categories :as categories]
             [marcandregoyette.highlight :as highlight]
             [me.raynes.cegdown :as cegdown]
             [net.cgrand.enlive-html :as enlive]
@@ -32,14 +33,20 @@
   [content]
   (cegdown/to-html content pegdown-options))
 
-(defn- read-post-metadata
+(defn- replace-category-name-by-record
+  [metadata]
+  (let [category (categories/get-category-by-name (:category metadata))]
+    (assoc metadata :category category)))
+
+(defn read-post-metadata
   "Retrieve the metadata of a post from its content."
   [post]
-  (edn/read-string
-   (->> post
-        (re-seq post-edn-header-regex)
-        first
-        second)))
+  (replace-category-name-by-record
+   (edn/read-string
+    (->> post
+         (re-seq post-edn-header-regex)
+         first
+         second))))
 
 (defn insert-post-title
   "Insert the title of a post as a h2 header before its content."

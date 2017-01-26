@@ -1,7 +1,8 @@
 (ns marcandregoyette.templates
-  (:require [marcandregoyette.page-layout :as page-layout]
+  (:require [marcandregoyette.categories :as categories]
+            [marcandregoyette.page-layout :as page-layout]
             [marcandregoyette.post-layout :as post-layout]
-            [marcandregoyette.urls :as urls]
+            [marcandregoyette.tags :as tags]
             [clj-time.core :as time]
             [clj-time.format :as time-format]
             [clojure.string :as string]
@@ -39,17 +40,17 @@
 
 (defn- category-label [metadata]
   (let [category (:category metadata)]
-    (if (not (some #{category} urls/categories))
+    (if (not (some #{category} categories/categories))
       (enlive/substitute (enlive/html [:div]))
       (enlive/content
        (enlive/html
-        [:a {:href (urls/build-category-url category)} category])))))
+        [:a {:href (categories/build-category-url category)} (:name category)])))))
 
 (defn- tag-labels [metadata]
   (enlive/content
    (enlive/html
     (for [tag (:tags metadata)]
-      (let [tag-url (urls/build-tag-url tag)]
+      (let [tag-url (tags/build-tag-url tag)]
         [:div.ui.large.label [:a.label {:href tag-url} tag]])))))
 
 (enlive/defsnippet single-post
@@ -61,7 +62,10 @@
   [:h2.header] (enlive/wrap :a {:class "post-title" :href url}))
 
 (defn- category-selector [category]
-  (keyword (str "a#" (urls/build-category-id category))))
+  (keyword (str "a#"
+                (if category
+                  (categories/build-category-id category)
+                  nil))))
 
 (enlive/deftemplate page-layout
   (get-page-layout-stream) [metadata posts-content]
@@ -90,7 +94,7 @@
   (let [categories (map get-category posts-by-url)]
     (if (= (count categories) 1)
       (first categories)
-      urls/default-category)))
+      (categories/get-default-category))))
 
 (defn- get-language [post-by-url]
   (-> post-by-url

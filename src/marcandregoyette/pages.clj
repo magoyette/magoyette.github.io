@@ -1,9 +1,10 @@
 (ns marcandregoyette.pages
   (:require [clojure.string :as str]
+            [marcandregoyette.categories :as categories]
             [marcandregoyette.feed :as feed]
             [marcandregoyette.posts :as posts]
+            [marcandregoyette.tags :as tags]
             [marcandregoyette.templates :as templates]
-            [marcandregoyette.urls :as urls]
             [clj-time.core :as time]
             [clj-time.format :as time-format]
             [stasis.core :as stasis]))
@@ -35,8 +36,8 @@
   (templates/add-page-layout-many-posts (sort-posts posts)))
 
 (defn- get-categories [posts]
-  (remove #(= % "") (distinct (for [[url post] posts]
-                                (-> post :metadata :category)))))
+  (remove #(= (:name %) "") (distinct (for [[url post] posts]
+                                        (-> post :metadata :category)))))
 
 (defn- get-posts-for-category [posts category]
   (templates/add-page-layout-many-posts
@@ -44,7 +45,7 @@
 
 (defn- get-categories-pages [posts]
   (let [categories (get-categories posts)]
-    (zipmap (doall (map urls/build-category-url categories))
+    (zipmap (doall (map categories/build-category-url categories))
             (map (partial get-posts-for-category posts) categories))))
 
 (defn- get-tags [posts]
@@ -57,7 +58,7 @@
 
 (defn- get-tags-pages [posts]
   (let [tags (get-tags posts)]
-    (zipmap (doall (map urls/build-tag-url tags))
+    (zipmap (doall (map tags/build-tag-url tags))
             (map (partial get-posts-for-tag posts) tags))))
 
 (defn load-pages []

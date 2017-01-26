@@ -28,7 +28,8 @@
               "src/marcandregoyette/templates.clj"
               "src/marcandregoyette/post_layout.clj"
               "src/marcandregoyette/page_layout.clj"
-              "src/marcandregoyette/urls.clj"
+              "src/marcandregoyette/categories.clj"
+              "src/marcandregoyette/tags.clj"
               "src/marcandregoyette/custom_styles.clj"
               "src/marcandregoyette/feed.clj"
               "-d" "dist/source" "-f" "index.html"]]}

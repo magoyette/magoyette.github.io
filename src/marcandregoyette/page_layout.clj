@@ -2,7 +2,7 @@
   (:require [hiccup.element :as element]
             [hiccup.page :as page]
             [optimus.link :as link]
-            [marcandregoyette.urls :as urls]))
+            [marcandregoyette.categories :as categories]))
 
 (defn- include-meta []
   (seq [[:meta {:charset "utf-8"}]
@@ -29,7 +29,7 @@
     :icon [:i.help.large.icon]
     :link "/about"
     :title "About / À propos"
-    :id (urls/build-category-id "About")}
+    :id (categories/build-category-id (categories/get-category-by-name "About"))}
    {:type :icon-link
     :icon [:i.rss.large.icon]
     :link "/atom.xml"
@@ -50,9 +50,9 @@
 (defn- category-menu-item
   [category]
   {:type :text-link
-   :name category
-   :link (urls/build-category-url category)
-   :id (urls/build-category-id category)})
+   :name (:name category)
+   :link (categories/build-category-url category)
+   :id (categories/build-category-id category)})
 
 (defn- build-menu-item [item]
   (let [href {:href (:link item) :title (:title item) :id (:id item)}]
@@ -62,7 +62,7 @@
 
 (defn- menu-items []
   (concat
-   (map category-menu-item urls/categories)
+   (map category-menu-item (categories/get-visible-categories))
    menu-items-without-categories))
 
 (defn- menu []

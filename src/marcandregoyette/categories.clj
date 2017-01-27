@@ -26,7 +26,7 @@
   []
   (filter #(not (:hidden %)) categories))
 
-(defn- get-category-name-for-html
+(defn get-category-name-for-html
   [category]
   (string/lower-case (string/replace (:name category) #"\s" "_")))
 

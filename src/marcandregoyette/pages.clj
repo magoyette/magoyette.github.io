@@ -29,8 +29,20 @@
 (defn- has-category [category post]
   (= category (-> post :metadata :category)))
 
+(defn- filter-posts-by-category [posts category]
+  (filter-posts posts (partial has-category category)))
+
 (defn- has-tag [tag post]
   (some #(= tag %) (-> post :metadata :tags)))
+
+(defn- filter-posts-by-tag [posts tag]
+  (filter-posts posts (partial has-tag tag)))
+
+(defn- has-lang [lang post]
+  (= lang (-> post :metadata :category :lang)))
+
+(defn- filter-posts-by-lang [posts lang]
+  (filter-posts posts (partial has-lang lang)))
 
 (defn- build-index-page [posts]
   (templates/add-page-layout-many-posts (sort-posts posts)))
@@ -41,7 +53,7 @@
 
 (defn- get-posts-for-category [posts category]
   (templates/add-page-layout-many-posts
-   (sort-posts (filter-posts posts (partial has-category category)))))
+   (sort-posts (filter-posts-by-category posts category))))
 
 (defn- get-categories-pages [posts]
   (let [categories (get-categories posts)]
@@ -54,12 +66,58 @@
 
 (defn- get-posts-for-tag [posts tag]
   (templates/add-page-layout-many-posts
-   (sort-posts (filter-posts posts (partial has-tag tag)))))
+   (sort-posts (filter-posts-by-tag posts tag))))
 
 (defn- get-tags-pages [posts]
   (let [tags (get-tags posts)]
     (zipmap (doall (map tags/build-tag-url tags))
             (map (partial get-posts-for-tag posts) tags))))
+
+(defn- get-feed-for-lang
+  [posts lang]
+  [(str "/feeds/languages/" lang "/atom.xml")
+   (feed/generate-feed
+    (sort-posts (filter-posts-by-lang posts lang)))])
+
+(defn- generate-feeds-by-lang
+  [posts]
+  (let [languages (distinct (map :lang (categories/get-visible-categories)))]
+    (into {} (map #(get-feed-for-lang posts %) languages))))
+
+(defn- get-category-atom-feed-path [category]
+  (str "/feeds/categories/" (categories/get-category-name-for-html category) "/atom.xml"))
+
+(defn- get-feed-for-category
+  [posts category]
+  [(get-category-atom-feed-path category)
+   (feed/generate-feed
+    (sort-posts (filter-posts-by-category posts category)))])
+
+(defn- generate-feeds-by-category
+  [posts]
+  (let [categories (categories/get-visible-categories)]
+    (into {} (map #(get-feed-for-category posts %) categories))))
+
+(defn- get-tag-atom-feed-path [tag]
+  (str "/feeds/tags/" (tags/get-tag-for-html tag) "/atom.xml"))
+
+(defn- get-feed-for-tag
+  [posts tag]
+  [(get-tag-atom-feed-path tag)
+   (feed/generate-feed
+    (sort-posts (filter-posts-by-tag posts tag)))])
+
+(defn- generate-feeds-by-tag
+  [posts]
+  (let [tags (get-tags posts)]
+    (into {} (map #(get-feed-for-tag posts %) tags))))
+
+(defn- generate-feeds
+  [posts]
+  (merge {"/atom.xml" (feed/generate-feed (sort-posts posts))}
+         (generate-feeds-by-lang posts)
+         (generate-feeds-by-category posts)
+         (generate-feeds-by-tag posts)))
 
 (defn load-pages []
   (let [posts (posts/build-posts "/posts" "resources/posts")]
@@ -70,4 +128,4 @@
       :index {"/index.html" (build-index-page posts)}
       :categories (get-categories-pages posts)
       :tags (get-tags-pages posts)
-      :other {"/atom.xml" (feed/generate-feed (sort-posts posts))}})))
+      :feeds (generate-feeds posts)})))

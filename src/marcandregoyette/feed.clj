@@ -37,7 +37,7 @@
      [:title (:title metadata)]
      [:updated (:date metadata)]
      [:author [:name "Marc-Andr\u00E9 Goyette"]]
-     [:link {:href (str "http://www.marcandregoyette.com" (key urlAndPost))}]
+     [:link {:href (str "https://www.marcandregoyette.com" (key urlAndPost))}]
      [:id (generate-feed-entry-id metadata)]
      [:content {:type "html"} (generate-feed-entry-content content)]]))
 
@@ -57,5 +57,5 @@
      [:id "urn:marcandregoyette-com:feed"]
      [:updated (find-most-recent-date postsByUrl)]
      [:title {:type "text"} "Marc-Andr\u00E9 Goyette"]
-     [:link {:rel "self" :href "http://www.marcandregoyette.com/atom.xml"}]
+     [:link {:rel "self" :href "https://www.marcandregoyette.com/atom.xml"}]
      (map generate-feed-entry postsByUrl)])))

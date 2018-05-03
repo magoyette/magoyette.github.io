@@ -19,7 +19,7 @@
    (include-meta)
    [:link {:type "text/css"
            :rel "stylesheet"
-           :href (str "http://fonts.googleapis.com/css?family=Lato"
+           :href (str "https://fonts.googleapis.com/css?family=Lato"
                       (java.net.URLEncoder/encode "|" "UTF-8")
                       "Open+Sans")}]
    (page/include-css "/bundles/styles.css")])
@@ -40,7 +40,7 @@
     :title "Source code"}
    {:type :icon-link
     :icon [:i.linkedin.large.icon]
-    :link "http://www.linkedin.com/in/marcandregoyette"
+    :link "https://www.linkedin.com/in/marcandregoyette"
     :title "LinkedIn"}
    {:type :icon-link
     :icon [:i.github.alternate.large.icon]
@@ -77,20 +77,20 @@
   [:div.license-icon
    [:a
     {:rel "license"
-     :href "http://creativecommons.org/licenses/by-sa/4.0/"}
+     :href "https://creativecommons.org/licenses/by-sa/4.0/"}
     (element/image {:style "border-width:0"}
                    "https://i.creativecommons.org/l/by-sa/4.0/88x31.png"
                    "Creative Commons License")]
    [:br]
    "This work by "
-   [:a {(keyword "xmlns:cc") "http://creativecommons.org/ns#"
-        :href "http://www.marcandregoyette.com"
+   [:a {(keyword "xmlns:cc") "https://creativecommons.org/ns#"
+        :href "https://www.marcandregoyette.com"
         :property "cc:attributionName"
         :rel "cc:attributionURL"}
     "Marc-Andr\u00E9 Goyette"]
    " is licensed under a "
    [:a {:rel "license"
-        :href "http://creativecommons.org/licenses/by-sa/4.0/"}
+        :href "https://creativecommons.org/licenses/by-sa/4.0/"}
     "Creative Commons Attribution-ShareAlike 4.0 International License"]
    "."])
 

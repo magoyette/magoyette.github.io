@@ -10,6 +10,7 @@
   (hiccup/html [:div.ui.segment.code
                 [:pre
                  [:code.highlight
+                  [:span]
                   [:span.p "("]
                   [:span.nb "+ "]
                   [:span.mi "2"]
@@ -19,5 +20,5 @@
                   "\n"]]]))
 
 (deftest test-highlight-code-blocks
-  (is (= (highlight-code-blocks raw-clj-html)
-         highlighted-clj-html)))
+  (is (= highlighted-clj-html
+         (highlight-code-blocks raw-clj-html))))

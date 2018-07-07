@@ -25,7 +25,7 @@ $ sudo npm install -g gulp
 
 ### Install and build Semantic-UI
 
-Run the script install-semantic-ui.sh to install Semantic-UI with the settings from the /semantic-ui-site folder. /semantic-ui-folder is used to override some of the default settings of Semantic-UI without having to maintain a Semantic-UI theme or a site.
+Run the script `install-semantic-ui.sh` to install Semantic-UI with the settings from the /semantic-ui-site folder. /semantic-ui-folder is used to override some of the default settings of Semantic-UI without having to maintain a Semantic-UI theme or a site.
 
 ``` shell
 chmod a+x ./install-semantic-ui.sh

@@ -1,0 +1,23 @@
+{
+  "base": "semantic/",
+  "paths": {
+    "source": {
+      "config": "src/theme.config",
+      "definitions": "src/definitions/",
+      "site": "src/site/",
+      "themes": "src/themes/"
+    },
+    "output": {
+      "packaged": "../resources/public/styles/",
+      "uncompressed": "dist/components/",
+      "compressed": "dist/components/",
+      "themes": "../resources/public/themes/"
+    },
+    "clean": "dist/"
+  },
+  "components": ["header", "icon", "label", "segment", "menu", "container"],
+  "permission": false,
+  "autoInstall": true,
+  "rtl": false,
+  "version": "2.3.3"
+}

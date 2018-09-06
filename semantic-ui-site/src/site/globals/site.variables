@@ -1,6 +1,0 @@
-/*******************************
-     User Global Variables
-*******************************/
-
-/* Maximum width of an icon */
-@iconWidth : 1.3em;

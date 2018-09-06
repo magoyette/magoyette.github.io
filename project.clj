@@ -6,10 +6,10 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/data.xml "0.0.8"]
                  [org.clojure/tools.namespace "0.2.11"]
-                 [clj-time "0.14.3"]
+                 [clj-time "0.14.4"]
                  [clygments "1.0.0"]
                  [enlive "1.1.6"]
-                 [garden "1.3.5"]
+                 [garden "1.3.6"]
                  [hiccup "1.0.5"]
                  [me.raynes/cegdown "0.1.1"]
                  [me.raynes/fs "1.4.6"]
@@ -17,24 +17,28 @@
                  [ring "1.6.3"]
                  [stasis "2.3.0"]]
   :ring {:handler marcandregoyette.core/app}
-  :aliases {"export"
-            ["do"
-             ["run" "-m" "marcandregoyette.core/export"]
-             ["marg"
-              "src/marcandregoyette/core.clj"
-              "src/marcandregoyette/pages.clj"
-              "src/marcandregoyette/posts.clj"
-              "src/marcandregoyette/highlight.clj"
-              "src/marcandregoyette/templates.clj"
-              "src/marcandregoyette/post_layout.clj"
-              "src/marcandregoyette/page_layout.clj"
-              "src/marcandregoyette/categories.clj"
-              "src/marcandregoyette/tags.clj"
-              "src/marcandregoyette/custom_styles.clj"
-              "src/marcandregoyette/feed.clj"
-              "-d" "dist/source" "-f" "index.html"]]}
+  :aliases {"build-semantic" ["shell" "./build-semantic"]
+            "export" ["do"
+                      ["run" "-m" "marcandregoyette.core/export"]
+                      ["marg"
+                       "src/marcandregoyette/core.clj"
+                       "src/marcandregoyette/pages.clj"
+                       "src/marcandregoyette/posts.clj"
+                       "src/marcandregoyette/highlight.clj"
+                       "src/marcandregoyette/templates.clj"
+                       "src/marcandregoyette/post_layout.clj"
+                       "src/marcandregoyette/page_layout.clj"
+                       "src/marcandregoyette/categories.clj"
+                       "src/marcandregoyette/tags.clj"
+                       "src/marcandregoyette/custom_styles.clj"
+                       "src/marcandregoyette/feed.clj"
+                       "-d" "dist/source" "-f" "index.html"]]
+            "start" ["do" ["ring" "server"]]}
   :profiles {:dev
-             {:dependencies [[prone "1.5.2"]]
+             {:dependencies [[prone "1.6.0"]]
               :plugins [[lein-marginalia "0.9.1"]
-                        [lein-ring "0.9.7" :exclusions [org.clojure/clojure]]]
-              :ring {:stacktrace-middleware prone.middleware/wrap-exceptions}}})
+                        [lein-npm "0.6.2"]
+                        [lein-ring "0.12.4" :exclusions [org.clojure/clojure]]
+                        [lein-shell "0.5.0"]]
+              :ring {:stacktrace-middleware prone.middleware/wrap-exceptions}}}
+  :npm {:dependencies [[semantic-ui "2.3.3"]]})

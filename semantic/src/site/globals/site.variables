@@ -1,0 +1,10 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@orange: coral;
+
+@linkColor: coral;
+@linkUnderline: coral;
+@linkHoverColor: coral;
+@linkHoverUnderline: coral;

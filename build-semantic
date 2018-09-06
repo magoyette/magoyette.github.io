@@ -1,0 +1,2 @@
+#!/bin/bash
+cd semantic && gulp build-css && gulp build-assets

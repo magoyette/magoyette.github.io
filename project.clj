@@ -1,4 +1,4 @@
-(defproject marcandregoyette "0.10.1"
+(defproject marcandregoyette "0.11.0"
   :description "Personal website of Marc-Andr\u00E9 Goyette (https://marcandregoyette.com)."
   :url "https://marcandregoyette.com"
   :license {:name "Eclipse Public License"

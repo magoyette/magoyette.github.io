@@ -3,6 +3,7 @@
 ;; Syntaxic highlight of code blocks.
 (ns marcandregoyette.highlight
   (:require [clygments.core :as clygments]
+            [clojure.string :as string]
             [net.cgrand.enlive-html :as enlive])
   (:import java.io.StringReader))
 
@@ -22,10 +23,11 @@
   (let [code (->> node
                   :content
                   (apply str))
-        lang (->> node
-                  :attrs
-                  :class
-                  keyword)]
+        lang (as-> node n
+                  (:attrs n)
+                  (:class n)
+                  (string/replace-first n #"^language-" "")
+                  (keyword n))]
     (assoc node :content (-> code
                              (clygments/highlight lang :html)
                              extract-code))))

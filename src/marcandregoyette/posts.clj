@@ -3,9 +3,12 @@
             [clojure.tools.reader.edn :as edn]
             [marcandregoyette.categories :as categories]
             [marcandregoyette.highlight :as highlight]
-            [me.raynes.cegdown :as cegdown]
             [net.cgrand.enlive-html :as enlive]
-            [stasis.core :as stasis]))
+            [stasis.core :as stasis])
+  (:import com.vladsch.flexmark.ast.Node
+           com.vladsch.flexmark.html.HtmlRenderer
+           com.vladsch.flexmark.parser.Parser
+           com.vladsch.flexmark.util.options.MutableDataSet))
 
 ;; Metadata that describe the post.
 (defrecord PostMetadata [title date category tags])
@@ -22,23 +25,21 @@
   [post-content]
   (string/replace post-content post-edn-header-regex ""))
 
-(def ^:private pegdown-options
-  [:autolinks ; urls are considered as links
-   :fenced-code-blocks ; wrap code blocks with ```
-   :hardwraps ; alternate handling of new lines
-   :strikethrough]) ; ~~text~~
-
-(defn- markdown->html
+(defn- parse-markdown-to-html
   "Convert the provided markdown content to HTML."
   [content]
-  (cegdown/to-html content pegdown-options))
+  (let [parser (.build (Parser/builder))
+        renderer (.build (HtmlRenderer/builder))]
+    (->> content
+         (.parse parser)
+         (.render renderer))))
 
 (defn- replace-category-name-by-record
   [metadata]
   (let [category (categories/get-category-by-name (:category metadata))]
     (assoc metadata :category category)))
 
-(defn read-post-metadata
+(defn- read-post-metadata
   "Retrieve the metadata of a post from its content."
   [post]
   (replace-category-name-by-record
@@ -48,7 +49,7 @@
          first
          second))))
 
-(defn insert-post-title
+(defn- insert-post-title
   "Insert the title of a post as a h2 header before its content."
   [post-content post-title]
   (str (string/join (enlive/emit* (enlive/html [:h2.ui.large.header post-title])))
@@ -61,7 +62,7 @@
   [post-title post-content]
   (-> post-content
       remove-post-metadata
-      markdown->html
+      parse-markdown-to-html
       (insert-post-title post-title)
       highlight/highlight-code-blocks))
 
@@ -71,8 +72,8 @@
   (let [metadata (read-post-metadata post)]
     (map->Post
      {:metadata (map->PostMetadata metadata)
-      :content (generate-post-content-html (:title metadata) post)})))
 
+      :content (generate-post-content-html (:title metadata) post)})))
 (defn- build-post-url-path
   "Build the url path that is associated to a post."
   [export-path path]
@@ -83,11 +84,15 @@
   [markdown-posts-directory]
   (stasis/slurp-directory markdown-posts-directory post-file-extension-regex))
 
+(defn build-posts-from-stasis-map
+  [url-path posts]
+  (zipmap (map #(build-post-url-path url-path %) (keys posts))
+            (map make-post (vals posts))))
+
 (defn build-posts
   "Loads all the posts in a directory, then build a map with the url path
   of a post as a key, and the Post as a value. The url-path will be used
   as an initial path to which the post path will be added."
   [url-path markdown-posts-directory]
   (let [posts (load-markdown-posts markdown-posts-directory)]
-    (zipmap (map #(build-post-url-path url-path %) (keys posts))
-            (map make-post (vals posts)))))
+    (build-posts-from-stasis-map url-path posts)))

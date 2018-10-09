@@ -4,7 +4,7 @@
             [hiccup.core :as hiccup]))
 
 (def raw-clj-html
-  (hiccup/html [:pre [:code.clj "(+ 2 3)"]]))
+  (hiccup/html [:pre [:code.language-clojure "(+ 2 3)"]]))
 
 (def highlighted-clj-html
   (hiccup/html [:div.ui.segment.code

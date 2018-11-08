@@ -84,7 +84,7 @@
    [:br]
    "This work by "
    [:a {(keyword "xmlns:cc") "https://creativecommons.org/ns#"
-        :href "https://www.marcandregoyette.com"
+        :href "https://marcandregoyette.com"
         :property "cc:attributionName"
         :rel "cc:attributionURL"}
     "Marc-Andr\u00E9 Goyette"]

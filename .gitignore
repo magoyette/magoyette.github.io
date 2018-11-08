@@ -1,3 +1,4 @@
+.lein-failures
 dist/
 node_modules/
 package-lock.json

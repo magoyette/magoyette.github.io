@@ -2865,8 +2865,8 @@ net.brehaut.ClojureTools = (function (SH) {
     build_tree: build_tree
   };
 })(SyntaxHighlighter);
-</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="https://marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.10.1</h2><br /><p>Personal website of Marc-André Goyette (https://marcandregoyette.com).</p>
-</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.9.0</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">org.clojure/tools.namespace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.11</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.14.3</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.6</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.3.5</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/cegdown</td><td class="dotted"><hr /></td><td class="dep-version">0.1.1</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">optimus</td><td class="dotted"><hr /></td><td class="dep-version">0.20.1</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.6.3</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.categories">marcandregoyette.categories</a></li><li><a href="#marcandregoyette.tags">marcandregoyette.tags</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
+</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="https://marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.11.0</h2><br /><p>Personal website of Marc-André Goyette (https://marcandregoyette.com).</p>
+</div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.9.0</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">org.clojure/tools.namespace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.11</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.14.4</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0</td></tr><tr><td class="dep-name">com.vladsch.flexmark/flexmark</td><td class="dotted"><hr /></td><td class="dep-version">0.34.46</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.6</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.3.6</td></tr><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">1.0.5</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">optimus</td><td class="dotted"><hr /></td><td class="dep-version">0.20.1</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.6.3</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.3.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.post-layout">marcandregoyette.post-layout</a></li><li><a href="#marcandregoyette.page-layout">marcandregoyette.page-layout</a></li><li><a href="#marcandregoyette.categories">marcandregoyette.categories</a></li><li><a href="#marcandregoyette.tags">marcandregoyette.tags</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
 
 <p>This is the annotated source code of
 <a href="https://www.marcandregoyette.com">marcandregoyette.com</a>.</p>
@@ -3043,29 +3043,31 @@ and the source of
             [clojure.tools.reader.edn :as edn]
             [marcandregoyette.categories :as categories]
             [marcandregoyette.highlight :as highlight]
-            [me.raynes.cegdown :as cegdown]
             [net.cgrand.enlive-html :as enlive]
-            [stasis.core :as stasis]))</pre></td></tr><tr><td class="docs"><p>Metadata that describe the post.</p>
+            [stasis.core :as stasis])
+  (:import com.vladsch.flexmark.ast.Node
+           com.vladsch.flexmark.html.HtmlRenderer
+           com.vladsch.flexmark.parser.Parser
+           com.vladsch.flexmark.util.options.MutableDataSet))</pre></td></tr><tr><td class="docs"><p>Metadata that describe the post.</p>
 </td><td class="codes"><pre class="brush: clojure">(defrecord PostMetadata [title date category tags])</pre></td></tr><tr><td class="docs"><p>Blog post.</p>
 </td><td class="codes"><pre class="brush: clojure">(defrecord Post [^PostMetadata metadata content])</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def post-file-extension-regex #&quot;\.md$&quot;)</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(def post-edn-header-regex #&quot;(?is)^---(.*?)---&quot;)</pre></td></tr><tr><td class="docs"><p>Remove the metadata header from the content of a post.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn- remove-post-metadata
   [post-content]
-  (string/replace post-content post-edn-header-regex &quot;&quot;))</pre></td></tr><tr><td class="docs">
-</td><td class="codes"><pre class="brush: clojure">(def ^:private pegdown-options
-  [:autolinks ; urls are considered as links
-   :fenced-code-blocks ; wrap code blocks with ```
-   :hardwraps ; alternate handling of new lines
-   :strikethrough]) ; ~~text~~</pre></td></tr><tr><td class="docs"><p>Convert the provided markdown content to HTML.</p>
-</td><td class="codes"><pre class="brush: clojure">(defn- markdown-&gt;html
+  (string/replace post-content post-edn-header-regex &quot;&quot;))</pre></td></tr><tr><td class="docs"><p>Convert the provided markdown content to HTML.</p>
+</td><td class="codes"><pre class="brush: clojure">(defn- parse-markdown-to-html
   [content]
-  (cegdown/to-html content pegdown-options))</pre></td></tr><tr><td class="docs">
+  (let [parser (.build (Parser/builder))
+        renderer (.build (HtmlRenderer/builder))]
+    (-&gt;&gt; content
+         (.parse parser)
+         (.render renderer))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- replace-category-name-by-record
   [metadata]
   (let [category (categories/get-category-by-name (:category metadata))]
     (assoc metadata :category category)))</pre></td></tr><tr><td class="docs"><p>Retrieve the metadata of a post from its content.</p>
-</td><td class="codes"><pre class="brush: clojure">(defn read-post-metadata
+</td><td class="codes"><pre class="brush: clojure">(defn- read-post-metadata
   [post]
   (replace-category-name-by-record
    (edn/read-string
@@ -3073,7 +3075,7 @@ and the source of
          (re-seq post-edn-header-regex)
          first
          second))))</pre></td></tr><tr><td class="docs"><p>Insert the title of a post as a h2 header before its content.</p>
-</td><td class="codes"><pre class="brush: clojure">(defn insert-post-title
+</td><td class="codes"><pre class="brush: clojure">(defn- insert-post-title
   [post-content post-title]
   (str (string/join (enlive/emit* (enlive/html [:h2.ui.large.header post-title])))
        post-content))</pre></td></tr><tr><td class="docs"><p>Generate the html from the markdown content of a post. The edn metadata of
@@ -3083,32 +3085,38 @@ and the source of
   [post-title post-content]
   (-&gt; post-content
       remove-post-metadata
-      markdown-&gt;html
+      parse-markdown-to-html
       (insert-post-title post-title)
       highlight/highlight-code-blocks))</pre></td></tr><tr><td class="docs"><p>Build a Post from the contents of a post markdown file.</p>
+
+<p>Build the url path that is associated to a post.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn- make-post
   [post]
   (let [metadata (read-post-metadata post)]
     (map-&gt;Post
      {:metadata (map-&gt;PostMetadata metadata)
-      :content (generate-post-content-html (:title metadata) post)})))</pre></td></tr><tr><td class="docs"><p>Build the url path that is associated to a post.</p>
-</td><td class="codes"><pre class="brush: clojure">(defn- build-post-url-path
+      :content (generate-post-content-html (:title metadata) post)})))
+(defn- build-post-url-path
   [export-path path]
   (str export-path (string/replace path post-file-extension-regex &quot;/&quot;)))</pre></td></tr><tr><td class="docs"><p>Load the markdown posts from the files in a directory.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn- load-markdown-posts
   [markdown-posts-directory]
-  (stasis/slurp-directory markdown-posts-directory post-file-extension-regex))</pre></td></tr><tr><td class="docs"><p>Loads all the posts in a directory, then build a map with the url path
+  (stasis/slurp-directory markdown-posts-directory post-file-extension-regex))</pre></td></tr><tr><td class="docs">
+</td><td class="codes"><pre class="brush: clojure">(defn build-posts-from-stasis-map
+  [url-path posts]
+  (zipmap (map #(build-post-url-path url-path %) (keys posts))
+            (map make-post (vals posts))))</pre></td></tr><tr><td class="docs"><p>Loads all the posts in a directory, then build a map with the url path
   of a post as a key, and the Post as a value. The url-path will be used
   as an initial path to which the post path will be added.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn build-posts
   [url-path markdown-posts-directory]
   (let [posts (load-markdown-posts markdown-posts-directory)]
-    (zipmap (map #(build-post-url-path url-path %) (keys posts))
-            (map make-post (vals posts)))))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.highlight" name="marcandregoyette.highlight"><h1 class="project-name">marcandregoyette.highlight</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>Code highlight</h2>
+    (build-posts-from-stasis-map url-path posts)))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.highlight" name="marcandregoyette.highlight"><h1 class="project-name">marcandregoyette.highlight</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>Code highlight</h2>
 
 <p>Syntaxic highlight of code blocks.</p>
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.highlight
   (:require [clygments.core :as clygments]
+            [clojure.string :as string]
             [net.cgrand.enlive-html :as enlive])
   (:import java.io.StringReader))</pre></td></tr><tr><td class="docs"><p>Extract the highlighted code from the HTML generated by Clygments.</p>
 </td><td class="codes"><pre class="brush: clojure">(defn- extract-code
@@ -3124,10 +3132,11 @@ and the source of
   (let [code (-&gt;&gt; node
                   :content
                   (apply str))
-        lang (-&gt;&gt; node
-                  :attrs
-                  :class
-                  keyword)]
+        lang (as-&gt; node n
+                  (:attrs n)
+                  (:class n)
+                  (string/replace-first n #&quot;^language-&quot; &quot;&quot;)
+                  (keyword n))]
     (assoc node :content (-&gt; code
                              (clygments/highlight lang :html)
                              extract-code))))</pre></td></tr><tr><td class="docs"><p>Highlight the code blocks (a code element in a pre element) of the

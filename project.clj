@@ -33,6 +33,9 @@
                        "src/marcandregoyette/custom_styles.clj"
                        "src/marcandregoyette/feed.clj"
                        "-d" "dist/source" "-f" "index.html"]]
+            "deploy" ["do"
+                      ["export"]
+                      ["shell" "./deploy-to-github-pages"]]
             "start" ["do" ["ring" "server"]]}
   :profiles {:dev
              {:dependencies [[prone "1.6.0"]]

@@ -21,43 +21,58 @@ Semantic-UI is likely to not work properly with a version of Node.js inferior to
 - Install [Node](https://nodejs.org) and [npm](https://www.npmjs.com/).
 
 - Install [Gulp](http://gulpjs.com/) globally.
+
 ``` shell
 $ sudo npm install -g gulp
 ```
 
 ### Installing the dependencies
 
-Execute lein deps to download the Clojure dependencies with Leiningen and Semantic-UI with NPM.
+Execute the `deps` goal to download the Clojure dependencies with Leiningen, download Semantic-UI with NPM and build a customized version of Semantic UI.
 
 ``` shell
 lein deps
 ```
 
-### Building Semantic-UI
+### Rebuilding Semantic-UI
 
-Build Semantic UI.
+Semantic UI can be rebuilt with the `build-semantic` goal.
+This is necessary when the `semantic` folder is modified.
+Unlike `deps`, Semantic UI isn't reinstalled and Clojure dependencies aren't updated.
 
 ``` shell
 lein build-semantic
 ```
 
-After the build, the Semantic-UI files required by marcandregoyette.com will be exported in /resources/public/styles/ and /resources/public/themes/.
-
 ## Deploying the site locally
 
-To deploy the site on a local server, run the following command in the root folder of the prohject :
+To deploy the site on a local server, run the `start` goal.
+
 ```sh
-lein ring server
+lein start
 ```
 
-The Marginalia documentation won't be available, since it is only builded when the site is exported.
+The `test` goal is executed before the server is started. Failing tests will prevent the server from starting. `lein ring server` can be used to start the local server even if some tests fails.
+
+The Marginalia documentation won't be available, since it is only built when the `export` or the `deploy` goal is executed.
 
 ## Exporting the site
 
-lein export allows to generate the static site and the Marginalia documentation for its source code.
+The `export` goal allows to generate the static site and the Marginalia documentation.
+
 ```sh
 lein export
 ```
+
+## Deploying the site
+
+The `deploy` goal includes `export`, but also copies the generated static site to the path `../magoyette.github.io`. The `magoyette.github.io` repository should be set on the `master` branch and is used to commit and push the changes to GitHub pages.
+
+``` sh
+lein deploy
+```
+
+The `test` goal is executed before the `export` goal is executed. Failing tests will prevent the deployment from completing.
 
 ## License
 

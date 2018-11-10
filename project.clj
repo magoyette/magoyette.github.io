@@ -34,9 +34,12 @@
                        "src/marcandregoyette/feed.clj"
                        "-d" "dist/source" "-f" "index.html"]]
             "deploy" ["do"
+                      ["test"]
                       ["export"]
                       ["shell" "./deploy-to-github-pages"]]
-            "start" ["do" ["ring" "server"]]}
+            "start" ["do"
+                     ["test"]
+                     ["ring" "server"]]}
   :profiles {:dev
              {:dependencies [[prone "1.6.1"]]
               :plugins [[lein-marginalia "0.9.1"]

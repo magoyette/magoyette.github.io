@@ -5,7 +5,7 @@
             [marcandregoyette.highlight :as highlight]
             [net.cgrand.enlive-html :as enlive]
             [stasis.core :as stasis])
-  (:import com.vladsch.flexmark.ast.Node
+  (:import com.vladsch.flexmark.util.ast.Node
            com.vladsch.flexmark.html.HtmlRenderer
            com.vladsch.flexmark.parser.Parser
            com.vladsch.flexmark.util.options.MutableDataSet))

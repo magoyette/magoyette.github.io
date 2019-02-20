@@ -76,6 +76,6 @@ The `test` goal is executed before the `export` goal is executed. Failing tests 
 
 ## License
 
-Copyright © 2014-2018 Marc-André Goyette
+Copyright © 2014-2019 Marc-André Goyette
 
 Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.

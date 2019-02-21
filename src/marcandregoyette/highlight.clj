@@ -26,7 +26,6 @@
         lang (as-> node n
                   (:attrs n)
                   (:class n)
-                  (string/replace-first n #"^language-" "")
                   (keyword n))]
     (assoc node :content (-> code
                              (clygments/highlight lang :html)

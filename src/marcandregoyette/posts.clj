@@ -3,7 +3,6 @@
             [clojure.tools.reader.edn :as edn]
             [marcandregoyette.categories :as categories]
             [marcandregoyette.highlight :as highlight]
-            [net.cgrand.enlive-html :as enlive]
             [stasis.core :as stasis])
   (:import com.vladsch.flexmark.util.ast.Node
            com.vladsch.flexmark.html.HtmlRenderer
@@ -20,6 +19,10 @@
 
 (def post-edn-header-regex #"(?is)^---(.*?)---")
 
+(def markdown-options
+  (doto (MutableDataSet.)
+    (.set HtmlRenderer/FENCED_CODE_LANGUAGE_CLASS_PREFIX "")))
+
 (defn- remove-post-metadata
   "Remove the metadata header from the content of a post."
   [post-content]
@@ -28,8 +31,8 @@
 (defn- parse-markdown-to-html
   "Convert the provided markdown content to HTML."
   [content]
-  (let [parser (.build (Parser/builder))
-        renderer (.build (HtmlRenderer/builder))]
+  (let [parser (.build (Parser/builder markdown-options))
+        renderer (.build (HtmlRenderer/builder markdown-options))]
     (->> content
          (.parse parser)
          (.render renderer))))
@@ -49,21 +52,13 @@
          first
          second))))
 
-(defn- insert-post-title
-  "Insert the title of a post as a h2 header before its content."
-  [post-content post-title]
-  (str (string/join (enlive/emit* (enlive/html [:h2.ui.large.header post-title])))
-       post-content))
-
 (defn- generate-post-content-html
   "Generate the html from the markdown content of a post. The edn metadata of
-  the post is removed, the title of the post is added and the code blocks are
-  highlighted."
-  [post-title post-content]
+  the post is removed and the code blocks are highlighted."
+  [post-content]
   (-> post-content
       remove-post-metadata
       parse-markdown-to-html
-      (insert-post-title post-title)
       highlight/highlight-code-blocks))
 
 (defn- make-post
@@ -72,8 +67,8 @@
   (let [metadata (read-post-metadata post)]
     (map->Post
      {:metadata (map->PostMetadata metadata)
+      :content (generate-post-content-html post)})))
 
-      :content (generate-post-content-html (:title metadata) post)})))
 (defn- build-post-url-path
   "Build the url path that is associated to a post."
   [export-path path]

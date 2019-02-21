@@ -3,9 +3,8 @@
             [marcandregoyette.feed :refer :all]
             [clojure.test :refer :all]))
 
-;; The h2 title will be removed by feed/remove-post-title
 (def post-content
-  "<html><body><h2>A title</h2><p>A post about something.</p></body></html>")
+  "<html><body><p>A post about something.</p></body></html>")
 
 (def post-title "Iterables.concat")
 (def post-date "2014-10-12T16:00:00Z")

@@ -7,8 +7,7 @@
 (ns marcandregoyette.feed
   (:require [clojure.data.xml :as xml]
             [clojure.string :as string]
-            [marcandregoyette.categories :as categories]
-            [net.cgrand.enlive-html :as enlive]))
+            [marcandregoyette.categories :as categories]))
 
 (defn- generate-feed-entry-id
   "Generate a unique urn for the feed entry based on the title of the post and
@@ -22,12 +21,6 @@
        "-"
        (get-in metadata [:category :lang])))
 
-(defn- remove-post-title [post]
-  (enlive/sniptest post [:h2] nil))
-
-(defn- generate-feed-entry-content [content]
-  (remove-post-title content))
-
 (defn- generate-feed-entry
   "Builds the XML of an Atom feed entry for a post."
   [urlAndPost]
@@ -39,7 +32,7 @@
      [:author [:name "Marc-Andr\u00E9 Goyette"]]
      [:link {:href (str "https://www.marcandregoyette.com" (key urlAndPost))}]
      [:id (generate-feed-entry-id metadata)]
-     [:content {:type "html"} (generate-feed-entry-content content)]]))
+     [:content {:type "html"} content]]))
 
 (defn- find-most-recent-date [postsByUrl]
   (-> postsByUrl

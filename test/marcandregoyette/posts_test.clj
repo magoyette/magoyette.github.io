@@ -2,7 +2,7 @@
   (:require [marcandregoyette.categories :refer :all]
             [marcandregoyette.posts :refer :all]
             [clojure.test :refer :all]
-            [hiccup.core :as hiccup]))
+            [rum.core :as rum]))
 
 (def an-unparsed-post-without-code-blocks
   {"/a-post-without-code-blocks"
@@ -16,9 +16,8 @@
 A simple post without code blocks."})
 
 (def a-post-without-code-blocks-html
-  (hiccup/html [:h2.ui.large.header "A post without code blocks"]
-               [:p "A simple post without code blocks."]
-               "\n"))
+  (str (rum/render-static-markup [:p "A simple post without code blocks."])
+       "\n"))
 
 (def a-parsed-post-without-code-blocks
   {"/posts/a-post-without-code-blocks"
@@ -63,45 +62,49 @@ Try Clojure syntax highlight.
 ```"})
 
 (def a-post-with-code-blocks-html
-  (hiccup/html [:h2.ui.large.header "A post with code blocks"]
-               [:p "Try Java syntax highlight."]
-               "\n"
-               [:div.ui.segment.code
-                [:pre
-                 [:code.highlight
-                  [:span]
-                  [:span.kt "int"]
-                  " "
-                  [:span.n "count"]
-                  " "
-                  [:span.o "="]
-                  " "
-                  [:span.mi "5"]
-                  " "
-                  [:span.o "*"]
-                  " "
-                  [:span.mi "2"]
-                  [:span.o ";"]
-                  "\n"]]]
-               "\n"
-               [:p "Try Clojure syntax highlight."]
-               "\n"
-               [:div.ui.segment.code
-                [:pre
-                 [:code.highlight
-                  [:span]
-                  [:span.p "("]
-                  [:span.k "def "]
-                  [:span.nv "expr"]
-                  " "
-                  [:span.p "("]
-                  [:span.nb "+ "]
-                  [:span.mi "2"]
-                  " "
-                  [:span.mi "3"]
-                  [:span.p "))"]
-                  "\n"]]]
-               "\n"))
+  (str
+   (rum/render-static-markup
+    [:p "Try Java syntax highlight."])
+   "\n"
+   (rum/render-static-markup
+    [:div.ui.segment.code
+     [:pre
+      [:code.highlight
+       [:span]
+       [:span.kt "int"]
+       " "
+       [:span.n "count"]
+       " "
+       [:span.o "="]
+       " "
+       [:span.mi "5"]
+       " "
+       [:span.o "*"]
+       " "
+       [:span.mi "2"]
+       [:span.o ";"]
+       "\n"]]])
+    "\n"
+    (rum/render-static-markup
+     [:p "Try Clojure syntax highlight."])
+    "\n"
+    (rum/render-static-markup
+     [:div.ui.segment.code
+      [:pre
+       [:code.highlight
+        [:span]
+        [:span.p "("]
+        [:span.k "def "]
+        [:span.nv "expr"]
+        " "
+        [:span.p "("]
+        [:span.nb "+ "]
+        [:span.mi "2"]
+        " "
+        [:span.mi "3"]
+        [:span.p "))"]
+        "\n"]]])
+    "\n"))
 
 (def a-parsed-post-with-code-blocks
   {"/posts/a-parsed-post-with-code-blocks"

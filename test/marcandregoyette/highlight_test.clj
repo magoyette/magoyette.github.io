@@ -1,13 +1,13 @@
 (ns marcandregoyette.highlight-test
   (:require [marcandregoyette.highlight :refer :all]
             [clojure.test :refer :all]
-            [hiccup.core :as hiccup]))
+            [rum.core :as rum]))
 
 (def raw-clj-html
-  (hiccup/html [:pre [:code.language-clojure "(+ 2 3)"]]))
+  (rum/render-static-markup [:pre [:code.clojure "(+ 2 3)"]]))
 
 (def highlighted-clj-html
-  (hiccup/html [:div.ui.segment.code
+  (rum/render-static-markup [:div.ui.segment.code
                 [:pre
                  [:code.highlight
                   [:span]

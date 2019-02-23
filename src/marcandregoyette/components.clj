@@ -142,13 +142,7 @@
            :src "https://i.creativecommons.org/l/by-sa/4.0/88x31.png"
            :style {:border-width 0}}]]
    [:br]
-   "This work by "
-   [:a {(keyword "xmlns:cc") "https://creativecommons.org/ns#"
-        :href "https://marcandregoyette.com"
-        :property "cc:attributionName"
-        :rel "cc:attributionURL"}
-    "Marc-Andr\u00E9 Goyette"]
-   " is licensed under a "
+   "This work by Marc-Andr\u00E9 Goyette is licensed under a "
    [:a {:rel "license"
         :href "https://creativecommons.org/licenses/by-sa/4.0/"}
     "Creative Commons Attribution-ShareAlike 4.0 International License"]

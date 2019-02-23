@@ -2865,7 +2865,7 @@ net.brehaut.ClojureTools = (function (SH) {
     build_tree: build_tree
   };
 })(SyntaxHighlighter);
-</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="https://marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.16.0</h2><br /><p>Personal website of Marc-André Goyette (https://marcandregoyette.com).</p>
+</script><title>marcandregoyette -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name"><a href="https://marcandregoyette.com">marcandregoyette</a></h1><h2 class="project-version">0.16.1</h2><br /><p>Personal website of Marc-André Goyette (https://marcandregoyette.com).</p>
 </div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">org.clojure/clojure</td><td class="dotted"><hr /></td><td class="dep-version">1.10.0</td></tr><tr><td class="dep-name">org.clojure/data.xml</td><td class="dotted"><hr /></td><td class="dep-version">0.0.8</td></tr><tr><td class="dep-name">org.clojure/tools.namespace</td><td class="dotted"><hr /></td><td class="dep-version">0.2.11</td></tr><tr><td class="dep-name">org.clojure/tools.reader</td><td class="dotted"><hr /></td><td class="dep-version">1.3.2</td></tr><tr><td class="dep-name">clj-time</td><td class="dotted"><hr /></td><td class="dep-version">0.15.1</td></tr><tr><td class="dep-name">clygments</td><td class="dotted"><hr /></td><td class="dep-version">1.0.0</td></tr><tr><td class="dep-name">com.vladsch.flexmark/flexmark</td><td class="dotted"><hr /></td><td class="dep-version">0.40.16</td></tr><tr><td class="dep-name">enlive</td><td class="dotted"><hr /></td><td class="dep-version">1.1.6</td></tr><tr><td class="dep-name">garden</td><td class="dotted"><hr /></td><td class="dep-version">1.3.6</td></tr><tr><td class="dep-name">me.raynes/fs</td><td class="dotted"><hr /></td><td class="dep-version">1.4.6</td></tr><tr><td class="dep-name">optimus</td><td class="dotted"><hr /></td><td class="dep-version">0.20.2</td></tr><tr><td class="dep-name">ring</td><td class="dotted"><hr /></td><td class="dep-version">1.7.1</td></tr><tr><td class="dep-name">rum</td><td class="dotted"><hr /></td><td class="dep-version">0.11.3</td></tr><tr><td class="dep-name">stasis</td><td class="dotted"><hr /></td><td class="dep-version">2.4.0</td></tr></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#marcandregoyette.core">marcandregoyette.core</a></li><li><a href="#marcandregoyette.pages">marcandregoyette.pages</a></li><li><a href="#marcandregoyette.posts">marcandregoyette.posts</a></li><li><a href="#marcandregoyette.highlight">marcandregoyette.highlight</a></li><li><a href="#marcandregoyette.templates">marcandregoyette.templates</a></li><li><a href="#marcandregoyette.components">marcandregoyette.components</a></li><li><a href="#marcandregoyette.categories">marcandregoyette.categories</a></li><li><a href="#marcandregoyette.tags">marcandregoyette.tags</a></li><li><a href="#marcandregoyette.custom-styles">marcandregoyette.custom-styles</a></li><li><a href="#marcandregoyette.feed">marcandregoyette.feed</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.core" name="marcandregoyette.core"><h1 class="project-name">marcandregoyette.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>A static site generated with Stasis</h2>
 
 <p>This is the annotated source code of
@@ -3142,15 +3142,15 @@ and the source of
                    [:pre :code] #(assoc-in % [:attrs :class] &quot;highlight&quot;)
                    [:pre] (enlive/wrap :div {:class &quot;ui segment code&quot;})))</pre></td></tr><tr><td class="spacer docs">&nbsp;</td><td class="codes" /></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#marcandregoyette.templates" name="marcandregoyette.templates"><h1 class="project-name">marcandregoyette.templates</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(ns marcandregoyette.templates
-  (:require [marcandregoyette.categories :as categories]
+  (:require [clojure.string :as string]
+            [marcandregoyette.categories :as categories]
             [marcandregoyette.components :as components]
             [rum.core :as rum])
   (:import java.io.StringReader))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- category-selector [category]
   (keyword (str &quot;a#&quot;
-                (if category
-                  (categories/build-category-id category)
-                  nil))))</pre></td></tr><tr><td class="docs">
+                (when category
+                  (categories/build-category-id category)))))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- build-page-layout [metadata posts-content]
   (let [title (str (:title metadata) &quot; - Marc-Andr\u00E9 Goyette&quot;)
         lang (get-in metadata [:category :lang])
@@ -3164,7 +3164,7 @@ and the source of
         content (:content (val post-by-url))]
     (get-single-post url metadata content)))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- get-posts-for-index-page [posts-by-url]
-  (apply str (map build-post-for-index-page posts-by-url)))</pre></td></tr><tr><td class="docs">
+  (string/join (map build-post-for-index-page posts-by-url)))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn- get-category [post-by-url]
   (-&gt; post-by-url
       (val)
@@ -3239,7 +3239,7 @@ and the source of
         tags (:tags metadata)]
     [:div.ui.segment
      [:div.ui.ribbon.large.label.post-category
-      (if (not (some #{category} categories/categories))
+      (if (not-any? #{category} categories/categories)
         [:div]
         [:a {:href (categories/build-category-url category)} (:name category)])]
      (if (string/blank? date)
@@ -3374,7 +3374,7 @@ share the same language.</p>
   (get-category-by-name &quot;Programming&quot;))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn get-visible-categories
   []
-  (filter #(not (:hidden %)) categories))</pre></td></tr><tr><td class="docs">
+  (remove :hidden categories))</pre></td></tr><tr><td class="docs">
 </td><td class="codes"><pre class="brush: clojure">(defn get-category-name-for-html
   [category]
   (string/lower-case (string/replace (:name category) #&quot;\s&quot; &quot;_&quot;)))</pre></td></tr><tr><td class="docs"><p>Build an HTML element id to identify a category.</p>

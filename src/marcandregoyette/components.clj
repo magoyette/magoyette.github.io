@@ -145,7 +145,7 @@
    "This work by Marc-Andr\u00E9 Goyette is licensed under a "
    [:a {:rel "license"
         :href "https://creativecommons.org/licenses/by-sa/4.0/"}
-    "Creative Commons Attribution-ShareAlike 4.0 International License"]
+    "Creative Commons License"]
    "."])
 
 (defn- footer []
@@ -153,11 +153,8 @@
    [:div.ui.segment.secondary
     [:div.footer-text
      (get-license)
-     "Built with Clojure and Semantic UI ("
-     [:a {:href "/source"} "Source code"]
-     " | "
-     [:a {:href "https://github.com/magoyette"} "GitHub"]
-     ")"]]])
+     "Opinions and views expressed on this site are solely my own, "
+     "not those of my present or past employers."]]])
 
 (defn- post-grid [posts-content]
   [:div.ui.main.text.container

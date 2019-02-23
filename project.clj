@@ -1,4 +1,4 @@
-(defproject marcandregoyette "0.14.1"
+(defproject marcandregoyette "0.15.0"
   :description "Personal website of Marc-Andr\u00E9 Goyette (https://marcandregoyette.com)."
   :url "https://marcandregoyette.com"
   :license {:name "Eclipse Public License"
@@ -19,27 +19,30 @@
                  [stasis "2.4.0"]]
   :ring {:handler marcandregoyette.core/app}
   :aliases {"build-semantic" ["shell" "./build-semantic"]
+            "build-source-page" ["do"
+                                 ["marg"
+                                  "src/marcandregoyette/core.clj"
+                                  "src/marcandregoyette/pages.clj"
+                                  "src/marcandregoyette/posts.clj"
+                                  "src/marcandregoyette/highlight.clj"
+                                  "src/marcandregoyette/templates.clj"
+                                  "src/marcandregoyette/components.clj"
+                                  "src/marcandregoyette/categories.clj"
+                                  "src/marcandregoyette/tags.clj"
+                                  "src/marcandregoyette/custom_styles.clj"
+                                  "src/marcandregoyette/feed.clj"
+                                  "-d" "dist/source" "-f" "index.html"]]
+            "start" ["do"
+                     ["test"]
+                     ["build-source-page"]
+                     ["ring" "server"]]
             "export" ["do"
                       ["run" "-m" "marcandregoyette.core/export"]
-                      ["marg"
-                       "src/marcandregoyette/core.clj"
-                       "src/marcandregoyette/pages.clj"
-                       "src/marcandregoyette/posts.clj"
-                       "src/marcandregoyette/highlight.clj"
-                       "src/marcandregoyette/templates.clj"
-                       "src/marcandregoyette/components.clj"
-                       "src/marcandregoyette/categories.clj"
-                       "src/marcandregoyette/tags.clj"
-                       "src/marcandregoyette/custom_styles.clj"
-                       "src/marcandregoyette/feed.clj"
-                       "-d" "dist/source" "-f" "index.html"]]
+                      ["build-source-page"]]
             "deploy" ["do"
                       ["test"]
                       ["export"]
-                      ["shell" "./deploy-to-github-pages"]]
-            "start" ["do"
-                     ["test"]
-                     ["ring" "server"]]}
+                      ["shell" "./deploy-to-github-pages"]]}
   :profiles {:dev
              {:dependencies [[prone "1.6.1"]]
               :plugins [[lein-marginalia "0.9.1"]

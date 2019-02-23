@@ -24,7 +24,7 @@
 
 (defn get-visible-categories
   []
-  (filter #(not (:hidden %)) categories))
+  (remove :hidden categories))
 
 (defn get-category-name-for-html
   [category]

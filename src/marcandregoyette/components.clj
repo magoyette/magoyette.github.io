@@ -43,7 +43,7 @@
         tags (:tags metadata)]
     [:div.ui.segment
      [:div.ui.ribbon.large.label.post-category
-      (if (not (some #{category} categories/categories))
+      (if (not-any? #{category} categories/categories)
         [:div]
         [:a {:href (categories/build-category-url category)} (:name category)])]
      (if (string/blank? date)

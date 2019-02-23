@@ -1,14 +1,14 @@
 (ns marcandregoyette.templates
-  (:require [marcandregoyette.categories :as categories]
+  (:require [clojure.string :as string]
+            [marcandregoyette.categories :as categories]
             [marcandregoyette.components :as components]
             [rum.core :as rum])
   (:import java.io.StringReader))
 
 (defn- category-selector [category]
   (keyword (str "a#"
-                (if category
-                  (categories/build-category-id category)
-                  nil))))
+                (when category
+                  (categories/build-category-id category)))))
 
 (defn- build-page-layout [metadata posts-content]
   (let [title (str (:title metadata) " - Marc-Andr\u00E9 Goyette")
@@ -26,7 +26,7 @@
     (get-single-post url metadata content)))
 
 (defn- get-posts-for-index-page [posts-by-url]
-  (apply str (map build-post-for-index-page posts-by-url)))
+  (string/join (map build-post-for-index-page posts-by-url)))
 
 (defn- get-category [post-by-url]
   (-> post-by-url

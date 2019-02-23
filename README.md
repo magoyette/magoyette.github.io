@@ -1,6 +1,6 @@
 # marcandregoyette.com
 
-The source code of my personal web site. It's a static site written in the Clojure programming language and generated with the help of Stasis.
+The source code of my personal web site. It's a static site written in the Clojure programming language.
 
 ## Compatibility
 
@@ -8,13 +8,11 @@ marcandregoyette.com currently cannot be built on Windows and on some Linux dist
 
 This site has never been built with Mac OS X, so compatibility is unknown.
 
-Semantic-UI is likely to not work properly with a version of Node.js inferior to 0.12 (there's some workarounds to make it work with 0.10).
-
 ### Clojure environment
 
 - Install a Java 8 JVM.
 
-- Install Leiningen.
+- Install Leiningen (version should be at least 2.9.0).
 
 ### Node environment
 
@@ -52,9 +50,11 @@ To deploy the site on a local server, run the `start` goal.
 lein start
 ```
 
-The `test` goal is executed before the server is started. Failing tests will prevent the server from starting. `lein ring server` can be used to start the local server even if some tests fails.
+The `test` goal is executed before the server is started. Failing tests will prevent the server from starting.
 
-The Marginalia documentation won't be available, since it is only built when the `export` or the `deploy` goal is executed.
+The `build-source-page` goal is also executed before the server is started. It generates the Marginalia documentation to verify that the generation succeeds, but that documentation isn't available to browse on the local server.
+
+`lein ring server` can be used to start the local server without running `test`.
 
 ## Exporting the site
 

@@ -1,10 +1,10 @@
 ;; ## A static site generated with Stasis
 ;;
 ;; This is the annotated source code of
-;; [marcandregoyette.com](https://www.marcandregoyette.com).
+;; [marcandregoyette.com](https://marcandregoyette.com).
 ;;
 ;; The full source code, including project.clj and the tests is available at
-;; the [GitHub repository](https://github.com/magoyette/marcandregoyette.com-old).
+;; the [GitHub repository](https://github.com/magoyette/magoyette.github.io).
 ;;
 ;; This website is written in Clojure and generated with the help of
 ;; [Stasis](https://github.com/magnars/stasis).

@@ -30,13 +30,13 @@
   "urn:marcandregoyette-com:feed")
 
 (def expected-feed-url
-  "https://www.marcandregoyette.com/atom.xml")
+  "https://marcandregoyette.com/atom.xml")
 
 (def expected-post-feed-entry-id
   "urn:marcandregoyette-com:feed:post:iterables.concat-en")
 
 (def expected-post-feed-entry-url
-  "https://www.marcandregoyette.com/iterables.concat")
+  "https://marcandregoyette.com/iterables.concat")
 
 (def expected-post-in-french-feed-entry-id
   "urn:marcandregoyette-com:feed:post:iterables.concat-fr")
@@ -44,7 +44,7 @@
 ;; The url for the post in french has the suffix -fr to avoid an url clash
 ;; with the english post (that suffix comes from the markdown file)
 (def expected-post-in-french-feed-entry-url
-  "https://www.marcandregoyette.com/iterables.concat-fr")
+  "https://marcandregoyette.com/iterables.concat-fr")
 
 (def expected-post-entry-content
   (str

@@ -1,4 +1,4 @@
-(defproject marcandregoyette "0.16.5"
+(defproject marcandregoyette "0.17.0"
   :description "Personal website of Marc-Andr\u00E9 Goyette (https://marcandregoyette.com)."
   :url "https://marcandregoyette.com"
   :license {:name "Eclipse Public License"
@@ -11,7 +11,6 @@
                  [com.vladsch.flexmark/flexmark "0.40.16"]
                  [enlive "1.1.6"]
                  [garden "1.3.6"]
-                 [me.raynes/fs "1.4.6"]
                  [optimus "0.20.2"]
                  [ring "1.7.1"]
                  [rum "0.11.3" :exclusions [cljsjs/react cljsjs/react-dom sablono]]

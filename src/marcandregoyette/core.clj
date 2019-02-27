@@ -17,7 +17,7 @@
 (ns marcandregoyette.core
   (:require [marcandregoyette.custom-styles :as custom-styles]
             [marcandregoyette.pages :as pages]
-            [me.raynes.fs :as fs]
+            [clojure.java.io :as io]
             [optimus.prime :as optimus]
             [optimus.assets :as assets]
             [optimus.export :as export]
@@ -71,4 +71,5 @@
   (stasis/empty-directory! export-dir)
   (export/save-assets (optimizations (get-assets) {}) export-dir)
   (stasis/export-pages (pages/load-pages) export-dir)
-  (fs/copy (str resources-dir "/" cname-file) (str export-dir "/" cname-file)))
+  (io/copy (io/file (str resources-dir "/" cname-file))
+           (io/file (str export-dir "/" cname-file))))

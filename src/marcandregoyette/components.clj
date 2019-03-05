@@ -63,9 +63,7 @@
    (include-meta)
    [:link {:type "text/css"
            :rel "stylesheet"
-           :href (str "https://fonts.googleapis.com/css?family=Lato"
-                      (java.net.URLEncoder/encode "|" "UTF-8")
-                      "Open+Sans")}]
+           :href (str "https://fonts.googleapis.com/css?family=Open+Sans")}]
       [:link {:type "text/css"
            :rel "stylesheet"
            :href "/bundles/styles.css"}]])

@@ -16,6 +16,12 @@
 (def solarized-light-background "#eee8d5")
 (def solarized-dark-background "#073642")
 
+(def lato-font
+  ["@font-face" {:font-family "Lato"
+                 :font-style "normal"
+                 :font-weight 400
+                 :src "url('../fonts/lato-regular.woff2') format('woff2')"}])
+
 (def html
   [:html {:overflow-y "scroll"}])
 
@@ -77,7 +83,8 @@
         :text-decoration "none"}]])
 
 (def css-lines
-  [html
+  [lato-font
+   html
    body
    inverted-menu
    menu

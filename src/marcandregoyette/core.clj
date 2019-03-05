@@ -45,7 +45,8 @@
                        ["/styles/semantic.min.css"
                         "/styles/solarized-light.css"])
    (assets/load-assets "public"
-                       [#"/images/.*\.png"
+                       [#"/fonts/*"
+                        #"/images/.*\.png"
                         #"/themes/*"])
    [{:path "/styles/custom-styles.css"
      :contents (custom-styles/load-custom-styles)

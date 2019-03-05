@@ -1,28 +1,17 @@
 (ns marcandregoyette.components
   (:require [marcandregoyette.categories :as categories]
             [marcandregoyette.tags :as tags]
-            [clj-time.core :as time]
-            [clj-time.format :as time-format]
             [clojure.string :as string]
             [rum.core :as rum])
-  (:import java.util.Locale))
-
-(def iso-8601-date-formatter (time-format/formatters :date-time-no-ms))
-
-(def en-date-formatter
-  (time-format/with-locale
-    (time-format/formatter "dd MMMM YYYY") Locale/CANADA))
-
-(def fr-date-formatter
-  (time-format/with-locale
-    (time-format/formatter "dd MMMM YYYY") Locale/CANADA_FRENCH))
+  (:import java.time.OffsetDateTime
+           java.time.format.DateTimeFormatter
+           java.util.Locale))
 
 (defn- format-date
   [date language]
-  (->> date
-       (time-format/parse iso-8601-date-formatter)
-       (time-format/unparse
-        (if (= language "fr") fr-date-formatter en-date-formatter))))
+  (let [locale (if (= language "fr") Locale/CANADA_FRENCH Locale/CANADA)]
+    (->> (OffsetDateTime/parse date DateTimeFormatter/ISO_DATE_TIME)
+         (.format (DateTimeFormatter/ofPattern "dd MMMM YYYY" locale)))))
 
 (rum/defc post-content [url metadata content]
   [:div.post-content

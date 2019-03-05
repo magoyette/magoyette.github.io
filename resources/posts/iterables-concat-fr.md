@@ -1,6 +1,6 @@
 ---
 {:title "Iterables.concat"
- :date "2019-02-23T15:35:00Z"
+ :date "2019-02-24T15:35:00Z"
  :category "Programmation"
  :tags ["Java" "Guava"]}
 ---

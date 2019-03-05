@@ -5,18 +5,16 @@
             [marcandregoyette.posts :as posts]
             [marcandregoyette.tags :as tags]
             [marcandregoyette.templates :as templates]
-            [clj-time.core :as time]
-            [clj-time.format :as time-format]
-            [stasis.core :as stasis]))
-
-(def iso-8601-date-formatter (time-format/formatters :date-time-no-ms))
+            [stasis.core :as stasis])
+  (:import java.time.OffsetDateTime
+           java.time.format.DateTimeFormatter))
 
 (defn- post-date [post]
-  (->> post
-       val
-       :metadata
-       :date
-       (time-format/parse iso-8601-date-formatter)))
+  (-> post
+      val
+      :metadata
+      :date
+      (OffsetDateTime/parse DateTimeFormatter/ISO_DATE_TIME)))
 
 (defn- sort-posts [posts]
   (reverse (sort-by post-date posts)))

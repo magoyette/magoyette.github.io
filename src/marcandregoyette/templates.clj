@@ -2,8 +2,7 @@
   (:require [clojure.string :as string]
             [marcandregoyette.categories :as categories]
             [marcandregoyette.components :as components]
-            [rum.core :as rum])
-  (:import java.io.StringReader))
+            [rum.core :as rum]))
 
 (defn- category-selector [category]
   (keyword (str "a#"

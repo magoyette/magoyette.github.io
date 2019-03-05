@@ -1,4 +1,4 @@
-(defproject marcandregoyette "0.17.0"
+(defproject marcandregoyette "0.18.0"
   :description "Personal website of Marc-Andr\u00E9 Goyette (https://marcandregoyette.com)."
   :url "https://marcandregoyette.com"
   :license {:name "Eclipse Public License"
@@ -6,9 +6,8 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/data.xml "0.0.8"]
                  [org.clojure/tools.reader "1.3.2"]
-                 [clj-time "0.15.1"]
                  [clygments "1.0.0"]
-                 [com.vladsch.flexmark/flexmark "0.40.16"]
+                 [com.vladsch.flexmark/flexmark "0.40.18"]
                  [enlive "1.1.6"]
                  [garden "1.3.6"]
                  [optimus "0.20.2"]

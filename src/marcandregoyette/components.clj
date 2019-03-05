@@ -63,9 +63,6 @@
    (include-meta)
    [:link {:type "text/css"
            :rel "stylesheet"
-           :href (str "https://fonts.googleapis.com/css?family=Open+Sans")}]
-      [:link {:type "text/css"
-           :rel "stylesheet"
            :href "/bundles/styles.css"}]])
 
 (def menu-items-without-categories

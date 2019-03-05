@@ -17,10 +17,18 @@
 (def solarized-dark-background "#073642")
 
 (def lato-font
-  ["@font-face" {:font-family "Lato"
-                 :font-style "normal"
-                 :font-weight 400
-                 :src "url('../fonts/lato-regular.woff2') format('woff2')"}])
+  ["@font-face"
+   {:font-family "Lato"
+    :font-style "normal"
+    :font-weight 400
+    :src "url('../fonts/lato-regular.woff2') format('woff2')"}])
+
+(def open-sans-font
+  ["@font-face"
+   {:font-family "Open Sans"
+    :font-style "normal"
+    :font-weight 400
+    :src "url('../fonts/open-sans-latin-regular.woff2') format('woff2')"}])
 
 (def html
   [:html {:overflow-y "scroll"}])
@@ -84,6 +92,7 @@
 
 (def css-lines
   [lato-font
+   open-sans-font
    html
    body
    inverted-menu

@@ -18,7 +18,8 @@
       first
       :content))
 
-(defn- pygments-script [lang]
+(defn- pygments-script
+  [lang]
   (str "from pygments import highlight\n"
        "from pygments.lexers import get_lexer_by_name\n"
        "from pygments.formatters import HtmlFormatter\n"
@@ -27,13 +28,16 @@
        "')\n"
        "\nresult = highlight(code, lexer, HtmlFormatter())"))
 
+(def java-string-class
+  (class (java.lang.String. "")))
+
 (defn- highlight-with-pygments
   [code lang]
   (let [script (pygments-script lang)
-        interpreter (PythonInterpreter.)]
-    (.set interpreter "code" code)
-    (.exec interpreter script)
-    (.get interpreter "result" (class (java.lang.String. "")))))
+        interpreter (doto (PythonInterpreter.)
+                      (.set "code" code)
+                      (.exec script))]
+    (.get interpreter "result" java-string-class)))
 
 (defn- highlight-code
   "Highlight the code contained in a node with Clygments."

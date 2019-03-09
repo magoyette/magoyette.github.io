@@ -10,7 +10,6 @@
   (rum/render-static-markup [:div.ui.segment.code
                 [:pre
                  [:code.highlight
-                  [:span]
                   [:span.p "("]
                   [:span.nb "+ "]
                   [:span.mi "2"]

@@ -70,7 +70,6 @@ Try Clojure syntax highlight.
     [:div.ui.segment.code
      [:pre
       [:code.highlight
-       [:span]
        [:span.kt "int"]
        " "
        [:span.n "count"]
@@ -92,7 +91,6 @@ Try Clojure syntax highlight.
      [:div.ui.segment.code
       [:pre
        [:code.highlight
-        [:span]
         [:span.p "("]
         [:span.k "def "]
         [:span.nv "expr"]

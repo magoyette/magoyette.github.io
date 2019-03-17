@@ -1,19 +1,18 @@
 (ns marcandregoyette.components-test
-  (:require [marcandregoyette.categories :as categories]
-            [marcandregoyette.components :refer :all]
+  (:require [marcandregoyette.components :refer :all]
             [clojure.test :refer :all]))
 
 (def metadata
   {:date "2019-02-19T20:05:00Z"
-   :category (categories/->Category "Programming" "en" false)
+   :lang "en"
    :tags ["Java" "Guava"]
    :title "A post"})
 
 (def post-content-expected-html
   (str
-   "<div class=\"post-content\">"
-   "<a href=\"/post\" class=\"post-title\">"
-   "<h2 class=\"ui large header\">A post</h2>"
+   "<div class=\"content is-family-secondary\">"
+   "<a href=\"/post\">"
+   "<h1 class=\"title\">A post</h1>"
    "</a>"
    "<p>Content</p>"
    "</div>"))
@@ -24,20 +23,19 @@
 
 (def post-layout-expected-html
   (str
-   "<div class=\"ui segment\">"
-   "<div class=\"ui ribbon large label post-category\">"
-   "<a href=\"/categories/programming/\">Programming</a>"
+   "<div class=\"card\">"
+   "<div class=\"card-content\">"
+   "<div class=\"is-medium has-text-grey-dark has-text-right\">"
+   "Written on 19 February 2019"
    "</div>"
-   "<div class=\"ui top right attached large label post-date\">"
-   "19 February 2019"
-   "</div>"
-   "<div class=\"post-content\">"
-   "<a href=\"/a-post\" class=\"post-title\"><h2 class=\"ui large header\">A post</h2></a>"
+   "<div class=\"content is-family-secondary\">"
+   "<a href=\"/a-post\"><h1 class=\"title\">A post</h1></a>"
    "<p>Some content</p>"
    "</div>"
-   "<div class=\"post-tags\">"
-   "<div class=\"ui large label\"><a href=\"/tags/java/\" class=\"label\">Java</a></div>"
-   "<div class=\"ui large label\"><a href=\"/tags/guava/\" class=\"label\">Guava</a></div>"
+   "<div class=\"tags\">"
+   "<a href=\"/tags/java/\" class=\"tag is-medium\">Java</a>"
+   "<a href=\"/tags/guava/\" class=\"tag is-medium\">Guava</a>"
+   "</div>"
    "</div>"
    "</div>"))
 

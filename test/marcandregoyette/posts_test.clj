@@ -1,6 +1,5 @@
 (ns marcandregoyette.posts-test
-  (:require [marcandregoyette.categories :refer :all]
-            [marcandregoyette.posts :refer :all]
+  (:require [marcandregoyette.posts :refer :all]
             [clojure.test :refer :all]
             [rum.core :as rum]))
 
@@ -9,7 +8,6 @@
    "---
 {:title \"A post without code blocks\"
  :date \"2018-10-12T16:00:00Z\"
- :category \"Programming\"
  :tags [\"General\"]}
 ---
 
@@ -26,11 +24,6 @@ A simple post without code blocks."})
      (map->PostMetadata
       {:title "A post without code blocks"
        :date "2018-10-12T16:00:00Z"
-       :category
-       (map->Category
-        {:name "Programming"
-         :lang "en"
-         :hidden false})
        :tags ["General"]})
      :content a-post-without-code-blocks-html})})
 
@@ -45,7 +38,6 @@ A simple post without code blocks."})
    "---
 {:title \"A post with code blocks\"
  :date \"2018-10-12T16:00:00Z\"
- :category \"Programming\"
  :tags [\"Java\" \"Clojure\"]}
 ---
 
@@ -111,11 +103,6 @@ Try Clojure syntax highlight.
      (map->PostMetadata
       {:title "A post with code blocks"
        :date "2018-10-12T16:00:00Z"
-       :category
-       (map->Category
-        {:name "Programming"
-         :lang "en"
-         :hidden false})
        :tags ["Java" "Clojure"]})
      :content a-post-with-code-blocks-html})})
 

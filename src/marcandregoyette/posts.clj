@@ -1,7 +1,6 @@
 (ns marcandregoyette.posts
   (:require [clojure.string :as string]
             [clojure.tools.reader.edn :as edn]
-            [marcandregoyette.categories :as categories]
             [marcandregoyette.highlight :as highlight]
             [stasis.core :as stasis])
   (:import com.vladsch.flexmark.util.ast.Node
@@ -10,7 +9,7 @@
            com.vladsch.flexmark.util.options.MutableDataSet))
 
 ;; Metadata that describe the post.
-(defrecord PostMetadata [title date category tags])
+(defrecord PostMetadata [title date lang tags])
 
 ;; Blog post.
 (defrecord Post [^PostMetadata metadata content])
@@ -37,20 +36,17 @@
          (.parse parser)
          (.render renderer))))
 
-(defn- replace-category-name-by-record
-  [metadata]
-  (let [category (categories/get-category-by-name (:category metadata))]
-    (assoc metadata :category category)))
+(defn- get-lang-from-url
+  [url]
+  (if (string/starts-with? url "/fr/") "fr" "en"))
 
-(defn- read-post-metadata
-  "Retrieve the metadata of a post from its content."
+(defn- read-post-header
   [post]
-  (replace-category-name-by-record
-   (edn/read-string
-    (->> post
-         (re-seq post-edn-header-regex)
-         first
-         second))))
+  (edn/read-string
+   (->> post
+        (re-seq post-edn-header-regex)
+        first
+        second)))
 
 (defn- generate-post-content-html
   "Generate the html from the markdown content of a post. The edn metadata of
@@ -64,10 +60,9 @@
 (defn- make-post
   "Build a Post from the contents of a post markdown file."
   [post]
-  (let [metadata (read-post-metadata post)]
-    (map->Post
-     {:metadata (map->PostMetadata metadata)
-      :content (generate-post-content-html post)})))
+  (map->Post
+   {:metadata (map->PostMetadata (read-post-header post))
+    :content (generate-post-content-html post)}))
 
 (defn- build-post-url-path
   "Build the url path that is associated to a post."

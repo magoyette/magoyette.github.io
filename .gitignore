@@ -3,14 +3,5 @@
 dist/
 node_modules/
 package-lock.json
-semantic/dist/
-semantic/gulpfile.js
-semantic/src/definitions/
-semantic/src/semantic.less
-semantic/src/themes/
-semantic/src/theme.config
-semantic/src/theme.less
-semantic/tasks/
-/resources/public/themes/
-/resources/public/styles/semantic*.css
+/resources/public/styles/*.css
 /target/

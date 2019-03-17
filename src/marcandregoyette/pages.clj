@@ -1,6 +1,5 @@
 (ns marcandregoyette.pages
   (:require [clojure.string :as str]
-            [marcandregoyette.categories :as categories]
             [marcandregoyette.feed :as feed]
             [marcandregoyette.posts :as posts]
             [marcandregoyette.tags :as tags]
@@ -24,12 +23,6 @@
                            :when (predicate post)]
                        url)))
 
-(defn- has-category [category post]
-  (= category (-> post :metadata :category)))
-
-(defn- filter-posts-by-category [posts category]
-  (filter-posts posts (partial has-category category)))
-
 (defn- has-tag [tag post]
   (some #(= tag %) (-> post :metadata :tags)))
 
@@ -37,26 +30,14 @@
   (filter-posts posts (partial has-tag tag)))
 
 (defn- has-lang [lang post]
-  (= lang (-> post :metadata :category :lang)))
+  (= lang (-> post :metadata :lang)))
 
 (defn- filter-posts-by-lang [posts lang]
   (filter-posts posts (partial has-lang lang)))
 
-(defn- build-index-page [posts]
-  (templates/add-page-layout-many-posts (sort-posts posts)))
-
-(defn- get-categories [posts]
-  (remove #(= (:name %) "") (distinct (for [[url post] posts]
-                                        (-> post :metadata :category)))))
-
-(defn- get-posts-for-category [posts category]
+(defn- build-index-page [posts lang]
   (templates/add-page-layout-many-posts
-   (sort-posts (filter-posts-by-category posts category))))
-
-(defn- get-categories-pages [posts]
-  (let [categories (get-categories posts)]
-    (zipmap (doall (map categories/build-category-url categories))
-            (map (partial get-posts-for-category posts) categories))))
+   (sort-posts (filter-posts-by-lang posts lang))))
 
 (defn- get-tags [posts]
   (distinct (flatten (for [[url post] posts]
@@ -79,22 +60,8 @@
 
 (defn- generate-feeds-by-lang
   [posts]
-  (let [languages (distinct (map :lang (categories/get-visible-categories)))]
+  (let [languages ["en"]]
     (into {} (map #(get-feed-for-lang posts %) languages))))
-
-(defn- get-category-atom-feed-path [category]
-  (str "/feeds/categories/" (categories/get-category-name-for-html category) "/atom.xml"))
-
-(defn- get-feed-for-category
-  [posts category]
-  [(get-category-atom-feed-path category)
-   (feed/generate-feed
-    (sort-posts (filter-posts-by-category posts category)))])
-
-(defn- generate-feeds-by-category
-  [posts]
-  (let [categories (categories/get-visible-categories)]
-    (into {} (map #(get-feed-for-category posts %) categories))))
 
 (defn- get-tag-atom-feed-path [tag]
   (str "/feeds/tags/" (tags/get-tag-for-html tag) "/atom.xml"))
@@ -112,9 +79,7 @@
 
 (defn- generate-feeds
   [posts]
-  (merge {"/atom.xml" (feed/generate-feed (sort-posts posts))}
-         (generate-feeds-by-lang posts)
-         (generate-feeds-by-category posts)
+  (merge (generate-feeds-by-lang posts)
          (generate-feeds-by-tag posts)))
 
 (defn load-pages []
@@ -123,7 +88,6 @@
      {:pages (templates/add-page-layout
               (posts/build-posts "" "resources/pages"))
       :posts (templates/add-page-layout posts)
-      :index {"/index.html" (build-index-page posts)}
-      :categories (get-categories-pages posts)
+      :index-en {"/index.html" (build-index-page posts "en")}
       :tags (get-tags-pages posts)
       :feeds (generate-feeds posts)})))

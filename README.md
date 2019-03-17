@@ -2,44 +2,30 @@
 
 The source code of my personal web site. It's a static site written in the Clojure programming language.
 
-## Compatibility
+### Environment setup
 
-marcandregoyette.com currently cannot be built on Windows and on some Linux distros (CentOS, RHEL), because the Optimus library depends on clj-v8. Optimus will probably switch to Nashorn, which will allow compatibility with Windows and all Linux distros.
-
-This site has never been built with Mac OS X, so compatibility is unknown.
-
-### Clojure environment
-
-- Install a Java 8 JVM.
+- Install Java 8 or Java 11. This site is currently used with OpenJDK 11.
 
 - Install Leiningen (version should be at least 2.9.0).
 
-### Node environment
-
 - Install [Node](https://nodejs.org) and [npm](https://www.npmjs.com/).
 
-- Install [Gulp](http://gulpjs.com/) globally.
+### Building the Sass styles
+
+The npm packages must first be installed.
 
 ``` shell
-$ sudo npm install -g gulp
+npm install
 ```
 
-### Installing the dependencies
-
-Execute the `deps` goal to download the Clojure dependencies with Leiningen, download Semantic-UI with NPM and build a customized version of Semantic UI.
+The Sass styles can be built with NPM.
 
 ``` shell
-lein deps
-```
+# Build the Sass files as CSS
+npm run css-build
 
-### Rebuilding Semantic-UI
-
-Semantic UI can be rebuilt with the `build-semantic` goal.
-This is necessary when the `semantic` folder is modified.
-Unlike `deps`, Semantic UI isn't reinstalled and Clojure dependencies aren't updated.
-
-``` shell
-lein build-semantic
+# Build continuously the Sass files as CSS when the Sass files are modified
+npm run css-watch
 ```
 
 ## Deploying the site locally

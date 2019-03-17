@@ -15,54 +15,19 @@
 ;; and the source of
 ;; [whattheemacsd.com](https://github.com/magnars/what-the-emacsd).
 (ns marcandregoyette.core
-  (:require [marcandregoyette.custom-styles :as custom-styles]
-            [marcandregoyette.pages :as pages]
+  (:require [marcandregoyette.pages :as pages]
             [clojure.java.io :as io]
-            [optimus.prime :as optimus]
-            [optimus.assets :as assets]
-            [optimus.export :as export]
-            [optimus.optimizations :as optimizations]
-            [optimus.strategies :as strategies]
+            [me.raynes.fs :as fs]
             [ring.middleware.content-type :as ring-content-type]
-            [ring.middleware.file-info :as ring-file-info]
-            [ring.middleware.not-modified :as ring-not-modified]
             [ring.middleware.resource :as ring-resource]
             [stasis.core :as stasis]))
 
-(def images-dir "images")
-(def styles-dir "styles")
 (def resources-dir "resources")
-(def themes-dir "themes")
-(def public-dir "public")
-(def all-public-dir [images-dir styles-dir themes-dir])
 (def cname-file "CNAME")
 (def export-dir "dist")
 
-(defn get-assets []
-  (concat
-   (assets/load-bundle "public"
-                       "styles.css"
-                       ["/styles/semantic.min.css"
-                        "/styles/solarized-light.css"])
-   (assets/load-assets "public"
-                       [#"/fonts/*"
-                        #"/images/.*\.png"
-                        #"/themes/*"])
-   [{:path "/styles/custom-styles.css"
-     :contents (custom-styles/load-custom-styles)
-     :bundle "styles.css"}]))
-
-(defn optimizations [assets options]
-  (-> assets
-      (optimizations/minify-js-assets options)
-      (optimizations/minify-css-assets options)
-      (optimizations/inline-css-imports)
-      (optimizations/concatenate-bundles)))
-
 (def app (-> (stasis/serve-pages (pages/load-pages))
-             (optimus/wrap get-assets
-                           optimizations
-                           strategies/serve-live-assets)
+             (ring-resource/wrap-resource "public")
              (ring-content-type/wrap-content-type)))
 
 (defn export
@@ -70,7 +35,7 @@
   Intended to be called by Leiningen."
   []
   (stasis/empty-directory! export-dir)
-  (export/save-assets (optimizations (get-assets) {}) export-dir)
   (stasis/export-pages (pages/load-pages) export-dir)
-  (io/copy (io/file (str resources-dir "/" cname-file))
-           (io/file (str export-dir "/" cname-file))))
+  (fs/copy-dir (str resources-dir "/public/fonts") export-dir)
+  (fs/copy-dir (str resources-dir "/public/styles") export-dir)
+  (fs/copy (str resources-dir "/" cname-file) (str export-dir "/" cname-file)))

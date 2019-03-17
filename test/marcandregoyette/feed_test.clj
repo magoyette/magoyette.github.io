@@ -1,26 +1,24 @@
 (ns marcandregoyette.feed-test
-  (:require [marcandregoyette.categories :as categories]
-            [marcandregoyette.feed :refer :all]
+  (:require [marcandregoyette.feed :refer :all]
             [clojure.test :refer :all]))
 
 (def post-content
   "<html><body><p>A post about something.</p></body></html>")
 
-(def post-title "Iterables.concat")
 (def post-date "2014-10-12T16:00:00Z")
 
 ;; The same post in French and in English
 (def posts-by-url
   (seq
-   {"/iterables.concat"
+   {"/en/iterables.concat"
     {:metadata {:date post-date
-                :title post-title
-                :category (categories/->Category "A category" "en" false)}
+                :title "Iterables.concat"
+                :lang "en"}
      :content post-content}
-    "/iterables.concat-fr"
+    "/en/iterables.concat-part-2"
     {:metadata {:date post-date
-                :title post-title
-                :category (categories/->Category "Une catégorie" "fr" false)}
+                :title "Iterables.concat Part 2"
+                :lang "en"}
      :content post-content}}))
 
 (def expected-author
@@ -31,20 +29,6 @@
 
 (def expected-feed-url
   "https://marcandregoyette.com/atom.xml")
-
-(def expected-post-feed-entry-id
-  "urn:marcandregoyette-com:feed:post:iterables.concat-en")
-
-(def expected-post-feed-entry-url
-  "https://marcandregoyette.com/iterables.concat")
-
-(def expected-post-in-french-feed-entry-id
-  "urn:marcandregoyette-com:feed:post:iterables.concat-fr")
-
-;; The url for the post in french has the suffix -fr to avoid an url clash
-;; with the english post (that suffix comes from the markdown file)
-(def expected-post-in-french-feed-entry-url
-  "https://marcandregoyette.com/iterables.concat-fr")
 
 (def expected-post-entry-content
   (str
@@ -61,21 +45,21 @@
    "<title type=\"text\">" expected-author "</title>"
    "<link rel=\"self\" href=\"" expected-feed-url "\"></link>"
    "<entry>"
-   "<title>" post-title "</title>"
+   "<title>Iterables.concat</title>"
    "<updated>" post-date "</updated>"
    "<author><name>" expected-author "</name></author>"
-   "<link href=\"" expected-post-feed-entry-url "\"></link>"
-   "<id>" expected-post-feed-entry-id "</id>"
+   "<link href=\"https://marcandregoyette.com/en/iterables.concat\"></link>"
+   "<id>urn:marcandregoyette-com:feed:post:en:iterables.concat</id>"
    "<content type=\"html\">"
    expected-post-entry-content
    "</content>"
    "</entry>"
    "<entry>"
-   "<title>" post-title "</title>"
+   "<title>Iterables.concat Part 2</title>"
    "<updated>" post-date "</updated>"
    "<author><name>" expected-author "</name></author>"
-   "<link href=\"" expected-post-in-french-feed-entry-url "\"></link>"
-   "<id>" expected-post-in-french-feed-entry-id "</id>"
+   "<link href=\"https://marcandregoyette.com/en/iterables.concat-part-2\"></link>"
+   "<id>urn:marcandregoyette-com:feed:post:en:iterables.concat-part-2</id>"
    "<content type=\"html\">"
    expected-post-entry-content
    "</content>"

@@ -1,6 +1,5 @@
 (ns marcandregoyette.components
-  (:require [marcandregoyette.categories :as categories]
-            [marcandregoyette.tags :as tags]
+  (:require [marcandregoyette.tags :as tags]
             [clojure.string :as string]
             [rum.core :as rum])
   (:import java.time.OffsetDateTime
@@ -14,12 +13,12 @@
          (.format (DateTimeFormatter/ofPattern "dd MMMM YYYY" locale)))))
 
 (rum/defc post-content [url metadata content]
-  [:div.post-content
+  [:div.content.is-family-secondary
    {:dangerouslySetInnerHTML
     {:__html
      (str
       (rum/render-static-markup
-       [:a.post-title {:href url} [:h2.ui.large.header (:title metadata)]])
+       [:a {:href url} [:h1.title (:title metadata)]])
       content)}}])
 
 (defn render-post-content [url metadata content]
@@ -27,23 +26,19 @@
 
 (rum/defc post-layout [url metadata content]
   (let [date (:date metadata)
-        language (get-in metadata [:category :lang])
-        category (:category metadata)
+        language (:lang metadata)
         tags (:tags metadata)]
-    [:div.ui.segment
-     [:div.ui.ribbon.large.label.post-category
-      (if (not-any? #{category} categories/categories)
+    [:div.card
+     [:div.card-content
+      (if (string/blank? date)
         [:div]
-        [:a {:href (categories/build-category-url category)} (:name category)])]
-     (if (string/blank? date)
-       [:div]
-       [:div.ui.top.right.attached.large.label.post-date
-        (format-date date language)])
-     (post-content url metadata content)
-     [:div.post-tags
-      (for [tag tags]
-        (let [tag-url (tags/build-tag-url tag)]
-          [:div.ui.large.label [:a.label {:href tag-url} tag]]))]]))
+        [:div.is-medium.has-text-grey-dark.has-text-right
+         (str "Written on " (format-date date language))])
+      (post-content url metadata content)
+      [:div.tags
+       (for [tag tags]
+         (let [tag-url (tags/build-tag-url tag)]
+           [:a.tag.is-medium {:href tag-url} tag]))]]]))
 
 (defn render-post-layout [url metadata content]
   (rum/render-static-markup (post-layout url metadata content)))
@@ -63,59 +58,19 @@
    (include-meta)
    [:link {:type "text/css"
            :rel "stylesheet"
-           :href "/bundles/styles.css"}]])
+           :href "/styles/styles.css"}]])
 
-(def menu-items-without-categories
-  [{:type :icon-link
-    :icon [:i.help.large.icon]
-    :link "/about"
-    :title "About / À propos"
-    :id (categories/build-category-id (categories/get-category-by-name "About"))}
-   {:type :icon-link
-    :icon [:i.rss.large.icon]
-    :link "/atom.xml"
-    :title "Subscribe to the feed of this blog"}
-   {:type :icon-link
-    :icon [:i.code.large.icon]
-    :link "/source"
-    :title "Source code"}
-   {:type :icon-link
-    :icon [:i.linkedin.large.icon]
-    :link "https://www.linkedin.com/in/marcandregoyette"
-    :title "LinkedIn"}
-   {:type :icon-link
-    :icon [:i.github.alternate.large.icon]
-    :link "https://github.com/magoyette"
-    :title "GitHub"}])
-
-(defn- category-menu-item
-  [category active-category]
-  {:type :text-link
-   :name (:name category)
-   :link (categories/build-category-url category)
-   :id (categories/build-category-id category)
-   :element (if (= (:name category) (:name active-category))
-              :a.item.active :a.item)})
-
-(defn- build-menu-item [item]
-  (let [href {:href (:link item) :title (:title item) :id (:id item)}]
-    (case (:type item)
-      :text-link [(:element item) href (:name item)]
-      :icon-link [:a.icon.item href (:icon item)])))
-
-(defn- menu-items [active-category]
-  (concat
-   (map #(category-menu-item % active-category)
-        (categories/get-visible-categories))
-   menu-items-without-categories))
-
-(defn- menu [active-category]
-  [:div.ui.inverted.stackable.borderless.menu
-   [:div.ui.text.container
-    [:div.item
-     [:div.site-title
-      [:a {:href "/"} "Marc-Andr\u00E9 Goyette"]]]
-    (map build-menu-item (menu-items active-category))]])
+(def menu
+  [:nav.navbar.is-primary {:role "navigation" :aria-label "main navigation"}
+   [:div.navbar-brand
+    [:a.navbar-item.has-text-weight-bold {:href "/"} "Marc-Andr\u00E9 Goyette"]]
+   [:div.navbar-menu.is-active#topNavbar
+    [:div.navbar-start
+     [:a.navbar-item.is-tab {:href "/"} "Blog"]
+     [:a.navbar-item.is-tab {:href "/en/about"} "About"]
+     [:a.navbar-item.is-tab {:href "/feeds/languages/en/atom.xml"} "Atom/RSS"]
+     [:a.navbar-item.is-tab {:href "/source"} "Source"]]
+    [:div.navbar-end]]])
 
 (defn get-license []
   [:div.license-icon
@@ -133,26 +88,25 @@
    "."])
 
 (defn- footer []
-  [:div.footer
-   [:div.ui.segment.secondary
-    [:div.footer-text
+  [:footer.footer
+   [:div.content
      (get-license)
      "Opinions and views expressed on this site are solely my own, "
-     "not those of my present or past employers."]]])
+     "not those of my present or past employers."]])
 
 (defn- post-grid [posts-content]
-  [:div.ui.main.text.container
-   [:div#posts-container
+  [:div.container
+   [:div
     {:dangerouslySetInnerHTML
      {:__html posts-content}}]
    [:div (footer)]])
 
-(defn get-page-layout [title lang active-category posts-content]
+(defn get-page-layout [title lang posts-content]
   (str
    "<!DOCTYPE html>"
    (rum/render-static-markup
     [:html {:lang lang}
      (head title)
      [:body
-      (menu active-category)
+      menu
       (post-grid posts-content)]])))

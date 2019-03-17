@@ -6,20 +6,18 @@
 ;; so no conversions are needed.
 (ns marcandregoyette.feed
   (:require [clojure.data.xml :as xml]
-            [clojure.string :as string]
-            [marcandregoyette.categories :as categories]))
+            [clojure.string :as string]))
 
 (defn- generate-feed-entry-id
   "Generate a unique urn for the feed entry based on the title of the post and
-  the language of its category (to avoid name clashes when the same post is
-  translated)."
+  its language (to avoid name clashes when the same post is translated)."
   [metadata]
   (str "urn:marcandregoyette-com:feed:post:"
+       (:lang metadata)
+       ":"
        (-> (:title metadata)
            (string/replace " " "-")
-           (string/lower-case))
-       "-"
-       (get-in metadata [:category :lang])))
+           (string/lower-case))))
 
 (defn- generate-feed-entry
   "Builds the XML of an Atom feed entry for a post."

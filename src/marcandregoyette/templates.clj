@@ -9,7 +9,8 @@
     (components/get-page-layout title lang posts-content)))
 
 (defn- get-single-post [url metadata content]
-  (components/render-post-layout url metadata content))
+  (rum/render-static-markup
+   (components/post-layout url metadata content)))
 
 (defn- build-post-for-index-page [post-by-url]
   (let [url (key post-by-url)

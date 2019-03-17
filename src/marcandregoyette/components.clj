@@ -21,27 +21,19 @@
        [:a {:href url} [:h1.title (:title metadata)]])
       content)}}])
 
-(defn render-post-content [url metadata content]
-  (rum/render-static-markup (post-content url metadata content)))
-
 (rum/defc post-layout [url metadata content]
-  (let [date (:date metadata)
-        language (:lang metadata)
-        tags (:tags metadata)]
-    [:div.card
+  (let [{:keys [date lang tags]} metadata]
+    [:div.card.post
      [:div.card-content
       (if (string/blank? date)
         [:div]
-        [:div.is-medium.has-text-grey-dark.has-text-right
-         (str "Written on " (format-date date language))])
+        [:div.has-text-grey-dark.has-text-right
+         (str "Written on " (format-date date lang))])
       (post-content url metadata content)
       [:div.tags
-       (for [tag tags]
+       (for [tag (:tags metadata)]
          (let [tag-url (tags/build-tag-url tag)]
            [:a.tag.is-medium {:href tag-url} tag]))]]]))
-
-(defn render-post-layout [url metadata content]
-  (rum/render-static-markup (post-layout url metadata content)))
 
 (defn- include-meta []
   (seq [[:meta {:charset "utf-8"}]
@@ -60,20 +52,25 @@
            :rel "stylesheet"
            :href "/styles/styles.css"}]])
 
-(def menu
-  [:nav.navbar.is-primary {:role "navigation" :aria-label "main navigation"}
+(defn- menu-item
+  [href name]
+  [:a.navbar-item.is-tab {:href href} name])
+
+(rum/defc menu []
+  [:nav.navbar.is-primary.is-size-5-desktop.is-size-5-tablet
+   {:role "navigation" :aria-label "main navigation"}
    [:div.navbar-brand
-    [:a.navbar-item.has-text-weight-bold {:href "/"} "Marc-Andr\u00E9 Goyette"]]
+    [:a.navbar-item.has-text-weight-bold
+     {:href "/"} "Marc-Andr\u00E9 Goyette"]]
    [:div.navbar-menu.is-active#topNavbar
     [:div.navbar-start
-     [:a.navbar-item.is-tab {:href "/"} "Blog"]
-     [:a.navbar-item.is-tab {:href "/en/about"} "About"]
-     [:a.navbar-item.is-tab {:href "/feeds/languages/en/atom.xml"} "Atom/RSS"]
-     [:a.navbar-item.is-tab {:href "/source"} "Source"]]
-    [:div.navbar-end]]])
+     (menu-item "/" "Blog")
+     (menu-item "/en/about" "About")
+     (menu-item "/feeds/languages/en/atom.xml" "Atom/RSS")
+     (menu-item "/source" "Source")]]])
 
-(defn get-license []
-  [:div.license-icon
+(rum/defc license []
+  [:div
    [:a
     {:rel "license"
      :href "https://creativecommons.org/licenses/by-sa/4.0/"}
@@ -87,14 +84,14 @@
     "Creative Commons License"]
    "."])
 
-(defn- footer []
+(rum/defc footer []
   [:footer.footer
    [:div.content
-     (get-license)
+     (license)
      "Opinions and views expressed on this site are solely my own, "
      "not those of my present or past employers."]])
 
-(defn- post-grid [posts-content]
+(defn- posts-grid [posts-content]
   [:div.container
    [:div
     {:dangerouslySetInnerHTML
@@ -108,5 +105,5 @@
     [:html {:lang lang}
      (head title)
      [:body
-      menu
-      (post-grid posts-content)]])))
+      (menu)
+      (posts-grid posts-content)]])))

@@ -1,6 +1,7 @@
 (ns marcandregoyette.components-test
   (:require [marcandregoyette.components :refer :all]
-            [clojure.test :refer :all]))
+            [clojure.test :refer :all]
+            [rum.core :as rum]))
 
 (def metadata
   {:date "2019-02-19T20:05:00Z"
@@ -18,14 +19,15 @@
    "</div>"))
 
 (deftest test-render-post-content
-  (is (= (render-post-content "/post" metadata "<p>Content</p>")
+  (is (= (rum/render-static-markup
+          (post-content "/post" metadata "<p>Content</p>"))
          post-content-expected-html)))
 
 (def post-layout-expected-html
   (str
-   "<div class=\"card\">"
+   "<div class=\"card post\">"
    "<div class=\"card-content\">"
-   "<div class=\"is-medium has-text-grey-dark has-text-right\">"
+   "<div class=\"has-text-grey-dark has-text-right\">"
    "Written on 19 February 2019"
    "</div>"
    "<div class=\"content is-family-secondary\">"
@@ -40,5 +42,6 @@
    "</div>"))
 
 (deftest test-render-layout-html
-  (is (= (render-post-layout "/a-post" metadata "<p>Some content</p>")
+  (is (= (rum/render-static-markup
+          (post-layout "/a-post" metadata "<p>Some content</p>"))
          post-layout-expected-html)))

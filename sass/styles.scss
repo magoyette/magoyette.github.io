@@ -47,6 +47,11 @@ $navbar-breakpoint: $tablet;
 @import "../node_modules/bulma/sass/layout/footer.sass";
 @import "./solarized-light";
 
+div.card.post {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 .code pre {
   background-color: #eee8d5;
   overflow: auto;

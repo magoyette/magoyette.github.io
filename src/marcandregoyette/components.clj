@@ -13,17 +13,17 @@
          (.format (DateTimeFormatter/ofPattern "dd MMMM YYYY" locale)))))
 
 (rum/defc post-content [url metadata content]
-  [:div.content.is-family-secondary
+  [:div.content
    {:dangerouslySetInnerHTML
     {:__html
      (str
       (rum/render-static-markup
-       [:a {:href url} [:h1.title (:title metadata)]])
+       [:a {:href url} [:h1.title.is-family-secondary (:title metadata)]])
       content)}}])
 
 (rum/defc post-layout [url metadata content]
   (let [{:keys [date lang tags]} metadata]
-    [:div.card.post
+    [:article.card.post
      [:div.card-content
       (if (string/blank? date)
         [:div]
@@ -57,46 +57,41 @@
   [:a.navbar-item.is-tab {:href href} name])
 
 (rum/defc menu []
-  [:nav.navbar.is-primary.is-size-5-desktop.is-size-5-tablet
+  [:nav.navbar.is-primary
    {:role "navigation" :aria-label "main navigation"}
-   [:div.navbar-brand
-    [:a.navbar-item.has-text-weight-bold
-     {:href "/"} "Marc-Andr\u00E9 Goyette"]]
-   [:div.navbar-menu.is-active#topNavbar
-    [:div.navbar-start
-     (menu-item "/" "Blog")
-     (menu-item "/en/about" "About")
-     (menu-item "/feeds/languages/en/atom.xml" "Atom/RSS")
-     (menu-item "/source" "Source")]]])
+   [:div.container
+    [:div.navbar-brand.is-family-secondary
+     [:a.navbar-item.has-text-weight-bold
+      {:href "/"} "Marc-Andr\u00E9 Goyette"]]
+    [:div.navbar-menu.is-active#topNavbar
+     [:div.navbar-start
+      (menu-item "/" "Blog")
+      (menu-item "/en/about" "About")
+      (menu-item "/feeds/languages/en/atom.xml" "Atom/RSS")
+      (menu-item "/source" "Source")]]]])
 
-(rum/defc license []
-  [:div
+(rum/defc footer []
+  [:footer.footer
    [:a
     {:rel "license"
      :href "https://creativecommons.org/licenses/by-sa/4.0/"}
     [:img {:alt "Creative Commons License"
            :src "https://licensebuttons.net/l/by-sa/4.0/88x31.png"
            :style {:border-width 0}}]]
-   [:br]
-   "This work by Marc-Andr\u00E9 Goyette is licensed under a "
-   [:a {:rel "license"
-        :href "https://creativecommons.org/licenses/by-sa/4.0/"}
-    "Creative Commons License"]
-   "."])
-
-(rum/defc footer []
-  [:footer.footer
-   [:div.content
-     (license)
-     "Opinions and views expressed on this site are solely my own, "
-     "not those of my present or past employers."]])
+   [:p
+    "This work by Marc-Andr\u00E9 Goyette is licensed under a "
+    [:a {:rel "license"
+         :href "https://creativecommons.org/licenses/by-sa/4.0/"}
+     "Creative Commons License"]
+    "."]
+   [:p
+    "Opinions and views expressed on this site are solely my own, "
+    "not those of my present or past employers."]])
 
 (defn- posts-grid [posts-content]
-  [:div.container
-   [:div
+  [:main
     {:dangerouslySetInnerHTML
-     {:__html posts-content}}]
-   [:div (footer)]])
+     {:__html posts-content}}])
 
 (defn get-page-layout [title lang posts-content]
   (str
@@ -106,4 +101,6 @@
      (head title)
      [:body
       (menu)
-      (posts-grid posts-content)]])))
+      [:div.container
+       (posts-grid posts-content)
+       (footer)]]])))

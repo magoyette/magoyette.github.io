@@ -5,7 +5,7 @@
  :tags ["Java" "Guava" "Clojure"]}
 ---
 
-Example of a post. Try Java syntax highlight.
+Example of a post. Try Java syntax highlight. Write more to have many lines of text and configure properly the maximum width of the post containers.
 
 ```java
 Iterable<Expression> expressions = Iterables.concat(expressions, ImmutableList.

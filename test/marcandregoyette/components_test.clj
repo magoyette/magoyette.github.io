@@ -11,9 +11,9 @@
 
 (def post-content-expected-html
   (str
-   "<div class=\"content is-family-secondary\">"
+   "<div class=\"content\">"
    "<a href=\"/post\">"
-   "<h1 class=\"title\">A post</h1>"
+   "<h1 class=\"title is-family-secondary\">A post</h1>"
    "</a>"
    "<p>Content</p>"
    "</div>"))
@@ -25,13 +25,13 @@
 
 (def post-layout-expected-html
   (str
-   "<div class=\"card post\">"
+   "<article class=\"card post\">"
    "<div class=\"card-content\">"
-   "<div class=\"has-text-grey-dark has-text-right\">"
+   "<div class=\"date has-text-grey-dark has-text-right\">"
    "Written on 19 February 2019"
    "</div>"
-   "<div class=\"content is-family-secondary\">"
-   "<a href=\"/a-post\"><h1 class=\"title\">A post</h1></a>"
+   "<div class=\"content\">"
+   "<a href=\"/a-post\"><h1 class=\"title is-family-secondary\">A post</h1></a>"
    "<p>Some content</p>"
    "</div>"
    "<div class=\"tags\">"
@@ -39,7 +39,7 @@
    "<a href=\"/tags/guava/\" class=\"tag is-medium\">Guava</a>"
    "</div>"
    "</div>"
-   "</div>"))
+   "</article>"))
 
 (deftest test-render-layout-html
   (is (= (rum/render-static-markup

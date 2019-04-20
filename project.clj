@@ -13,8 +13,10 @@
                  [org.pygments/pygments "2.3.1"]
                  [ring "1.7.1"]
                  [rum "0.11.3" :exclusions [cljsjs/react cljsjs/react-dom sablono]]
-                 [stasis "2.4.0"]]
+                 [stasis "2.4.0"]
+                 [tongue "0.2.6"]]
   :ring {:handler marcandregoyette.core/app}
+  :jvm-opts ["-Dclojure.spec.check-asserts=true"]
   :aliases {"build-source-page" ["do"
                                  ["marg"
                                   "src/marcandregoyette/core.clj"
@@ -25,6 +27,7 @@
                                   "src/marcandregoyette/components.clj"
                                   "src/marcandregoyette/tags.clj"
                                   "src/marcandregoyette/feed.clj"
+                                  "src/marcandregoyette/translations.clj"
                                   "-d" "dist/source" "-f" "index.html"]]
             "start" ["do"
                      ["test"]

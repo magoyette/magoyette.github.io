@@ -1,5 +1,6 @@
 (ns marcandregoyette.components
   (:require [marcandregoyette.tags :as tags]
+            [marcandregoyette.translations :as translations]
             [clojure.string :as string]
             [rum.core :as rum])
   (:import java.time.OffsetDateTime
@@ -27,8 +28,9 @@
      [:div.card-content
       (if (string/blank? date)
         [:div]
-        [:div.has-text-grey-dark.has-text-right
-         (str "Written on " (format-date date lang))])
+        [:div.date.has-text-grey-dark.has-text-right
+         (str (translations/translate lang :post/written-on)
+              (format-date date lang))])
       (post-content url metadata content)
       [:div.tags
        (for [tag (:tags metadata)]
@@ -56,7 +58,21 @@
   [href name]
   [:a.navbar-item.is-tab {:href href} name])
 
-(rum/defc menu []
+(def menu-en
+  [:div.navbar-start
+   (menu-item "/en" "Blog")
+   (menu-item "/en/about" "About")
+   (menu-item "/feeds/languages/en/atom.xml" "Atom/RSS")
+   (menu-item "/source" "Source")])
+
+(def menu-fr
+  [:div.navbar-start
+   (menu-item "/fr" "Blogue")
+   (menu-item "/fr/apropos" "À propos")
+   (menu-item "/feeds/languages/fr/atom.xml" "Atom/RSS")
+   (menu-item "/source" "Source")])
+
+(rum/defc menu [lang]
   [:nav.navbar.is-primary
    {:role "navigation" :aria-label "main navigation"}
    [:div.container
@@ -64,29 +80,24 @@
      [:a.navbar-item.has-text-weight-bold
       {:href "/"} "Marc-Andr\u00E9 Goyette"]]
     [:div.navbar-menu.is-active#topNavbar
-     [:div.navbar-start
-      (menu-item "/" "Blog")
-      (menu-item "/en/about" "About")
-      (menu-item "/feeds/languages/en/atom.xml" "Atom/RSS")
-      (menu-item "/source" "Source")]]]])
+     (if (= lang "en") menu-en menu-fr)]]])
 
-(rum/defc footer []
+(rum/defc footer [lang]
   [:footer.footer
    [:a
     {:rel "license"
-     :href "https://creativecommons.org/licenses/by-sa/4.0/"}
-    [:img {:alt "Creative Commons License"
-           :src "https://licensebuttons.net/l/by-sa/4.0/88x31.png"
+     :href (translations/translate lang :footer/license-url)}
+    [:img {:alt (translations/translate lang :footer/license-name)
+           :src "https://licensebuttons.net/l/by-nd/4.0/88x31.png"
            :style {:border-width 0}}]]
    [:p
-    "This work by Marc-Andr\u00E9 Goyette is licensed under a "
+    (translations/translate lang :footer/license-sentence)
     [:a {:rel "license"
-         :href "https://creativecommons.org/licenses/by-sa/4.0/"}
-     "Creative Commons License"]
+         :href (translations/translate lang :footer/license-url)}
+     (translations/translate lang :footer/license-name)]
     "."]
    [:p
-    "Opinions and views expressed on this site are solely my own, "
-    "not those of my present or past employers."]])
+    (translations/translate lang :footer/disclaimer)]])
 
 (defn- posts-grid [posts-content]
   [:main
@@ -100,7 +111,7 @@
     [:html {:lang lang}
      (head title)
      [:body
-      (menu)
+      (menu lang)
       [:div.container
        (posts-grid posts-content)
-       (footer)]]])))
+       (footer lang)]]])))

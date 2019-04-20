@@ -60,7 +60,7 @@
 
 (defn- generate-feeds-by-lang
   [posts]
-  (let [languages ["en"]]
+  (let [languages ["en" "fr"]]
     (into {} (map #(get-feed-for-lang posts %) languages))))
 
 (defn- get-tag-atom-feed-path [tag]
@@ -88,6 +88,8 @@
      {:pages (templates/add-page-layout
               (posts/build-posts "" "resources/pages"))
       :posts (templates/add-page-layout posts)
-      :index-en {"/index.html" (build-index-page posts "en")}
+      :index-en {"/en/index.html" (build-index-page posts "en")}
+      :index-fr {"/fr/index.html" (build-index-page posts "fr")}
+      :index {"/index.html" (build-index-page posts "fr")}
       :tags (get-tags-pages posts)
       :feeds (generate-feeds posts)})))

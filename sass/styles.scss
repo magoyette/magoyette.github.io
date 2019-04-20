@@ -95,7 +95,9 @@ p a {
   text-decoration: underline;
 }
 
-p {
+p,
+ul,
+ol {
   font-size: 1.25rem;
 }
 
@@ -105,6 +107,10 @@ footer p {
 
 div.date {
   font-size: 1rem;
+}
+
+code span {
+  font-size: 1em;
 }
 
 .card-content {
@@ -124,7 +130,9 @@ article.card.post {
     font-size: 1.5rem;
   }
 
-  p {
+  p,
+  ul,
+  ol {
     font-size: 1.5rem;
   }
 

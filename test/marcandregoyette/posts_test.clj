@@ -18,7 +18,7 @@ A simple post without code blocks."})
        "\n"))
 
 (def a-parsed-post-without-code-blocks
-  {"/posts/a-post-without-code-blocks"
+  {"/a-post-without-code-blocks"
    (map->Post
     {:metadata
      (map->PostMetadata
@@ -30,7 +30,7 @@ A simple post without code blocks."})
 (deftest read-post-without-code-blocks-test
   (is (= a-parsed-post-without-code-blocks
          (build-posts-from-stasis-map
-          "/posts" an-unparsed-post-without-code-blocks))))
+          "" an-unparsed-post-without-code-blocks))))
 
 
 (def an-unparsed-post-with-code-blocks
@@ -97,7 +97,7 @@ Try Clojure syntax highlight.
     "\n"))
 
 (def a-parsed-post-with-code-blocks
-  {"/posts/a-parsed-post-with-code-blocks"
+  {"/a-parsed-post-with-code-blocks"
    (map->Post
     {:metadata
      (map->PostMetadata
@@ -109,4 +109,4 @@ Try Clojure syntax highlight.
 (deftest read-post-with-code-blocks-test
   (is (= a-parsed-post-with-code-blocks
          (build-posts-from-stasis-map
-          "/posts" an-unparsed-post-with-code-blocks))))
+          "" an-unparsed-post-with-code-blocks))))

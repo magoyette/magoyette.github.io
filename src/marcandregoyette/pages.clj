@@ -83,7 +83,7 @@
          (generate-feeds-by-tag posts)))
 
 (defn load-pages []
-  (let [posts (posts/build-posts "/posts" "resources/posts")]
+  (let [posts (posts/build-posts "" "resources/posts")]
     (stasis/merge-page-sources
      {:pages (templates/add-page-layout
               (posts/build-posts "" "resources/pages"))

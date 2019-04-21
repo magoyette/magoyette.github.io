@@ -41,12 +41,12 @@
 
 (defn generate-feed
   "Builds the XML of an Atom feed that includes all the provided posts."
-  [postsByUrl]
+  [feed-path posts-by-url]
   (xml/emit-str
    (xml/sexp-as-element
     [:feed {:xmlns "http://www.w3.org/2005/Atom"}
      [:id "urn:marcandregoyette-com:feed"]
-     [:updated (find-most-recent-date postsByUrl)]
+     [:updated (find-most-recent-date posts-by-url)]
      [:title {:type "text"} "Marc-Andr\u00E9 Goyette"]
-     [:link {:rel "self" :href "https://marcandregoyette.com/atom.xml"}]
-     (map generate-feed-entry postsByUrl)])))
+     [:link {:rel "self" :href (str "https://marcandregoyette.com" feed-path)}]
+     (map generate-feed-entry posts-by-url)])))

@@ -54,23 +54,23 @@
 
 (defn- get-feed-for-lang
   [posts lang]
-  [(str "/feeds/languages/" lang "/atom.xml")
-   (feed/generate-feed
-    (sort-posts (filter-posts-by-lang posts lang)))])
+  (let [feed-path (str "/feeds/languages/" lang "/atom.xml")]
+    [feed-path
+     (feed/generate-feed
+      feed-path
+      (sort-posts (filter-posts-by-lang posts lang)))]))
 
 (defn- generate-feeds-by-lang
   [posts]
   (let [languages ["en" "fr"]]
     (into {} (map #(get-feed-for-lang posts %) languages))))
 
-(defn- get-tag-atom-feed-path [tag]
-  (str "/feeds/tags/" (tags/get-tag-for-html tag) "/atom.xml"))
-
 (defn- get-feed-for-tag
   [posts tag]
-  [(get-tag-atom-feed-path tag)
-   (feed/generate-feed
-    (sort-posts (filter-posts-by-tag posts tag)))])
+  (let [feed-path (str "/feeds/tags/" (tags/get-tag-for-html tag) "/atom.xml")]
+    [feed-path
+     (feed/generate-feed
+      feed-path (sort-posts (filter-posts-by-tag posts tag)))]))
 
 (defn- generate-feeds-by-tag
   [posts]

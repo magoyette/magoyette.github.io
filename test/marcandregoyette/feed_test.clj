@@ -28,7 +28,7 @@
   "urn:marcandregoyette-com:feed")
 
 (def expected-feed-url
-  "https://marcandregoyette.com/atom.xml")
+  "https://marcandregoyette.com/feeds/languages/en/atom.xml")
 
 (def expected-post-entry-content
   (str
@@ -67,5 +67,5 @@
    "</feed>"))
 
 (deftest generate-feed-test
-  (is (= (generate-feed posts-by-url)
+  (is (= (generate-feed "/feeds/languages/en/atom.xml" posts-by-url)
          expected-feed-xml)))

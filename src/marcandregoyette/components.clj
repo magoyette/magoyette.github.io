@@ -78,7 +78,7 @@
    [:div.container
     [:div.navbar-brand.is-family-secondary
      [:a.navbar-item.has-text-weight-bold
-      {:href "/"} "Marc-Andr\u00E9 Goyette"]]
+      {:href (if (= lang "en") "/en" "/fr")} "Marc-Andr\u00E9 Goyette"]]
     [:div.navbar-menu.is-active#topNavbar
      (if (= lang "en") menu-en menu-fr)]]])
 

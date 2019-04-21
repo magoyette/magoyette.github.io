@@ -74,7 +74,7 @@
 
 (rum/defc menu [lang]
   [:nav.navbar.is-primary
-   {:role "navigation" :aria-label "main navigation"}
+   {:aria-label "main navigation"}
    [:div.container
     [:div.navbar-brand.is-family-secondary
      [:a.navbar-item.has-text-weight-bold

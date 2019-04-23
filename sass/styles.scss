@@ -114,6 +114,21 @@ div.date {
   font-size: 1rem;
 }
 
+.code {
+  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+  border-radius: 0.28571429rem;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.content pre {
+  padding: 1.25em;
+}
+
+.code pre {
+  background-color: #eee8d5;
+  overflow: auto;
+}
+
 code span {
   font-size: 1em;
 }
@@ -169,15 +184,4 @@ article.card.post {
     padding-right: 4rem;
     padding-left: 4rem;
   }
-}
-
-.code {
-  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
-  border-radius: 0.28571429rem;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-}
-
-.code pre {
-  background-color: #eee8d5;
-  overflow: auto;
 }

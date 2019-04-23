@@ -91,6 +91,11 @@ div.navbar-brand {
   padding-right: 0.5rem;
 }
 
+/* Remove underline that appears when active or on hover */
+.navbar-item.is-tab {
+  border-bottom: 0;
+}
+
 p a {
   text-decoration: underline;
 }

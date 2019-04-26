@@ -2,6 +2,7 @@
 {:title "À propos"
  :date ""
  :lang "fr"
+ :translations [{:lang "en" :path "/about/"}]
  :tags []}
 ---
 

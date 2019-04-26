@@ -2,6 +2,7 @@
 {:title "Introduction"
  :date "2019-04-21T15:35:00Z"
  :lang "fr"
+ :translations [{:lang "en" :path "/introduction/"}]
  :tags ["Java" "Guava"]}
 ---
 

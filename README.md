@@ -38,13 +38,11 @@ lein start
 
 The `test` goal is executed before the server is started. Failing tests will prevent the server from starting.
 
-The `build-source-page` goal is also executed before the server is started. It generates the Marginalia documentation to verify that the generation succeeds, but that documentation isn't available to browse on the local server.
-
 `lein ring server` can be used to start the local server without running `test`.
 
 ## Exporting the site
 
-The `export` goal allows to generate the static site and the Marginalia documentation.
+The `export` goal allows to generate the static site.
 
 ```sh
 lein export

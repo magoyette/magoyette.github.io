@@ -8,8 +8,10 @@
            com.vladsch.flexmark.parser.Parser
            com.vladsch.flexmark.util.options.MutableDataSet))
 
+(defrecord PostTranslation [lang path])
+
 ;; Metadata that describe the post.
-(defrecord PostMetadata [title date lang tags])
+(defrecord PostMetadata [title date lang tags ^PostTranslation translations])
 
 ;; Blog post.
 (defrecord Post [^PostMetadata metadata content])
@@ -35,10 +37,6 @@
     (->> content
          (.parse parser)
          (.render renderer))))
-
-(defn- get-lang-from-url
-  [url]
-  (if (string/starts-with? url "/fr/") "fr" "en"))
 
 (defn- read-post-header
   [post]

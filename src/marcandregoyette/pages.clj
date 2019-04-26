@@ -4,6 +4,7 @@
             [marcandregoyette.posts :as posts]
             [marcandregoyette.tags :as tags]
             [marcandregoyette.templates :as templates]
+            [marcandregoyette.sitemap :as sitemap]
             [stasis.core :as stasis])
   (:import java.time.OffsetDateTime
            java.time.format.DateTimeFormatter))
@@ -83,13 +84,16 @@
          (generate-feeds-by-tag posts)))
 
 (defn load-pages []
-  (let [posts (posts/build-posts "" "resources/posts")]
+  (let [posts (posts/build-posts "" "resources/posts")
+        pages (posts/build-posts "" "resources/pages")
+        tag-pages (get-tags-pages posts)]
     (stasis/merge-page-sources
-     {:pages (templates/add-page-layout
-              (posts/build-posts "" "resources/pages"))
+     {:pages (templates/add-page-layout pages)
       :posts (templates/add-page-layout posts)
       :index-en {"/en/index.html" (build-index-page posts "en")}
+      ;; index-fr exists in case someone edit the url manually from /en to /fr
       :index-fr {"/fr/index.html" (build-index-page posts "fr")}
       :index {"/index.html" (build-index-page posts "fr")}
-      :tags (get-tags-pages posts)
-      :feeds (generate-feeds posts)})))
+      :tags tag-pages
+      :feeds (generate-feeds posts)
+      :sitemap {"/sitemap.xml" (sitemap/generate-sitemap posts pages tag-pages)}})))

@@ -1,4 +1,4 @@
-(defproject marcandregoyette "0.23.4"
+(defproject marcandregoyette "0.24.0"
   :description "Personal website of Marc-Andr\u00E9 Goyette (https://marcandregoyette.com)."
   :url "https://marcandregoyette.com"
   :license {:name "Eclipse Public License"
@@ -7,7 +7,7 @@
                  [org.clojure/data.xml "0.0.8"]
                  [org.clojure/tools.reader "1.3.2"]
                  [clj-commons/fs "1.5.0"]
-                 [com.vladsch.flexmark/flexmark "0.40.18"]
+                 [com.vladsch.flexmark/flexmark "0.42.6"]
                  [enlive "1.1.6"]
                  [org.python/jython-standalone "2.7.1"]
                  [org.pygments/pygments "2.3.1"]
@@ -17,32 +17,17 @@
                  [tongue "0.2.6"]]
   :ring {:handler marcandregoyette.core/app}
   :jvm-opts ["-Dclojure.spec.check-asserts=true"]
-  :aliases {"build-source-page" ["do"
-                                 ["marg"
-                                  "src/marcandregoyette/core.clj"
-                                  "src/marcandregoyette/pages.clj"
-                                  "src/marcandregoyette/posts.clj"
-                                  "src/marcandregoyette/highlight.clj"
-                                  "src/marcandregoyette/templates.clj"
-                                  "src/marcandregoyette/components.clj"
-                                  "src/marcandregoyette/tags.clj"
-                                  "src/marcandregoyette/feed.clj"
-                                  "src/marcandregoyette/translations.clj"
-                                  "-d" "dist/source" "-f" "index.html"]]
-            "start" ["do"
+  :aliases {"start" ["do"
                      ["test"]
-                     ["build-source-page"]
                      ["ring" "server"]]
             "export" ["do"
-                      ["run" "-m" "marcandregoyette.core/export"]
-                      ["build-source-page"]]
+                      ["run" "-m" "marcandregoyette.core/export"]]
             "deploy" ["do"
                       ["test"]
                       ["export"]
                       ["shell" "./deploy-to-github-pages"]]}
   :profiles {:dev
              {:dependencies [[prone "1.6.1"]]
-              :plugins [[lein-marginalia "0.9.1"]
-                        [lein-ring "0.12.5"]
+              :plugins [[lein-ring "0.12.5"]
                         [lein-shell "0.5.0"]]
               :ring {:stacktrace-middleware prone.middleware/wrap-exceptions}}})

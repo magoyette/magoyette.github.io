@@ -2,6 +2,7 @@
 {:title "Colophon"
  :date ""
  :lang "fr"
+ :translations [{:lang "en" :path "/colophon/"}]
  :tags []}
 ---
 

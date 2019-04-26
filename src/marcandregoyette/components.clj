@@ -62,15 +62,13 @@
   [:div.navbar-start
    (menu-item "/en" "Blog")
    (menu-item "/en/about" "About")
-   (menu-item "/feeds/languages/en/atom.xml" "Atom/RSS")
-   (menu-item "/source" "Source")])
+   (menu-item "/feeds/languages/en/atom.xml" "Atom/RSS")])
 
 (def menu-fr
   [:div.navbar-start
-   (menu-item "/fr" "Blogue")
+   (menu-item "/" "Blogue")
    (menu-item "/fr/apropos" "À propos")
-   (menu-item "/feeds/languages/fr/atom.xml" "Atom/RSS")
-   (menu-item "/source" "Source")])
+   (menu-item "/feeds/languages/fr/atom.xml" "Atom/RSS")])
 
 (rum/defc menu [lang]
   [:nav.navbar.is-primary
@@ -78,7 +76,7 @@
    [:div.container
     [:div.navbar-brand.is-family-secondary
      [:a.navbar-item.has-text-weight-bold
-      {:href (if (= lang "en") "/en" "/fr")} "Marc-Andr\u00E9 Goyette"]]
+      {:href (if (= lang "en") "/en" "/")} "Marc-Andr\u00E9 Goyette"]]
     [:div.navbar-menu.is-active#topNavbar
      (if (= lang "en") menu-en menu-fr)]]])
 

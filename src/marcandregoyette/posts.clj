@@ -1,11 +1,25 @@
+;; ## Posts
+;;
+;; This namespace provide fonctions to parse posts and their metadata.
+;; Each post starts with metadata stored in
+;; [EDN](https://github.com/edn-format/edn).
+;;
+;; The content of the post is in Markdown. The Markdown parser is Flexmark
+;; and is configured to use [CommonMark 0.28](https://spec.commonmark.org/0.28/).
+;;
+;; Two Flexmark extensions are used for
+;; [footnotes](https://github.com/vsch/flexmark-java/wiki/Footnotes-Extension)
+;; and [tables](https://github.com/vsch/flexmark-java/blob/master/flexmark-ext-tables/src/main/javadoc/overview.md).
 (ns marcandregoyette.posts
   (:require [clojure.string :as string]
             [clojure.tools.reader.edn :as edn]
             [marcandregoyette.highlight :as highlight]
             [stasis.core :as stasis])
-  (:import com.vladsch.flexmark.util.ast.Node
+  (:import com.vladsch.flexmark.ext.footnotes.FootnoteExtension
+           com.vladsch.flexmark.ext.tables.TablesExtension
            com.vladsch.flexmark.html.HtmlRenderer
            com.vladsch.flexmark.parser.Parser
+           com.vladsch.flexmark.util.ast.Node
            com.vladsch.flexmark.util.options.MutableDataSet))
 
 (defrecord PostTranslation [lang path])
@@ -22,7 +36,9 @@
 
 (def markdown-options
   (doto (MutableDataSet.)
-    (.set HtmlRenderer/FENCED_CODE_LANGUAGE_CLASS_PREFIX "")))
+    (.set HtmlRenderer/FENCED_CODE_LANGUAGE_CLASS_PREFIX "")
+    (.set Parser/EXTENSIONS [(FootnoteExtension/create)
+                             (TablesExtension/create)])))
 
 (defn- remove-post-metadata
   "Remove the metadata header from the content of a post."

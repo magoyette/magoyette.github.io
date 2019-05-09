@@ -1,4 +1,4 @@
-(defproject marcandregoyette "0.24.0"
+(defproject marcandregoyette "0.25.0"
   :description "Personal website of Marc-Andr\u00E9 Goyette (https://marcandregoyette.com)."
   :url "https://marcandregoyette.com"
   :license {:name "Eclipse Public License"
@@ -8,6 +8,8 @@
                  [org.clojure/tools.reader "1.3.2"]
                  [clj-commons/fs "1.5.0"]
                  [com.vladsch.flexmark/flexmark "0.42.6"]
+                 [com.vladsch.flexmark/flexmark-ext-footnotes "0.42.6"]
+                 [com.vladsch.flexmark/flexmark-ext-tables "0.42.6"]
                  [enlive "1.1.6"]
                  [org.python/jython-standalone "2.7.1"]
                  [org.pygments/pygments "2.3.1"]
@@ -27,7 +29,7 @@
                       ["export"]
                       ["shell" "./deploy-to-github-pages"]]}
   :profiles {:dev
-             {:dependencies [[prone "1.6.1"]]
+             {:dependencies [[prone "1.6.3"]]
               :plugins [[lein-ring "0.12.5"]
                         [lein-shell "0.5.0"]]
               :ring {:stacktrace-middleware prone.middleware/wrap-exceptions}}})

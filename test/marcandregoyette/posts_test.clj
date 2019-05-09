@@ -3,35 +3,87 @@
             [clojure.test :refer :all]
             [rum.core :as rum]))
 
-(def an-unparsed-post-without-code-blocks
-  {"/a-post-without-code-blocks"
+(def an-unparsed-post-with-footnote
+  {"/a-post-with-footnote"
    "---
-{:title \"A post without code blocks\"
+{:title \"A post with a footnote\"
  :date \"2018-10-12T16:00:00Z\"
  :tags [\"General\"]}
 ---
 
-A simple post without code blocks."})
+A simple post with a footnote[^1].
 
-(def a-post-without-code-blocks-html
-  (str (rum/render-static-markup [:p "A simple post without code blocks."])
-       "\n"))
+[^1]: A footnote"})
 
-(def a-parsed-post-without-code-blocks
-  {"/a-post-without-code-blocks"
+(def a-post-with-footnote-html
+  (str
+   "<p>A simple post with a footnote"
+   "<sup id=\"fnref-1\">"
+   "<a class=\"footnote-ref\" href=\"#fn-1\">1</a>"
+   "</sup>"
+   ".</p>\n"
+   "<div class=\"footnotes\">\n"
+   "<hr />\n"
+   "<ol>\n"
+   "<li id=\"fn-1\">\n"
+   "<p>A footnote</p>\n"
+   "<a href=\"#fnref-1\" class=\"footnote-backref\">↩</a>\n"
+   "</li>\n"
+   "</ol>\n"
+   "</div>\n"))
+
+(def a-parsed-post-with-footnote
+  {"/a-post-with-footnote"
    (map->Post
     {:metadata
      (map->PostMetadata
-      {:title "A post without code blocks"
+      {:title "A post with a footnote"
        :date "2018-10-12T16:00:00Z"
        :tags ["General"]})
-     :content a-post-without-code-blocks-html})})
+     :content a-post-with-footnote-html})})
 
-(deftest read-post-without-code-blocks-test
-  (is (= a-parsed-post-without-code-blocks
+(deftest read-post-with-footnote-test
+  (is (= a-parsed-post-with-footnote
          (build-posts-from-stasis-map
-          "" an-unparsed-post-without-code-blocks))))
+          "" an-unparsed-post-with-footnote))))
 
+(def an-unparsed-post-with-table
+  {"/a-post-with-table"
+   "---
+{:title \"A post with a table\"
+ :date \"2018-10-12T16:00:00Z\"
+ :tags [\"General\"]}
+---
+
+| A column | Another column |
+|----------|----------------|
+| A value  | Another value  |"})
+
+(def a-post-with-table-html
+  (str
+   "<table>\n"
+   "<thead>\n"
+   "<tr><th>A column</th><th>Another column</th></tr>\n"
+   "</thead>\n"
+   "<tbody>\n"
+   "<tr><td>A value</td><td>Another value</td></tr>\n"
+   "</tbody>\n"
+   "</table>\n"))
+
+(def a-parsed-post-with-table
+  {"/a-post-with-table"
+   (map->Post
+    {:metadata
+     (map->PostMetadata
+      {:title "A post with a table"
+       :date "2018-10-12T16:00:00Z"
+       :tags ["General"]})
+     :content a-post-with-table-html})})
+
+(deftest read-post-with-table-test
+  (is (= a-parsed-post-with-table
+         (build-posts-from-stasis-map
+          "" an-unparsed-post-with-table))))
 
 (def an-unparsed-post-with-code-blocks
   {"/a-parsed-post-with-code-blocks"

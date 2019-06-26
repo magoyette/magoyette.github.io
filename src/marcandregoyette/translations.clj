@@ -6,28 +6,27 @@
         {:written-on "Written on "}
         :footer
         {:license-name
-         "Creative Commons License"
+         "Creative Commons License (CC BY-ND 4.0)"
          :license-url
          "https://creativecommons.org/licenses/by-nd/4.0/"
          :license-sentence
-         "This work by Marc-Andr\u00E9 Goyette is licensed under a "
+         "The content of this site is licensed under a "
          :disclaimer
-         (str "Opinions and views expressed on this site are solely my own, "
+         (str "Opinions expressed on this site are solely my own, "
               "not those of my present or past employers.")}}
    :fr {:post
         {:written-on "Écrit le "}
         :footer
         {:license-name
-         "licence Creative Commons"
+         "licence Creative Commons (CC BY-ND 4.0)"
          :license-url
          "https://creativecommons.org/licenses/by-nd/4.0/deed.fr"
          :license-sentence
-         (str "Cette création de Marc-Andr\u00E9 Goyette est mise à disposition "
-              "selon les termes d'une ")
+         (str "Le contenu de ce site est disponible selon les termes d'une ")
          :disclaimer
-         (str "Les opinions et points de vus exprimés sur ce site sont "
-              "uniquement les miens, et ne sont pas ceux de mes employeurs "
-              "actuels ou passés.")}}})
+         (str "Les opinions exprimées sur ce site sont uniquement les miennes "
+              "et ne représentent pas celles de mes employeurs actuels ou "
+              "passés.")}}})
 
 ;; tongue builds a translate function with the definition:
 ;; [locale key & args] => string

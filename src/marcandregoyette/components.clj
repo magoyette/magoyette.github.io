@@ -82,12 +82,7 @@
 
 (rum/defc footer [lang]
   [:footer.footer
-   [:a
-    {:rel "license"
-     :href (translations/translate lang :footer/license-url)}
-    [:img {:alt (translations/translate lang :footer/license-name)
-           :src "https://licensebuttons.net/l/by-nd/4.0/88x31.png"
-           :style {:border-width 0}}]]
+   [:p "Copyright © 2019 Marc-André Goyette"]
    [:p
     (translations/translate lang :footer/license-sentence)
     [:a {:rel "license"

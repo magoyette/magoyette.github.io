@@ -34,7 +34,7 @@
       (post-content url metadata content)
       [:div.tags
        (for [tag (:tags metadata)]
-         (let [tag-url (tags/build-tag-url tag)]
+         (let [tag-url (tags/build-tag-url tag lang)]
            [:a.tag.is-medium {:href tag-url} tag]))]]]))
 
 (defn- include-meta []

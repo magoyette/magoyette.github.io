@@ -48,10 +48,15 @@
   (templates/add-page-layout-many-posts
    (sort-posts (filter-posts-by-tag posts tag))))
 
+(defn- get-tags-pages-for-lang [posts lang]
+  (let [posts-for-lang (filter-posts-by-lang posts lang)]
+    (let [tags (get-tags posts-for-lang)]
+      (zipmap (doall (map #(tags/build-tag-url % lang) tags))
+              (map (partial get-posts-for-tag posts-for-lang) tags)))))
+
 (defn- get-tags-pages [posts]
-  (let [tags (get-tags posts)]
-    (zipmap (doall (map tags/build-tag-url tags))
-            (map (partial get-posts-for-tag posts) tags))))
+  (merge (get-tags-pages-for-lang posts "en")
+         (get-tags-pages-for-lang posts "fr")))
 
 (defn- get-feed-for-lang
   [posts lang]
@@ -66,22 +71,27 @@
   (let [languages ["en" "fr"]]
     (into {} (map #(get-feed-for-lang posts %) languages))))
 
-(defn- get-feed-for-tag
-  [posts tag]
-  (let [feed-path (str "/feeds/tags/" (tags/get-tag-for-html tag) "/atom.xml")]
+(defn- get-feed-for-tag-and-lang
+  [posts tag lang]
+  (let [feed-path (str "/feeds/languages/" lang "/tags/"
+                       (tags/get-tag-for-html tag) "/atom.xml")]
     [feed-path
      (feed/generate-feed
-      feed-path (sort-posts (filter-posts-by-tag posts tag)))]))
+      feed-path (-> posts
+                    (filter-posts-by-tag tag)
+                    (sort-posts)))]))
 
-(defn- generate-feeds-by-tag
-  [posts]
-  (let [tags (get-tags posts)]
-    (into {} (map #(get-feed-for-tag posts %) tags))))
+(defn- generate-feeds-by-tag-and-lang
+  [posts lang]
+  (let [posts-by-lang (filter-posts-by-lang posts lang)]
+    (let [tags (get-tags posts-by-lang)]
+      (into {} (map #(get-feed-for-tag-and-lang posts-by-lang % lang) tags)))))
 
 (defn- generate-feeds
   [posts]
   (merge (generate-feeds-by-lang posts)
-         (generate-feeds-by-tag posts)))
+         (generate-feeds-by-tag-and-lang posts "en")
+         (generate-feeds-by-tag-and-lang posts "fr")))
 
 (defn load-pages []
   (let [posts (posts/build-posts "" "resources/posts")

@@ -7,5 +7,5 @@
 
 (defn build-tag-url
   "Build the url for a tag."
-  [tag]
-  (str "/tags/" (get-tag-for-html tag) "/"))
+  [tag lang]
+  (str "/" lang "/tags/" (get-tag-for-html tag) "/"))

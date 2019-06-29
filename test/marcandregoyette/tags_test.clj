@@ -3,7 +3,7 @@
             [clojure.test :refer :all]))
 
 (deftest build-tag-url-test
-  (is (= "/tags/java/"
-         (build-tag-url "Java")))
-  (is (= "/tags/google_guava/"
-         (build-tag-url "Google Guava"))))
+  (is (= "/en/tags/java/"
+         (build-tag-url "Java" "en")))
+  (is (= "/fr/tags/google_guava/"
+         (build-tag-url "Google Guava" "fr"))))

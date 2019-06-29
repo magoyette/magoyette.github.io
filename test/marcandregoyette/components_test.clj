@@ -35,8 +35,8 @@
    "<p>Some content</p>"
    "</div>"
    "<div class=\"tags\">"
-   "<a href=\"/tags/java/\" class=\"tag is-medium\">Java</a>"
-   "<a href=\"/tags/guava/\" class=\"tag is-medium\">Guava</a>"
+   "<a href=\"/en/tags/java/\" class=\"tag is-medium\">Java</a>"
+   "<a href=\"/en/tags/guava/\" class=\"tag is-medium\">Guava</a>"
    "</div>"
    "</div>"
    "</article>"))

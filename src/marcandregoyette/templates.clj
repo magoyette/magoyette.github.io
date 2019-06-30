@@ -5,8 +5,9 @@
 
 (defn- build-page-layout [metadata posts-content]
   (let [title (str (:title metadata) " - Marc-Andr\u00E9 Goyette")
-        lang (:lang metadata)]
-    (components/get-page-layout title lang posts-content)))
+        lang (:lang metadata)
+        description (:description metadata)]
+    (components/get-page-layout title lang description posts-content)))
 
 (defn- get-single-post [url metadata content]
   (rum/render-static-markup
@@ -36,8 +37,9 @@
 (defn build-index-page-layout [posts-by-url]
   (let [title "Marc-Andr\u00E9 Goyette"
         lang (find-language posts-by-url)
+        description nil
         posts-content (get-posts-for-index-page posts-by-url)]
-    (components/get-page-layout title lang posts-content)))
+    (components/get-page-layout title lang description posts-content)))
 
 (defn- apply-page-layout [post-by-url]
   (let [{:keys [metadata content]} (val post-by-url)]

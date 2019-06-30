@@ -37,19 +37,26 @@
          (let [tag-url (tags/build-tag-url tag lang)]
            [:a.tag.is-medium {:href tag-url} tag]))]]]))
 
-(defn- include-meta []
+(defn- get-page-description-or-default [description lang]
+  (if description
+    description
+    (translations/translate lang :page/description)))
+
+(defn- include-meta [lang description]
   (seq [[:meta {:charset "utf-8"}]
         [:meta {:http-equiv "X-UA-Compatible"
                 :content "IE=edge"}]
         [:meta {:name "viewport"
                 :content "width=device-width, initial-scale=1.0"}]
         [:meta {:name "author"
-                :content "Marc-Andr\u00E9 Goyette"}]]))
+                :content "Marc-Andr\u00E9 Goyette"}]
+        [:meta {:name "description"
+                :content (get-page-description-or-default description lang)}]]))
 
-(rum/defc head [title]
+(rum/defc head [title lang description]
   [:head
    [:title title]
-   (include-meta)
+   (include-meta lang description)
    [:link {:type "text/css"
            :rel "stylesheet"
            :href "/styles/styles.css"}]])
@@ -97,12 +104,12 @@
     {:dangerouslySetInnerHTML
      {:__html posts-content}}])
 
-(defn get-page-layout [title lang posts-content]
+(defn get-page-layout [title lang description posts-content]
   (str
    "<!DOCTYPE html>"
    (rum/render-static-markup
     [:html {:lang lang}
-     (head title)
+     (head title lang description)
      [:body
       (menu lang)
       [:div.container

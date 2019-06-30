@@ -12,6 +12,7 @@
 ;; and [tables](https://github.com/vsch/flexmark-java/blob/master/flexmark-ext-tables/src/main/javadoc/overview.md).
 (ns marcandregoyette.posts
   (:require [clojure.string :as string]
+            [clojure.tools.logging :as log]
             [clojure.tools.reader.edn :as edn]
             [marcandregoyette.highlight :as highlight]
             [stasis.core :as stasis])
@@ -93,10 +94,42 @@
   (zipmap (map #(build-post-url-path url-path %) (keys posts))
             (map make-post (vals posts))))
 
+(def max-title-length 78)
+
+(defn- validate-title-length [metadata quoted-title]
+  (let [title (:title metadata)]
+    (if (> (count title) max-title-length)
+      (log/warn "Title of the post" quoted-title
+                "is too long."
+                "Actual length:" (count title)
+                "Max length:" max-title-length))))
+
+(def max-description-length 155)
+
+(defn- validate-description-length [metadata quoted-title]
+  (let [description (:description metadata)]
+    (if (> (count description) max-description-length)
+      (log/warn "Description of the post" quoted-title
+                "is too long."
+                "Actual length:" (count description)
+                "Max length:" max-description-length
+                "Description:" description))))
+
+(defn- validate-post [post]
+  (let [metadata (:metadata post)
+        title (str "\"" (:title metadata) "\"")]
+    (validate-title-length metadata title)
+    (validate-description-length metadata title)))
+
+(defn- validate-posts [posts]
+  (run! validate-post (vals posts)))
+
 (defn build-posts
   "Loads all the posts in a directory, then build a map with the url path
   of a post as a key, and the Post as a value. The url-path will be used
   as an initial path to which the post path will be added."
   [url-path markdown-posts-directory]
   (let [posts (load-markdown-posts markdown-posts-directory)]
-    (build-posts-from-stasis-map url-path posts)))
+    (let [built-posts (build-posts-from-stasis-map url-path posts)]
+      (validate-posts built-posts)
+      built-posts)))

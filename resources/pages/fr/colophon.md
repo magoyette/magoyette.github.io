@@ -3,7 +3,8 @@
  :date ""
  :lang "fr"
  :translations [{:lang "en" :path "/colophon/"}]
- :tags []}
+ :tags []
+ :description "Présentation sur les technologies utilisées pour générer le site personnel de Marc-André Goyette."}
 ---
 
 ## Contraintes

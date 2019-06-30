@@ -3,7 +3,8 @@
  :date ""
  :lang "en"
  :translations [{:lang "fr" :path "/colophon/"}]
- :tags []}
+ :tags []
+ :description "Presentation of the technologies used to generate the personal website of Marc-André Goyette."}
 ---
 
 ## Constraints

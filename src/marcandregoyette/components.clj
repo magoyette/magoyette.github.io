@@ -10,8 +10,9 @@
 (defn- format-date
   [date language]
   (let [locale (if (= language "fr") Locale/CANADA_FRENCH Locale/CANADA)]
-    (->> (OffsetDateTime/parse date DateTimeFormatter/ISO_DATE_TIME)
-         (.format (DateTimeFormatter/ofPattern "dd MMMM YYYY" locale)))))
+    (.format
+     (DateTimeFormatter/ofPattern "dd MMMM YYYY" locale)
+     (OffsetDateTime/parse date DateTimeFormatter/ISO_DATE_TIME))))
 
 (rum/defc post-content [url metadata content]
   [:div.content
@@ -38,9 +39,7 @@
            [:a.tag.is-medium {:href tag-url} tag]))]]]))
 
 (defn- get-page-description-or-default [description lang]
-  (if description
-    description
-    (translations/translate lang :page/description)))
+  (or description (translations/translate lang :page/description)))
 
 (defn- include-meta [lang description]
   (seq [[:meta {:charset "utf-8"}]

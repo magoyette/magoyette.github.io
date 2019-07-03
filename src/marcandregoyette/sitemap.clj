@@ -37,5 +37,6 @@
   (xml/emit-str
    (xml/sexp-as-element
     (into urlset
-          (->> (concat posts-by-url pages-by-url tag-pages-by-url)
-               (map generate-url-entry))))))
+          (map
+           generate-url-entry
+           (concat posts-by-url pages-by-url tag-pages-by-url))))))

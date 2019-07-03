@@ -32,7 +32,7 @@
      :license-url
      "https://creativecommons.org/licenses/by-nd/4.0/deed.fr"
      :license-sentence
-     (str "Le contenu de ce site est disponible selon les termes d'une ")
+     "Le contenu de ce site est disponible selon les termes d'une "
      :disclaimer
      (str "Les opinions exprimées sur ce site sont uniquement les miennes "
           "et ne représentent pas celles de mes employeurs actuels ou "

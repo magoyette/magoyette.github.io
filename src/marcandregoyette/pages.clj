@@ -1,6 +1,5 @@
 (ns marcandregoyette.pages
-  (:require [clojure.string :as str]
-            [marcandregoyette.feed :as feed]
+  (:require [marcandregoyette.feed :as feed]
             [marcandregoyette.posts :as posts]
             [marcandregoyette.tags :as tags]
             [marcandregoyette.templates :as templates]
@@ -49,10 +48,10 @@
    (sort-posts (filter-posts-by-tag posts tag))))
 
 (defn- get-tags-pages-for-lang [posts lang]
-  (let [posts-for-lang (filter-posts-by-lang posts lang)]
-    (let [tags (get-tags posts-for-lang)]
-      (zipmap (doall (map #(tags/build-tag-url % lang) tags))
-              (map (partial get-posts-for-tag posts-for-lang) tags)))))
+  (let [posts-for-lang (filter-posts-by-lang posts lang)
+        tags (get-tags posts-for-lang)]
+    (zipmap (doall (map #(tags/build-tag-url % lang) tags))
+            (map (partial get-posts-for-tag posts-for-lang) tags))))
 
 (defn- get-tags-pages [posts]
   (merge (get-tags-pages-for-lang posts "en")
@@ -83,9 +82,9 @@
 
 (defn- generate-feeds-by-tag-and-lang
   [posts lang]
-  (let [posts-by-lang (filter-posts-by-lang posts lang)]
-    (let [tags (get-tags posts-by-lang)]
-      (into {} (map #(get-feed-for-tag-and-lang posts-by-lang % lang) tags)))))
+  (let [posts-by-lang (filter-posts-by-lang posts lang)
+        tags (get-tags posts-by-lang)]
+      (into {} (map #(get-feed-for-tag-and-lang posts-by-lang % lang) tags))))
 
 (defn- generate-feeds
   [posts]

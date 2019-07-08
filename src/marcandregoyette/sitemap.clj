@@ -1,25 +1,25 @@
 (ns marcandregoyette.sitemap
-  (:require [clojure.data.xml :as xml]
-            [clojure.string :as string]))
+  (:require [clojure.data.xml :as xml]))
 
 (def site-url "https://marcandregoyette.com")
 
 (defn- generate-alternate-link [translation]
-  (let [lang (:lang translation) path (:path translation)]
+  (let [{:keys [lang path]} translation]
     [:xhtml:link {:rel "alternate"
                   :hreflang lang
                   :href (str site-url "/" lang path)}]))
 
 (defn- generate-url-entry [post-by-url]
   (let [metadata (:metadata (val post-by-url))
+        {:keys [translations lang]} metadata
         post-url (str site-url (key post-by-url))]
-    (into (if (:translations metadata)
+    (into (if translations
             [:url [:loc post-url]
              [:xhtml:link {:rel "alternate"
-                           :hreflang (:lang metadata)
+                           :hreflang lang
                            :href post-url}]]
             [:url [:loc post-url]])
-          (map generate-alternate-link (:translations metadata)))))
+          (map generate-alternate-link translations))))
 
 (def urlset
   [:urlset {:xmlns "http://www.sitemaps.org/schemas/sitemap/0.9"

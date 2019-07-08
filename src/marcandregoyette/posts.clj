@@ -129,7 +129,7 @@
   of a post as a key, and the Post as a value. The url-path will be used
   as an initial path to which the post path will be added."
   [url-path markdown-posts-directory]
-  (let [posts (load-markdown-posts markdown-posts-directory)]
-    (let [built-posts (build-posts-from-stasis-map url-path posts)]
+  (let [posts (load-markdown-posts markdown-posts-directory)
+        built-posts (build-posts-from-stasis-map url-path posts)]
       (validate-posts built-posts)
-      built-posts)))
+      built-posts))

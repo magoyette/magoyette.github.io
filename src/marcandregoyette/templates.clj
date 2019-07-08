@@ -4,9 +4,8 @@
             [rum.core :as rum]))
 
 (defn- build-page-layout [metadata posts-content]
-  (let [title (str (:title metadata) " - Marc-Andr\u00E9 Goyette")
-        lang (:lang metadata)
-        description (:description metadata)]
+  (let [{:keys [lang description]} metadata
+        title (str (:title metadata) " - Marc-Andr\u00E9 Goyette")]
     (components/get-page-layout title lang description posts-content)))
 
 (defn- get-single-post [url metadata content]

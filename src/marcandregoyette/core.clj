@@ -16,7 +16,6 @@
 ;; [whattheemacsd.com](https://github.com/magnars/what-the-emacsd).
 (ns marcandregoyette.core
   (:require [marcandregoyette.pages :as pages]
-            [clojure.java.io :as io]
             [me.raynes.fs :as fs]
             [ring.middleware.content-type :as ring-content-type]
             [ring.middleware.resource :as ring-resource]

@@ -2,8 +2,7 @@
 ;;
 ;; Syntaxic highlight of code blocks.
 (ns marcandregoyette.highlight
-  (:require [clojure.string :as string]
-            [net.cgrand.enlive-html :as enlive])
+  (:require [net.cgrand.enlive-html :as enlive])
   (:import java.io.StringReader
            java.lang.String
            org.python.util.PythonInterpreter))

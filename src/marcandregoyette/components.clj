@@ -34,7 +34,7 @@
               (format-date date lang))])
       (post-content url metadata content)
       [:div.tags
-       (for [tag (:tags metadata)]
+       (for [tag tags]
          (let [tag-url (tags/build-tag-url tag lang)]
            [:a.tag.is-medium {:href tag-url} tag]))]]]))
 

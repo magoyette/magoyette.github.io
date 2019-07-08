@@ -12,21 +12,22 @@
   "Generate a unique urn for the feed entry based on the title of the post and
   its language (to avoid name clashes when the same post is translated)."
   [metadata]
-  (str "urn:marcandregoyette-com:feed:post:"
-       (:lang metadata)
-       ":"
-       (-> (:title metadata)
-           (string/replace " " "-")
-           (string/lower-case))))
+  (let [{:keys [lang title]} metadata]
+    (str "urn:marcandregoyette-com:feed:post:"
+         lang
+         ":"
+       (-> title
+        (string/replace " " "-")
+        (string/lower-case)))))
 
 (defn- generate-feed-entry
   "Builds the XML of an Atom feed entry for a post."
   [urlAndPost]
-  (let [content (:content (val urlAndPost))
-        metadata (:metadata (val urlAndPost))]
+  (let [{:keys [content metadata]} (val urlAndPost)
+        {:keys [title date]} metadata]
     [:entry
-     [:title (:title metadata)]
-     [:updated (:date metadata)]
+     [:title title]
+     [:updated date]
      [:author [:name "Marc-Andr\u00E9 Goyette"]]
      [:link {:href (str "https://marcandregoyette.com" (key urlAndPost))}]
      [:id (generate-feed-entry-id metadata)]

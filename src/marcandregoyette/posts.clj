@@ -21,7 +21,7 @@
            com.vladsch.flexmark.html.HtmlRenderer
            com.vladsch.flexmark.parser.Parser
            com.vladsch.flexmark.util.ast.Node
-           com.vladsch.flexmark.util.options.MutableDataSet))
+           com.vladsch.flexmark.util.data.MutableDataSet))
 
 (defrecord PostTranslation [lang path])
 

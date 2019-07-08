@@ -1,4 +1,4 @@
-(defproject marcandregoyette "0.29.2"
+(defproject marcandregoyette "0.30.0"
   :description "Personal website of Marc-Andr\u00E9 Goyette (https://marcandregoyette.com)."
   :url "https://marcandregoyette.com"
   :license {:name "Eclipse Public License"
@@ -9,9 +9,9 @@
                  [org.clojure/tools.reader "1.3.2"]
                  [ch.qos.logback/logback-classic "1.2.3"]
                  [clj-commons/fs "1.5.0"]
-                 [com.vladsch.flexmark/flexmark "0.42.12"]
-                 [com.vladsch.flexmark/flexmark-ext-footnotes "0.42.12"]
-                 [com.vladsch.flexmark/flexmark-ext-tables "0.42.12"]
+                 [com.vladsch.flexmark/flexmark "0.50.16"]
+                 [com.vladsch.flexmark/flexmark-ext-footnotes "0.50.16"]
+                 [com.vladsch.flexmark/flexmark-ext-tables "0.50.16"]
                  [enlive "1.1.6"]
                  [org.python/jython-standalone "2.7.1"]
                  [org.pygments/pygments "2.4.2"]

@@ -73,7 +73,7 @@
 (def menu-fr
   [:div.navbar-start
    (menu-item "/" "Blogue")
-   (menu-item "/fr/apropos" "À propos")
+   (menu-item "/fr/a-propos" "À propos")
    (menu-item "/feeds/languages/fr/atom.xml" "Atom/RSS")])
 
 (rum/defc menu [lang]

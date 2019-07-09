@@ -98,7 +98,7 @@
 
 (defn- validate-title-length [metadata quoted-title]
   (let [title (:title metadata)]
-    (if (> (count title) max-title-length)
+    (when (> (count title) max-title-length)
       (log/warn "Title of the post" quoted-title
                 "is too long."
                 "Actual length:" (count title)
@@ -108,7 +108,7 @@
 
 (defn- validate-description-length [metadata quoted-title]
   (let [description (:description metadata)]
-    (if (> (count description) max-description-length)
+    (when (> (count description) max-description-length)
       (log/warn "Description of the post" quoted-title
                 "is too long."
                 "Actual length:" (count description)

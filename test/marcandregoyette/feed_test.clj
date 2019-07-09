@@ -7,7 +7,6 @@
 
 (def post-date "2014-10-12T16:00:00Z")
 
-;; The same post in French and in English
 (def posts-by-url
   (seq
    {"/en/iterables.concat"
@@ -21,14 +20,7 @@
                 :lang "en"}
      :content post-content}}))
 
-(def expected-author
-  "Marc-André Goyette")
-
-(def expected-feed-id
-  "urn:marcandregoyette-com:feed")
-
-(def expected-feed-url
-  "https://marcandregoyette.com/feeds/languages/en/atom.xml")
+(def expected-author "Marc-André Goyette")
 
 (def expected-post-entry-content
   (str
@@ -40,16 +32,17 @@
   (str
    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
    "<feed xmlns=\"http://www.w3.org/2005/Atom\">"
-   "<id>" expected-feed-id "</id>"
+   "<id>urn:marcandregoyette.com:feed:languages:en</id>"
    "<updated>" post-date "</updated>"
-   "<title type=\"text\">" expected-author "</title>"
-   "<link rel=\"self\" href=\"" expected-feed-url "\"></link>"
+   "<title type=\"text\">Marc-André Goyette</title>"
+   "<link rel=\"self\" href=\""
+   "https://marcandregoyette.com/feeds/languages/en/atom.xml\"></link>"
    "<entry>"
    "<title>Iterables.concat</title>"
    "<updated>" post-date "</updated>"
    "<author><name>" expected-author "</name></author>"
    "<link href=\"https://marcandregoyette.com/en/iterables.concat\"></link>"
-   "<id>urn:marcandregoyette-com:feed:post:en:iterables.concat</id>"
+   "<id>urn:marcandregoyette.com:feed:languages:en:iterables.concat</id>"
    "<content type=\"html\">"
    expected-post-entry-content
    "</content>"
@@ -59,7 +52,7 @@
    "<updated>" post-date "</updated>"
    "<author><name>" expected-author "</name></author>"
    "<link href=\"https://marcandregoyette.com/en/iterables.concat-part-2\"></link>"
-   "<id>urn:marcandregoyette-com:feed:post:en:iterables.concat-part-2</id>"
+   "<id>urn:marcandregoyette.com:feed:languages:en:iterables.concat-part-2</id>"
    "<content type=\"html\">"
    expected-post-entry-content
    "</content>"
@@ -67,5 +60,39 @@
    "</feed>"))
 
 (deftest generate-feed-test
-  (is (= (generate-feed "/feeds/languages/en/atom.xml" posts-by-url)
+  (is (= (generate-feed "/feeds/languages/en/atom.xml" posts-by-url "en" nil)
          expected-feed-xml)))
+
+(def posts-by-url-for-tag
+  (seq
+   {"/fr/iterables.concat"
+    {:metadata {:date post-date
+                :title "Iterables.concat"
+                :lang "fr"}
+     :content post-content}}))
+
+(def expected-feed-xml-for-tag
+  (str
+   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+   "<feed xmlns=\"http://www.w3.org/2005/Atom\">"
+   "<id>urn:marcandregoyette.com:feed:languages:fr:tags:java</id>"
+   "<updated>" post-date "</updated>"
+   "<title type=\"text\">Marc-André Goyette - Java</title>"
+   "<link rel=\"self\" href=\""
+   "https://marcandregoyette.com/feeds/languages/fr/tags/java/atom.xml\"></link>"
+   "<entry>"
+   "<title>Iterables.concat</title>"
+   "<updated>" post-date "</updated>"
+   "<author><name>" expected-author "</name></author>"
+   "<link href=\"https://marcandregoyette.com/fr/iterables.concat\"></link>"
+   "<id>urn:marcandregoyette.com:feed:languages:fr:iterables.concat</id>"
+   "<content type=\"html\">"
+   expected-post-entry-content
+   "</content>"
+   "</entry>"
+   "</feed>"))
+
+(deftest generate-feed-test-with-tag
+  (is (= (generate-feed "/feeds/languages/fr/tags/java/atom.xml" posts-by-url-for-tag
+                        "fr" "Java")
+         expected-feed-xml-for-tag)))

@@ -12,7 +12,7 @@
 (defn- generate-feed-id
   "Generate a unique id for the feed entry based on the language and tag."
   [lang feed-tag]
-    (str "urn:marcandregoyette.com:feed:languages:"
+    (str "urn:marcandregoyette-com:feed:languages:"
          lang
          (if feed-tag (str ":tags:" (tags/get-tag-for-url feed-tag)) "")))
 
@@ -27,7 +27,7 @@
   its language (to avoid name clashes when the same post is translated)."
   [metadata]
   (let [{:keys [lang title]} metadata]
-    (str "urn:marcandregoyette.com:feed:languages:" lang ":"
+    (str "urn:marcandregoyette-com:feed:languages:" lang ":"
        (string/lower-case (string/replace title " " "-")))))
 
 (defn- generate-feed-entry

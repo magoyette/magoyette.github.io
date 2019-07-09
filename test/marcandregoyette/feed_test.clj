@@ -32,7 +32,7 @@
   (str
    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
    "<feed xmlns=\"http://www.w3.org/2005/Atom\">"
-   "<id>urn:marcandregoyette.com:feed:languages:en</id>"
+   "<id>urn:marcandregoyette-com:feed:languages:en</id>"
    "<updated>" post-date "</updated>"
    "<title type=\"text\">Marc-André Goyette</title>"
    "<link rel=\"self\" href=\""
@@ -42,7 +42,7 @@
    "<updated>" post-date "</updated>"
    "<author><name>" expected-author "</name></author>"
    "<link href=\"https://marcandregoyette.com/en/iterables.concat\"></link>"
-   "<id>urn:marcandregoyette.com:feed:languages:en:iterables.concat</id>"
+   "<id>urn:marcandregoyette-com:feed:languages:en:iterables.concat</id>"
    "<content type=\"html\">"
    expected-post-entry-content
    "</content>"
@@ -52,7 +52,7 @@
    "<updated>" post-date "</updated>"
    "<author><name>" expected-author "</name></author>"
    "<link href=\"https://marcandregoyette.com/en/iterables.concat-part-2\"></link>"
-   "<id>urn:marcandregoyette.com:feed:languages:en:iterables.concat-part-2</id>"
+   "<id>urn:marcandregoyette-com:feed:languages:en:iterables.concat-part-2</id>"
    "<content type=\"html\">"
    expected-post-entry-content
    "</content>"
@@ -75,7 +75,7 @@
   (str
    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
    "<feed xmlns=\"http://www.w3.org/2005/Atom\">"
-   "<id>urn:marcandregoyette.com:feed:languages:fr:tags:java</id>"
+   "<id>urn:marcandregoyette-com:feed:languages:fr:tags:java</id>"
    "<updated>" post-date "</updated>"
    "<title type=\"text\">Marc-André Goyette - Java</title>"
    "<link rel=\"self\" href=\""
@@ -85,7 +85,7 @@
    "<updated>" post-date "</updated>"
    "<author><name>" expected-author "</name></author>"
    "<link href=\"https://marcandregoyette.com/fr/iterables.concat\"></link>"
-   "<id>urn:marcandregoyette.com:feed:languages:fr:iterables.concat</id>"
+   "<id>urn:marcandregoyette-com:feed:languages:fr:iterables.concat</id>"
    "<content type=\"html\">"
    expected-post-entry-content
    "</content>"

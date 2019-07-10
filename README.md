@@ -42,21 +42,22 @@ The `test` goal is executed before the server is started. Failing tests will pre
 
 ## Exporting the site
 
-The `export` goal allows to generate the static site.
+The `export` script allows to generate the static site for a deployment on GitHub pages.
 
 ```sh
-lein export
+./export
 ```
 
-## Deploying the site
+It includes many tasks:
 
-The `deploy` goal includes `export`, but also copies the generated static site to the path `../magoyette.github.io`. The `magoyette.github.io` repository should be set on the `master` branch and is used to commit and push the changes to GitHub pages.
+- the lein goal `test` is executed to run the tests
+- the lein goal `export` to generate the static site
+- the npm script `format-html-and-xml` to format the HTML and XML files
+- Bash commands to copy the static site to the path `../magoyette.github.io`
 
-``` sh
-lein deploy
-```
+The `magoyette.github.io` repository should be set on the `master` branch and is used to commit and push the changes to GitHub pages.
 
-The `test` goal is executed before the `export` goal is executed. Failing tests will prevent the deployment from completing.
+The HTML and XML files are formatted to make their content easier to review in a git diff.
 
 ## License
 

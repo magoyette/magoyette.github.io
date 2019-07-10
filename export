@@ -8,10 +8,10 @@ echo "*****"
 lein export
 
 echo "*****"
-echo "Formatting HTML and XML files"
+echo "Formatting HTML"
 echo "*****"
 
-npm run format-html-and-xml
+npm run format-html
 
 echo "*****"
 echo "Removing files from the previous build in ../magoyette.github.io/"

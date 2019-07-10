@@ -52,12 +52,12 @@ It includes many tasks:
 
 - the lein goal `test` is executed to run the tests
 - the lein goal `export` to generate the static site
-- the npm script `format-html-and-xml` to format the HTML and XML files
+- the npm script `format-html` to format the HTML files
 - Bash commands to copy the static site to the path `../magoyette.github.io`
 
 The `magoyette.github.io` repository should be set on the `master` branch and is used to commit and push the changes to GitHub pages.
 
-The HTML and XML files are formatted to make their content easier to review in a git diff.
+The HTML files are formatted to make their content easier to review in a git diff.
 
 ## License
 

@@ -23,6 +23,11 @@
        [:a {:href url} [:h1.title.is-family-secondary (:title metadata)]])
       content)}}])
 
+(defn- build-tag
+  [tag lang]
+  (let [tag-url (tags/build-tag-url tag lang)]
+    [[:a.tag.is-medium {:href tag-url} tag] " "]))
+
 (rum/defc post-layout [url metadata content]
   (let [{:keys [date lang tags]} metadata]
     [:article.card.post
@@ -33,10 +38,9 @@
          (str (translations/translate lang :post/written-on)
               (format-date date lang))])
       (post-content url metadata content)
-      [:div.tags
-       (for [tag tags]
-         (let [tag-url (tags/build-tag-url tag lang)]
-           [:a.tag.is-medium {:href tag-url} tag]))]]]))
+      [:p
+       [:div.tags
+        (mapcat #(build-tag % lang) tags)]]]]))
 
 (defn- get-page-description-or-default [description lang]
   (or description (translations/translate lang :page/description)))
@@ -62,19 +66,22 @@
 
 (defn- menu-item
   [href name]
-  [:a.navbar-item.is-tab {:href href} name])
+  [[:a.navbar-item.is-tab {:href href} name] " "])
 
-(def menu-en
-  [:div.navbar-start
-   (menu-item "/en" "Blog")
-   (menu-item "/en/about" "About")
-   (menu-item "/feeds/languages/en/atom.xml" "Atom/RSS")])
+(def menu-items-en
+  {"/en" "Blog"
+   "/en/about" "About"
+   "/feeds/languages/en/atom.xml" "Atom/RSS"})
 
-(def menu-fr
+(def menu-items-fr
+  {"/" "Blogue"
+   "/fr/a-propos" "À propos"
+   "/feeds/languages/fr/atom.xml" "Atom/RSS"})
+
+(defn- build-menu
+  [menu-items]
   [:div.navbar-start
-   (menu-item "/" "Blogue")
-   (menu-item "/fr/a-propos" "À propos")
-   (menu-item "/feeds/languages/fr/atom.xml" "Atom/RSS")])
+   (mapcat #(menu-item (key %) (val %)) menu-items)])
 
 (rum/defc menu [lang]
   [:nav.navbar.is-primary
@@ -84,7 +91,8 @@
      [:a.navbar-item.has-text-weight-bold
       {:href (if (= lang "en") "/en" "/")} "Marc-Andr\u00E9 Goyette"]]
     [:div.navbar-menu.is-active#topNavbar
-     (if (= lang "en") menu-en menu-fr)]]])
+     (build-menu
+      (if (= lang "en") menu-items-en menu-items-fr))]]])
 
 (rum/defc footer [lang]
   [:footer.footer

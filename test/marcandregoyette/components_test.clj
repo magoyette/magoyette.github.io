@@ -34,12 +34,10 @@
    "<a href=\"/a-post\"><h1 class=\"title is-family-secondary\">A post</h1></a>"
    "<p>Some content</p>"
    "</div>"
-   "<p>"
    "<div class=\"tags\">"
    "<a href=\"/en/tags/java/\" class=\"tag is-medium\">Java</a> "
    "<a href=\"/en/tags/guava/\" class=\"tag is-medium\">Guava</a> "
    "</div>"
-   "</p>"
    "</div>"
    "</article>"))
 

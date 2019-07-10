@@ -38,9 +38,8 @@
          (str (translations/translate lang :post/written-on)
               (format-date date lang))])
       (post-content url metadata content)
-      [:p
        [:div.tags
-        (mapcat #(build-tag % lang) tags)]]]]))
+        (mapcat #(build-tag % lang) tags)]]]))
 
 (defn- get-page-description-or-default [description lang]
   (or description (translations/translate lang :page/description)))

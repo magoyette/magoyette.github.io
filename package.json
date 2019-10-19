@@ -1,6 +1,6 @@
 {
   "name": "marcandregoyette.com",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Personal website of Marc-André Goyette",
   "main": "sass/styles.scss",
   "repository": {
@@ -20,7 +20,7 @@
     "format-html": "node scripts/format-html.js"
   },
   "devDependencies": {
-    "bulma": "0.7.5",
+    "bulma": "0.8.0",
     "glob": "7.1.4",
     "js-beautify": "1.10.2",
     "node-sass": "4.12.0"

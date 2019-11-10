@@ -18,14 +18,14 @@ The npm packages must first be installed.
 npm install
 ```
 
-The Sass styles can be built with NPM.
+The Sass styles are built with Webpack.
 
 ``` shell
 # Build the Sass files as CSS
-npm run css-build
+npm run build
 
 # Build continuously the Sass files as CSS when the Sass files are modified
-npm run css-watch
+npm run watch
 ```
 
 ## Deploying the site locally
@@ -42,10 +42,10 @@ The `test` goal is executed before the server is started. Failing tests will pre
 
 ## Exporting the site
 
-The `export` script allows to generate the static site for a deployment on GitHub pages.
+The `deploy` goal allows to generate the static site for a deployment on GitHub pages.
 
 ```sh
-./export
+lein deploy
 ```
 
 It includes many tasks:

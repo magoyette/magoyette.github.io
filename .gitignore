@@ -4,5 +4,5 @@
 dist/
 node_modules/
 package-lock.json
-/resources/public/styles/*.css
+/resources/public/
 /target/

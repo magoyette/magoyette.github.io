@@ -61,7 +61,7 @@
    (include-meta lang description)
    [:link {:type "text/css"
            :rel "stylesheet"
-           :href "/styles/styles.css"}]])
+           :href "/styles.css"}]])
 
 (defn- menu-item
   [href name]

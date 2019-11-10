@@ -36,5 +36,5 @@
   (stasis/empty-directory! export-dir)
   (stasis/export-pages (pages/load-pages) export-dir)
   (fs/copy-dir (str resources-dir "/public/fonts") export-dir)
-  (fs/copy-dir (str resources-dir "/public/styles") export-dir)
+  (fs/copy (str resources-dir "/public/styles.css") (str export-dir "/styles.css"))
   (fs/copy (str resources-dir "/" cname-file) (str export-dir "/" cname-file)))

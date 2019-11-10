@@ -1,4 +1,4 @@
-(defproject marcandregoyette "0.34.1"
+(defproject marcandregoyette "0.35.0"
   :description "Personal website of Marc-Andr\u00E9 Goyette (https://marcandregoyette.com)."
   :url "https://marcandregoyette.com"
   :license {:name "Eclipse Public License"
@@ -16,7 +16,7 @@
                  [org.python/jython-standalone "2.7.2b2"]
                  [org.pygments/pygments "2.4.2"]
                  [ring "1.7.1"]
-                 [rum "0.11.3" :exclusions [cljsjs/react cljsjs/react-dom sablono]]
+                 [rum "0.11.4" :exclusions [cljsjs/react cljsjs/react-dom sablono]]
                  [stasis "2.5.0"]
                  [tongue "0.2.8"]]
   :ring {:handler marcandregoyette.core/app}

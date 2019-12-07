@@ -19,12 +19,6 @@ I chose to adopt some constraints while building this web site.
 
 ## Fonts
 
-The majority of the text on this web site use two open source fonts created by [Huerta Tipográfica](https://www.huertatipografica.com/en):
-
-- Titles use [Alegreya](https://github.com/huertatipografica/Alegreya), a serif font.
-
-- Texts use [Alegreya Sans](https://github.com/huertatipografica/Alegreya-Sans), the sans serif equivalent of Alegreya.
-
-I chose these two fonts because of their litterary appearance. They create a different ambiance than the popular sans serif fonts that are used all around the web.
+The text on this web site use [Alegreya](https://github.com/huertatipografica/Alegreya), an open source font created by [Huerta Tipográfica](https://www.huertatipografica.com/en).
 
 Code blocks use a monospace font that varies depending on the fonts installed on the operating system.

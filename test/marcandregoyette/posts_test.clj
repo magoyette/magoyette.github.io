@@ -125,7 +125,7 @@ Try Clojure syntax highlight.
        [:span.o "*"]
        " "
        [:span.mi "2"]
-       [:span.o ";"]
+       [:span.p ";"]
        "\n"]]])
     "\n"
     (rum/render-static-markup

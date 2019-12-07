@@ -19,12 +19,6 @@ J'ai choisi d'adopter certaines contraintes lors de la création de ce site web.
 
 ## Polices de caractères
 
-La plupart des textes sur ce site web utilisent deux polices de caractères libres crées par [Huerta Tipográfica](https://www.huertatipografica.com/en):
-
-- Les titres utilisent la police [Alegreya](https://github.com/huertatipografica/Alegreya), une police avec serif.
-
-- Les textes utilisent la police [Alegreya Sans](https://github.com/huertatipografica/Alegreya-Sans), l'équivalent sans serif d'Alegreya.
-
-J'ai choisi ces deux polices en raison de leur aspect littéraire et calligraphique, qui crée une atmosphère différente que les polices sans serif populaires qui sont utilisées partout sur le web.
+Les textes de ce site web utilisent [Alegreya](https://github.com/huertatipografica/Alegreya), une police de caractères libre créée par [Huerta Tipográfica](https://www.huertatipografica.com/en).
 
 Les blocs de code utilisent une police monospace qui varie en fonction des polices installées sur le système.

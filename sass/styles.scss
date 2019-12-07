@@ -10,35 +10,26 @@
 }
 
 @font-face {
-  font-family: AlegreyaSans;
-  font-style: normal;
-  font-weight: 400;
-  src:
-    url(../fonts/AlegreyaSans-Regular.woff2) format('woff2'),
-    url(../fonts/AlegreyaSans-Regular.woff) format('woff');
-}
-
-@font-face {
-  font-family: AlegreyaSans;
+  font-family: Alegreya;
   font-style: normal;
   font-weight: 700;
   src:
-    url(../fonts/AlegreyaSans-Bold.woff2) format('woff2'),
-    url(../fonts/AlegreyaSans-Bold.woff) format('woff');
+    url(../fonts/Alegreya-Bold.woff2) format('woff2'),
+    url(../fonts/Alegreya-Bold.woff) format('woff');
 }
 
 @font-face {
-  font-family: AlegreyaSans;
+  font-family: Alegreya;
   font-style: italic;
   font-weight: 400;
   src:
-    url(../fonts/AlegreyaSans-Italic.woff2) format('woff2'),
-    url(../fonts/AlegreyaSans-Italic.woff) format('woff');
+    url(../fonts/Alegreya-Italic.woff2) format('woff2'),
+    url(../fonts/Alegreya-Italic.woff) format('woff');
 }
 
 $text: hsl(0, 0%, 14%);
 
-$family-primary: AlegreyaSans, serif;
+$family-primary: Alegreya, serif;
 $family-secondary: Alegreya, serif;
 $family-code: Menlo, Monaco, 'DejaVu Sans Mono', Consolas, 'Courier New', monospace;
 
@@ -112,6 +103,7 @@ footer p {
 
 div.date {
   font-size: 1rem;
+  font-style: italic;
 }
 
 .code {

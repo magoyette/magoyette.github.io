@@ -61,6 +61,6 @@ The HTML files are formatted to make their content easier to review in a git dif
 
 ## License
 
-Copyright © 2014-2019 Marc-André Goyette
+Copyright © 2014-2020 Marc-André Goyette
 
 Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.

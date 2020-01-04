@@ -97,7 +97,9 @@
 
 (rum/defc footer [lang]
   [:footer.footer
-   [:p "Copyright © 2019-2020 Marc-André Goyette"]
+   [:p "Copyright © 2019-2020 Marc-André Goyette | "
+    [:a {:href "https://github.com/magoyette/magoyette.github.io"}
+     (translations/translate lang :footer/source-code)]]
    [:p
     (translations/translate lang :footer/license-sentence)
     [:a {:rel "license"

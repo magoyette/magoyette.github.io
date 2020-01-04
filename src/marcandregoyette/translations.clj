@@ -12,7 +12,9 @@
     :articles
     {:for-tag " with the tag "}
     :footer
-    {:license-name
+    {:source-code
+     "Source code"
+     :license-name
      "Creative Commons License (CC BY-ND 4.0)"
      :license-url
      "https://creativecommons.org/licenses/by-nd/4.0/"
@@ -31,7 +33,9 @@
     :articles
     {:for-tag " avec le tag "}
     :footer
-    {:license-name
+    {:source-code
+     "Code source"
+     :license-name
      "licence Creative Commons (CC BY-ND 4.0)"
      :license-url
      "https://creativecommons.org/licenses/by-nd/4.0/deed.fr"

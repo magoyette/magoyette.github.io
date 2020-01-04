@@ -121,8 +121,8 @@
         (menu lang)
         [:div.container
          [:main
-          (post-layout url metadata content)
-          (footer lang)]]]]))))
+          (post-layout url metadata content)]
+         (footer lang)]]]))))
 
 (rum/defc article-link-layout [url metadata]
   (let [{:keys [date lang tags]} metadata]
@@ -154,5 +154,5 @@
       (menu lang)
       [:div.container
        [:main
-        (articles-links lang tag posts-by-url)
-        (footer lang)]]]])))
+        (articles-links lang tag posts-by-url)]
+       (footer lang)]]])))

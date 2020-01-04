@@ -57,10 +57,12 @@ It includes many tasks:
 
 The `magoyette.github.io` repository should be set on the `master` branch and is used to commit and push the changes to GitHub pages.
 
-The HTML files are formatted to make their content easier to review in a git diff.
+The HTML files are formatted to make their content easier to review in a Git diff.
 
 ## License
 
 Copyright © 2014-2020 Marc-André Goyette
 
-Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+The source code of the web site is distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+
+The content (the writings) is licensed under a [Creative Commons License (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0/).

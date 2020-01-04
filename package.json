@@ -1,6 +1,6 @@
 {
   "name": "marcandregoyette.com",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Personal website of Marc-André Goyette",
   "author": {
     "name": "Marc-André Goyette",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "autoprefixer": "^9.7.3",
     "bulma": "^0.8.0",
-    "css-loader": "^3.4.0",
+    "css-loader": "^3.4.1",
     "file-loader": "^5.0.2",
     "glob": "^7.1.6",
     "js-beautify": "^1.10.2",

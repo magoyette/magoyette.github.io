@@ -8,11 +8,13 @@
            java.util.Locale))
 
 (defn- format-date
-  [date language]
-  (let [locale (if (= language "fr") Locale/CANADA_FRENCH Locale/CANADA)]
-    (.format
-     (DateTimeFormatter/ofPattern "dd MMMM YYYY" locale)
-     (OffsetDateTime/parse date DateTimeFormatter/ISO_DATE_TIME))))
+  ([date language]
+   (format-date date language "dd MMMM YYYY"))
+  ([date language format]
+   (let [locale (if (= language "fr") Locale/CANADA_FRENCH Locale/CANADA)]
+     (.format
+      (DateTimeFormatter/ofPattern format locale)
+      (OffsetDateTime/parse date DateTimeFormatter/ISO_DATE_TIME)))))
 
 (rum/defc post-content [url metadata content]
   [:div.content
@@ -126,7 +128,8 @@
   (let [{:keys [date lang tags]} metadata]
     (when-not (string/blank? date)
       [:p
-       [:span.article-date.has-text-grey-dark (format-date date lang)]
+       [:span.article-date.has-text-grey-dark
+        (format-date date lang "YYYY-MM-dd")]
        "  "
        [:a {:href url} (:title metadata)]])))
 

@@ -10,22 +10,22 @@
   (:import java.time.OffsetDateTime
            java.time.format.DateTimeFormatter))
 
-(defn- get-page-title [url title]
-  (if (string/ends-with? url "index.html")
-    "Marc-Andr\u00E9 Goyette"
-    (str title " - Marc-Andr\u00E9 Goyette")))
+(defn- get-page-title [is-home-page title]
+  (str
+   (when-not is-home-page (str title " - "))
+   "Marc-Andr\u00E9 Goyette"))
 
-(defn- build-page-layout [post-by-url]
+(defn- build-page-layout [is-home-page post-by-url]
   (let [url (key post-by-url)
         post (val post-by-url)
         metadata (:metadata post)
         {:keys [lang description]} metadata
-        title (get-page-title url (:title metadata))]
+        title (get-page-title is-home-page (:title metadata))]
     (components/get-page-layout title lang description url post)))
 
-(defn add-page-layout-to-posts [posts]
+(defn add-page-layout-to-posts [is-home-page posts]
   (zipmap (keys posts)
-          (map build-page-layout posts)))
+          (map #(build-page-layout is-home-page %) posts)))
 
 (defn- get-articles-page-title [lang tag]
   (str "Articles"
@@ -66,10 +66,12 @@
 (defn- get-most-recent-post [posts lang]
   (first (sort-posts (filter-posts-by-lang posts lang))))
 
-(defn- build-home-page [posts lang url]
+(defn- build-home-page [posts lang home-page-url]
   (let [most-recent-post (get-most-recent-post posts lang)
-        home-page-post {url (val most-recent-post)}]
-    (add-page-layout-to-posts home-page-post)))
+        post-url (key most-recent-post)
+        home-page-post {post-url (val most-recent-post)}
+        post-with-page-layout (add-page-layout-to-posts true home-page-post)]
+    {home-page-url (get post-with-page-layout post-url)}))
 
 (defn- build-articles-page [posts lang]
   (build-articles-page-layout
@@ -134,14 +136,14 @@
         pages (posts/build-posts "" "resources/pages")
         tag-pages (get-tags-pages posts)]
     (stasis/merge-page-sources
-     {:pages (add-page-layout-to-posts pages)
-      :posts (add-page-layout-to-posts posts)
-      :index-en (build-home-page posts "en" "/en/index.html")
+     {:pages (add-page-layout-to-posts false pages)
+      :posts (add-page-layout-to-posts false posts)
+      :index-en (build-home-page posts "en" "/en/")
       ;; index-fr exists in case someone edit the url manually from /en to /fr
-      :index-fr (build-home-page posts "fr" "/fr/index.html")
-      :articles-en {"/en/articles/index.html" (build-articles-page posts "en")}
-      :articles-fr {"/fr/articles/index.html" (build-articles-page posts "fr")}
-      :index (build-home-page posts "fr" "/index.html")
+      :index-fr (build-home-page posts "fr" "/fr/")
+      :articles-en {"/en/articles/" (build-articles-page posts "en")}
+      :articles-fr {"/fr/articles/" (build-articles-page posts "fr")}
+      :index (build-home-page posts "fr" "/")
       :tags tag-pages
       :feeds (generate-feeds posts)
       :sitemap {"/sitemap.xml" (sitemap/generate-sitemap posts pages tag-pages)}})))

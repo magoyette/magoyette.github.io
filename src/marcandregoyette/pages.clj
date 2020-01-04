@@ -2,26 +2,38 @@
   (:require [marcandregoyette.components :as components]
             [marcandregoyette.feed :as feed]
             [marcandregoyette.posts :as posts]
-            [marcandregoyette.tags :as tags]
             [marcandregoyette.sitemap :as sitemap]
+            [marcandregoyette.tags :as tags]
+            [marcandregoyette.translations :as translations]
+            [clojure.string :as string]
             [stasis.core :as stasis])
   (:import java.time.OffsetDateTime
            java.time.format.DateTimeFormatter))
+
+(defn- get-page-title [url title]
+  (if (string/ends-with? url "index.html")
+    "Marc-Andr\u00E9 Goyette"
+    (str title " - Marc-Andr\u00E9 Goyette")))
 
 (defn- build-page-layout [post-by-url]
   (let [url (key post-by-url)
         post (val post-by-url)
         metadata (:metadata post)
         {:keys [lang description]} metadata
-        title (str (:title metadata) " - Marc-Andr\u00E9 Goyette")]
+        title (get-page-title url (:title metadata))]
     (components/get-page-layout title lang description url post)))
 
 (defn add-page-layout-to-posts [posts]
   (zipmap (keys posts)
           (map build-page-layout posts)))
 
+(defn- get-articles-page-title [lang tag]
+  (str "Articles"
+       (if tag (str (translations/translate lang :articles/for-tag) tag))
+       " - Marc-Andr\u00E9 Goyette"))
+
 (defn build-articles-page-layout [lang tag posts-by-url]
-  (let [title "Articles - Marc-Andr\u00E9 Goyette"]
+  (let [title (get-articles-page-title lang tag)]
     (components/get-articles-page-layout title lang tag posts-by-url)))
 
 (defn- post-date [post]

@@ -107,22 +107,19 @@
    [:p
     (translations/translate lang :footer/disclaimer)]])
 
-(defn- posts-grid [posts-content]
-  [:main
-    {:dangerouslySetInnerHTML
-     {:__html posts-content}}])
-
-(defn get-page-layout [title lang description posts-content]
-  (str
-   "<!DOCTYPE html>"
-   (rum/render-static-markup
-    [:html {:lang lang}
-     (head title lang description)
-     [:body
-      (menu lang)
-      [:div.container
-       (posts-grid posts-content)
-       (footer lang)]]])))
+(defn get-page-layout [title lang description url post]
+  (let [{:keys [metadata content]} post]
+    (str
+     "<!DOCTYPE html>"
+     (rum/render-static-markup
+      [:html {:lang lang}
+       (head title lang description)
+       [:body
+        (menu lang)
+        [:div.container
+         [:main
+          (post-layout url metadata content)
+          (footer lang)]]]]))))
 
 (rum/defc article-link-layout [url metadata]
   (let [{:keys [date lang tags]} metadata]
@@ -145,6 +142,14 @@
      (map #(article-link-layout (key %) (:metadata (val %))) posts-by-url)]]])
 
 (defn get-articles-page-layout [title lang tag posts-by-url]
-  (let [articles-content (rum/render-static-markup
-                          (articles-links lang tag posts-by-url))]
-    (get-page-layout title lang nil articles-content)))
+  (str
+   "<!DOCTYPE html>"
+   (rum/render-static-markup
+    [:html {:lang lang}
+     (head title lang nil)
+     [:body
+      (menu lang)
+      [:div.container
+       [:main
+        (articles-links lang tag posts-by-url)
+        (footer lang)]]]])))

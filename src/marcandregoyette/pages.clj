@@ -1,12 +1,28 @@
 (ns marcandregoyette.pages
-  (:require [marcandregoyette.feed :as feed]
+  (:require [marcandregoyette.components :as components]
+            [marcandregoyette.feed :as feed]
             [marcandregoyette.posts :as posts]
             [marcandregoyette.tags :as tags]
-            [marcandregoyette.templates :as templates]
             [marcandregoyette.sitemap :as sitemap]
             [stasis.core :as stasis])
   (:import java.time.OffsetDateTime
            java.time.format.DateTimeFormatter))
+
+(defn- build-page-layout [post-by-url]
+  (let [url (key post-by-url)
+        post (val post-by-url)
+        metadata (:metadata post)
+        {:keys [lang description]} metadata
+        title (str (:title metadata) " - Marc-Andr\u00E9 Goyette")]
+    (components/get-page-layout title lang description url post)))
+
+(defn add-page-layout-to-posts [posts]
+  (zipmap (keys posts)
+          (map build-page-layout posts)))
+
+(defn build-articles-page-layout [lang tag posts-by-url]
+  (let [title "Articles - Marc-Andr\u00E9 Goyette"]
+    (components/get-articles-page-layout title lang tag posts-by-url)))
 
 (defn- post-date [post]
   (-> post
@@ -41,10 +57,10 @@
 (defn- build-home-page [posts lang url]
   (let [most-recent-post (get-most-recent-post posts lang)
         home-page-post {url (val most-recent-post)}]
-    (templates/add-page-layout-to-posts home-page-post)))
+    (add-page-layout-to-posts home-page-post)))
 
 (defn- build-articles-page [posts lang]
-  (templates/build-articles-page-layout
+  (build-articles-page-layout
    lang nil (sort-posts (filter-posts-by-lang posts lang))))
 
 (defn- get-tags [posts]
@@ -52,7 +68,7 @@
                        (-> post :metadata :tags)))))
 
 (defn- get-posts-for-tag [posts lang tag]
-  (templates/build-articles-page-layout
+  (build-articles-page-layout
    lang tag (sort-posts (filter-posts-by-tag posts tag))))
 
 (defn- get-tags-pages-for-lang [posts lang]
@@ -106,8 +122,8 @@
         pages (posts/build-posts "" "resources/pages")
         tag-pages (get-tags-pages posts)]
     (stasis/merge-page-sources
-     {:pages (templates/add-page-layout-to-posts pages)
-      :posts (templates/add-page-layout-to-posts posts)
+     {:pages (add-page-layout-to-posts pages)
+      :posts (add-page-layout-to-posts posts)
       :index-en (build-home-page posts "en" "/en/index.html")
       ;; index-fr exists in case someone edit the url manually from /en to /fr
       :index-fr (build-home-page posts "fr" "/fr/index.html")

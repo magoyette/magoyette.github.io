@@ -3,7 +3,7 @@
  :date "2019-04-21T15:30:00Z"
  :lang "en"
  :translations [{:lang "fr" :path "/introduction/"}]
- :tags ["Java" "Guava" "Clojure"]}
+ :tags []}
 ---
 
 Example of a post. Try Java syntax highlight.

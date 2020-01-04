@@ -40,9 +40,10 @@
          (str (translations/translate lang :post/written-on)
               (format-date date lang))])
       (post-content url metadata content)
-      [:div.tags.has-addons
-       [:span.tag.is-large.is-dark "Tags"]
-       (mapcat #(build-tag % lang) tags)]]]))
+      (if (seq tags)
+        [:div.tags.has-addons
+         [:span.tag.is-large.is-dark "Tags"]
+         (mapcat #(build-tag % lang) tags)])]]))
 
 (defn- get-page-description-or-default [description lang]
   (or description (translations/translate lang :page/description)))

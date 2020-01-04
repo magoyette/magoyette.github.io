@@ -68,12 +68,12 @@
   [[:a.navbar-item.is-tab {:href href} name] " "])
 
 (def menu-items-en
-  {"/en" "Blog"
+  {"/en/articles" "Articles"
    "/en/about" "About"
    "/feeds/languages/en/atom.xml" "Atom/RSS"})
 
 (def menu-items-fr
-  {"/" "Blogue"
+  {"/fr/articles" "Articles"
    "/fr/a-propos" "À propos"
    "/feeds/languages/fr/atom.xml" "Atom/RSS"})
 
@@ -121,3 +121,27 @@
       [:div.container
        (posts-grid posts-content)
        (footer lang)]]])))
+
+(rum/defc article-link-layout [url metadata]
+  (let [{:keys [date lang tags]} metadata]
+    (when-not (string/blank? date)
+      [:p
+       [:span.article-date.has-text-grey-dark (format-date date lang)]
+       "  "
+       [:a {:href url} (:title metadata)]])))
+
+(defn- get-articles-page-title [lang tag]
+  (str "Articles"
+       (if tag (str (translations/translate lang :articles/for-tag) tag))))
+
+(rum/defc articles-links [lang tag posts-by-url]
+  [:main
+   [:article.card.post
+    [:div.card-content
+     [:h1.title.is-family-secondary (get-articles-page-title lang tag)]
+     (map #(article-link-layout (key %) (:metadata (val %))) posts-by-url)]]])
+
+(defn get-articles-page-layout [title lang tag posts-by-url]
+  (let [articles-content (rum/render-static-markup
+                          (articles-links lang tag posts-by-url))]
+    (get-page-layout title lang nil articles-content)))

@@ -39,19 +39,23 @@
   (templates/add-page-layout-many-posts
    (sort-posts (filter-posts-by-lang posts lang))))
 
+(defn- build-articles-page [posts lang]
+  (templates/build-articles-page-layout
+   lang nil (sort-posts (filter-posts-by-lang posts lang))))
+
 (defn- get-tags [posts]
   (distinct (flatten (for [[url post] posts]
                        (-> post :metadata :tags)))))
 
-(defn- get-posts-for-tag [posts tag]
-  (templates/add-page-layout-many-posts
-   (sort-posts (filter-posts-by-tag posts tag))))
+(defn- get-posts-for-tag [posts lang tag]
+  (templates/build-articles-page-layout
+   lang tag (sort-posts (filter-posts-by-tag posts tag))))
 
 (defn- get-tags-pages-for-lang [posts lang]
   (let [posts-for-lang (filter-posts-by-lang posts lang)
         tags (get-tags posts-for-lang)]
     (zipmap (doall (map #(tags/build-tag-url % lang) tags))
-            (map (partial get-posts-for-tag posts-for-lang) tags))))
+            (map (partial get-posts-for-tag posts-for-lang lang) tags))))
 
 (defn- get-tags-pages [posts]
   (merge (get-tags-pages-for-lang posts "en")
@@ -103,6 +107,8 @@
       :index-en {"/en/index.html" (build-index-page posts "en")}
       ;; index-fr exists in case someone edit the url manually from /en to /fr
       :index-fr {"/fr/index.html" (build-index-page posts "fr")}
+      :articles-en {"/en/articles/index.html" (build-articles-page posts "en")}
+      :articles-fr {"/fr/articles/index.html" (build-articles-page posts "fr")}
       :index {"/index.html" (build-index-page posts "fr")}
       :tags tag-pages
       :feeds (generate-feeds posts)

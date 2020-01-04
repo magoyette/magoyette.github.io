@@ -51,3 +51,7 @@
 
 (defn add-page-layout-many-posts [posts]
   (build-index-page-layout posts))
+
+(defn build-articles-page-layout [lang tag posts-by-url]
+  (let [title "Articles - Marc-Andr\u00E9 Goyette"]
+    (components/get-articles-page-layout title lang tag posts-by-url)))

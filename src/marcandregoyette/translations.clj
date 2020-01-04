@@ -9,6 +9,8 @@
           "technology, science-fiction, litterature and philosophy.")}
     :post
     {:written-on "Written on "}
+    :articles
+    {:for-tag " with the tag "}
     :footer
     {:license-name
      "Creative Commons License (CC BY-ND 4.0)"
@@ -26,6 +28,8 @@
           "les technologies, la science-fiction, la littérature et la philosophie.")}
     :post
     {:written-on "Écrit le "}
+    :articles
+    {:for-tag " avec le tag "}
     :footer
     {:license-name
      "licence Creative Commons (CC BY-ND 4.0)"

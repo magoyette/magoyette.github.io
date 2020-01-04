@@ -35,9 +35,13 @@
 (defn- filter-posts-by-lang [posts lang]
   (filter-posts posts (partial has-lang lang)))
 
-(defn- build-index-page [posts lang]
-  (templates/add-page-layout-many-posts
-   (sort-posts (filter-posts-by-lang posts lang))))
+(defn- get-most-recent-post [posts lang]
+  (first (sort-posts (filter-posts-by-lang posts lang))))
+
+(defn- build-home-page [posts lang url]
+  (let [most-recent-post (get-most-recent-post posts lang)
+        home-page-post {url (val most-recent-post)}]
+    (templates/add-page-layout-to-posts home-page-post)))
 
 (defn- build-articles-page [posts lang]
   (templates/build-articles-page-layout
@@ -102,14 +106,14 @@
         pages (posts/build-posts "" "resources/pages")
         tag-pages (get-tags-pages posts)]
     (stasis/merge-page-sources
-     {:pages (templates/add-page-layout pages)
-      :posts (templates/add-page-layout posts)
-      :index-en {"/en/index.html" (build-index-page posts "en")}
+     {:pages (templates/add-page-layout-to-posts pages)
+      :posts (templates/add-page-layout-to-posts posts)
+      :index-en (build-home-page posts "en" "/en/index.html")
       ;; index-fr exists in case someone edit the url manually from /en to /fr
-      :index-fr {"/fr/index.html" (build-index-page posts "fr")}
+      :index-fr (build-home-page posts "fr" "/fr/index.html")
       :articles-en {"/en/articles/index.html" (build-articles-page posts "en")}
       :articles-fr {"/fr/articles/index.html" (build-articles-page posts "fr")}
-      :index {"/index.html" (build-index-page posts "fr")}
+      :index (build-home-page posts "fr" "/index.html")
       :tags tag-pages
       :feeds (generate-feeds posts)
       :sitemap {"/sitemap.xml" (sitemap/generate-sitemap posts pages tag-pages)}})))

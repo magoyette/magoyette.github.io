@@ -6,7 +6,7 @@
    {:page
     {:description
      (str "Essays written by Marc-André about software development, "
-          "technology, science-fiction, litterature and philosophy.")}
+          "interactive fiction and litterature.")}
     :post
     {:written-on "Written on "}
     :articles
@@ -25,7 +25,7 @@
    {:page
     {:description
      (str "Essais de Marc-André Goyette sur le développement logiciel, "
-          "les technologies, la science-fiction, la littérature et la philosophie.")}
+          "la fiction interactive et la littérature.")}
     :post
     {:written-on "Écrit le "}
     :articles

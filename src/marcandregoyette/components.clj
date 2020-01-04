@@ -28,7 +28,7 @@
 (defn- build-tag
   [tag lang]
   (let [tag-url (tags/build-tag-url tag lang)]
-    [[:a.tag.is-medium {:href tag-url} tag] " "]))
+    [[:a.tag.is-primary.is-large {:href tag-url} tag] " "]))
 
 (rum/defc post-layout [url metadata content]
   (let [{:keys [date lang tags]} metadata]
@@ -40,8 +40,9 @@
          (str (translations/translate lang :post/written-on)
               (format-date date lang))])
       (post-content url metadata content)
-       [:div.tags
-        (mapcat #(build-tag % lang) tags)]]]))
+      [:div.tags.has-addons
+       [:span.tag.is-large.is-dark "Tags"]
+       (mapcat #(build-tag % lang) tags)]]]))
 
 (defn- get-page-description-or-default [description lang]
   (or description (translations/translate lang :page/description)))

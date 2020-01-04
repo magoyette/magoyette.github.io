@@ -34,9 +34,10 @@
    "<a href=\"/a-post\"><h1 class=\"title is-family-secondary\">A post</h1></a>"
    "<p>Some content</p>"
    "</div>"
-   "<div class=\"tags\">"
-   "<a href=\"/en/tags/java/\" class=\"tag is-medium\">Java</a> "
-   "<a href=\"/en/tags/guava/\" class=\"tag is-medium\">Guava</a> "
+   "<div class=\"tags has-addons\">"
+   "<span class=\"tag is-large is-dark\">Tags</span>"
+   "<a href=\"/en/tags/java/\" class=\"tag is-primary is-large\">Java</a> "
+   "<a href=\"/en/tags/guava/\" class=\"tag is-primary is-large\">Guava</a> "
    "</div>"
    "</div>"
    "</article>"))

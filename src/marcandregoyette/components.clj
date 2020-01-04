@@ -139,11 +139,10 @@
        (if tag (str (translations/translate lang :articles/for-tag) tag))))
 
 (rum/defc articles-links [lang tag posts-by-url]
-  [:main
-   [:article.card.post
-    [:div.card-content
-     [:h1.title.is-family-secondary (get-articles-page-title lang tag)]
-     (map #(article-link-layout (key %) (:metadata (val %))) posts-by-url)]]])
+  [:article.card.post
+   [:div.card-content
+    [:h1.title.is-family-secondary (get-articles-page-title lang tag)]
+    (map #(article-link-layout (key %) (:metadata (val %))) posts-by-url)]])
 
 (defn get-articles-page-layout [title lang tag posts-by-url]
   (str

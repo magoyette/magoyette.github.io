@@ -4,11 +4,11 @@ The source code of my personal web site. It's a static site written in the Cloju
 
 ### Environment setup
 
-- Install Java 8 or Java 11. This site is currently used with OpenJDK 11.
+- Install Open JDK 11.
 
 - Install Leiningen (version should be at least 2.9.0).
 
-- Install [Node](https://nodejs.org) and [npm](https://www.npmjs.com/).
+- Install [Node](https://nodejs.org) and [npm](https://www.npmjs.com/). The site is currently developed with Node v12 and npm v6.
 
 ### Building the Sass styles
 

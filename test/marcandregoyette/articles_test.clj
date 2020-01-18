@@ -1,23 +1,23 @@
-(ns marcandregoyette.posts-test
-  (:require [marcandregoyette.posts :refer :all]
+(ns marcandregoyette.articles-test
+  (:require [marcandregoyette.articles :refer :all]
             [clojure.test :refer :all]
             [rum.core :as rum]))
 
-(def an-unparsed-post-with-footnote
-  {"/a-post-with-footnote"
+(def an-unparsed-article-with-footnote
+  {"/an-article-with-footnote"
    "---
-{:title \"A post with a footnote\"
+{:title \"An article with a footnote\"
  :date \"2018-10-12T16:00:00Z\"
  :tags [\"General\"]}
 ---
 
-A simple post with a footnote[^1].
+An article with a footnote[^1].
 
 [^1]: A footnote"})
 
-(def a-post-with-footnote-html
+(def an-article-with-footnote-html
   (str
-   "<p>A simple post with a footnote"
+   "<p>An article with a footnote"
    "<sup id=\"fnref-1\">"
    "<a class=\"footnote-ref\" href=\"#fn-1\">1</a>"
    "</sup>"
@@ -32,25 +32,25 @@ A simple post with a footnote[^1].
    "</ol>\n"
    "</div>\n"))
 
-(def a-parsed-post-with-footnote
-  {"/a-post-with-footnote"
-   (map->Post
+(def a-parsed-article-with-footnote
+  {"/an-article-with-footnote"
+   (map->Article
     {:metadata
-     (map->PostMetadata
-      {:title "A post with a footnote"
+     (map->ArticleMetadata
+      {:title "An article with a footnote"
        :date "2018-10-12T16:00:00Z"
        :tags ["General"]})
-     :content a-post-with-footnote-html})})
+     :content an-article-with-footnote-html})})
 
-(deftest read-post-with-footnote-test
-  (is (= a-parsed-post-with-footnote
-         (build-posts-from-stasis-map
-          "" an-unparsed-post-with-footnote))))
+(deftest read-article-with-footnote-test
+  (is (= a-parsed-article-with-footnote
+         (build-articles-from-stasis-map
+          "" an-unparsed-article-with-footnote))))
 
-(def an-unparsed-post-with-table
-  {"/a-post-with-table"
+(def an-unparsed-article-with-table
+  {"/an-article-with-table"
    "---
-{:title \"A post with a table\"
+{:title \"An article with a table\"
  :date \"2018-10-12T16:00:00Z\"
  :tags [\"General\"]}
 ---
@@ -59,7 +59,7 @@ A simple post with a footnote[^1].
 |----------|----------------|
 | A value  | Another value  |"})
 
-(def a-post-with-table-html
+(def an-article-with-table-html
   (str
    "<table>\n"
    "<thead>\n"
@@ -70,25 +70,25 @@ A simple post with a footnote[^1].
    "</tbody>\n"
    "</table>\n"))
 
-(def a-parsed-post-with-table
-  {"/a-post-with-table"
-   (map->Post
+(def a-parsed-article-with-table
+  {"/an-article-with-table"
+   (map->Article
     {:metadata
-     (map->PostMetadata
-      {:title "A post with a table"
+     (map->ArticleMetadata
+      {:title "An article with a table"
        :date "2018-10-12T16:00:00Z"
        :tags ["General"]})
-     :content a-post-with-table-html})})
+     :content an-article-with-table-html})})
 
-(deftest read-post-with-table-test
-  (is (= a-parsed-post-with-table
-         (build-posts-from-stasis-map
-          "" an-unparsed-post-with-table))))
+(deftest read-article-with-table-test
+  (is (= a-parsed-article-with-table
+         (build-articles-from-stasis-map
+          "" an-unparsed-article-with-table))))
 
-(def an-unparsed-post-with-code-blocks
-  {"/a-parsed-post-with-code-blocks"
+(def an-unparsed-article-with-code-blocks
+  {"/a-parsed-article-with-code-blocks"
    "---
-{:title \"A post with code blocks\"
+{:title \"An article with code blocks\"
  :date \"2018-10-12T16:00:00Z\"
  :tags [\"Java\" \"Clojure\"]}
 ---
@@ -105,7 +105,7 @@ Try Clojure syntax highlight.
 (def expr (+ 2 3))
 ```"})
 
-(def a-post-with-code-blocks-html
+(def an-article-with-code-blocks-html
   (str
    (rum/render-static-markup
     [:p "Try Java syntax highlight."])
@@ -148,17 +148,17 @@ Try Clojure syntax highlight.
         "\n"]]])
     "\n"))
 
-(def a-parsed-post-with-code-blocks
-  {"/a-parsed-post-with-code-blocks"
-   (map->Post
+(def a-parsed-article-with-code-blocks
+  {"/a-parsed-article-with-code-blocks"
+   (map->Article
     {:metadata
-     (map->PostMetadata
-      {:title "A post with code blocks"
+     (map->ArticleMetadata
+      {:title "An article with code blocks"
        :date "2018-10-12T16:00:00Z"
        :tags ["Java" "Clojure"]})
-     :content a-post-with-code-blocks-html})})
+     :content an-article-with-code-blocks-html})})
 
-(deftest read-post-with-code-blocks-test
-  (is (= a-parsed-post-with-code-blocks
-         (build-posts-from-stasis-map
-          "" an-unparsed-post-with-code-blocks))))
+(deftest read-article-with-code-blocks-test
+  (is (= a-parsed-article-with-code-blocks
+         (build-articles-from-stasis-map
+          "" an-unparsed-article-with-code-blocks))))

@@ -7,7 +7,7 @@
     {:description
      (str "Essays written by Marc-André about software development, "
           "interactive fiction and litterature.")}
-    :post
+    :article
     {:written-on "Written on "}
     :articles
     {:for-tag " with the tag "}
@@ -28,7 +28,7 @@
     {:description
      (str "Essais de Marc-André Goyette sur le développement logiciel, "
           "la fiction interactive et la littérature.")}
-    :post
+    :article
     {:written-on "Écrit le "}
     :articles
     {:for-tag " avec le tag "}

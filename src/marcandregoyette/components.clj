@@ -16,7 +16,7 @@
       (DateTimeFormatter/ofPattern format locale)
       (OffsetDateTime/parse date DateTimeFormatter/ISO_DATE_TIME)))))
 
-(rum/defc post-content [url metadata content]
+(rum/defc article-content [url metadata content]
   [:div.content
    {:dangerouslySetInnerHTML
     {:__html
@@ -30,16 +30,16 @@
   (let [tag-url (tags/build-tag-url tag lang)]
     [[:a.tag.is-primary.is-large {:href tag-url} tag] " "]))
 
-(rum/defc post-layout [url metadata content]
+(rum/defc article-layout [url metadata content]
   (let [{:keys [date lang tags]} metadata]
-    [:article.card.post
+    [:article.card
      [:div.card-content
       (if (string/blank? date)
         [:div]
         [:div.date.has-text-grey-dark.has-text-right
-         (str (translations/translate lang :post/written-on)
+         (str (translations/translate lang :article/written-on)
               (format-date date lang))])
-      (post-content url metadata content)
+      (article-content url metadata content)
       (if (seq tags)
         [:div.tags.has-addons
          [:span.tag.is-large.is-dark "Tags"]
@@ -111,8 +111,8 @@
    [:p
     (translations/translate lang :footer/disclaimer)]])
 
-(defn get-page-layout [title lang description url post]
-  (let [{:keys [metadata content]} post]
+(defn get-page-layout [title lang description url article]
+  (let [{:keys [metadata content]} article]
     (str
      "<!DOCTYPE html>"
      (rum/render-static-markup
@@ -122,7 +122,7 @@
         (menu lang)
         [:div.container
          [:main
-          (post-layout url metadata content)]
+          (article-layout url metadata content)]
          (footer lang)]]]))))
 
 (rum/defc article-link-layout [url metadata]
@@ -138,13 +138,13 @@
   (str "Articles"
        (if tag (str (translations/translate lang :articles/for-tag) tag))))
 
-(rum/defc articles-links [lang tag posts-by-url]
-  [:article.card.post
+(rum/defc articles-links [lang tag articles-by-url]
+  [:article.card
    [:div.card-content
     [:h1.title.is-family-secondary (get-articles-page-title lang tag)]
-    (map #(article-link-layout (key %) (:metadata (val %))) posts-by-url)]])
+    (map #(article-link-layout (key %) (:metadata (val %))) articles-by-url)]])
 
-(defn get-articles-page-layout [title lang tag posts-by-url]
+(defn get-articles-page-layout [title lang tag articles-by-url]
   (str
    "<!DOCTYPE html>"
    (rum/render-static-markup
@@ -154,5 +154,5 @@
       (menu lang)
       [:div.container
        [:main
-        (articles-links lang tag posts-by-url)]
+        (articles-links lang tag articles-by-url)]
        (footer lang)]]])))

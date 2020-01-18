@@ -53,7 +53,7 @@
    "</url>"
    "</urlset>"))
 
-(def posts-by-url
+(def articles-by-url
   (seq
    {"/en/introduction/"
     {:metadata
@@ -82,5 +82,5 @@
     "/tags/clojure/" ""}))
 
 (deftest generate-sitemap-test
-  (is (= (generate-sitemap posts-by-url pages-by-url tag-pages-by-url)
+  (is (= (generate-sitemap articles-by-url pages-by-url tag-pages-by-url)
          expected-sitemap-xml)))

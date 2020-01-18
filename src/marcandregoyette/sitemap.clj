@@ -9,16 +9,16 @@
                   :hreflang lang
                   :href (str site-url "/" lang path)}]))
 
-(defn- generate-url-entry [post-by-url]
-  (let [metadata (:metadata (val post-by-url))
+(defn- generate-url-entry [article-by-url]
+  (let [metadata (:metadata (val article-by-url))
         {:keys [translations lang]} metadata
-        post-url (str site-url (key post-by-url))]
+        article-url (str site-url (key article-by-url))]
     (into (if translations
-            [:url [:loc post-url]
+            [:url [:loc article-url]
              [:xhtml:link {:rel "alternate"
                            :hreflang lang
-                           :href post-url}]]
-            [:url [:loc post-url]])
+                           :href article-url}]]
+            [:url [:loc article-url]])
           (map generate-alternate-link translations))))
 
 (def urlset
@@ -33,10 +33,10 @@
                   :hreflang "fr"
                   :href site-url}]]])
 
-(defn generate-sitemap [posts-by-url pages-by-url tag-pages-by-url]
+(defn generate-sitemap [articles-by-url pages-by-url tag-pages-by-url]
   (xml/emit-str
    (xml/sexp-as-element
     (into urlset
           (map
            generate-url-entry
-           (concat posts-by-url pages-by-url tag-pages-by-url))))))
+           (concat articles-by-url pages-by-url tag-pages-by-url))))))

@@ -2,7 +2,7 @@
 
 The source code of my personal web site. It's a static site written in the Clojure programming language.
 
-### Environment setup
+## Environment setup
 
 - Install Open JDK 11.
 
@@ -10,7 +10,7 @@ The source code of my personal web site. It's a static site written in the Cloju
 
 - Install [Node](https://nodejs.org) and [npm](https://www.npmjs.com/). The site is currently developed with Node v12 and npm v6.
 
-### Building the Sass styles
+## Building the Sass styles
 
 The npm packages must first be installed.
 
@@ -61,7 +61,7 @@ The HTML files are formatted to make their content easier to review in a Git dif
 
 ## License
 
-Copyright © 2014-2020 Marc-André Goyette
+Copyright Â© 2014-2020 Marc-AndrÃ© Goyette
 
 The source code of the web site is distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
 

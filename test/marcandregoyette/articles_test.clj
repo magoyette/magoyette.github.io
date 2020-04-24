@@ -1,6 +1,6 @@
 (ns marcandregoyette.articles-test
-  (:require [marcandregoyette.articles :refer :all]
-            [clojure.test :refer :all]
+  (:require [marcandregoyette.articles :as articles]
+            [clojure.test :refer [deftest is]]
             [rum.core :as rum]))
 
 (def an-unparsed-article-with-footnote
@@ -34,9 +34,9 @@ An article with a footnote[^1].
 
 (def a-parsed-article-with-footnote
   {"/an-article-with-footnote"
-   (map->Article
+   (articles/map->Article
     {:metadata
-     (map->ArticleMetadata
+     (articles/map->ArticleMetadata
       {:title "An article with a footnote"
        :date "2018-10-12T16:00:00Z"
        :tags ["General"]})
@@ -44,7 +44,7 @@ An article with a footnote[^1].
 
 (deftest read-article-with-footnote-test
   (is (= a-parsed-article-with-footnote
-         (build-articles-from-stasis-map
+         (articles/build-articles-from-stasis-map
           "" an-unparsed-article-with-footnote))))
 
 (def an-unparsed-article-with-table
@@ -72,9 +72,9 @@ An article with a footnote[^1].
 
 (def a-parsed-article-with-table
   {"/an-article-with-table"
-   (map->Article
+   (articles/map->Article
     {:metadata
-     (map->ArticleMetadata
+     (articles/map->ArticleMetadata
       {:title "An article with a table"
        :date "2018-10-12T16:00:00Z"
        :tags ["General"]})
@@ -82,7 +82,7 @@ An article with a footnote[^1].
 
 (deftest read-article-with-table-test
   (is (= a-parsed-article-with-table
-         (build-articles-from-stasis-map
+         (articles/build-articles-from-stasis-map
           "" an-unparsed-article-with-table))))
 
 (def an-unparsed-article-with-code-blocks
@@ -150,9 +150,9 @@ Try Clojure syntax highlight.
 
 (def a-parsed-article-with-code-blocks
   {"/a-parsed-article-with-code-blocks"
-   (map->Article
+   (articles/map->Article
     {:metadata
-     (map->ArticleMetadata
+     (articles/map->ArticleMetadata
       {:title "An article with code blocks"
        :date "2018-10-12T16:00:00Z"
        :tags ["Java" "Clojure"]})
@@ -160,5 +160,5 @@ Try Clojure syntax highlight.
 
 (deftest read-article-with-code-blocks-test
   (is (= a-parsed-article-with-code-blocks
-         (build-articles-from-stasis-map
+         (articles/build-articles-from-stasis-map
           "" an-unparsed-article-with-code-blocks))))

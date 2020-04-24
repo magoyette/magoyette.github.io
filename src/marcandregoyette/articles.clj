@@ -20,7 +20,6 @@
            com.vladsch.flexmark.ext.tables.TablesExtension
            com.vladsch.flexmark.html.HtmlRenderer
            com.vladsch.flexmark.parser.Parser
-           com.vladsch.flexmark.util.ast.Node
            com.vladsch.flexmark.util.data.MutableDataSet))
 
 (defrecord ArticleTranslation [lang path])

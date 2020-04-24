@@ -5,7 +5,6 @@
             [marcandregoyette.sitemap :as sitemap]
             [marcandregoyette.tags :as tags]
             [marcandregoyette.translations :as translations]
-            [clojure.string :as string]
             [stasis.core :as stasis])
   (:import java.time.OffsetDateTime
            java.time.format.DateTimeFormatter))

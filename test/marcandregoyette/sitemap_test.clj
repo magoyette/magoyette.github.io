@@ -1,6 +1,6 @@
 (ns marcandregoyette.sitemap-test
-  (:require [marcandregoyette.sitemap :refer :all]
-            [clojure.test :refer :all]))
+  (:require [marcandregoyette.sitemap :as sitemap]
+            [clojure.test :refer [deftest is]]))
 
 (def expected-sitemap-xml
   (str
@@ -82,5 +82,5 @@
     "/tags/clojure/" ""}))
 
 (deftest generate-sitemap-test
-  (is (= (generate-sitemap articles-by-url pages-by-url tag-pages-by-url)
+  (is (= (sitemap/generate-sitemap articles-by-url pages-by-url tag-pages-by-url)
          expected-sitemap-xml)))

@@ -1,6 +1,6 @@
 (ns marcandregoyette.feed-test
-  (:require [marcandregoyette.feed :refer :all]
-            [clojure.test :refer :all]))
+  (:require [marcandregoyette.feed :as feed]
+            [clojure.test :refer [deftest is]]))
 
 (def article-content
   "<html><body><p>An article about something.</p></body></html>")
@@ -60,7 +60,7 @@
    "</feed>"))
 
 (deftest generate-feed-test
-  (is (= (generate-feed "/feeds/languages/en/atom.xml" articles-by-url "en" nil)
+  (is (= (feed/generate-feed "/feeds/languages/en/atom.xml" articles-by-url "en" nil)
          expected-feed-xml)))
 
 (def articles-by-url-for-tag
@@ -93,6 +93,6 @@
    "</feed>"))
 
 (deftest generate-feed-test-with-tag
-  (is (= (generate-feed "/feeds/languages/fr/tags/java/atom.xml" articles-by-url-for-tag
+  (is (= (feed/generate-feed "/feeds/languages/fr/tags/java/atom.xml" articles-by-url-for-tag
                         "fr" "Java")
          expected-feed-xml-for-tag)))

@@ -1,6 +1,6 @@
 (ns marcandregoyette.highlight-test
-  (:require [marcandregoyette.highlight :refer :all]
-            [clojure.test :refer :all]
+  (:require [marcandregoyette.highlight :as highlight]
+            [clojure.test :refer [deftest is]]
             [rum.core :as rum]))
 
 (def raw-clj-html
@@ -20,4 +20,4 @@
 
 (deftest test-highlight-code-blocks
   (is (= highlighted-clj-html
-         (highlight-code-blocks raw-clj-html))))
+         (highlight/highlight-code-blocks raw-clj-html))))

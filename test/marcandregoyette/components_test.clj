@@ -1,6 +1,6 @@
 (ns marcandregoyette.components-test
-  (:require [marcandregoyette.components :refer :all]
-            [clojure.test :refer :all]
+  (:require [marcandregoyette.components :as components]
+            [clojure.test :refer [deftest is]]
             [rum.core :as rum]))
 
 (def metadata
@@ -20,7 +20,7 @@
 
 (deftest test-render-article-content
   (is (= (rum/render-static-markup
-          (article-content "/article" metadata "<p>Content</p>"))
+          (components/article-content "/article" metadata "<p>Content</p>"))
          article-content-expected-html)))
 
 (def article-layout-expected-html
@@ -44,5 +44,5 @@
 
 (deftest test-render-layout-html
   (is (= (rum/render-static-markup
-          (article-layout "/an-article" metadata "<p>Some content</p>"))
+          (components/article-layout "/an-article" metadata "<p>Some content</p>"))
          article-layout-expected-html)))

@@ -3,8 +3,7 @@
 ;; Syntaxic highlight of code blocks.
 (ns marcandregoyette.highlight
   (:require [net.cgrand.enlive-html :as enlive])
-  (:import java.io.StringReader
-           java.lang.String
+  (:import java.lang.String
            org.python.util.PythonInterpreter))
 
 (defn- pygments-script
@@ -18,7 +17,7 @@
        "\nresult = highlight(code, lexer, HtmlFormatter(nowrap=True))"))
 
 (def java-string-class
-  (class (java.lang.String. "")))
+  (class (String. "")))
 
 (defn- highlight-with-pygments
   [code lang]

@@ -16,7 +16,7 @@
       (DateTimeFormatter/ofPattern format locale)
       (OffsetDateTime/parse date DateTimeFormatter/ISO_DATE_TIME)))))
 
-(rum/defc article-content [url metadata content]
+(rum.core/defc article-content [url metadata content]
   [:div.content
    {:dangerouslySetInnerHTML
     {:__html
@@ -126,7 +126,7 @@
          (footer lang)]]]))))
 
 (rum/defc article-link-layout [url metadata]
-  (let [{:keys [date lang tags]} metadata]
+  (let [{:keys [date lang]} metadata]
     (when-not (string/blank? date)
       [:p
        [:span.article-date.has-text-grey-dark

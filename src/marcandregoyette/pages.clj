@@ -94,6 +94,16 @@
   (merge (get-tags-pages-for-lang articles "en")
          (get-tags-pages-for-lang articles "fr")))
 
+(defn- get-tags-for-lang [lang articles]
+  (let [articles-for-lang (filter-articles-by-lang articles lang)]
+    (sort (get-tags articles-for-lang))))
+
+(defn- build-tags-page-for-lang [lang articles]
+  (components/get-tags-page-layout lang (get-tags-for-lang lang articles)))
+
+(defn- build-feeds-page-for-lang [lang articles]
+  (components/get-feeds-page-layout lang (get-tags-for-lang lang articles)))
+
 (defn- get-feed-for-lang
   [articles lang]
   (let [feed-path (str "/feeds/languages/" lang "/atom.xml")
@@ -106,14 +116,9 @@
   (let [languages ["en" "fr"]]
     (into {} (map #(get-feed-for-lang articles %) languages))))
 
-(defn- get-feed-path-for-tag-and-lang
-  [lang tag]
-  (str "/feeds/languages/" lang
-       "/tags/" (tags/get-tag-for-url tag) "/atom.xml"))
-
 (defn- get-feed-for-tag-and-lang
   [articles tag lang]
-  (let [feed-path (get-feed-path-for-tag-and-lang lang tag)
+  (let [feed-path (tags/get-feed-path-for-tag-and-lang lang tag)
         sorted-articles (sort-articles (filter-articles-by-tag articles tag))]
     [feed-path
      (feed/generate-feed feed-path sorted-articles lang tag)]))
@@ -142,7 +147,11 @@
       :index-fr (build-home-page articles "fr" "/fr/")
       :articles-en {"/en/articles/" (build-articles-page articles "en")}
       :articles-fr {"/fr/articles/" (build-articles-page articles "fr")}
-      :index (build-home-page articles "fr" "/")
       :tags tag-pages
+      :tags-page-en {"/en/tags/" (build-tags-page-for-lang "en" articles)}
+      :tags-page-fr {"/fr/tags/" (build-tags-page-for-lang "fr" articles)}
+      :feeds-page-en {"/en/feeds/" (build-feeds-page-for-lang "en" articles)}
+      :feeds-page-fr {"/fr/fils/" (build-feeds-page-for-lang "fr" articles)}
+      :index (build-home-page articles "fr" "/")
       :feeds (generate-feeds articles)
       :sitemap {"/sitemap.xml" (sitemap/generate-sitemap articles pages tag-pages)}})))

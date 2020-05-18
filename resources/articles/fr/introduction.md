@@ -1,9 +1,9 @@
 ---
 {:title "Introduction"
- :date "2019-04-21T15:35:00Z"
+ :date "2020-05-18T08:00:00Z"
  :lang "fr"
  :translations [{:lang "en" :path "/introduction/"}]
- :tags []}
+ :tags ["Fiction interactive", "Programmation"]}
 ---
 
 Un exemple de post. Essai de coloration syntaxique avec Java.

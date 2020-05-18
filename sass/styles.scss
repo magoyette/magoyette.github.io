@@ -94,7 +94,10 @@ ol {
   font-size: 1.25rem;
 }
 
-footer p {
+footer p,
+.article-footer p,
+.article-footer ul,
+.article-footer ol {
   font-size: 1rem;
 }
 
@@ -146,7 +149,10 @@ article.card {
     font-size: 1.5rem;
   }
 
-  footer p {
+  footer p,
+  .article-footer p,
+  .article-footer ul,
+  .article-footer ol {
     font-size: 1.25rem;
   }
 

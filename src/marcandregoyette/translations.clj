@@ -8,9 +8,22 @@
      (str "Essays written by Marc-André about software development, "
           "interactive fiction and litterature.")}
     :article
-    {:written-on "Written on "}
+    {:written-on "Written on "
+     :all-articles-link "All articles"
+     :tag-link "Articles with the tag "}
     :articles
     {:for-tag " with the tag "}
+    :tags
+    {:tags-list "List of all tags"
+     :tags-page "Tags"
+     :tags-page-text
+     (str "List of articles by tag: ")}
+    :feeds
+    {:feed-page-url "/en/feeds"
+     :feed-page "Atom/RSS Feeds"
+     :feed-page-text
+     (str "Atom feeds (also compatible with RSS software) "
+          "for articles in English.")}
     :footer
     {:source-code
      "Source code"
@@ -29,9 +42,22 @@
      (str "Essais de Marc-André Goyette sur le développement logiciel, "
           "la fiction interactive et la littérature.")}
     :article
-    {:written-on "Écrit le "}
+    {:written-on "Écrit le "
+     :all-articles-link "Tous les articles"
+     :tag-link "Articles avec le tag "}
     :articles
     {:for-tag " avec le tag "}
+    :tags
+    {:tags-list "Liste de tous les tags"
+     :tags-page "Tags"
+     :tags-page-text
+     (str "Listes des articles par tag: ")}
+    :feeds
+    {:feed-page-url "/fr/fils"
+     :feed-page "Fils Atom/RSS"
+     :feed-page-text
+     (str "Fils Atom (aussi compatibles avec les logiciels RSS) "
+          "pour les articles en français.")}
     :footer
     {:source-code
      "Code source"

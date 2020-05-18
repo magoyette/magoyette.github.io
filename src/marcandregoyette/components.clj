@@ -25,10 +25,11 @@
        [:a {:href url} [:h1.title.is-family-secondary (:title metadata)]])
       content)}}])
 
-(defn- build-tag
+(defn- build-tag-link
   [tag lang]
   (let [tag-url (tags/build-tag-url tag lang)]
-    [[:a.tag.is-primary.is-large {:href tag-url} tag] " "]))
+    [[:p [:a {:href tag-url}
+          (str (translations/translate lang :article/tag-link) tag)]]]))
 
 (rum/defc article-layout [url metadata content]
   (let [{:keys [date lang tags]} metadata]
@@ -40,10 +41,12 @@
          (str (translations/translate lang :article/written-on)
               (format-date date lang))])
       (article-content url metadata content)
-      (if (seq tags)
-        [:div.tags.has-addons
-         [:span.tag.is-large.is-dark "Tags"]
-         (mapcat #(build-tag % lang) tags)])]]))
+      (if (not (string/blank? date))
+        [:div.article-footer
+         [:p [:a {:href (str "/" lang "/articles")}
+              (translations/translate lang :article/all-articles-link)]]
+         (if (seq tags)
+           (mapcat #(build-tag-link % lang) tags))])]]))
 
 (defn- get-page-description-or-default [description lang]
   (or description (translations/translate lang :page/description)))
@@ -73,13 +76,11 @@
 
 (def menu-items-en
   {"/en/articles" "Articles"
-   "/en/about" "About"
-   "/feeds/languages/en/atom.xml" "Atom/RSS"})
+   "/en/about" "About"})
 
 (def menu-items-fr
   {"/fr/articles" "Articles"
-   "/fr/a-propos" "À propos"
-   "/feeds/languages/fr/atom.xml" "Atom/RSS"})
+   "/fr/a-propos" "À propos"})
 
 (defn- build-menu
   [menu-items]
@@ -101,7 +102,10 @@
   [:footer.footer
    [:p "Copyright © 2019-2020 Marc-André Goyette | "
     [:a {:href "https://github.com/magoyette/magoyette.github.io"}
-     (translations/translate lang :footer/source-code)]]
+     (translations/translate lang :footer/source-code)]
+    " | "
+    [:a {:href (translations/translate lang :feeds/feed-page-url)}
+     (translations/translate lang :feeds/feed-page)]]
    [:p
     (translations/translate lang :footer/license-sentence)
     [:a {:rel "license"
@@ -142,6 +146,8 @@
   [:article.card
    [:div.card-content
     [:h1.title.is-family-secondary (get-articles-page-title lang tag)]
+    [:p [:a {:href (str "/" lang "/tags")}
+         (translations/translate lang :tags/tags-list)]]
     (map #(article-link-layout (key %) (:metadata (val %))) articles-by-url)]])
 
 (defn get-articles-page-layout [title lang tag articles-by-url]
@@ -155,4 +161,54 @@
       [:div.container
        [:main
         (articles-links lang tag articles-by-url)]
+       (footer lang)]]])))
+
+(rum/defc feed-link [lang tag]
+  [:p
+   (if tag
+     [:a {:href (tags/get-feed-path-for-tag-and-lang lang tag)}
+      (str (translations/translate lang :article/tag-link) tag)]
+     [:a {:href (str "/feeds/languages/" lang "/atom.xml")}
+      (translations/translate lang :article/all-articles-link)])])
+
+(defn get-feeds-page-layout [lang tags]
+  (str
+   "<!DOCTYPE html>"
+   (rum/render-static-markup
+    [:html {:lang lang}
+     (head (translations/translate lang :feeds/feed-page) lang nil)
+     [:body
+      (menu lang)
+      [:div.container
+       [:main
+        [:article.card
+         [:div.card-content
+          [:h1.title.is-family-secondary
+           (translations/translate lang :feeds/feed-page)]
+          [:p (translations/translate lang :feeds/feed-page-text)]
+          [:p (feed-link lang nil)]
+          (map #(feed-link lang %) tags)]]]
+       (footer lang)]]])))
+
+(defn- tag-link-for-tags-page
+  [lang tag]
+  (let [tag-url (tags/build-tag-url tag lang)]
+    [:p [:a {:href tag-url} tag]]))
+
+(defn get-tags-page-layout [lang tags]
+  (str
+   "<!DOCTYPE html>"
+   (rum/render-static-markup
+    [:html {:lang lang}
+     (head (translations/translate lang :tags/tags-page) lang nil)
+     [:body
+      (menu lang)
+      [:div.container
+       [:main
+        [:article.card
+         [:div.card-content
+          [:h1.title.is-family-secondary
+           (translations/translate lang :tags/tags-page)]
+          [:p (translations/translate lang :tags/tags-page-text)]
+          (map #(tag-link-for-tags-page lang %) tags)]]]
        (footer lang)]]])))

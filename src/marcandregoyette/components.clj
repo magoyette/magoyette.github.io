@@ -76,11 +76,13 @@
 
 (def menu-items-en
   {"/en/articles" "Articles"
-   "/en/about" "About"})
+   "/en/about" "About"
+   "/" "Français"})
 
 (def menu-items-fr
   {"/fr/articles" "Articles"
-   "/fr/a-propos" "À propos"})
+   "/fr/a-propos" "À propos"
+   "/en" "English"})
 
 (defn- build-menu
   [menu-items]
@@ -100,12 +102,22 @@
 
 (rum/defc footer [lang]
   [:footer.footer
-   [:p "Copyright © 2019-2020 Marc-André Goyette | "
-    [:a {:href "https://github.com/magoyette/magoyette.github.io"}
-     (translations/translate lang :footer/source-code)]
+   [:p "Copyright © 2019-2020 Marc-André Goyette "]
+   [:p
+    [:a {:href (str "/" lang "/articles")}
+     "Articles"]
+    " | "
+    [:a {:href (str "/" lang (if (= lang "en") "/about" "/a-propos"))}
+     (if (= lang "en") "About" "À propos")]
     " | "
     [:a {:href (translations/translate lang :feeds/feed-page-url)}
-     (translations/translate lang :feeds/feed-page)]]
+     (translations/translate lang :feeds/feed-page)]
+    " | "
+    [:a {:href (if (= lang "en") "/" "/en")}
+     (if (= lang "en") "Français" "English")]
+    " | "
+    [:a {:href "https://github.com/magoyette/magoyette.github.io"}
+     (translations/translate lang :footer/source-code)]]
    [:p
     (translations/translate lang :footer/license-sentence)
     [:a {:rel "license"

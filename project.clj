@@ -1,4 +1,4 @@
-(defproject marcandregoyette "0.48.0"
+(defproject marcandregoyette "0.48.1"
   :description "Personal website of Marc-Andr\u00E9 Goyette (https://marcandregoyette.com)."
   :url "https://marcandregoyette.com"
   :license {:name "Eclipse Public License"
@@ -9,9 +9,9 @@
                  [org.clojure/tools.reader "1.3.2"]
                  [ch.qos.logback/logback-classic "1.2.3"]
                  [clj-commons/fs "1.5.2"]
-                 [com.vladsch.flexmark/flexmark "0.61.30"]
-                 [com.vladsch.flexmark/flexmark-ext-footnotes "0.61.30"]
-                 [com.vladsch.flexmark/flexmark-ext-tables "0.61.30"]
+                 [com.vladsch.flexmark/flexmark "0.62.2"]
+                 [com.vladsch.flexmark/flexmark-ext-footnotes "0.62.2"]
+                 [com.vladsch.flexmark/flexmark-ext-tables "0.62.2"]
                  [enlive "1.1.6"]
                  [org.python/jython-standalone "2.7.2"]
                  ;; Cannot upgrade to pygments 2.6, since it requires Python 3
@@ -24,7 +24,7 @@
   :jvm-opts ["-Dclojure.spec.check-asserts=true"]
   :aliases {"start" ["do"
                      ["test"]
-                     ["ring" "server"]]
+                     ["ring" "server-headless"]]
             "export" ["do"
                       ["run" "-m" "marcandregoyette.core/export"]]
             "deploy" ["do"

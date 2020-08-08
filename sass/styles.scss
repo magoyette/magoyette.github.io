@@ -5,8 +5,8 @@
   font-style: normal;
   font-weight: 400;
   src:
-    url(../fonts/Alegreya-Regular.woff2) format('woff2'),
-    url(../fonts/Alegreya-Regular.woff) format('woff');
+    url(../static/fonts/Alegreya-Regular.woff2) format('woff2'),
+    url(../static/fonts/Alegreya-Regular.woff) format('woff');
 }
 
 @font-face {
@@ -14,8 +14,8 @@
   font-style: normal;
   font-weight: 700;
   src:
-    url(../fonts/Alegreya-Bold.woff2) format('woff2'),
-    url(../fonts/Alegreya-Bold.woff) format('woff');
+    url(../static/fonts/Alegreya-Bold.woff2) format('woff2'),
+    url(../static/fonts/Alegreya-Bold.woff) format('woff');
 }
 
 @font-face {
@@ -23,8 +23,8 @@
   font-style: italic;
   font-weight: 400;
   src:
-    url(../fonts/Alegreya-Italic.woff2) format('woff2'),
-    url(../fonts/Alegreya-Italic.woff) format('woff');
+    url(../static/fonts/Alegreya-Italic.woff2) format('woff2'),
+    url(../static/fonts/Alegreya-Italic.woff) format('woff');
 }
 
 $text: hsl(0, 0%, 14%);
@@ -63,7 +63,6 @@ $navbar-breakpoint: $tablet;
 @import "../node_modules/bulma/sass/components/navbar.sass";
 @import "../node_modules/bulma/sass/components/card.sass";
 @import "../node_modules/bulma/sass/layout/footer.sass";
-@import "./solarized-light";
 
 body {
   font-variant-ligatures: common-ligatures;
@@ -107,7 +106,7 @@ div.date {
   font-style: italic;
 }
 
-.code {
+div.highlight {
   box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
   border-radius: 0.28571429rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
@@ -118,12 +117,12 @@ div.date {
   padding: 1.25em;
 }
 
-.code pre {
+div.highlight pre {
   background-color: #eee8d5;
   overflow: auto;
 }
 
-code span {
+div.highlight span {
   font-size: 1em;
 }
 

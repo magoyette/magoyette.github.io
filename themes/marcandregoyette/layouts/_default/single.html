@@ -1,0 +1,21 @@
+{{ define "main" }}
+<main>
+  <article class="card">
+    <div class="card-content">
+      <div class="date has-text-grey-dark has-text-right">
+        {{ .Date.Format "2006-01-02" }}
+      </div>
+      <div class="content">
+        <a href="/fr/introduction/">
+          <h1 class="title is-family-secondary">{{ .Title }}</h1>
+        </a>
+
+        {{ .Content }}
+      </div>
+      <div class="article-footer">
+        <p><a href="/fr/articles">Tous les articles</a></p>
+      </div>
+    </div>
+  </article>
+</main>
+{{ end }}

@@ -1,68 +1,58 @@
-# marcandregoyette.com
+# Marc-André Goyette
 
-The source code of my personal web site. It's a static site written in the Clojure programming language.
+## Installation
 
-## Environment setup
-
-- Install Open JDK 11.
-
-- Install Leiningen (version should be at least 2.9.0).
-
-- Install [Node](https://nodejs.org) and [npm](https://www.npmjs.com/). The site is currently developed with Node v12 and npm v6.
-
-## Building the Sass styles
-
-The npm packages must first be installed.
+The project can be installed by executing the following commands.
 
 ``` shell
+# Install the dependencies with NPM
 npm install
 ```
 
-The Sass styles are built with Webpack.
+## Build
+
+The project can be built with the `build` script.
 
 ``` shell
-# Build the Sass files as CSS
+# Run Webpack, then Hugo
 npm run build
+```
 
-# Build continuously the Sass files as CSS when the Sass files are modified
+### Watching for changes from Webpack
+
+Watching changes to SASS files requires starting Webpack in watch mode in a dedicated shell.
+
+``` shell
 npm run watch
 ```
 
-## Deploying the site locally
+### Watching for changes from Hugo
 
-To deploy the site on a local server, run the `start` goal.
+The following command starts a server that detect changes and reload them automatically.
+It doesn't detect changes to SASS files, since it's Webpack that compiles SASS files.
 
-```sh
-lein start
+``` shell
+npm run server
 ```
 
-The `test` goal is executed before the server is started. Failing tests will prevent the server from starting.
+## Deploying the site
 
-`lein ring server` can be used to start the local server without running `test`.
-
-## Exporting the site
-
-The `deploy` goal allows to generate the static site for a deployment on GitHub pages.
+The `deploy-to-github-pages` script deploys the generated files from the build to GitHub pages.
 
 ```sh
-lein deploy
+./deploy-to-github-pages
 ```
 
-It includes many tasks:
+It copes the static site from `./public` to the path `../magoyette.github.io`
 
-- the lein goal `test` is executed to run the tests
-- the lein goal `export` to generate the static site
-- the npm script `format-html` to format the HTML files
-- Bash commands to copy the static site to the path `../magoyette.github.io`
-
-The `magoyette.github.io` repository should be set on the `master` branch and is used to commit and push the changes to GitHub pages.
-
-The HTML files are formatted to make their content easier to review in a Git diff.
+The `magoyette.github.io` repository should be set on the `master` branch.
+The repo is used to commit and push the changes to GitHub pages.
 
 ## License
 
-Copyright © 2014-2020 Marc-André Goyette
+Copyright © 2020 Marc-André Goyette
 
-The source code of the web site is distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+The source code of the web site is distributed under the MIT License.
 
-The content (the writings) is licensed under a [Creative Commons License (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0/).
+The content (the writings) is licensed under a
+[Creative Commons License (CC BY-ND 4.0)](https://creativecommons.org/licenses/by-nd/4.0/).

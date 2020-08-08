@@ -1,0 +1,27 @@
+baseURL: https://marcandregoyette.com/
+languageCode: fr
+title: Marc-André Goyette
+theme: marcandregoyette
+# Languages
+defaultContentLanguage: fr
+defaultContentLanguageInSubdir: true
+languages:
+  fr:
+    contentDir: content/fr
+    languageName: Français
+    weight: 1
+  en:
+    contentDir: content/en
+    languageName: English
+    weight: 2
+# Taxonomies
+taxonomies:
+  tag: tags
+# RSS
+languageCode: fr
+author:
+    name: Marc-André Goyette
+# Markup
+markup:
+  highlight:
+    style: solarized-light

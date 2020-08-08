@@ -1,6 +1,6 @@
 {
   "name": "marcandregoyette.com",
-  "version": "0.10.1",
+  "version": "0.49.0",
   "description": "Personal website of Marc-André Goyette",
   "author": {
     "name": "Marc-André Goyette",
@@ -8,7 +8,7 @@
   },
   "private": true,
   "homepage": "https://github.com/magoyette/magoyette.github.io",
-  "license": "EPL-2.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/magoyette/magoyette.github.io.git"
@@ -18,18 +18,22 @@
   },
   "main": "sass/styles.scss",
   "scripts": {
-    "build": "rm -drf ./resources/public && npx webpack",
-    "watch": "rm -drf ./resources/public && npx webpack --watch",
-    "format-html": "node scripts/format-html.js"
+    "clean:before": "node build-scripts/clean-before-build.js",
+    "clean:after": "node build-scripts/clean-after-build.js",
+    "build:webpack": "npm run clean:before && npx webpack",
+    "build": "npm run build:webpack && hugo && npm run clean:after",
+    "server": "npm run build:webpack && hugo server",
+    "watch": "npx webpack --watch",
+    "deploy": "npm run build && node build-scripts/deploy.js"
   },
   "browserslist": "defaults, iOS > 9",
   "devDependencies": {
     "autoprefixer": "^9.8.5",
     "bulma": "^0.9.0",
-    "css-loader": "^3.6.0",
+    "css-loader": "^4.2.0",
     "file-loader": "^6.0.0",
-    "glob": "^7.1.6",
-    "js-beautify": "^1.11.0",
+    "fs-extra": "9.0.1",
+    "glob": "7.1.6",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.0",
     "postcss-loader": "^3.0.0",

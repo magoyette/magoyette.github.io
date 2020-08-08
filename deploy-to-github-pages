@@ -1,9 +1,0 @@
-#!/bin/bash
-set -e
-
-npm run format-html
-
-# dotfiles aren't globbed, so .git isn't deleted
-rm -rf ../magoyette.github.io/*
-
-cp -r ./dist/* ../magoyette.github.io

@@ -1,8 +1,5 @@
-.clj-kondo/
-.eastwood
-.lein-failures
-.nrepl-port
-dist/
 node_modules/
-/resources/public/
-/target/
+public/
+resources/
+static/main.js
+static/styles.css

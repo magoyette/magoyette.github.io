@@ -1,0 +1,41 @@
+{{ if eq .Lang "fr" }}
+<footer class="footer">
+  <p>Copyright © 2020 Marc-André Goyette</p>
+  <p>
+    <a href="/fr/articles">Articles</a> | <a href="/fr/a-propos">À propos</a> |
+    <a href="/fr/fils">Fils Atom/RSS</a> | <a href="/fr">French</a> |
+    <a href="https://github.com/magoyette/magoyette.github.io">Code source</a>
+  </p>
+  <p>
+    Le contenu de ce site est disponible selon les termes d&#x27;une
+    <a
+      rel="license"
+      href="https://creativecommons.org/licenses/by-nd/4.0/deed.fr"
+      >licence Creative Commons (CC BY-ND 4.0)</a
+    >.
+  </p>
+  <p>
+    Les opinions exprimées sur ce site sont uniquement les miennes et ne
+    représentent pas celles de mes employeurs actuels ou passés.
+  </p>
+</footer>
+{{ else }}
+<footer class="footer">
+  <p>Copyright © 2019-2020 Marc-André Goyette</p>
+  <p>
+    <a href="/en/articles">Articles</a> | <a href="/en/about">About</a> |
+    <a href="/en/feeds">Atom/RSS Feeds</a> | <a href="/">Français</a> |
+    <a href="https://github.com/magoyette/magoyette.github.io">Source code</a>
+  </p>
+  <p>
+    The content of this site is licensed under a
+    <a rel="license" href="https://creativecommons.org/licenses/by-nd/4.0/"
+      >Creative Commons License (CC BY-ND 4.0)</a
+    >.
+  </p>
+  <p>
+    Opinions expressed on this site are solely my own, not those of my present
+    or past employers.
+  </p>
+</footer>
+{{ end }}

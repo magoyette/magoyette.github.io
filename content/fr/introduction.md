@@ -1,7 +1,6 @@
 ---
 title: "Introduction"
 date: 2020-08-01T02:19:44-04:00
-draft: false
 tags:
 - Fiction interactive
 - Programmation

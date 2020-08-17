@@ -7,12 +7,26 @@
       <div class="navbar-start">
         {{ if eq .Lang  "fr" }}
         <a href="/fr/articles" class="navbar-item is-tab">Articles</a>
+        <a href="/fr/tags" class="navbar-item is-tab">Tags</a>
         <a href="/fr/a-propos" class="navbar-item is-tab">À propos</a>
+        {{ if .IsTranslated }}
+        {{ range .Translations }}
+        <a href="{{ .Permalink }}" class="navbar-item is-tab">English</a>
+        {{ end }}
+        {{ else }}
         <a href="/en" class="navbar-item is-tab">English</a>
+        {{ end }}
         {{ else }}
         <a href="/en/articles" class="navbar-item is-tab">Articles</a>
+        <a href="/en/tags" class="navbar-item is-tab">Tags</a>
         <a href="/en/about" class="navbar-item is-tab">About</a>
+        {{ if .IsTranslated }}
+        {{ range .Translations }}
+        <a href="{{ .Permalink }}" class="navbar-item is-tab">Français</a>
+        {{ end }}
+        {{ else }}
         <a href="/fr" class="navbar-item is-tab">Français</a>
+        {{ end }}
         {{ end }}
       </div>
     </div>

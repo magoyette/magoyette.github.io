@@ -1,11 +1,17 @@
 {{ if (not (eq .Params.article false)) }}
 {{ if eq .Lang "fr" }}
 <div class="article-footer">
-  <p><a href="/fr/articles">Liste de tous les articles</a></p>
+  {{ range (.GetTerms "tags") }}
+  <p><a href="{{ .Permalink }}">Articles avec le tag {{ .LinkTitle }}</a></p>
+  {{ end }}
+  <p><a href="/fr/articles">Tous les articles</a></p>
 </div>
 {{ else }}
 <div class="article-footer">
-  <p><a href="/en/articles">List of all articles</a></p>
+  {{ range (.GetTerms "tags") }}
+  <p><a href="{{ .Permalink }}">Articles with the tag {{ .LinkTitle }}</a></p>
+  {{ end }}
+  <p><a href="/en/articles">All articles</a></p>
 </div>
 {{ end }}
 {{ end }}

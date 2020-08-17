@@ -1,0 +1,24 @@
+{{ define "main" }}
+<main aria-role="main">
+  <article class="card">
+    <div class="card-content">
+      <h1 class="title is-family-secondary">Tag {{ .Title}}</h1>
+
+      {{ if eq .Lang "fr" }}
+      <p><a href="{{ .RelPermalink }}index.xml">Fil Atom/RSS pour les articles avec le tag {{ .Title }}</a></p>
+      {{ else }}
+      <p><a href="{{ .RelPermalink }}index.xml">Atom/RSS feed for the articles with the tag {{ .Title }}</a></p>
+      {{ end }}
+
+      <br/>
+
+      {{ range .Pages }}
+      <p>
+        <span class="article-date has-text-grey-dark">{{ .Date.Format "2006-01-02" }}</span>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </p>
+      {{ end }}
+    </div>
+  </article>
+</main>
+{{ end }}

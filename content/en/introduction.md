@@ -1,6 +1,7 @@
 ---
 title: "Introduction"
 date: 2020-08-01T02:19:44-04:00
+translationKey: "introduction"
 tags:
 - Interactive Fiction
 - Programming

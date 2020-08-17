@@ -12,9 +12,7 @@
 
         {{ .Content }}
       </div>
-      <div class="article-footer">
-        <p><a href="/fr/articles">Tous les articles</a></p>
-      </div>
+      {{- partial "listofarticles.html" . -}}
     </div>
   </article>
 </main>

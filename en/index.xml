@@ -17,13 +17,13 @@
       <pubDate>Sat, 01 Aug 2020 02:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/en/introduction/</guid>
-      <description>&lt;![CDATA[<p>A post example. Try Java syntax highlight.</p>
+      <description><p>A post example. Try Java syntax highlight.</p>
 <div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#268bd2">Iterable</span>&lt;<span style="color:#268bd2">Expression</span>&gt; <span style="color:#268bd2">expressions</span> = <span style="color:#268bd2">Iterables</span>.<span style="color:#268bd2">concat</span>(<span style="color:#268bd2">expressions</span>, <span style="color:#268bd2">ImmutableList</span>.
         <span style="color:#268bd2">of</span>(<span style="color:#268bd2">expression1</span>, <span style="color:#268bd2">expression2</span>));
 <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">count</span> = <span style="color:#268bd2">5</span> * <span style="color:#268bd2">2</span>;
 </code></pre></div><p>Try Clojure syntax highlight.</p>
 <div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#859900">def </span><span style="color:#268bd2">expr</span> (<span style="color:#cb4b16">+ </span><span style="color:#2aa198;font-weight:bold">2</span> <span style="color:#2aa198;font-weight:bold">3</span>))
-</code></pre></div>]]></description>
+</code></pre></div></description>
     </item>
     
     <item>
@@ -32,9 +32,9 @@
       <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/en/about/</guid>
-      <description>&lt;![CDATA[<p>This is my personal web site.</p>
+      <description><p>This is my personal web site.</p>
 <p>For more details on the web site itself, see the <a href="../colophon/">colophon</a>.</p>
-]]></description>
+</description>
     </item>
     
     <item>
@@ -43,7 +43,7 @@
       <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/en/articles/</guid>
-      <description>&lt;![CDATA[]]></description>
+      <description></description>
     </item>
     
     <item>
@@ -52,7 +52,7 @@
       <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/en/colophon/</guid>
-      <description>&lt;![CDATA[<h2 id="constraints">Constraints</h2>
+      <description><h2 id="constraints">Constraints</h2>
 <p>I chose to adopt some constraints while building this web site.</p>
 <p><strong>Static site</strong>: The web site will be static and generated with my own static site generator.</p>
 <p><strong>JavaScript</strong>: Avoid as much as possible the use of JavaScript.</p>
@@ -60,7 +60,7 @@
 <h2 id="fonts">Fonts</h2>
 <p>The text on this web site use <a href="https://github.com/huertatipografica/Alegreya">Alegreya</a>, an open source font created by <a href="https://www.huertatipografica.com/en">Huerta Tipográfica</a>.</p>
 <p>Code blocks use a monospace font that varies depending on the fonts installed on the operating system.</p>
-]]></description>
+</description>
     </item>
     
   </channel>

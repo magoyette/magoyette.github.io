@@ -17,13 +17,13 @@
       <pubDate>Sat, 01 Aug 2020 02:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/en/introduction/</guid>
-      <description>&lt;![CDATA[<p>A post example. Try Java syntax highlight.</p>
+      <description><p>A post example. Try Java syntax highlight.</p>
 <div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#268bd2">Iterable</span>&lt;<span style="color:#268bd2">Expression</span>&gt; <span style="color:#268bd2">expressions</span> = <span style="color:#268bd2">Iterables</span>.<span style="color:#268bd2">concat</span>(<span style="color:#268bd2">expressions</span>, <span style="color:#268bd2">ImmutableList</span>.
         <span style="color:#268bd2">of</span>(<span style="color:#268bd2">expression1</span>, <span style="color:#268bd2">expression2</span>));
 <span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">count</span> = <span style="color:#268bd2">5</span> * <span style="color:#268bd2">2</span>;
 </code></pre></div><p>Try Clojure syntax highlight.</p>
 <div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#859900">def </span><span style="color:#268bd2">expr</span> (<span style="color:#cb4b16">+ </span><span style="color:#2aa198;font-weight:bold">2</span> <span style="color:#2aa198;font-weight:bold">3</span>))
-</code></pre></div>]]></description>
+</code></pre></div></description>
     </item>
     
   </channel>

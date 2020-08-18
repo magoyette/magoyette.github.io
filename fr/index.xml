@@ -11,6 +11,7 @@
 	<atom:link href="https://marcandregoyette.com/fr/index.xml" rel="self" type="application/rss+xml" />
     
     
+    
     <item>
       <title>Introduction</title>
       <link>https://marcandregoyette.com/fr/introduction/</link>
@@ -26,42 +27,12 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;]]></description>
     </item>
     
-    <item>
-      <title>Articles</title>
-      <link>https://marcandregoyette.com/fr/articles/</link>
-      <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
-      
-      <guid>https://marcandregoyette.com/fr/articles/</guid>
-      <description>&lt;![CDATA[]]></description>
-    </item>
     
-    <item>
-      <title>Colophon</title>
-      <link>https://marcandregoyette.com/fr/colophon/</link>
-      <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
-      
-      <guid>https://marcandregoyette.com/fr/colophon/</guid>
-      <description>&lt;![CDATA[&lt;h2 id=&#34;contraintes&#34;&gt;Contraintes&lt;/h2&gt;
-&lt;p&gt;J&amp;rsquo;ai choisi d&amp;rsquo;adopter certaines contraintes lors de la création de ce site web.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Site statique&lt;/strong&gt;: Créer un site statique généré avec mon propre générateur de site statique.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;JavaScript&lt;/strong&gt;: Éviter le plus possible l&amp;rsquo;utilisation de JavaScript.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Tracking&lt;/strong&gt;: Ne pas ajouter Google Analytics ou de tracking.&lt;/p&gt;
-&lt;h2 id=&#34;polices-de-caractères&#34;&gt;Polices de caractères&lt;/h2&gt;
-&lt;p&gt;Les textes de ce site web utilisent &lt;a href=&#34;https://github.com/huertatipografica/Alegreya&#34;&gt;Alegreya&lt;/a&gt;, une police de caractères libre créée par &lt;a href=&#34;https://www.huertatipografica.com/en&#34;&gt;Huerta Tipográfica&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Les blocs de code utilisent une police monospace qui varie en fonction des polices installées sur le système.&lt;/p&gt;
-]]></description>
-    </item>
     
-    <item>
-      <title>À propos</title>
-      <link>https://marcandregoyette.com/fr/a-propos/</link>
-      <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
-      
-      <guid>https://marcandregoyette.com/fr/a-propos/</guid>
-      <description>&lt;![CDATA[&lt;p&gt;Ce site est mon site web personnel.&lt;/p&gt;
-&lt;p&gt;Pour plus de détails à propos du site web lui-même, consultez le &lt;a href=&#34;../colophon/&#34;&gt;colophon&lt;/a&gt;.&lt;/p&gt;
-]]></description>
-    </item>
+    
+    
+    
+    
     
   </channel>
 </rss>

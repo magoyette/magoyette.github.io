@@ -11,6 +11,7 @@
 	<atom:link href="https://marcandregoyette.com/en/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
+    
     <item>
       <title>Interactive Fiction</title>
       <link>https://marcandregoyette.com/en/tags/interactive-fiction/</link>
@@ -20,6 +21,8 @@
       <description>&lt;![CDATA[]]></description>
     </item>
     
+    
+    
     <item>
       <title>Programming</title>
       <link>https://marcandregoyette.com/en/tags/programming/</link>
@@ -28,6 +31,7 @@
       <guid>https://marcandregoyette.com/en/tags/programming/</guid>
       <description>&lt;![CDATA[]]></description>
     </item>
+    
     
   </channel>
 </rss>

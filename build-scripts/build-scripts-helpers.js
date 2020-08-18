@@ -4,9 +4,11 @@ const glob = require("glob");
 const { NamedModulesPlugin } = require("webpack");
 
 function deleteFile(file) {
-  fs.remove(file).catch((err) => {
+  try {
+    fs.removeSync(file);
+  } catch (err) {
     console.error(err);
-  });
+  }
 }
 
 function deleteFilesInDirectoryRecursively(directoryPath) {

@@ -37,10 +37,10 @@ npm run server
 
 ## Deploying the site
 
-The `deploy-to-github-pages` script deploys the generated files from the build to GitHub pages.
+The `deploy` script deploys the generated files from the build to GitHub pages.
 
 ```sh
-./deploy-to-github-pages
+npm run deploy
 ```
 
 It copes the static site from `./public` to the path `../magoyette.github.io`

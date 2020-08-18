@@ -17,13 +17,13 @@
       <pubDate>Sat, 01 Aug 2020 02:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/en/introduction/</guid>
-      <description><p>A post example. Try Java syntax highlight.</p>
-<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#268bd2">Iterable</span>&lt;<span style="color:#268bd2">Expression</span>&gt; <span style="color:#268bd2">expressions</span> = <span style="color:#268bd2">Iterables</span>.<span style="color:#268bd2">concat</span>(<span style="color:#268bd2">expressions</span>, <span style="color:#268bd2">ImmutableList</span>.
-        <span style="color:#268bd2">of</span>(<span style="color:#268bd2">expression1</span>, <span style="color:#268bd2">expression2</span>));
-<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">count</span> = <span style="color:#268bd2">5</span> * <span style="color:#268bd2">2</span>;
-</code></pre></div><p>Try Clojure syntax highlight.</p>
-<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#859900">def </span><span style="color:#268bd2">expr</span> (<span style="color:#cb4b16">+ </span><span style="color:#2aa198;font-weight:bold">2</span> <span style="color:#2aa198;font-weight:bold">3</span>))
-</code></pre></div></description>
+      <description>&lt;![CDATA[&lt;p&gt;A post example. Try Java syntax highlight.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;Iterable&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#268bd2&#34;&gt;Expression&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#268bd2&#34;&gt;expressions&lt;/span&gt; = &lt;span style=&#34;color:#268bd2&#34;&gt;Iterables&lt;/span&gt;.&lt;span style=&#34;color:#268bd2&#34;&gt;concat&lt;/span&gt;(&lt;span style=&#34;color:#268bd2&#34;&gt;expressions&lt;/span&gt;, &lt;span style=&#34;color:#268bd2&#34;&gt;ImmutableList&lt;/span&gt;.
+        &lt;span style=&#34;color:#268bd2&#34;&gt;of&lt;/span&gt;(&lt;span style=&#34;color:#268bd2&#34;&gt;expression1&lt;/span&gt;, &lt;span style=&#34;color:#268bd2&#34;&gt;expression2&lt;/span&gt;));
+&lt;span style=&#34;color:#859900;font-weight:bold&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#268bd2&#34;&gt;count&lt;/span&gt; = &lt;span style=&#34;color:#268bd2&#34;&gt;5&lt;/span&gt; * &lt;span style=&#34;color:#268bd2&#34;&gt;2&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Try Clojure syntax highlight.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;(&lt;span style=&#34;color:#859900&#34;&gt;def &lt;/span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;expr&lt;/span&gt; (&lt;span style=&#34;color:#cb4b16&#34;&gt;+ &lt;/span&gt;&lt;span style=&#34;color:#2aa198;font-weight:bold&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#2aa198;font-weight:bold&#34;&gt;3&lt;/span&gt;))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;]]></description>
     </item>
     
     <item>
@@ -32,9 +32,9 @@
       <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/en/about/</guid>
-      <description><p>This is my personal web site.</p>
-<p>For more details on the web site itself, see the <a href="../colophon/">colophon</a>.</p>
-</description>
+      <description>&lt;![CDATA[&lt;p&gt;This is my personal web site.&lt;/p&gt;
+&lt;p&gt;For more details on the web site itself, see the &lt;a href=&#34;../colophon/&#34;&gt;colophon&lt;/a&gt;.&lt;/p&gt;
+]]></description>
     </item>
     
     <item>
@@ -43,7 +43,7 @@
       <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/en/articles/</guid>
-      <description></description>
+      <description>&lt;![CDATA[]]></description>
     </item>
     
     <item>
@@ -52,15 +52,15 @@
       <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/en/colophon/</guid>
-      <description><h2 id="constraints">Constraints</h2>
-<p>I chose to adopt some constraints while building this web site.</p>
-<p><strong>Static site</strong>: The web site will be static and generated with my own static site generator.</p>
-<p><strong>JavaScript</strong>: Avoid as much as possible the use of JavaScript.</p>
-<p><strong>Tracking</strong>: Do not add Google Analytics or other trackers.</p>
-<h2 id="fonts">Fonts</h2>
-<p>The text on this web site use <a href="https://github.com/huertatipografica/Alegreya">Alegreya</a>, an open source font created by <a href="https://www.huertatipografica.com/en">Huerta Tipográfica</a>.</p>
-<p>Code blocks use a monospace font that varies depending on the fonts installed on the operating system.</p>
-</description>
+      <description>&lt;![CDATA[&lt;h2 id=&#34;constraints&#34;&gt;Constraints&lt;/h2&gt;
+&lt;p&gt;I chose to adopt some constraints while building this web site.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Static site&lt;/strong&gt;: The web site will be static and generated with my own static site generator.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;JavaScript&lt;/strong&gt;: Avoid as much as possible the use of JavaScript.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tracking&lt;/strong&gt;: Do not add Google Analytics or other trackers.&lt;/p&gt;
+&lt;h2 id=&#34;fonts&#34;&gt;Fonts&lt;/h2&gt;
+&lt;p&gt;The text on this web site use &lt;a href=&#34;https://github.com/huertatipografica/Alegreya&#34;&gt;Alegreya&lt;/a&gt;, an open source font created by &lt;a href=&#34;https://www.huertatipografica.com/en&#34;&gt;Huerta Tipográfica&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Code blocks use a monospace font that varies depending on the fonts installed on the operating system.&lt;/p&gt;
+]]></description>
     </item>
     
   </channel>

@@ -17,13 +17,13 @@
       <pubDate>Sat, 01 Aug 2020 02:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/fr/introduction/</guid>
-      <description><p>Un exemple de post. Essai de coloration syntaxique avec Java.</p>
-<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#268bd2">Iterable</span>&lt;<span style="color:#268bd2">Expression</span>&gt; <span style="color:#268bd2">expressions</span> = <span style="color:#268bd2">Iterables</span>.<span style="color:#268bd2">concat</span>(<span style="color:#268bd2">expressions</span>, <span style="color:#268bd2">ImmutableList</span>.
-        <span style="color:#268bd2">of</span>(<span style="color:#268bd2">expression1</span>, <span style="color:#268bd2">expression2</span>));
-<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">count</span> = <span style="color:#268bd2">5</span> * <span style="color:#268bd2">2</span>;
-</code></pre></div><p>Essai de coloration syntaxique avec Clojure.</p>
-<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#859900">def </span><span style="color:#268bd2">expr</span> (<span style="color:#cb4b16">+ </span><span style="color:#2aa198;font-weight:bold">2</span> <span style="color:#2aa198;font-weight:bold">3</span>))
-</code></pre></div></description>
+      <description>&lt;![CDATA[&lt;p&gt;Un exemple de post. Essai de coloration syntaxique avec Java.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;Iterable&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#268bd2&#34;&gt;Expression&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#268bd2&#34;&gt;expressions&lt;/span&gt; = &lt;span style=&#34;color:#268bd2&#34;&gt;Iterables&lt;/span&gt;.&lt;span style=&#34;color:#268bd2&#34;&gt;concat&lt;/span&gt;(&lt;span style=&#34;color:#268bd2&#34;&gt;expressions&lt;/span&gt;, &lt;span style=&#34;color:#268bd2&#34;&gt;ImmutableList&lt;/span&gt;.
+        &lt;span style=&#34;color:#268bd2&#34;&gt;of&lt;/span&gt;(&lt;span style=&#34;color:#268bd2&#34;&gt;expression1&lt;/span&gt;, &lt;span style=&#34;color:#268bd2&#34;&gt;expression2&lt;/span&gt;));
+&lt;span style=&#34;color:#859900;font-weight:bold&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#268bd2&#34;&gt;count&lt;/span&gt; = &lt;span style=&#34;color:#268bd2&#34;&gt;5&lt;/span&gt; * &lt;span style=&#34;color:#268bd2&#34;&gt;2&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Essai de coloration syntaxique avec Clojure.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;(&lt;span style=&#34;color:#859900&#34;&gt;def &lt;/span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;expr&lt;/span&gt; (&lt;span style=&#34;color:#cb4b16&#34;&gt;+ &lt;/span&gt;&lt;span style=&#34;color:#2aa198;font-weight:bold&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#2aa198;font-weight:bold&#34;&gt;3&lt;/span&gt;))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;]]></description>
     </item>
     
     <item>
@@ -32,7 +32,7 @@
       <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/fr/articles/</guid>
-      <description></description>
+      <description>&lt;![CDATA[]]></description>
     </item>
     
     <item>
@@ -41,15 +41,15 @@
       <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/fr/colophon/</guid>
-      <description><h2 id="contraintes">Contraintes</h2>
-<p>J&rsquo;ai choisi d&rsquo;adopter certaines contraintes lors de la création de ce site web.</p>
-<p><strong>Site statique</strong>: Créer un site statique généré avec mon propre générateur de site statique.</p>
-<p><strong>JavaScript</strong>: Éviter le plus possible l&rsquo;utilisation de JavaScript.</p>
-<p><strong>Tracking</strong>: Ne pas ajouter Google Analytics ou de tracking.</p>
-<h2 id="polices-de-caractères">Polices de caractères</h2>
-<p>Les textes de ce site web utilisent <a href="https://github.com/huertatipografica/Alegreya">Alegreya</a>, une police de caractères libre créée par <a href="https://www.huertatipografica.com/en">Huerta Tipográfica</a>.</p>
-<p>Les blocs de code utilisent une police monospace qui varie en fonction des polices installées sur le système.</p>
-</description>
+      <description>&lt;![CDATA[&lt;h2 id=&#34;contraintes&#34;&gt;Contraintes&lt;/h2&gt;
+&lt;p&gt;J&amp;rsquo;ai choisi d&amp;rsquo;adopter certaines contraintes lors de la création de ce site web.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Site statique&lt;/strong&gt;: Créer un site statique généré avec mon propre générateur de site statique.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;JavaScript&lt;/strong&gt;: Éviter le plus possible l&amp;rsquo;utilisation de JavaScript.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tracking&lt;/strong&gt;: Ne pas ajouter Google Analytics ou de tracking.&lt;/p&gt;
+&lt;h2 id=&#34;polices-de-caractères&#34;&gt;Polices de caractères&lt;/h2&gt;
+&lt;p&gt;Les textes de ce site web utilisent &lt;a href=&#34;https://github.com/huertatipografica/Alegreya&#34;&gt;Alegreya&lt;/a&gt;, une police de caractères libre créée par &lt;a href=&#34;https://www.huertatipografica.com/en&#34;&gt;Huerta Tipográfica&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Les blocs de code utilisent une police monospace qui varie en fonction des polices installées sur le système.&lt;/p&gt;
+]]></description>
     </item>
     
     <item>
@@ -58,9 +58,9 @@
       <pubDate>Fri, 31 Jul 2020 22:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/fr/a-propos/</guid>
-      <description><p>Ce site est mon site web personnel.</p>
-<p>Pour plus de détails à propos du site web lui-même, consultez le <a href="../colophon/">colophon</a>.</p>
-</description>
+      <description>&lt;![CDATA[&lt;p&gt;Ce site est mon site web personnel.&lt;/p&gt;
+&lt;p&gt;Pour plus de détails à propos du site web lui-même, consultez le &lt;a href=&#34;../colophon/&#34;&gt;colophon&lt;/a&gt;.&lt;/p&gt;
+]]></description>
     </item>
     
   </channel>

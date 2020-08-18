@@ -17,13 +17,13 @@
       <pubDate>Sat, 01 Aug 2020 02:19:44 -0400</pubDate>
       
       <guid>https://marcandregoyette.com/fr/introduction/</guid>
-      <description><p>Un exemple de post. Essai de coloration syntaxique avec Java.</p>
-<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#268bd2">Iterable</span>&lt;<span style="color:#268bd2">Expression</span>&gt; <span style="color:#268bd2">expressions</span> = <span style="color:#268bd2">Iterables</span>.<span style="color:#268bd2">concat</span>(<span style="color:#268bd2">expressions</span>, <span style="color:#268bd2">ImmutableList</span>.
-        <span style="color:#268bd2">of</span>(<span style="color:#268bd2">expression1</span>, <span style="color:#268bd2">expression2</span>));
-<span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">count</span> = <span style="color:#268bd2">5</span> * <span style="color:#268bd2">2</span>;
-</code></pre></div><p>Essai de coloration syntaxique avec Clojure.</p>
-<div class="highlight"><pre style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-clojure" data-lang="clojure">(<span style="color:#859900">def </span><span style="color:#268bd2">expr</span> (<span style="color:#cb4b16">+ </span><span style="color:#2aa198;font-weight:bold">2</span> <span style="color:#2aa198;font-weight:bold">3</span>))
-</code></pre></div></description>
+      <description>&lt;![CDATA[&lt;p&gt;Un exemple de post. Essai de coloration syntaxique avec Java.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;Iterable&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#268bd2&#34;&gt;Expression&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#268bd2&#34;&gt;expressions&lt;/span&gt; = &lt;span style=&#34;color:#268bd2&#34;&gt;Iterables&lt;/span&gt;.&lt;span style=&#34;color:#268bd2&#34;&gt;concat&lt;/span&gt;(&lt;span style=&#34;color:#268bd2&#34;&gt;expressions&lt;/span&gt;, &lt;span style=&#34;color:#268bd2&#34;&gt;ImmutableList&lt;/span&gt;.
+        &lt;span style=&#34;color:#268bd2&#34;&gt;of&lt;/span&gt;(&lt;span style=&#34;color:#268bd2&#34;&gt;expression1&lt;/span&gt;, &lt;span style=&#34;color:#268bd2&#34;&gt;expression2&lt;/span&gt;));
+&lt;span style=&#34;color:#859900;font-weight:bold&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#268bd2&#34;&gt;count&lt;/span&gt; = &lt;span style=&#34;color:#268bd2&#34;&gt;5&lt;/span&gt; * &lt;span style=&#34;color:#268bd2&#34;&gt;2&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Essai de coloration syntaxique avec Clojure.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;(&lt;span style=&#34;color:#859900&#34;&gt;def &lt;/span&gt;&lt;span style=&#34;color:#268bd2&#34;&gt;expr&lt;/span&gt; (&lt;span style=&#34;color:#cb4b16&#34;&gt;+ &lt;/span&gt;&lt;span style=&#34;color:#2aa198;font-weight:bold&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#2aa198;font-weight:bold&#34;&gt;3&lt;/span&gt;))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;]]></description>
     </item>
     
   </channel>

@@ -73,6 +73,21 @@
   </url>
   
   <url>
+    <loc>https://marcandregoyette.com/en/feeds/</loc>
+    <lastmod>2020-07-31T22:19:44-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://marcandregoyette.com/fr/fils/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://marcandregoyette.com/en/feeds/"
+                />
+  </url>
+  
+  <url>
     <loc>https://marcandregoyette.com/en/colophon/</loc>
     <lastmod>2020-07-31T22:19:44-04:00</lastmod>
     <xhtml:link

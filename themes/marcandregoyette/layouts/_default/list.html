@@ -4,6 +4,10 @@
     <div class="card-content">
       <h1 class="title is-family-secondary">{{ .Title }}</h1>
 
+      {{- partial "listoftags.html" . -}}
+
+      <br/>
+
       {{ range .Site.RegularPages }}
       {{ if (not (eq .Params.article false)) }}
       <p>

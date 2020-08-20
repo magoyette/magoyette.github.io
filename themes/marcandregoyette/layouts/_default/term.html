@@ -4,11 +4,7 @@
     <div class="card-content">
       <h1 class="title is-family-secondary">Tag {{ .Title}}</h1>
 
-      {{ if eq .Lang "fr" }}
-      <p><a href="{{ .RelPermalink }}index.xml">Fil Atom/RSS pour les articles avec le tag {{ .Title }}</a></p>
-      {{ else }}
-      <p><a href="{{ .RelPermalink }}index.xml">Atom/RSS feed for the articles with the tag {{ .Title }}</a></p>
-      {{ end }}
+      {{- partial "listoftags.html" . -}}
 
       <br/>
 

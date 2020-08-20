@@ -2,8 +2,10 @@
 <footer class="footer">
   <p>Copyright © 2020 Marc-André Goyette</p>
   <p>
-    <a href="/fr/articles">Articles</a> | <a href="/fr/a-propos">À propos</a> |
-    <a href="/fr/index.xml">Fil Atom/RSS</a> |
+    <a href="/fr/articles">Articles</a> |
+    <a href="/fr/tags">Tags</a> |
+    <a href="/fr/fictions">Fictions</a> |
+    <a href="/fr/a-propos">À propos</a> |
     {{ if .IsTranslated }}
     {{ range .Translations }}
     <a href="{{ .Permalink }}">English</a> |
@@ -11,6 +13,7 @@
     {{ else }}
     <a href="/en">English</a> |
     {{ end }}
+    <a href="/fr/fils/">Fils Atom/RSS</a> |
     <a href="https://github.com/magoyette/magoyette.github.io">Code source</a>
   </p>
   <p>
@@ -30,8 +33,9 @@
 <footer class="footer">
   <p>Copyright © 2019-2020 Marc-André Goyette</p>
   <p>
-    <a href="/en/articles">Articles</a> | <a href="/en/about">About</a> |
-    <a href="/en/index.xml">Atom/RSS Feed</a> |
+    <a href="/en/articles">Articles</a> |
+    <a href="/en/tags">Tags</a> |
+    <a href="/en/about">About</a> |
     {{ if .IsTranslated }}
     {{ range .Translations }}
     <a href="{{ .Permalink }}">Français</a> |
@@ -39,6 +43,7 @@
     {{ else }}
     <a href="/fr">Français</a> |
     {{ end }}
+    <a href="/en/feeds/">Atom/RSS Feeds</a> |
     <a href="https://github.com/magoyette/magoyette.github.io">Source code</a>
   </p>
   <p>

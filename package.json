@@ -22,7 +22,7 @@
     "clean:after": "node build-scripts/clean-after-build.js",
     "build:webpack": "npm run clean:before && npx webpack",
     "build": "npm run build:webpack && hugo && npm run clean:after",
-    "server": "npm run build:webpack && hugo server",
+    "start": "npm run build:webpack && hugo server",
     "watch": "npx webpack --watch",
     "deploy": "npm run build && node build-scripts/deploy.js"
   },

@@ -2,9 +2,9 @@
 {{ with ($.Site.GetPage (printf "/%s" $taxo)) }}
     {{ range .Pages }}
         {{ if eq .Lang  "fr" }}
-        <p><a href="{{ .Permalink }}index.xml">Fil pour le tag {{ .Title}}</a></p>
+        <p><a href="{{ .Permalink }}atom.xml">Fil pour le tag {{ .Title}}</a></p>
         {{ else }}
-        <p><a href="{{ .Permalink }}index.xml">Feed for the tag {{ .Title}}</a></p>
+        <p><a href="{{ .Permalink }}atom.xml">Feed for the tag {{ .Title}}</a></p>
         {{ end }}
     {{ end }}
 {{ end }}

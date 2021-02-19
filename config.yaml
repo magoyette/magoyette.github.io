@@ -19,8 +19,29 @@ taxonomies:
 # RSS
 languageCode: en
 author:
-    name: Marc-André Goyette
+  name: Marc-André Goyette
+params:
+  feedEntriesLimit: 10
 # Markup
 markup:
   highlight:
     style: solarized-light
+mediaTypes:
+  application/atom+xml:
+    suffixes:
+    - xml
+outputFormats:
+  atom:
+    name: atom
+    baseName: atom
+    isPlainText: false
+    mediaType: application/atom+xml
+outputs:
+  home:
+  - HTML
+  - atom
+  term:
+  - HTML
+  - atom
+disableKinds:
+  - RSS

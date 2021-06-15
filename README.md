@@ -4,7 +4,7 @@
 
 The project can be installed by executing the following commands.
 
-``` shell
+```shell
 # Install the dependencies with NPM
 npm install
 ```
@@ -13,7 +13,7 @@ npm install
 
 The project can be built with the `build` script.
 
-``` shell
+```shell
 # Run Webpack, then Hugo
 npm run build
 ```
@@ -22,7 +22,7 @@ npm run build
 
 Watching changes to SASS files requires starting Webpack in watch mode in a dedicated shell.
 
-``` shell
+```shell
 npm run watch
 ```
 
@@ -31,7 +31,7 @@ npm run watch
 The following command starts a server that detect changes and reload them automatically.
 It doesn't detect changes to SASS files, since it's Webpack that compiles SASS files.
 
-``` shell
+```shell
 npm run start
 ```
 
@@ -50,7 +50,7 @@ The repo is used to commit and push the changes to GitHub pages.
 
 ## License
 
-Copyright © 2020 Marc-André Goyette
+Copyright © 2020-2021 Marc-André Goyette
 
 The source code of the web site is distributed under the MIT License.
 

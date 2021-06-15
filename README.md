@@ -32,7 +32,7 @@ The following command starts a server that detect changes and reload them automa
 It doesn't detect changes to SASS files, since it's Webpack that compiles SASS files.
 
 ``` shell
-npm run server
+npm run start
 ```
 
 ## Deploying the site

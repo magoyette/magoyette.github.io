@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://marcandregoyette.com/fr/tags/fiction-interactive/</loc>
     <lastmod>2020-08-01T02:19:44-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://marcandregoyette.com/fr/introduction/</loc>
     <lastmod>2020-08-01T02:19:44-04:00</lastmod>
     <xhtml:link
@@ -20,14 +17,10 @@
                 hreflang="fr"
                 href="https://marcandregoyette.com/fr/introduction/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://marcandregoyette.com/fr/tags/programmation/</loc>
     <lastmod>2020-08-01T02:19:44-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://marcandregoyette.com/fr/tags/</loc>
     <lastmod>2020-08-01T02:19:44-04:00</lastmod>
     <xhtml:link
@@ -40,9 +33,7 @@
                 hreflang="fr"
                 href="https://marcandregoyette.com/fr/tags/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://marcandregoyette.com/fr/</loc>
     <lastmod>2020-07-31T22:19:44-04:00</lastmod>
     <xhtml:link
@@ -55,9 +46,7 @@
                 hreflang="fr"
                 href="https://marcandregoyette.com/fr/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://marcandregoyette.com/fr/articles/</loc>
     <lastmod>2020-07-31T22:19:44-04:00</lastmod>
     <xhtml:link
@@ -70,9 +59,7 @@
                 hreflang="fr"
                 href="https://marcandregoyette.com/fr/articles/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://marcandregoyette.com/fr/colophon/</loc>
     <lastmod>2020-07-31T22:19:44-04:00</lastmod>
     <xhtml:link
@@ -85,14 +72,10 @@
                 hreflang="fr"
                 href="https://marcandregoyette.com/fr/colophon/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://marcandregoyette.com/fr/fictions/</loc>
     <lastmod>2020-07-31T22:19:44-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://marcandregoyette.com/fr/fils/</loc>
     <lastmod>2020-07-31T22:19:44-04:00</lastmod>
     <xhtml:link
@@ -105,9 +88,7 @@
                 hreflang="fr"
                 href="https://marcandregoyette.com/fr/fils/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://marcandregoyette.com/fr/a-propos/</loc>
     <lastmod>2020-07-31T22:19:44-04:00</lastmod>
     <xhtml:link
@@ -121,5 +102,4 @@
                 href="https://marcandregoyette.com/fr/a-propos/"
                 />
   </url>
-  
 </urlset>

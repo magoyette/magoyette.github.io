@@ -10,4 +10,10 @@
     content="Essais de Marc-André Goyette sur le développement logiciel, la fiction interactive et la littérature."
   />
   <link type="text/css" rel="stylesheet" href="/styles.css" />
+  {{ if eq .Lang  "fr" }}
+  <link rel="alternate" type="application/atom+xml" href="/fr/atom.xml" title="Flux Atom">
+  {{ else }}
+  <link rel="alternate" type="application/atom+xml" href="/en/atom.xml" title="Atom Feed">
+  {{ end }}
+
 </head>

@@ -4,7 +4,8 @@ $text: hsl(0, 0%, 14%);
 
 $family-primary: Alegreya, serif;
 $family-secondary: Alegreya, serif;
-$family-code: Menlo, Monaco, 'DejaVu Sans Mono', Consolas, 'Courier New', monospace;
+$family-code: Menlo, Monaco, "DejaVu Sans Mono", Consolas, "Courier New",
+  monospace;
 
 $primary: #0389a3;
 
@@ -41,27 +42,24 @@ $navbar-breakpoint: $tablet;
   font-family: Alegreya;
   font-style: normal;
   font-weight: 400;
-  src:
-    url(../static/fonts/Alegreya-Regular.woff2) format('woff2'),
-    url(../static/fonts/Alegreya-Regular.woff) format('woff');
+  src: url(../fonts/Alegreya-Regular.woff2) format("woff2"),
+    url(../fonts/Alegreya-Regular.woff) format("woff");
 }
 
 @font-face {
   font-family: Alegreya;
   font-style: normal;
   font-weight: 700;
-  src:
-    url(../static/fonts/Alegreya-Bold.woff2) format('woff2'),
-    url(../static/fonts/Alegreya-Bold.woff) format('woff');
+  src: url(../fonts/Alegreya-Bold.woff2) format("woff2"),
+    url(../fonts/Alegreya-Bold.woff) format("woff");
 }
 
 @font-face {
   font-family: Alegreya;
   font-style: italic;
   font-weight: 400;
-  src:
-    url(../static/fonts/Alegreya-Italic.woff2) format('woff2'),
-    url(../static/fonts/Alegreya-Italic.woff) format('woff');
+  src: url(../fonts/Alegreya-Italic.woff2) format("woff2"),
+    url(../fonts/Alegreya-Italic.woff) format("woff");
 }
 
 body {

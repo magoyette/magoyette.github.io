@@ -52,6 +52,8 @@ function replaceAllFilesInDirectory(sourceDirPath, destinationDirPath) {
 
 module.exports.deleteFile = deleteFile;
 module.exports.copyFileToDirectory = copyFileToDirectory;
-module.exports.copyFilesInDirectoryToAnotherDirectory = copyFilesInDirectoryToAnotherDirectory;
+module.exports.copyFilesInDirectoryToAnotherDirectory =
+  copyFilesInDirectoryToAnotherDirectory;
 module.exports.replaceAllFilesInDirectory = replaceAllFilesInDirectory;
-module.exports.deleteFilesInDirectoryRecursively = deleteFilesInDirectoryRecursively;
+module.exports.deleteFilesInDirectoryRecursively =
+  deleteFilesInDirectoryRecursively;

@@ -1,5 +1,5 @@
 node_modules/
 public/
 resources/
-static/main.js
-static/styles.css
+static/
+.log/

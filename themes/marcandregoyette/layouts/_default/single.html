@@ -3,7 +3,7 @@
   <article class="card">
     <div class="card-content">
       <div class="date has-text-grey-dark has-text-right">
-        {{ .Date.Format "2006-01-02" }}
+        {{ .Date | time.Format ":date_long" }}
       </div>
       <div class="content">
         <a href="/fr/introduction/">

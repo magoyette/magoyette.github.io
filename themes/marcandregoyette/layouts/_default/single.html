@@ -1,19 +1,5 @@
 {{ define "main" }}
 <main>
-  <article class="card">
-    <div class="card-content">
-      <div class="date has-text-grey-dark has-text-right">
-        {{ .Date | time.Format ":date_long" }}
-      </div>
-      <div class="content">
-        <a href="/fr/introduction/">
-          <h1 class="title is-family-secondary">{{ .Title }}</h1>
-        </a>
-
-        {{ .Content }}
-      </div>
-      {{- partial "listofarticles.html" . -}}
-    </div>
-  </article>
+  {{- partial "article.html" . -}}
 </main>
 {{ end }}

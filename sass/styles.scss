@@ -42,6 +42,7 @@ $navbar-breakpoint: $tablet;
   font-family: Alegreya;
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url(../fonts/Alegreya-Regular.woff2) format("woff2"),
     url(../fonts/Alegreya-Regular.woff) format("woff");
 }
@@ -50,6 +51,7 @@ $navbar-breakpoint: $tablet;
   font-family: Alegreya;
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url(../fonts/Alegreya-Bold.woff2) format("woff2"),
     url(../fonts/Alegreya-Bold.woff) format("woff");
 }
@@ -58,12 +60,9 @@ $navbar-breakpoint: $tablet;
   font-family: Alegreya;
   font-style: italic;
   font-weight: 400;
+  font-display: swap;
   src: url(../fonts/Alegreya-Italic.woff2) format("woff2"),
     url(../fonts/Alegreya-Italic.woff) format("woff");
-}
-
-body {
-  font-variant-ligatures: common-ligatures;
 }
 
 nav {

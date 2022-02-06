@@ -1,0 +1,19 @@
+<article class="card">
+  <div class="card-content">
+    {{ if (not (eq .Params.article false)) }}
+    <div class="date has-text-grey-dark has-text-right">
+      {{ .Date | time.Format ":date_long" }}
+      <br/>
+      {{ .WordCount }} {{ if eq .Lang  "fr" }}mots{{else}}words{{end}}
+    </div>
+    {{ end }}
+    <div class="content">
+      <a href="{{ .RelPermalink }}">
+        <h1 class="title is-family-secondary">{{ .Title }}</h1>
+      </a>
+
+      {{ .Content }}
+    </div>
+    {{- partial "listofarticles.html" . -}}
+  </div>
+</article>

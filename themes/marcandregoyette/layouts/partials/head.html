@@ -10,7 +10,7 @@
     content="Essais de Marc-André Goyette sur le développement logiciel, la fiction interactive et la littérature."
   />
   {{ $options := (dict "targetPath" "styles.css" "outputStyle" "compressed" "includePaths" (slice "node_modules")) }}
-  {{ $style := resources.Get "sass/styles.scss" | resources.ToCSS $options }}
+  {{ $style := resources.Get "sass/styles.scss" | resources.ToCSS $options | fingerprint }}
   <link type="text/css" rel="stylesheet" href="{{ $style.RelPermalink }}">
   {{ if eq .Lang  "fr" }}
   <link rel="alternate" type="application/atom+xml" href="/fr/atom.xml" title="Flux Atom">

@@ -42,7 +42,7 @@ npm run build
 
 The `export` script copy the generated files to prepare a deployment on GitHub pages.
 
-Another copy of this repository set on the `master` branch must be cloned at the path `../magoyette.github.io`. The files will be copied to that directory. A Git commit and a Git push can then be done to deploy the changes.
+Another copy of this repository set on the `main` branch must be cloned at the path `../magoyette.github.io`. The files will be copied to that directory. A Git commit and a Git push can then be done to deploy the changes.
 
 ```sh
 npm run deploy

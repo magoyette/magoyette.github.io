@@ -1,6 +1,6 @@
 {
   "name": "marcandregoyette.com",
-  "version": "0.59.1",
+  "version": "0.60.0",
   "description": "Personal website of Marc-André Goyette",
   "author": {
     "name": "Marc-André Goyette",
@@ -17,7 +17,7 @@
     "url": "https://github.com/magoyette/magoyette.github.io/issues"
   },
   "config": {
-    "hugoVersion": "0.96.0"
+    "hugoVersion": "0.101.0"
   },
   "scripts": {
     "postinstall": "./scripts/download-hugo.sh $npm_package_config_hugoVersion",
@@ -27,6 +27,6 @@
     "export": "npm run build && ./scripts/export.sh"
   },
   "devDependencies": {
-    "bulma": "0.9.3"
+    "bulma": "0.9.4"
   }
 }

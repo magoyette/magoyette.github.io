@@ -20,7 +20,7 @@ mkdir -p "$hugoFolder"
 tempFile="$hugoFolder/hugoTemp"
 
 echo "Downloading Hugo v$1"
-curl -L -o "$tempFile" "https://github.com/gohugoio/hugo/releases/download/v$1/hugo_extended_$1_Windows-64bit.zip"
+curl -L -o "$tempFile" "https://github.com/gohugoio/hugo/releases/download/v$1/hugo_extended_$1_windows-amd64.zip"
 unzip -o -j "$tempFile" "hugo.exe" -d "$hugoFolder"
 
 rm "$tempFile"

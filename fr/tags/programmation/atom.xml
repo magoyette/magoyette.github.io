@@ -2,7 +2,7 @@
   <title>Programmation on Marc-André Goyette</title>
   <link href="https://marcandregoyette.com/fr/tags/programmation/atom.xml" rel="self"/>
   <link href="https://marcandregoyette.com/fr/tags/programmation/"/>
-  <updated>2022-08-11T13:23:40-04:00</updated>
+  <updated>2022-11-29T18:32:48-05:00</updated>
   <id>https://marcandregoyette.com/fr/tags/programmation/</id>
   <author>
     <name>Marc-André Goyette</name>
@@ -19,7 +19,7 @@
     <content type="html"><![CDATA[<p>Un exemple de post. Essai de coloration syntaxique avec Java.</p>
 <div class="highlight"><pre tabindex="0" style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#268bd2">Iterable</span>&lt;<span style="color:#268bd2">Expression</span>&gt; <span style="color:#268bd2">expressions</span> = <span style="color:#268bd2">Iterables</span>.<span style="color:#268bd2">concat</span>(<span style="color:#268bd2">expressions</span>, <span style="color:#268bd2">ImmutableList</span>.
 </span></span><span style="display:flex;"><span>        <span style="color:#268bd2">of</span>(<span style="color:#268bd2">expression1</span>, <span style="color:#268bd2">expression2</span>));
-</span></span><span style="display:flex;"><span><span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">count</span> = <span style="color:#268bd2">5</span> * <span style="color:#268bd2">2</span>;
+</span></span><span style="display:flex;"><span><span style="color:#859900;font-weight:bold">int</span> <span style="color:#268bd2">count</span> = <span style="color:#2aa198;font-weight:bold">5</span> * <span style="color:#2aa198;font-weight:bold">2</span>;
 </span></span></code></pre></div><p>Essai de coloration syntaxique avec Clojure.</p>
 <div class="highlight"><pre tabindex="0" style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-clojure" data-lang="clojure"><span style="display:flex;"><span>(<span style="color:#859900">def </span><span style="color:#268bd2">expr</span> (<span style="color:#cb4b16">+ </span><span style="color:#2aa198;font-weight:bold">2</span> <span style="color:#2aa198;font-weight:bold">3</span>))
 </span></span></code></pre></div>]]></content>

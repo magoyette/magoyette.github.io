@@ -50,7 +50,7 @@ npm run deploy
 
 ## License
 
-Copyright © 2020-2022 Marc-André Goyette
+Copyright © 2020-2023 Marc-André Goyette
 
 The source code of the web site is distributed under the MIT License.
 

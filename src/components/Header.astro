@@ -1,0 +1,58 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<header>
+  <nav aria-label="main navigation" role="navigation" class="navbar is-primary">
+    <div class="container">
+      <div class="navbar-brand is-family-secondary">
+        <a href="/" class="navbar-item has-text-weight-bold">{SITE_TITLE}</a>
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="topNavbar"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div id="topNavbar" class="navbar-menu">
+        <div class="navbar-start">
+          <HeaderLink href="/articles">Articles</HeaderLink>
+          <HeaderLink href="/notes">Notes</HeaderLink>
+          <HeaderLink href="/tags">Tags</HeaderLink>
+          <HeaderLink href="/about">About</HeaderLink>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<style>
+  a {
+    text-decoration: none;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const $navbarBurgers = Array.prototype.slice.call(
+      document.querySelectorAll(".navbar-burger"),
+      0
+    );
+
+    $navbarBurgers.forEach((burgerElement) => {
+      burgerElement.addEventListener("click", () => {
+        const targetId = burgerElement.dataset.target;
+        const targetElement = document.getElementById(targetId);
+
+        burgerElement.classList.toggle("is-active");
+        if (targetElement) {
+          targetElement.classList.toggle("is-active");
+        }
+      });
+    });
+  });
+</script>

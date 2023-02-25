@@ -1,0 +1,44 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ShortDate from "../../components/ShortDate.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("articles")).sort(
+  (a, b) => (a.data.pubDate?.valueOf() ?? 0) - (b.data.pubDate?.valueOf() ?? 0)
+);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section>
+        <div class="container">
+          <article class="card">
+            <div class="card-content">
+              <h1 class="title is-family-secondary">Articles</h1>
+              <ul>
+                {
+                  posts.map((post) => (
+                    <li>
+                      <ShortDate date={post.data.pubDate} />
+                      <a href={`/articles/${post.slug}/`}>{post.data.title}</a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </article>
+          <Footer />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

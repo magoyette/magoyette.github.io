@@ -1,5 +1,9 @@
-hugo/
+.astro/
+dist/
 node_modules/
-public/
-resources/
-.hugo_build.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.production

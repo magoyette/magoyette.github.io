@@ -1,2 +1,0 @@
-# Ignore HTML files because Prettier doesn't support Go templates
-*.html
